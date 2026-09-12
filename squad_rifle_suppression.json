@@ -1,0 +1,392 @@
+[
+ {
+  "weapon": "M4A1",
+  "faction": "USA",
+  "caliber": "5.56x45",
+  "asset": "Rifles/BP_M4A1",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 833,
+  "supp_per_sec_at_1m": 1.735,
+  "muzzle_velocity_ms": 880,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "M16A4",
+  "faction": "USA",
+  "caliber": "5.56x45",
+  "asset": "Rifles/BP_M16A4",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 833,
+  "supp_per_sec_at_1m": 1.735,
+  "muzzle_velocity_ms": 880,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "AK-74M",
+  "faction": "RUS",
+  "caliber": "5.45x39",
+  "asset": "Rifles/BP_AK74M",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 652,
+  "supp_per_sec_at_1m": 1.358,
+  "muzzle_velocity_ms": 880,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "AK-12",
+  "faction": "RUS",
+  "caliber": "5.45x39",
+  "asset": "Rifles/BP_AK12",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 706,
+  "supp_per_sec_at_1m": 1.471,
+  "muzzle_velocity_ms": 880,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "AKM",
+  "faction": "INS/MEA",
+  "caliber": "7.62x39",
+  "asset": "Rifles/BP_AKM",
+  "projectile": "BP_Projectile_7_62mm",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "weapon override",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 600,
+  "supp_per_sec_at_1m": 1.25,
+  "muzzle_velocity_ms": 715,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "L85A2",
+  "faction": "GB",
+  "caliber": "5.56x45",
+  "asset": "Rifles/BP_L85A2",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 652,
+  "supp_per_sec_at_1m": 1.358,
+  "muzzle_velocity_ms": 940,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "QBZ-95-1",
+  "faction": "PLA",
+  "caliber": "5.8x42",
+  "asset": "Rifles/BP_QBZ95-1",
+  "projectile": "BP_Projectile",
+  "suppression_profile": "Projectile_SuppressionInfo_Rifle",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.125,
+  "power_at_2m": 0.0983,
+  "power_at_3m": 0.0675,
+  "power_at_4m": 0.0337,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 652,
+  "supp_per_sec_at_1m": 1.358,
+  "muzzle_velocity_ms": 940,
+  "curve_asset": "FC_SuppressionPower_RIfles",
+  "curve_keys": [
+   [
+    100.0,
+    0.125
+   ],
+   [
+    240.6999969482422,
+    0.0875
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "G3A3",
+  "faction": "MEA/INS",
+  "caliber": "7.62x51",
+  "asset": "Rifles/BP_G3A3",
+  "projectile": "BP_Projectile_7_62mm",
+  "suppression_profile": "Projectile_Suppression_BattleRifle",
+  "profile_source": "weapon override",
+  "suppression_power": 0.35,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.3,
+  "power_at_2m": 0.095,
+  "power_at_3m": 0.0633,
+  "power_at_4m": 0.0317,
+  "add_suppress_sway": 3.5,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 600,
+  "supp_per_sec_at_1m": 3.0,
+  "muzzle_velocity_ms": 800,
+  "curve_asset": "FC_SuppressionPower_BattleRifle",
+  "curve_keys": [
+   [
+    100.0,
+    0.3
+   ],
+   [
+    200.0,
+    0.095
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "M14 (DMR)",
+  "faction": "USA",
+  "caliber": "7.62x51",
+  "asset": "Rifles/BP_M14",
+  "projectile": "BP_Projectile_7_62mm",
+  "suppression_profile": "Projectile_Suppression_BattleRifle",
+  "profile_source": "weapon override",
+  "suppression_power": 0.35,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.3,
+  "power_at_2m": 0.095,
+  "power_at_3m": 0.0633,
+  "power_at_4m": 0.0317,
+  "add_suppress_sway": 3.5,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 667,
+  "supp_per_sec_at_1m": 3.335,
+  "muzzle_velocity_ms": 715,
+  "curve_asset": "FC_SuppressionPower_BattleRifle",
+  "curve_keys": [
+   [
+    100.0,
+    0.3
+   ],
+   [
+    200.0,
+    0.095
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ },
+ {
+  "weapon": "AS VAL",
+  "faction": "RUS",
+  "caliber": "9x39 subsonic",
+  "asset": "Rifles/BP_ASVAL",
+  "projectile": "BP_Projectile_Subsonic",
+  "suppression_profile": "Projectile_Suppression_Pistol",
+  "profile_source": "projectile",
+  "suppression_power": 0.09,
+  "max_suppression_threshold": 1.15,
+  "suppression_range_m": 5.0,
+  "power_at_1m": 0.1,
+  "power_at_2m": 0.0637,
+  "power_at_3m": 0.0324,
+  "power_at_4m": 0.0099,
+  "add_suppress_sway": 1.125,
+  "max_suppress_sway_factor": 30.0,
+  "suppress_sway_release": 5.0,
+  "obstructed_closeness_mult": 1.0,
+  "lof_suppress_range": 0.0,
+  "rpm": 652,
+  "supp_per_sec_at_1m": 1.087,
+  "muzzle_velocity_ms": 495,
+  "curve_asset": "FC_SuppressionPower_Pistols",
+  "curve_keys": [
+   [
+    0.0,
+    0.1
+   ],
+   [
+    100.0,
+    0.1
+   ],
+   [
+    500.0,
+    0.0
+   ]
+  ]
+ }
+]

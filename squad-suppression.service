@@ -1,0 +1,11 @@
+[Unit]
+Description=Squad Suppression Model (static site)
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/osaka/Downloads/SquadEditor/squad_suppression/serve.py 8080
+WorkingDirectory=/home/osaka/Downloads/SquadEditor/squad_suppression
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

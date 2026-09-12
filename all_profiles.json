@@ -1,0 +1,1241 @@
+{
+ "Explosion_Suppression_120mm_Barrage": {
+  "name": "Explosion_Suppression_120mm_Barrage",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 2000.0,
+   "OuterRadius": 7500.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_120mm_Barrage_NoPassby": {
+  "name": "Explosion_Suppression_120mm_Barrage_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 2000.0,
+   "OuterRadius": 7500.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_120mm_Frag": {
+  "name": "Explosion_Suppression_120mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 5000.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_120mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_120mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 5000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_120mm_HEAT": {
+  "name": "Explosion_Suppression_120mm_HEAT",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.5,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 2400.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_120mm_HEAT_NoPassby": {
+  "name": "Explosion_Suppression_120mm_HEAT_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.5,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 2400.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm": {
+  "name": "Explosion_Suppression_155mm",
+  "redirects_to": "Explosion_Suppression_155mm_Barrage",
+  "values": {
+   "ImpactSuppressionPower": 4.0,
+   "InnerRadius": 3000.0,
+   "OuterRadius": 10000.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm_Barrage": {
+  "name": "Explosion_Suppression_155mm_Barrage",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.0,
+   "InnerRadius": 3000.0,
+   "OuterRadius": 10000.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm_Barrage_NoPassby": {
+  "name": "Explosion_Suppression_155mm_Barrage_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.0,
+   "InnerRadius": 3000.0,
+   "OuterRadius": 10000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm_Frag": {
+  "name": "Explosion_Suppression_155mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.5,
+   "InnerRadius": 2500.0,
+   "OuterRadius": 7500.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_155mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.5,
+   "InnerRadius": 2500.0,
+   "OuterRadius": 7500.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_155mm_NoPassby": {
+  "name": "Explosion_Suppression_155mm_NoPassby",
+  "redirects_to": "Explosion_Suppression_155mm_Barrage_NoPassby",
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.0,
+   "InnerRadius": 3000.0,
+   "OuterRadius": 10000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_20mm_Frag": {
+  "name": "Explosion_Suppression_20mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 1.5,
+   "MaxRadialSuppressionThreshold": 4.0,
+   "InnerRadius": 350.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_20mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_20mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "MaxRadialSuppressionThreshold": 3.5,
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 1.5,
+   "InnerRadius": 350.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_50mm_Frag": {
+  "name": "Explosion_Suppression_50mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.5,
+   "MaxRadialSuppressionThreshold": 4.5,
+   "InnerRadius": 600.0,
+   "OuterRadius": 1875.0,
+   "SuppressionPower": 0.800000011920929,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_50mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_50mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.5,
+   "MaxRadialSuppressionThreshold": 4.5,
+   "InnerRadius": 600.0,
+   "OuterRadius": 1875.0,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_50mm_HEAT": {
+  "name": "Explosion_Suppression_50mm_HEAT",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 3.5,
+   "MaxRadialSuppressionThreshold": 3.5,
+   "InnerRadius": 600.0,
+   "OuterRadius": 1200.0,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_50mm_HEAT_NoPassby": {
+  "name": "Explosion_Suppression_50mm_HEAT_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 3.5,
+   "MaxRadialSuppressionThreshold": 3.5,
+   "InnerRadius": 600.0,
+   "OuterRadius": 1200.0,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_76mm_Frag": {
+  "name": "Explosion_Suppression_76mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1560.0,
+   "OuterRadius": 2700.0,
+   "SuppressionPower": 0.800000011920929,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_76mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_76mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1560.0,
+   "OuterRadius": 2700.0,
+   "MaxSuppressionThreshold": 2.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_90mm_Frag": {
+  "name": "Explosion_Suppression_90mm_Frag",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.25,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 3000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_90mm_Frag_NoPassby": {
+  "name": "Explosion_Suppression_90mm_Frag_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.25,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 3000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_90mm_HEAT": {
+  "name": "Explosion_Suppression_90mm_HEAT",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 4.5,
+   "InnerRadius": 850.0,
+   "OuterRadius": 1800.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_90mm_HEAT_NoPassby": {
+  "name": "Explosion_Suppression_90mm_HEAT_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 4.5,
+   "InnerRadius": 850.0,
+   "OuterRadius": 1800.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_90mm_Mortar_NoPassby": {
+  "name": "Explosion_Suppression_90mm_Mortar_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.5,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 4500.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Airstrike_Heavy_NoPassby": {
+  "name": "Explosion_Suppression_Airstrike_Heavy_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 7.5,
+   "InnerRadius": 10000.0,
+   "OuterRadius": 20000.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Airstrike_Light_NoPassby": {
+  "name": "Explosion_Suppression_Airstrike_Light_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.5,
+   "InnerRadius": 3000.0,
+   "OuterRadius": 10000.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Airstrike_Medium_NoPassby": {
+  "name": "Explosion_Suppression_Airstrike_Medium_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 6.5,
+   "InnerRadius": 7500.0,
+   "OuterRadius": 15000.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Autocannon_HE": {
+  "name": "Explosion_Suppression_Autocannon_HE",
+  "redirects_to": "Explosion_Suppression_20mm_Frag",
+  "values": {
+   "ImpactSuppressionPower": 1.5,
+   "MaxRadialSuppressionThreshold": 4.0,
+   "InnerRadius": 350.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Autocannon_HE_NoPassby": {
+  "name": "Explosion_Suppression_Autocannon_HE_NoPassby",
+  "redirects_to": "Explosion_Suppression_20mm_Frag_NoPassby",
+  "values": {
+   "MaxRadialSuppressionThreshold": 3.5,
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 1.5,
+   "InnerRadius": 350.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_C4": {
+  "name": "Explosion_Suppression_C4",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 4.5,
+   "InnerRadius": 300.0,
+   "OuterRadius": 3000.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_CASStrafe_NoPassby": {
+  "name": "Explosion_Suppression_CASStrafe_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 1.5,
+   "MaxRadialSuppressionThreshold": 5.5,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 2400.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_CAS_Minigun": {
+  "name": "Explosion_Suppression_CAS_Minigun",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 3.0,
+   "MaxRadialSuppressionThreshold": 3.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 2000.0,
+   "SuppressionPower": 2.0,
+   "MaxSuppressionThreshold": 3.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_GrenadeLauncher": {
+  "name": "Explosion_Suppression_GrenadeLauncher",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 4.0,
+   "MaxRadialSuppressionThreshold": 4.0,
+   "InnerRadius": 400.0,
+   "OuterRadius": 2000.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_GrenadeLauncher_NoPassby": {
+  "name": "Explosion_Suppression_GrenadeLauncher_NoPassby",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ImpactSuppressionPower": 4.0,
+   "MaxRadialSuppressionThreshold": 4.0,
+   "InnerRadius": 400.0,
+   "OuterRadius": 2000.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_HandGrenade": {
+  "name": "Explosion_Suppression_HandGrenade",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 5.5,
+   "MaxRadialSuppressionThreshold": 6.5,
+   "InnerRadius": 600.0,
+   "OuterRadius": 2250.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": "FC_SuppressionPower_Explosive_HandGrenade",
+  "impact_keys": [
+   {
+    "d": 600.0,
+    "v": 5.5,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 716.2293701171875,
+    "v": 4.224027633666992,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 2250.0,
+    "v": 0.0,
+    "interp": "Cubic",
+    "arrive": -0.00037529386463575065,
+    "leave": -0.00037529386463575065
+   }
+  ]
+ },
+ "Explosion_Suppression_IED_Light": {
+  "name": "Explosion_Suppression_IED_Light",
+  "redirects_to": null,
+  "values": {
+   "ImpactSuppressionPower": 6.5,
+   "InnerRadius": 2500.0,
+   "OuterRadius": 10000.0,
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Mortar_82mm": {
+  "name": "Explosion_Suppression_Mortar_82mm",
+  "redirects_to": "Explosion_Suppression_90mm_Frag",
+  "values": {
+   "ImpactSuppressionPower": 4.25,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 3000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Explosion_Suppression_Mortar_82mm_NoPassby": {
+  "name": "Explosion_Suppression_Mortar_82mm_NoPassby",
+  "redirects_to": "Explosion_Suppression_90mm_Frag_NoPassby",
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 4.25,
+   "MaxRadialSuppressionThreshold": 5.0,
+   "InnerRadius": 1500.0,
+   "OuterRadius": 3000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_SuppressionHMG": {
+  "name": "Projectile_SuppressionHMG",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 5.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_SuppressionInfo": {
+  "name": "Projectile_SuppressionInfo",
+  "redirects_to": "Projectile_SuppressionInfo_Rifle",
+  "values": {
+   "SuppressionPower": 0.09000000357627869,
+   "MaxSuppressionThreshold": 1.149999976158142,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 1.125,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_RIfles",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.125,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 240.6999969482422,
+    "v": 0.08750000596046448,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_SuppressionInfo_Rifle": {
+  "name": "Projectile_SuppressionInfo_Rifle",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.09000000357627869,
+   "MaxSuppressionThreshold": 1.149999976158142,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 1.125,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_RIfles",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.125,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 240.6999969482422,
+    "v": 0.08750000596046448,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_SuppressionNone": {
+  "name": "Projectile_SuppressionNone",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.0,
+   "MaxSuppressionThreshold": 0.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 0.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_120mm_AP": {
+  "name": "Projectile_Suppression_120mm_AP",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 5.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_20mm_AP": {
+  "name": "Projectile_Suppression_20mm_AP",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.699999988079071,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 5.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_50mm_AP": {
+  "name": "Projectile_Suppression_50mm_AP",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.800000011920929,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 5.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_90mm_AP": {
+  "name": "Projectile_Suppression_90mm_AP",
+  "redirects_to": null,
+  "values": {
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 5.0,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_BattleRifle": {
+  "name": "Projectile_Suppression_BattleRifle",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.3499999940395355,
+   "MaxSuppressionThreshold": 1.149999976158142,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 3.5,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_BattleRifle",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.30000001192092896,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 200.0,
+    "v": 0.0949999988079071,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_GPMG": {
+  "name": "Projectile_Suppression_GPMG",
+  "redirects_to": "Projectile_Suppression_MMG",
+  "values": {
+   "SuppressionPower": 0.3499999940395355,
+   "MaxSuppressionThreshold": 1.75,
+   "ObstructedClosenessMult": 1.0
+  },
+  "curve": "FC_SuppressionPower_MMG",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.3499999940395355,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 311.29998779296875,
+    "v": 0.15000000596046448,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 700.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_LMG": {
+  "name": "Projectile_Suppression_LMG",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.15000000596046448,
+   "MaxSuppressionThreshold": 1.25,
+   "ObstructedClosenessMult": 1.0
+  },
+  "curve": "FC_SuppressionPower_LMG",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.20000000298023224,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 600.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_LSW": {
+  "name": "Projectile_Suppression_LSW",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.15000000596046448,
+   "MaxSuppressionThreshold": 1.25,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 1.5,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_LSW",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.30000001192092896,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 240.6999969482422,
+    "v": 0.08500000089406967,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_MMG": {
+  "name": "Projectile_Suppression_MMG",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.3499999940395355,
+   "MaxSuppressionThreshold": 1.75,
+   "ObstructedClosenessMult": 1.0
+  },
+  "curve": "FC_SuppressionPower_MMG",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 0.3499999940395355,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 311.29998779296875,
+    "v": 0.15000000596046448,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 700.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_Pistol": {
+  "name": "Projectile_Suppression_Pistol",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.09000000357627869,
+   "MaxSuppressionThreshold": 1.149999976158142,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 1.125,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_Pistols",
+  "keys": [
+   {
+    "d": 0.0,
+    "v": 0.10000000149011612,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 100.0,
+    "v": 0.10000000149011612,
+    "interp": "Cubic",
+    "arrive": -0.00037529386463575065,
+    "leave": -0.00037529386463575065
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Cubic",
+    "arrive": -2.327807669644244e-05,
+    "leave": -2.327807669644244e-05
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_PrecisionRifle": {
+  "name": "Projectile_Suppression_PrecisionRifle",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.3499999940395355,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 3.5,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_PrecisionRIfle",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 2.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 250.0,
+    "v": 0.08750000596046448,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_SMG": {
+  "name": "Projectile_Suppression_SMG",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.09000000357627869,
+   "MaxSuppressionThreshold": 1.149999976158142,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 1.125,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_SMG",
+  "keys": [
+   {
+    "d": 0.0,
+    "v": 0.10000000149011612,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 100.0,
+    "v": 0.10000000149011612,
+    "interp": "Cubic",
+    "arrive": -0.00037529386463575065,
+    "leave": -0.00037529386463575065
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Cubic",
+    "arrive": -2.327807669644244e-05,
+    "leave": -2.327807669644244e-05
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_SniperRifle": {
+  "name": "Projectile_Suppression_SniperRifle",
+  "redirects_to": null,
+  "values": {
+   "SuppressionPower": 0.3499999940395355,
+   "MaxSuppressionThreshold": 3.0,
+   "ObstructedClosenessMult": 1.0,
+   "SuppressSwayFactorRelease": 5.0,
+   "AddSuppressSway": 3.5,
+   "MaxSuppressSwayFactor": 30.0,
+   "LofSuppressRange": 0.0,
+   "LofSuppressInterpSpeed": 0.0,
+   "LofSuppressAlphaFactor": 0.0,
+   "LofSuppressRotationAlphaRelease": 0.0
+  },
+  "curve": "FC_SuppressionPower_SniperRifle",
+  "keys": [
+   {
+    "d": 100.0,
+    "v": 3.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 300.0,
+    "v": 0.08749999850988388,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   },
+   {
+    "d": 500.0,
+    "v": 0.0,
+    "interp": "Linear",
+    "arrive": 0.0,
+    "leave": 0.0
+   }
+  ],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_Tank": {
+  "name": "Projectile_Suppression_Tank",
+  "redirects_to": "Explosion_Suppression_120mm_Frag",
+  "values": {
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 5000.0,
+   "SuppressionPower": 1.5,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ },
+ "Projectile_Suppression_Tank_NoPassby": {
+  "name": "Projectile_Suppression_Tank_NoPassby",
+  "redirects_to": "Explosion_Suppression_120mm_Frag_NoPassby",
+  "values": {
+   "SuppressionPower": 0.0,
+   "ImpactSuppressionPower": 5.0,
+   "MaxRadialSuppressionThreshold": 6.0,
+   "InnerRadius": 1687.5,
+   "OuterRadius": 5000.0,
+   "MaxSuppressionThreshold": 2.0,
+   "ObstructedClosenessMult": 0.75
+  },
+  "curve": null,
+  "keys": [],
+  "impact_curve": null,
+  "impact_keys": []
+ }
+}

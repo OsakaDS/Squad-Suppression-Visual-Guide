@@ -1,0 +1,873 @@
+<title>Squad Suppression Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#e7e9e3; --grid:#d5d9cd;
+  --panel:#f8f9f5; --inset:#eef0e9;
+  --ink:#171a13; --ink2:#5a6153; --ink3:#8a9082;
+  --rule:#ced3c6; --rule-strong:#b3b9a8;
+  --signal:#a83a15; --signal-soft:#e9d9cf;
+  --calm:#2f5f58;
+  --icon-invert:1;              /* art ships as white silhouettes */
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  --shadow:0 1px 0 rgba(23,26,19,.05);
+  --fd:'Oswald','Arial Narrow','Helvetica Neue',sans-serif;
+  --fb:'Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif;
+  --fm:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#131610; --grid:#1e2219;
+    --panel:#1d211a; --inset:#252a20;
+    --ink:#edefe6; --ink2:#a5ab98; --ink3:#767c6d;
+    --rule:#30352a; --rule-strong:#454b3c;
+    --signal:#e0793f; --signal-soft:#3a2a20;
+    --calm:#63a79d;
+    --icon-invert:0;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+    --shadow:0 1px 0 rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#131610; --grid:#1e2219;
+  --panel:#1d211a; --inset:#252a20;
+  --ink:#edefe6; --ink2:#a5ab98; --ink3:#767c6d;
+  --rule:#30352a; --rule-strong:#454b3c;
+  --signal:#e0793f; --signal-soft:#3a2a20;
+  --calm:#63a79d;
+  --icon-invert:0;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  --shadow:0 1px 0 rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--fb); font-size:16px; line-height:1.55;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:28px 28px, 28px 28px;
+}
+.wrap{max-width:1120px; margin:0 auto; padding:0 20px 72px}
+img.ico{filter:invert(var(--icon-invert)); image-rendering:auto}
+
+/* ---------- masthead ---------- */
+header.mast{padding:44px 0 28px; border-bottom:2px solid var(--ink)}
+.kicker{font-family:var(--fm); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--signal); margin:0 0 10px}
+h1{font-family:var(--fd); font-weight:600; font-size:clamp(38px,6.2vw,64px); line-height:.98;
+   letter-spacing:.005em; margin:0 0 14px; text-wrap:balance; text-transform:uppercase}
+.dek{max-width:62ch; font-size:18px; color:var(--ink2); margin:0}
+.dek b{color:var(--ink); font-weight:600}
+.provenance{display:flex; flex-wrap:wrap; gap:0 28px; margin-top:22px;
+  font-family:var(--fm); font-size:11.5px; color:var(--ink3); letter-spacing:.03em}
+.provenance span b{color:var(--ink2); font-weight:500}
+
+/* ---------- stages ---------- */
+.stage{border-bottom:1px solid var(--rule); padding:34px 0 40px}
+.stage:last-of-type{border-bottom:none}
+.stage-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px}
+.stage-num{font-family:var(--fm); font-size:11px; letter-spacing:.14em; color:var(--signal);
+  border:1px solid var(--signal); padding:2px 6px; text-transform:uppercase; flex:none}
+h2{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spacing:.04em;
+   font-size:clamp(21px,2.6vw,27px); margin:0; line-height:1.15}
+.stage-sub{max-width:70ch; color:var(--ink2); margin:8px 0 22px; font-size:16px}
+h3{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spacing:.07em;
+   font-size:14px; color:var(--ink2); margin:0 0 12px}
+
+.panel{background:var(--panel); border:1px solid var(--rule); padding:20px; box-shadow:var(--shadow)}
+.grid2{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:18px; align-items:start}
+.grid-blast{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:18px; align-items:start}
+.trio{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+@media (max-width:820px){ .grid2,.grid-blast{grid-template-columns:1fr} }
+
+/* ---------- armoury ---------- */
+.cattiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(122px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin-bottom:18px}
+.cattile{background:var(--panel); border:none; padding:14px 10px 12px; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center; color:var(--ink2)}
+.cattile img{width:38px; height:38px; object-fit:contain; opacity:.5}
+.cattile .cl{font-family:var(--fd); font-size:13px; text-transform:uppercase; letter-spacing:.05em; line-height:1.1}
+.cattile .cc{font-family:var(--fm); font-size:10.5px; color:var(--ink3)}
+.cattile:hover{background:var(--inset)}
+.cattile[aria-pressed="true"]{background:var(--inset); color:var(--ink); box-shadow:inset 0 -3px 0 var(--signal)}
+.cattile[aria-pressed="true"] img{opacity:1}
+
+.pickbar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:14px}
+.pickbar input[type=search]{flex:1 1 220px; font-family:var(--fb); font-size:15px; padding:8px 10px;
+  background:var(--inset); color:var(--ink); border:1px solid var(--rule-strong); border-radius:0}
+.pickbar .count{font-family:var(--fm); font-size:11.5px; color:var(--ink3); letter-spacing:.05em}
+.catnote{font-size:14.5px; color:var(--ink2); margin:0 0 14px; max-width:74ch}
+
+.wgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(212px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); max-height:430px; overflow-y:auto}
+.wcard{background:var(--panel); border:none; cursor:pointer; padding:10px 12px; text-align:left;
+  display:grid; grid-template-columns:60px minmax(0,1fr); gap:10px; align-items:center; color:inherit}
+.wcard img{width:60px; height:26px; object-fit:contain; object-position:left center; opacity:.72}
+.wcard .wn{font-size:13.5px; line-height:1.25; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.wcard .wm{font-family:var(--fm); font-size:10.5px; color:var(--ink3); letter-spacing:.03em}
+.wcard:hover{background:var(--inset)}
+.wcard[aria-pressed="true"]{background:var(--signal-soft); box-shadow:inset 3px 0 0 var(--signal)}
+.wcard[aria-pressed="true"] img{opacity:1}
+.wcard[aria-pressed="true"] .wn{font-weight:600}
+.empty{padding:26px; color:var(--ink3); font-family:var(--fm); font-size:13px}
+
+/* selected weapon strip */
+.loadout{display:grid; grid-template-columns:auto minmax(0,1fr); gap:18px; align-items:center;
+  border:1px solid var(--rule-strong); background:var(--panel); padding:14px 18px; margin-bottom:18px}
+.loadout img{width:150px; height:56px; object-fit:contain; object-position:center}
+.loadout .lname{font-family:var(--fd); font-size:24px; text-transform:uppercase; letter-spacing:.03em; line-height:1.1}
+.loadout .lmeta{font-family:var(--fm); font-size:11.5px; color:var(--ink3); margin-top:4px; letter-spacing:.03em}
+.loadout .lmeta b{color:var(--ink2); font-weight:500}
+@media (max-width:620px){ .loadout{grid-template-columns:1fr} .loadout img{width:120px} }
+
+/* ---------- controls ---------- */
+.ctl{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+.ctl label{font-family:var(--fm); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3)}
+.readout{font-family:var(--fm); font-variant-numeric:tabular-nums; color:var(--ink)}
+input[type=range]{width:100%; accent-color:var(--signal); margin:2px 0}
+:focus-visible{outline:2px solid var(--signal); outline-offset:2px}
+
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px}
+.chip{display:inline-flex; align-items:center; gap:7px; font-family:var(--fm); font-size:11.5px;
+  letter-spacing:.02em; padding:5px 9px 5px 7px; border:1px solid var(--rule-strong);
+  background:transparent; color:var(--ink3); cursor:pointer; line-height:1.2}
+.chip .sw{width:11px; height:11px; flex:none; background:currentColor; opacity:.35; color:var(--c)}
+.chip[aria-pressed="true"]{color:var(--ink); background:var(--inset); border-color:var(--ink3)}
+.chip[aria-pressed="true"] .sw{opacity:1}
+
+.btn{font-family:var(--fm); font-size:12px; letter-spacing:.09em; text-transform:uppercase;
+  padding:8px 16px; border:1px solid var(--ink); background:var(--ink); color:var(--panel);
+  cursor:pointer; border-radius:0}
+.btn:hover{background:var(--signal); border-color:var(--signal)}
+
+/* ---------- stats ---------- */
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin-top:16px}
+.stat{background:var(--panel); padding:11px 13px}
+.stat .k{font-family:var(--fm); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink3); display:block}
+.stat .v{font-family:var(--fd); font-weight:500; font-size:26px; line-height:1.15;
+  font-variant-numeric:tabular-nums; display:block; margin-top:2px}
+.stat .u{font-family:var(--fm); font-size:11px; color:var(--ink3); margin-left:3px}
+.stat.hot .v{color:var(--signal)}
+
+.meter{position:relative; height:30px; background:var(--inset); border:1px solid var(--rule-strong); margin-top:6px}
+.meter .fill{position:absolute; inset:0 auto 0 0; background:var(--signal); width:0%}
+.meter .cap{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--ink); left:80%}
+.meter .caplab{position:absolute; top:-19px; left:80%; transform:translateX(-50%); font-family:var(--fm);
+  font-size:10px; letter-spacing:.06em; color:var(--ink2); white-space:nowrap}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--rule); background:var(--panel)}
+.tablewrap.tall{max-height:520px; overflow-y:auto}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:620px}
+th,td{text-align:right; padding:8px 11px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th{font-family:var(--fm); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+   color:var(--ink3); font-weight:400; border-bottom:1px solid var(--rule-strong); vertical-align:bottom;
+   position:sticky; top:0; background:var(--panel); z-index:1}
+td:first-child,th:first-child{text-align:left}
+td:nth-child(2),th:nth-child(2){text-align:left}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:var(--inset)}
+td.num{font-family:var(--fm); font-variant-numeric:tabular-nums; text-align:right}
+td.name{font-weight:600}
+td.ic{width:56px; padding-right:0}
+td.ic img{width:46px; height:20px; object-fit:contain; object-position:left center; opacity:.8}
+.tag{font-family:var(--fm); font-size:10.5px; letter-spacing:.04em; padding:1px 5px; border:1px solid var(--rule-strong); color:var(--ink2)}
+.tag.ovr{color:var(--signal); border-color:var(--signal)}
+.catcell{display:inline-flex; align-items:center; gap:7px}
+.catcell img{width:17px; height:17px; object-fit:contain; opacity:.75}
+
+/* ---------- chain ---------- */
+.chain{display:flex; flex-wrap:wrap; align-items:stretch}
+.node{flex:1 1 170px; min-width:158px; border:1px solid var(--rule-strong); background:var(--panel); padding:12px 13px}
+.node + .node{border-left:none}
+.node .role{font-family:var(--fm); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--signal)}
+.node .thing{font-family:var(--fm); font-size:12.5px; color:var(--ink); margin-top:5px; word-break:break-word}
+.node .note{font-size:13px; color:var(--ink2); margin-top:6px; line-height:1.4}
+@media (max-width:700px){ .node + .node{border-left:1px solid var(--rule-strong)} }
+
+.callout{border-left:3px solid var(--signal); background:var(--signal-soft); padding:12px 15px; margin-top:16px; font-size:15px}
+code{font-family:var(--fm); font-size:.9em; background:var(--inset); padding:1px 4px; border:1px solid var(--rule)}
+.figcap{font-size:13.5px; color:var(--ink2); margin:10px 0 0; max-width:68ch}
+.figcap b{color:var(--ink); font-weight:600}
+
+svg{display:block; max-width:100%}
+.tick{font-family:var(--fm); font-size:10px; fill:var(--ink3)}
+.axlab{font-family:var(--fm); font-size:10.5px; letter-spacing:.08em; fill:var(--ink3); text-transform:uppercase}
+.dlab{font-family:var(--fm); font-size:11px; font-weight:500}
+
+footer{border-top:2px solid var(--ink); padding-top:20px; margin-top:8px; font-size:14px; color:var(--ink2)}
+footer ul{margin:0; padding-left:18px}
+footer li{margin-bottom:6px; max-width:78ch}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+.meter .fill{transition:width .12s linear}
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <p class="kicker">Squad v10.5.3 · reverse-engineered from the mod SDK</p>
+  <h1>How Suppression<br>Actually Works</h1>
+  <p class="dek">Squad does not store a suppression stat on a weapon. It stores a <b>profile</b> that a bullet carries, a <b>curve</b> keyed on how close that bullet passed your head, and a <b>ceiling</b> on how much pressure can stack up. Every weapon, icon and number below was read out of the packaged <code>.uasset</code> files — no wiki figures.</p>
+  <div class="provenance">
+    <span><b>521</b> weapons</span>
+    <span><b>904</b> weapon assets</span>
+    <span><b>58</b> suppression profiles</span>
+    <span>Engine <b>UE 5.7</b></span>
+    <span>Branch <b>SQ-39052_SuppressionRework</b></span>
+    <span>Distances in <b>uu</b> · 100 uu = 1 m</span>
+  </div>
+</header>
+
+<!-- ============ ARMOURY ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 01</span><h2>The armoury</h2></div>
+  <p class="stage-sub">Every firearm in the game, sorted by the suppression profile its rounds actually carry — not by what the weapon looks like. Pick one and the rest of the page follows it. Icons and category emblems are the game's own art, lifted from the texture assets.</p>
+
+  <div class="cattiles" id="cattiles" role="group" aria-label="Weapon categories"></div>
+  <p class="catnote" id="catnote"></p>
+
+  <div class="panel">
+    <div class="pickbar">
+      <input type="search" id="search" placeholder="Search 521 weapons — try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
+      <span class="count" id="wcount"></span>
+    </div>
+    <div class="wgrid" id="wgrid" role="group" aria-label="Weapons"></div>
+  </div>
+</section>
+
+<!-- ============ CHAIN ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 02</span><h2>Which profile your pick carries</h2></div>
+  <p class="stage-sub">Suppression is a property of the round in flight, not the gun that fired it. The weapon names a projectile, the projectile names a suppression profile — unless the weapon overrides that choice outright.</p>
+
+  <div class="loadout" id="loadout"></div>
+  <div class="chain" id="chain"></div>
+  <div class="callout" id="chainNote"></div>
+</section>
+
+<!-- ============ PASSBY ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 03</span><h2>A round goes past you</h2></div>
+  <p class="stage-sub">The only thing that matters is the perpendicular distance between the bullet's path and your body. Range to the shooter is irrelevant — a sniper at 600 m and a rifleman at 40 m apply identical pressure if the round passes the same distance from your head.</p>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Miss distance</h3>
+      <svg id="passby" viewBox="0 0 280 240" role="img" aria-label="Top-down view of a round passing a soldier at the selected miss distance"></svg>
+      <div class="ctl" style="margin:16px 0 0">
+        <label for="dist">Bullet passes at <span class="readout" id="distRead">1.50 m</span></label>
+        <input type="range" id="dist" min="0" max="800" step="5" value="150" aria-label="Miss distance in Unreal units">
+      </div>
+      <div class="stats">
+        <div class="stat hot"><span class="k">Power / round</span><span class="v" id="powRead">0.000</span></div>
+        <div class="stat"><span class="k">Rounds to cap</span><span class="v" id="capRead">—</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Suppression added per round</h3>
+      <div class="chips" id="chips" role="group" aria-label="Suppression profiles to plot"></div>
+      <svg id="curveChart" viewBox="0 0 720 380" role="img" aria-label="Suppression power per round against miss distance, by weapon profile"></svg>
+      <p class="figcap"><b>Every curve dies at 5–7 m.</b> Outside that a passing round does nothing at all, and the differences between classes live almost entirely inside the first two metres. Your selected weapon's profile is drawn thicker; the y-scale rescales when you add the DMR or sniper curves, which open an order of magnitude above the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD-UP ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 04</span><h2>Pressure stacks, then stops</h2></div>
+  <p class="stage-sub">Each passing round adds its power to a running total, clamped at the profile's ceiling — <code>MaxSuppressionThreshold</code>. A weapon's real advantage is <em>how fast it pins you</em>, not how far past the cap it can push.</p>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Sustained fire</h3>
+      <div class="ctl">
+        <label for="dist2">Passing at <span class="readout" id="dist2Read">1.50 m</span></label>
+        <input type="range" id="dist2" min="0" max="800" step="5" value="150" aria-label="Miss distance for the sustained fire simulation">
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="k">Cyclic</span><span class="v" id="rpmRead">—<span class="u">rpm</span></span></div>
+        <div class="stat hot"><span class="k">Build rate</span><span class="v" id="rateRead">—<span class="u">/s</span></span></div>
+        <div class="stat"><span class="k">Time to cap</span><span class="v" id="ttcRead">—<span class="u">s</span></span></div>
+      </div>
+      <p class="figcap" style="margin-top:14px">Assumes an uninterrupted burst at cyclic rate with every round on the same line. Semi-automatic and bolt-action weapons never reach their cyclic figure in practice.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Build-up against the ceiling</h3>
+      <svg id="buildChart" viewBox="0 0 720 300" role="img" aria-label="Accumulated suppression over time against the profile ceiling"></svg>
+      <div class="ctl" style="margin:14px 0 0">
+        <label>Suppression now <span class="readout" id="supRead">0.00 / 1.15</span></label>
+        <div class="meter"><div class="fill" id="meterFill"></div><div class="cap"></div><div class="caplab" id="meterCapLab">cap</div></div>
+      </div>
+      <button class="btn" id="playBtn" style="margin-top:16px">Hold trigger</button>
+      <p class="figcap" style="margin-top:14px"><b>Recovery is not in the assets.</b> The rate suppression bleeds off once fire stops lives in Squad's compiled C++, which the mod SDK does not ship — so this models build-up only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECEIVING END ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 05</span><h2>What it does to the man being shot at</h2></div>
+  <p class="stage-sub">On the receiving end the engine works from a <em>closeness ratio</em> — 0 for a round at the edge of the envelope, 1 for one that nearly clipped you. Three curve sets read that ratio: camera punch, weapon-alignment punch and flinch. A fourth tracks how numb you have become.</p>
+
+  <div class="trio">
+    <div class="panel">
+      <h3>Flinch by closeness</h3>
+      <svg id="flinchChart" viewBox="0 0 340 240" role="img" aria-label="Flinch multiplier against closeness ratio"></svg>
+      <p class="figcap"><b>A step function, not a ramp.</b> Under 0.33 closeness there is no flinch entry at all; crossing 0.33 jumps you to 0.6, crossing 0.67 jumps to full.</p>
+    </div>
+    <div class="panel">
+      <h3>Immunity gained per round</h3>
+      <svg id="immChart" viewBox="0 0 340 240" role="img" aria-label="Immunity increment against closeness ratio"></svg>
+      <p class="figcap">Near misses bank <b>immunity</b> — 1 point past 0.33 closeness, 2 points past 0.67. It is the game's answer to being pinned indefinitely.</p>
+    </div>
+    <div class="panel">
+      <h3>Punch reduction from immunity</h3>
+      <svg id="punchChart" viewBox="0 0 340 240" role="img" aria-label="Punch multiplier against accumulated immunity"></svg>
+      <p class="figcap">At 7.5 immunity camera location punch is down to <b>0.35×</b> and weapon alignment to <b>0.30×</b>. Stay under fire long enough and you shoot back nearly steady.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLAST ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 06</span><h2>Explosions use a second, larger model</h2></div>
+  <p class="stage-sub">Blasts skip the passby path entirely — their <code>SuppressionPower</code> is zeroed. They suppress radially between an inner and an outer radius instead, with their own power, curve and ceiling. It is why one grenade outweighs a magazine, and why the 74 launcher weapons in the armoury show no passby figure.</p>
+
+  <div class="grid-blast">
+    <div class="panel">
+      <h3>Radial envelopes</h3>
+      <svg id="blastChart" viewBox="0 0 400 300" role="img" aria-label="Inner and outer suppression radius for explosive sources"></svg>
+      <p class="figcap">Bars run from the inner radius (full power) to the outer radius (zero). A hand grenade's envelope reaches <b>22.5 m</b> — four times a rifle round's five.</p>
+    </div>
+    <div class="panel">
+      <h3>Blast profiles</h3>
+      <div class="tablewrap">
+        <table id="blastTable"><thead><tr>
+          <th>Source</th><th style="text-align:right">Impact power</th><th>Inner</th><th>Outer</th><th>Ceiling</th>
+        </tr></thead><tbody></tbody></table>
+      </div>
+      <p class="figcap"><b>5.5 power at 6 m</b> from a hand grenade against <b>0.125</b> from a rifle round at 1 m — roughly forty rifle rounds arriving at once, against a ceiling of 6.5 rather than 1.15.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENCE ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Reference</span><h2>The categories, side by side</h2></div>
+  <p class="stage-sub">Eleven profiles carry every firearm in the game. Eight of them are curve-driven passby profiles; shotguns sit on flat ones, launchers carry none at all.</p>
+  <div class="tablewrap">
+    <table id="catTable"><thead><tr>
+      <th>Category</th><th>Weapons</th><th>Envelope</th><th>@1 m</th><th>@2 m</th><th>@3 m</th><th>Ceiling</th><th>Sway add</th><th>Rounds to cap @1 m</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+
+  <h3 style="margin-top:30px">Every weapon</h3>
+  <p class="figcap" style="margin:0 0 12px">Follows the category filter and the search box above. Power figures are read off each weapon's own profile curve.</p>
+  <div class="tablewrap tall">
+    <table id="allTable"><thead><tr>
+      <th></th><th>Weapon</th><th>Category</th><th>@1 m</th><th>@2 m</th><th>Ceiling</th><th>Cyclic</th><th>Per second @1 m</th><th>Muzzle</th><th>Variants</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+</section>
+
+<footer>
+  <h3>Reading the numbers honestly</h3>
+  <ul>
+    <li><b>Read directly from the assets:</b> every power, ceiling, radius, sway figure and curve key, the weapon → projectile → profile wiring for all 904 weapon assets, the display names, and the icons — which are the content-browser thumbnails with the editor's checkerboard keyed back out to alpha.</li>
+    <li><b>Inferred:</b> that the curve's X axis is perpendicular miss distance rather than range to shooter — the property is <code>PowerToDistanceCurve</code>, its companion is <code>ObstructedClosenessMult</code>, and a 5 m ceiling only makes sense as closeness. Also that <code>SuppressionPower</code> is the fallback used when a profile has no curve, which is how the shotgun and tank profiles are shaped.</li>
+    <li><b>Category emblems</b> are the game's own role icons — rifleman, machine gunner, breacher and so on — matched to each profile. Squad ships no per-profile art, so the pairing is mine.</li>
+    <li><b>Not available:</b> the decay rate, the exact mapping from suppression to screen effect, and the closeness-ratio normalisation all live in <code>/Script/Squad</code>, compiled C++ that the mod SDK ships without source.</li>
+  </ul>
+</footer>
+</div>
+
+<script id="payload" type="application/json">__PAYLOAD__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById('payload').textContent);
+const SERIES = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => {
+  const n = document.createElementNS(NS, tag);
+  for(const k in attrs) n.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(n);
+  return n;
+};
+const clear = s => { while(s.firstChild) s.removeChild(s.firstChild); };
+const fmt = (v,d) => Number(v).toFixed(d===undefined?3:d);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- FRichCurve evaluation, matching UE ---------- */
+function evalCurve(keys, x){
+  if(!keys || !keys.length) return 0;
+  if(x <= keys[0].x) return keys[0].y;
+  if(x >= keys[keys.length-1].x) return keys[keys.length-1].y;
+  for(let i=0;i<keys.length-1;i++){
+    const a=keys[i], b=keys[i+1];
+    if(x < a.x || x > b.x) continue;
+    const diff=b.x-a.x; if(diff<=0) return b.y;
+    const t=(x-a.x)/diff;
+    if(a.i==='Constant') return a.y;
+    if(a.i==='Linear') return a.y + t*(b.y-a.y);
+    const p0=a.y, p3=b.y, p1=p0+a.l*diff/3, p2=p3-b.a*diff/3, u=1-t;
+    return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3;
+  }
+  return 0;
+}
+const envelope = p => (p && p.keys.length) ? p.keys[p.keys.length-1].x : null;
+const profileByAsset = a => D.profiles.find(p => p.asset===a || (p.alias||[]).includes(a)) || null;
+const profileById = id => D.profiles.find(p => p.id===id) || null;
+
+/* a weapon's power at a given miss distance: curve if it has one, flat value if not */
+function powerAt(w, d){
+  const p = profileByAsset(w.profile);
+  if(p) return evalCurve(p.keys, d);
+  return w.power || 0;
+}
+function ceilingOf(w){
+  const p = profileByAsset(w.profile);
+  if(p && p.thr!=null) return p.thr;
+  return w.thr!=null ? w.thr : 0;
+}
+
+/* ---------- state ---------- */
+const OVERRIDES = D.weapons.filter(w => w.override).length;
+const byName = n => D.weapons.find(w => w.name===n);
+const state = {
+  dist: 150,
+  visible: new Set(['Rifle','BattleRifle','MMG','SMG']),
+  cat: 'rifle',
+  q: '',
+  weapon: byName('M4A1') || D.weapons[0],
+  t: 0, playing: false
+};
+
+/* ================= armoury ================= */
+const catBox = document.getElementById('cattiles');
+D.cats.forEach(c => {
+  const b = document.createElement('button');
+  b.className='cattile'; b.type='button'; b.dataset.cat=c.id;
+  b.setAttribute('aria-pressed', c.id===state.cat);
+  b.innerHTML = (c.icon ? `<img class="ico" src="${c.icon}" alt="">` : '') +
+    `<span class="cl">${esc(c.label)}</span><span class="cc">${c.count}</span>`;
+  b.addEventListener('click', ()=>{ state.cat=c.id; state.q=''; searchBox.value=''; renderArmoury(); allTable(); });
+  catBox.appendChild(b);
+});
+
+const wgrid = document.getElementById('wgrid');
+const searchBox = document.getElementById('search');
+searchBox.addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); renderArmoury(); allTable(); });
+
+function filtered(){
+  return D.weapons.filter(w =>
+    (state.q ? (w.name||'').toLowerCase().includes(state.q) : w.cat===state.cat));
+}
+function renderArmoury(){
+  const list = filtered();
+  [...catBox.children].forEach(b => b.setAttribute('aria-pressed', !state.q && b.dataset.cat===state.cat));
+  const c = D.cats.find(x => x.id===state.cat);
+  document.getElementById('catnote').textContent = state.q ? `Searching all ${D.weapons.length} weapons.` : (c ? c.note : '');
+  document.getElementById('wcount').textContent = `${list.length} shown`;
+  wgrid.textContent='';
+  if(!list.length){
+    const d=document.createElement('div'); d.className='empty'; d.textContent='Nothing matches that.'; wgrid.appendChild(d);
+    return;
+  }
+  const frag=document.createDocumentFragment();
+  list.forEach(w => {
+    const b=document.createElement('button');
+    b.className='wcard'; b.type='button';
+    b.setAttribute('aria-pressed', w===state.weapon);
+    const icon = w.iconKey && D.icons[w.iconKey];
+    b.innerHTML = (icon ? `<img class="ico" src="${icon}" alt="">` : '<span></span>') +
+      `<span><span class="wn">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'} · ${esc(w.catLabel)}</span></span>`;
+    b.addEventListener('click', ()=>{ state.weapon=w; state.t=0; renderArmoury(); update(); });
+    frag.appendChild(b);
+  });
+  wgrid.appendChild(frag);
+}
+
+/* ================= loadout + chain ================= */
+function renderLoadout(){
+  const w = state.weapon, icon = w.iconKey && D.icons[w.iconKey];
+  const p = profileByAsset(w.profile);
+  document.getElementById('loadout').innerHTML =
+    (icon ? `<img class="ico" src="${icon}" alt="">` : '<span></span>') +
+    `<div><div class="lname">${esc(w.name)}</div>
+      <div class="lmeta"><b>${esc(w.catLabel)}</b> · ${w.rpm?w.rpm+' rpm':'rate not set'} ·
+      ${w.mv?w.mv+' m/s':'—'} · ${w.mag?w.mag+' rnd mag':'mag inherited'} ·
+      ${w.moa?w.moa+' MOA':'—'} · ${w.variants} asset${w.variants===1?'':'s'}</div></div>`;
+
+  const chain = document.getElementById('chain');
+  const nodes = [
+    ['Weapon BP', w.asset.split('/').pop(),
+     `Sets <code>ProjectileClass</code> in its <code>WeaponConfig</code>${w.rpm?', firing at '+w.rpm+' rpm':''}.`],
+    ['Projectile BP', w.projectile || '—',
+     w.override ? 'Its own profile is discarded — the weapon overrides it.' : 'Carries the <code>SuppressionInfoClass</code> used below.'],
+    ['Profile asset', w.profile || 'none',
+     p ? `Power ${fmt(p.power,3)}, ceiling ${fmt(p.thr,2)}, sway add ${p.sway!=null?fmt(p.sway,3):'inherited'}.`
+       : (w.power!=null ? `Flat ${fmt(w.power,2)} power, ceiling ${w.thr!=null?fmt(w.thr,2):'—'}. No curve.` : 'No passby suppression.')],
+    ['Float curve', (p && p.keys.length) ? (w.curve || '—') : 'none',
+     (p && p.keys.length) ? `Zero beyond ${(envelope(p)/100).toFixed(1)} m.` : 'Without a curve the flat power applies at any distance.']
+  ];
+  chain.innerHTML = nodes.map(([r,t,n]) =>
+    `<div class="node"><div class="role">${r}</div><div class="thing">${esc(t)}</div><div class="note">${n}</div></div>`).join('');
+
+  document.getElementById('chainNote').innerHTML = w.override
+    ? `<b>${esc(w.name)} overrides its projectile.</b> <code>SuppressionInfoClassOverride</code> is set on <code>${esc(w.overrideSrc||w.asset.split('/').pop())}</code>, so the round's own profile is ignored and the ${esc(w.catLabel)} profile applies instead. ${OVERRIDES} of the ${D.weapons.length} weapons here do this — the AKM uses it to pull 7.62 machine-gun pressure back down to rifle level, the G3 and M14 use it in the other direction.`
+    : `<b>${esc(w.name)} takes its profile from the round.</b> No <code>SuppressionInfoClassOverride</code> is set, so whatever <code>${esc(w.projectile||'its projectile')}</code> declares is what lands on you. That is the default path for ${D.weapons.length-OVERRIDES} of the ${D.weapons.length} weapons here.`;
+}
+
+/* ================= passby diagram ================= */
+const passSvg = document.getElementById('passby');
+function drawPassby(){
+  clear(passSvg);
+  const W=280,H=240,cx=150,cy=190,maxM=8;
+  const track = m => cy - (m/maxM)*150;
+  for(let m=2;m<=8;m+=2){
+    el('line',{x1:26,y1:track(m),x2:W-10,y2:track(m),stroke:css('--rule'),'stroke-width':1},passSvg);
+    el('text',{x:22,y:track(m)+3.5,'text-anchor':'end',class:'tick'},passSvg).textContent=m+' m';
+  }
+  el('circle',{cx:cx,cy:cy,r:7,fill:css('--calm')},passSvg);
+  el('path',{d:`M ${cx-13} ${cy-20} L ${cx} ${cy-8} L ${cx+13} ${cy-20} Z`,fill:css('--calm'),opacity:.28},passSvg);
+  el('text',{x:cx,y:cy+22,'text-anchor':'middle',class:'tick'},passSvg).textContent='YOU';
+
+  const d=state.dist/100, y=track(d), w=state.weapon;
+  const p=profileByAsset(w.profile), env=envelope(p);
+  const power=powerAt(w,state.dist);
+  const col = power>0 ? css('--signal') : css('--ink3');
+  el('line',{x1:10,y1:y,x2:W-10,y2:y,stroke:col,'stroke-width':2,'stroke-linecap':'round'},passSvg);
+  el('path',{d:`M ${W-22} ${y-5} L ${W-10} ${y} L ${W-22} ${y+5} Z`,fill:col},passSvg);
+  el('line',{x1:cx,y1:y,x2:cx,y2:cy-8,stroke:col,'stroke-width':1,'stroke-dasharray':'3 3'},passSvg);
+  el('text',{x:cx+8,y:(y+cy)/2,class:'dlab',fill:col},passSvg).textContent=fmt(d,2)+' m';
+  if(power<=0){
+    const msg = env!=null ? 'outside the '+(env/100).toFixed(1)+' m envelope' : 'no passby suppression';
+    el('text',{x:W-10,y:y-9,'text-anchor':'end',class:'tick',fill:css('--ink3')},passSvg).textContent=msg;
+  }
+}
+
+/* ================= curve chart ================= */
+const curveSvg = document.getElementById('curveChart');
+const chipBox = document.getElementById('chips');
+D.profiles.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.type='button';
+  b.setAttribute('aria-pressed', state.visible.has(p.id));
+  b.style.setProperty('--c','var('+SERIES[i]+')');
+  b.innerHTML='<span class="sw"></span>'+esc(p.label);
+  b.addEventListener('click',()=>{
+    if(state.visible.has(p.id)) state.visible.delete(p.id); else state.visible.add(p.id);
+    b.setAttribute('aria-pressed', state.visible.has(p.id));
+    drawCurves();
+  });
+  chipBox.appendChild(b);
+  p._chip=b;
+});
+function syncChips(){
+  D.profiles.forEach(p => p._chip.setAttribute('aria-pressed', state.visible.has(p.id)));
+}
+function niceMax(v){
+  if(v<=0) return 1;
+  const pow=Math.pow(10,Math.floor(Math.log10(v)));
+  for(const m of [1,1.25,1.5,2,2.5,3,4,5,7.5,10]) if(v<=m*pow) return m*pow;
+  return 10*pow;
+}
+function drawCurves(){
+  clear(curveSvg);
+  const W=720,H=380,mL=54,mR=104,mT=16,mB=46,iw=W-mL-mR,ih=H-mT-mB,xMax=800;
+  const mine = profileByAsset(state.weapon.profile);
+  const vis = D.profiles.map((p,i)=>({p,i})).filter(o=>state.visible.has(o.p.id));
+  let yMax=0; vis.forEach(o=>o.p.keys.forEach(k=>{ if(k.y>yMax) yMax=k.y; }));
+  yMax=niceMax(yMax||0.15);
+  const X=v=>mL+(v/xMax)*iw, Y=v=>mT+ih-(v/yMax)*ih;
+
+  for(let m=0;m<=8;m++){
+    const x=X(m*100);
+    el('line',{x1:x,y1:mT,x2:x,y2:mT+ih,stroke:css('--rule'),'stroke-width':1},curveSvg);
+    el('text',{x:x,y:mT+ih+17,'text-anchor':'middle',class:'tick'},curveSvg).textContent=m+' m';
+  }
+  for(let s=0;s<=5;s++){
+    const v=yMax*s/5,y=Y(v);
+    el('line',{x1:mL,y1:y,x2:mL+iw,y2:y,stroke:s===0?css('--rule-strong'):css('--rule'),'stroke-width':1},curveSvg);
+    el('text',{x:mL-9,y:y+3.5,'text-anchor':'end',class:'tick'},curveSvg).textContent = v>=1?v.toFixed(1):v.toFixed(3);
+  }
+  el('text',{x:mL,y:H-8,class:'axlab'},curveSvg).textContent='Miss distance';
+  el('text',{x:mL-9,y:mT-4,'text-anchor':'end',class:'axlab'},curveSvg).textContent='Power';
+
+  vis.forEach(o=>{
+    const col=css(SERIES[o.i]), own = mine && o.p.id===mine.id;
+    let d='';
+    for(let px=0;px<=iw;px+=2){
+      const xv=(px/iw)*xMax;
+      d+=(px===0?'M':'L')+X(xv).toFixed(1)+' '+Y(evalCurve(o.p.keys,xv)).toFixed(1)+' ';
+    }
+    el('path',{d:d,fill:'none',stroke:col,'stroke-width':own?3.5:2,'stroke-linejoin':'round','stroke-linecap':'round',
+               opacity: (mine && !own) ? .62 : 1},curveSvg);
+    o.p.keys.forEach(k=>el('circle',{cx:X(k.x),cy:Y(k.y),r:own?5:4,fill:col,stroke:css('--panel'),'stroke-width':2},curveSvg));
+  });
+  if(vis.length<=4){
+    const placed=[];
+    vis.slice().sort((a,b)=>b.p.keys[0].y-a.p.keys[0].y).forEach(o=>{
+      const col=css(SERIES[o.i]), k0=o.p.keys[0];
+      let ly=Y(k0.y)-8;
+      while(placed.some(v=>Math.abs(v-ly)<13)) ly+=13;
+      placed.push(ly);
+      el('text',{x:X(k0.x)+9,y:ly,class:'dlab',fill:col},curveSvg).textContent=o.p.label;
+    });
+  }
+  const cg=el('g',{},curveSvg), cx=X(state.dist);
+  el('line',{x1:cx,y1:mT,x2:cx,y2:mT+ih,stroke:css('--ink'),'stroke-width':1,'stroke-dasharray':'4 3'},cg);
+  vis.forEach(o=>el('circle',{cx:cx,cy:Y(evalCurve(o.p.keys,state.dist)),r:5,fill:css(SERIES[o.i]),stroke:css('--panel'),'stroke-width':2},cg));
+  const rows=vis.map(o=>({label:o.p.label,val:evalCurve(o.p.keys,state.dist),col:css(SERIES[o.i])})).sort((a,b)=>b.val-a.val);
+  const tw=132, th=20+rows.length*14;
+  const tx = cx > mL+iw/2 ? mL+6 : mL+iw-tw-6;
+  el('rect',{x:tx,y:mT+4,width:tw,height:th,fill:css('--panel'),stroke:css('--rule-strong'),'stroke-width':1},cg);
+  el('text',{x:tx+9,y:mT+19,class:'dlab',fill:css('--ink')},cg).textContent=fmt(state.dist/100,2)+' m out';
+  rows.forEach((r,n)=>{
+    const y=mT+19+14*(n+1);
+    el('rect',{x:tx+9,y:y-7,width:7,height:7,fill:r.col},cg);
+    el('text',{x:tx+21,y:y,class:'tick',fill:css('--ink2')},cg).textContent=r.label;
+    el('text',{x:tx+tw-9,y:y,'text-anchor':'end',class:'tick',fill:css('--ink')},cg).textContent=fmt(r.val);
+  });
+  curveSvg.onpointermove = ev=>{
+    const r=curveSvg.getBoundingClientRect();
+    const v=Math.max(0,Math.min(xMax,(((ev.clientX-r.left)/r.width*W)-mL)/iw*xMax));
+    setDist(Math.round(v/5)*5);
+  };
+}
+
+/* ================= build-up ================= */
+function sim(){
+  const w=state.weapon;
+  const power=powerAt(w,state.dist);
+  const rpm=w.rpm||0;
+  const rate=power*(rpm/60);
+  const cap=ceilingOf(w) || 1.15;
+  return {w,power,rpm,rate,cap,ttc: rate>0 ? cap/rate : Infinity};
+}
+const buildSvg=document.getElementById('buildChart');
+let lastBuild={span:8};
+function drawBuild(){
+  clear(buildSvg);
+  const W=720,H=300,mL=48,mR=22,mT=16,mB=42,iw=W-mL-mR,ih=H-mT-mB;
+  const {rate,cap}=sim();
+  const span=Math.max(3, Math.min(12, rate>0 ? (cap/rate)*1.8 : 8));
+  const X=t=>mL+(t/span)*iw, Y=v=>mT+ih-(v/(cap*1.25))*ih;
+  for(let s=0;s<=5;s++){
+    const t=span*s/5,x=X(t);
+    el('line',{x1:x,y1:mT,x2:x,y2:mT+ih,stroke:css('--rule'),'stroke-width':1},buildSvg);
+    el('text',{x:x,y:mT+ih+17,'text-anchor':'middle',class:'tick'},buildSvg).textContent=t.toFixed(1)+'s';
+  }
+  for(let s=0;s<=4;s++){
+    const v=cap*1.25*s/4,y=Y(v);
+    el('line',{x1:mL,y1:y,x2:mL+iw,y2:y,stroke:s===0?css('--rule-strong'):css('--rule'),'stroke-width':1},buildSvg);
+    el('text',{x:mL-9,y:y+3.5,'text-anchor':'end',class:'tick'},buildSvg).textContent=v.toFixed(2);
+  }
+  el('line',{x1:mL,y1:Y(cap),x2:mL+iw,y2:Y(cap),stroke:css('--ink'),'stroke-width':2,'stroke-dasharray':'6 4'},buildSvg);
+  el('text',{x:mL+iw,y:Y(cap)-8,'text-anchor':'end',class:'dlab',fill:css('--ink')},buildSvg).textContent='ceiling '+cap.toFixed(2);
+
+  const tCap = rate>0 ? Math.min(span, cap/rate) : span;
+  let d=`M ${X(0)} ${Y(0)} L ${X(tCap)} ${Y(Math.min(cap,rate*tCap))}`;
+  if(tCap<span) d+=` L ${X(span)} ${Y(cap)}`;
+  el('path',{d:d,fill:'none',stroke:css('--signal'),'stroke-width':2.5,'stroke-linejoin':'round'},buildSvg);
+  if(rate<=0){
+    el('text',{x:mL+iw/2,y:mT+ih/2,'text-anchor':'middle',class:'dlab',fill:css('--ink3')},buildSvg)
+      .textContent = state.weapon.rpm ? 'No suppression at this distance' : 'This weapon has no passby suppression';
+  }
+  const t=Math.min(state.t,span), v=Math.min(cap,rate*t);
+  el('line',{x1:X(t),y1:mT,x2:X(t),y2:mT+ih,stroke:css('--ink2'),'stroke-width':1},buildSvg);
+  el('circle',{cx:X(t),cy:Y(v),r:5.5,fill:css('--signal'),stroke:css('--panel'),'stroke-width':2},buildSvg);
+  el('text',{x:mL,y:H-8,class:'axlab'},buildSvg).textContent='Time holding the trigger';
+  return {v,cap,span};
+}
+
+/* ================= small charts ================= */
+function smallChart(svg, keys, opts){
+  clear(svg);
+  const W=340,H=240,mL=42,mR=16,mT=14,mB=40,iw=W-mL-mR,ih=H-mT-mB;
+  const xMax=opts.xMax, yMax=opts.yMax;
+  const X=v=>mL+(v/xMax)*iw, Y=v=>mT+ih-(v/yMax)*ih;
+  for(let s=0;s<=4;s++){
+    const x=X(xMax*s/4);
+    el('line',{x1:x,y1:mT,x2:x,y2:mT+ih,stroke:css('--rule'),'stroke-width':1},svg);
+    el('text',{x:x,y:mT+ih+16,'text-anchor':'middle',class:'tick'},svg).textContent=(xMax*s/4).toFixed(xMax<=1?2:1);
+  }
+  for(let s=0;s<=4;s++){
+    const v=yMax*s/4,y=Y(v);
+    el('line',{x1:mL,y1:y,x2:mL+iw,y2:y,stroke:s===0?css('--rule-strong'):css('--rule'),'stroke-width':1},svg);
+    el('text',{x:mL-8,y:y+3.5,'text-anchor':'end',class:'tick'},svg).textContent=v.toFixed(v<1?2:1);
+  }
+  (opts.series||[{keys:keys,color:css('--signal'),label:null}]).forEach(s=>{
+    let d='';
+    for(let px=0;px<=iw;px+=2){
+      const xv=(px/iw)*xMax;
+      d+=(px===0?'M':'L')+X(xv).toFixed(1)+' '+Y(evalCurve(s.keys,xv)).toFixed(1)+' ';
+    }
+    el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':2,'stroke-linejoin':'round'},svg);
+    s.keys.forEach(k=>{ if(k.x<=xMax) el('circle',{cx:X(k.x),cy:Y(k.y),r:3.5,fill:s.color,stroke:css('--panel'),'stroke-width':1.5},svg); });
+    if(s.label){
+      const last=s.keys[s.keys.length-1];
+      el('text',{x:Math.min(X(Math.min(last.x,xMax))-4,W-mR-4),y:Y(last.y)-9,'text-anchor':'end',class:'dlab',fill:s.color},svg)
+        .textContent=s.label;
+    }
+  });
+  el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent=opts.xLabel;
+}
+function drawSoldier(){
+  const S=D.soldier;
+  smallChart(document.getElementById('flinchChart'), S['FC_SuppressionFlinchByClosenessRatio'], {xMax:1,yMax:1.1,xLabel:'Closeness ratio'});
+  smallChart(document.getElementById('immChart'), S['FC_SuppressionImmunityIncrementByClosenessRatio'], {xMax:1,yMax:2.2,xLabel:'Closeness ratio'});
+  smallChart(document.getElementById('punchChart'), null, {xMax:7.5,yMax:1.1,xLabel:'Immunity accumulated', series:[
+    {keys:S['FC_SuppressionImmunity_CameraRotPunchByImmunity'],color:css('--s1'),label:'Camera rot'},
+    {keys:S['FC_SuppressionImmunity_CameraLocPunchByImmunity'],color:css('--s2'),label:'Camera loc'},
+    {keys:S['FC_SuppressionImmunity_WeaponAlignmentPunchByImmunity'],color:css('--s3'),label:'Weapon align'}]});
+}
+
+/* ================= blast ================= */
+function drawBlast(){
+  const svg=document.getElementById('blastChart');
+  clear(svg);
+  const rows=D.blast.filter(b=>b.outer);
+  const W=400,H=300,mL=124,mR=30,mT=14,mB=40,iw=W-mL-mR;
+  const xMax=8000, rowH=(H-mT-mB)/rows.length, X=v=>mL+(v/xMax)*iw;
+  for(let m=0;m<=80;m+=20){
+    const x=X(m*100);
+    el('line',{x1:x,y1:mT,x2:x,y2:H-mB+4,stroke:css('--rule'),'stroke-width':1},svg);
+    el('text',{x:x,y:H-mB+18,'text-anchor':'middle',class:'tick'},svg).textContent=m+' m';
+  }
+  rows.forEach((b,i)=>{
+    const y=mT+i*rowH+rowH/2;
+    el('text',{x:mL-10,y:y+3.5,'text-anchor':'end',class:'tick',fill:css('--ink2')},svg).textContent=b.label;
+    el('line',{x1:X(0),y1:y,x2:X(b.inner),y2:y,stroke:css('--rule-strong'),'stroke-width':2},svg);
+    el('rect',{x:X(b.inner),y:y-5,width:Math.max(2,X(b.outer)-X(b.inner)),height:10,rx:2,fill:css('--signal'),opacity:.85,stroke:css('--panel'),'stroke-width':1},svg);
+    el('text',{x:X(b.outer)+7,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=(b.outer/100)+' m';
+  });
+  el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent='Distance from the blast';
+}
+
+/* ================= tables ================= */
+function catTable(){
+  const tb=document.querySelector('#catTable tbody');
+  tb.textContent='';
+  D.cats.forEach(c=>{
+    const p = c.profileId ? profileById(c.profileId) : null;
+    const sample = D.weapons.find(w=>w.cat===c.id);
+    const p1 = p ? evalCurve(p.keys,100) : (sample && sample.power) || 0;
+    const thr = p ? p.thr : (sample && sample.thr);
+    const tr=document.createElement('tr');
+    tr.innerHTML =
+      `<td><span class="catcell">${c.icon?`<img class="ico" src="${c.icon}" alt="">`:''}${esc(c.label)}</span></td>`+
+      `<td class="num">${c.count}</td>`+
+      `<td class="num">${p ? (envelope(p)/100).toFixed(1)+' m' : (c.id==='hmg'?'flat':'—')}</td>`+
+      `<td class="num">${p ? fmt(p1) : (p1?fmt(p1,2):'—')}</td>`+
+      `<td class="num">${p ? fmt(evalCurve(p.keys,200)) : (p1?fmt(p1,2):'—')}</td>`+
+      `<td class="num">${p ? fmt(evalCurve(p.keys,300)) : (p1?fmt(p1,2):'—')}</td>`+
+      `<td class="num">${thr!=null?fmt(thr,2):'—'}</td>`+
+      `<td class="num">${p ? (p.sway!=null?fmt(p.sway,3):'inherited') : '—'}</td>`+
+      `<td class="num">${p1>0 && thr ? Math.ceil(thr/p1) : '—'}</td>`;
+    tb.appendChild(tr);
+  });
+}
+function allTable(){
+  const tb=document.querySelector('#allTable tbody');
+  tb.textContent='';
+  const list=filtered();
+  const frag=document.createDocumentFragment();
+  list.forEach(w=>{
+    const p1=powerAt(w,100), p2=powerAt(w,200), cap=ceilingOf(w);
+    const icon=w.iconKey && D.icons[w.iconKey];
+    const tr=document.createElement('tr');
+    tr.innerHTML=
+      `<td class="ic">${icon?`<img class="ico" src="${icon}" alt="">`:''}</td>`+
+      `<td class="name">${esc(w.name)}${w.override?' <span class="tag ovr">override</span>':''}</td>`+
+      `<td>${esc(w.catLabel)}</td>`+
+      `<td class="num">${p1?fmt(p1):'—'}</td>`+
+      `<td class="num">${p2?fmt(p2):'—'}</td>`+
+      `<td class="num">${cap?fmt(cap,2):'—'}</td>`+
+      `<td class="num">${w.rpm||'—'}</td>`+
+      `<td class="num">${(p1&&w.rpm)?fmt(p1*w.rpm/60,2):'—'}</td>`+
+      `<td class="num">${w.mv?w.mv+' m/s':'—'}</td>`+
+      `<td class="num">${w.variants}</td>`;
+    frag.appendChild(tr);
+  });
+  tb.appendChild(frag);
+}
+function blastTable(){
+  const tb=document.querySelector('#blastTable tbody');
+  D.blast.forEach(b=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'—'}</td>`+
+      `<td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'—'}</td>`+
+      `<td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'—'}</td>`+
+      `<td class="num">${b.thr!=null?fmt(b.thr,2):'—'}</td>`;
+    tb.appendChild(tr);
+  });
+}
+
+/* ================= wiring ================= */
+const dist=document.getElementById('dist'), dist2=document.getElementById('dist2');
+function setDist(v){ state.dist=v; dist.value=v; dist2.value=v; if(!state.playing) state.t=0; update(); }
+dist.addEventListener('input',e=>setDist(+e.target.value));
+dist2.addEventListener('input',e=>setDist(+e.target.value));
+
+const playBtn=document.getElementById('playBtn');
+let raf=null,last=0;
+playBtn.addEventListener('click',()=>{
+  state.playing=!state.playing;
+  playBtn.textContent=state.playing?'Release':'Hold trigger';
+  if(state.playing){ state.t=0; last=performance.now(); raf=requestAnimationFrame(step); }
+  else if(raf){ cancelAnimationFrame(raf); raf=null; }
+});
+function step(now){
+  const dt=Math.min(.05,(now-last)/1000); last=now;
+  state.t+=dt; tick();
+  if(state.t>=lastBuild.span){ state.playing=false; playBtn.textContent='Hold trigger'; raf=null; return; }
+  raf=requestAnimationFrame(step);
+}
+
+function update(){
+  // a weapon's own profile is always on the chart, so the pick is never invisible
+  const mine=profileByAsset(state.weapon.profile);
+  if(mine) state.visible.add(mine.id);
+  const {power,rpm,rate,cap,ttc}=sim();
+  document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m';
+  document.getElementById('dist2Read').textContent=fmt(state.dist/100,2)+' m';
+  document.getElementById('powRead').textContent=fmt(power);
+  document.getElementById('capRead').textContent = power>0 ? Math.ceil(cap/power) : '—';
+  document.getElementById('rpmRead').innerHTML=(rpm||'—')+'<span class="u">rpm</span>';
+  document.getElementById('rateRead').innerHTML=fmt(rate,2)+'<span class="u">/s</span>';
+  document.getElementById('ttcRead').innerHTML=(isFinite(ttc)?fmt(ttc,2):'∞')+'<span class="u">s</span>';
+  renderLoadout(); drawPassby(); syncChips(); drawCurves();
+  tick();
+}
+
+/* the only things that move while the trigger is held */
+function tick(){
+  const {rate,cap}=sim();
+  lastBuild=drawBuild();
+  const v=Math.min(cap,rate*state.t);
+  document.getElementById('supRead').textContent=fmt(v,2)+' / '+fmt(cap,2);
+  document.getElementById('meterFill').style.width=(100*v/(cap*1.25))+'%';
+  document.getElementById('meterCapLab').textContent='cap '+fmt(cap,2);
+}
+
+renderArmoury(); allTable(); catTable(); blastTable(); drawBlast(); drawSoldier(); update();
+window.addEventListener('resize',()=>{ drawSoldier(); drawBlast(); });
+const redrawAll=()=>{ update(); drawSoldier(); drawBlast(); catTable(); allTable(); };
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
+new MutationObserver(redrawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});
+})();
+</script>

@@ -1,0 +1,10 @@
+services:
+  squad-suppression:
+    image: nginx:alpine
+    container_name: squad-suppression
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
