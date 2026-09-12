@@ -129,6 +129,38 @@ h3{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spac
 .loadout .lmeta b{color:var(--ink2); font-weight:500}
 @media (max-width:620px){ .loadout{grid-template-columns:1fr} .loadout img{width:120px} }
 
+/* ---------- byline + subject bar ---------- */
+.byline{font-family:var(--fm); font-size:12px; letter-spacing:.06em; color:var(--ink3); margin:0 0 16px}
+.byline b{color:var(--ink2); font-weight:500}
+
+.subjectbar{display:grid; grid-template-columns:auto minmax(230px,1fr) minmax(0,1.1fr); gap:20px;
+  align-items:center; border:1px solid var(--rule-strong); background:var(--panel);
+  padding:16px 18px; margin:28px 0 6px; box-shadow:var(--shadow)}
+.subjectbar img{width:132px; height:50px; object-fit:contain}
+.subjpick{display:flex; flex-direction:column; gap:10px}
+.subjpick .ctl{margin:0}
+.subjmeta{font-family:var(--fm); font-size:11.5px; color:var(--ink3); letter-spacing:.03em; line-height:1.75}
+.subjmeta b{color:var(--ink2); font-weight:500}
+.subjmeta .big{font-family:var(--fd); font-size:19px; color:var(--ink); letter-spacing:.03em;
+  text-transform:uppercase; display:block; margin-bottom:2px}
+.subjnote{font-size:13.5px; color:var(--ink3); margin:0 0 4px; max-width:70ch}
+@media (max-width:820px){ .subjectbar{grid-template-columns:1fr} .subjectbar img{width:110px} }
+
+/* ---------- per-profile readout ---------- */
+.readrows{width:100%; min-width:0; border-collapse:collapse; margin-top:16px; font-size:13.5px}
+.readrows th{font-family:var(--fm); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink3); font-weight:400; text-align:right; padding:0 0 6px; border-bottom:1px solid var(--rule-strong);
+  position:static; background:transparent}
+.readrows th:first-child{text-align:left}
+.readrows td{padding:6px 0; border-bottom:1px solid var(--rule); text-align:right;
+  font-family:var(--fm); font-variant-numeric:tabular-nums; white-space:nowrap}
+.readrows td:first-child{text-align:left; font-family:var(--fb)}
+.readrows tr:last-child td{border-bottom:none}
+.readrows tr.active td{color:var(--ink); font-weight:600}
+.readrows tr:not(.active) td{color:var(--ink2)}
+.readrows .swatch{display:inline-block; width:9px; height:9px; margin-right:7px; vertical-align:baseline}
+.readrows .none{color:var(--ink3); font-family:var(--fb); text-align:left; padding:12px 0}
+
 /* ---------- controls ---------- */
 .ctl{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
 .ctl label{font-family:var(--fm); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3)}
@@ -216,47 +248,39 @@ footer li{margin-bottom:6px; max-width:78ch}
 <header class="mast">
   <p class="kicker">Squad v10.5.3 · reverse-engineered from the mod SDK</p>
   <h1>How Suppression<br>Actually Works</h1>
-  <p class="dek">Squad does not store a suppression stat on a weapon. It stores a <b>profile</b> that a bullet carries, a <b>curve</b> keyed on how close that bullet passed your head, and a <b>ceiling</b> on how much pressure can stack up. Every weapon, icon and number below was read out of the packaged <code>.uasset</code> files — no wiki figures.</p>
+  <p class="byline">by <b>Osaka [29th ID]</b></p>
+  <p class="dek">Squad does not store a suppression stat on a weapon. It stores a <b>profile</b> that a bullet carries, a <b>curve</b> keyed on how close that bullet passed your head, and a <b>ceiling</b> on how much pressure can stack up. Every weapon, icon and number below was read out of the packaged <code>.uasset</code> files — no wiki figures. Smoke and signalling rounds are excluded: they carry no suppression at all.</p>
   <div class="provenance">
-    <span><b>521</b> weapons</span>
-    <span><b>904</b> weapon assets</span>
-    <span><b>58</b> suppression profiles</span>
+    <span><b id="cWeapons">—</b> weapons</span>
+    <span><b id="cAssets">—</b> weapon assets</span>
+    <span><b id="cProfiles">—</b> suppression profiles</span>
     <span>Engine <b>UE 5.7</b></span>
     <span>Branch <b>SQ-39052_SuppressionRework</b></span>
     <span>Distances in <b>uu</b> · 100 uu = 1 m</span>
   </div>
 </header>
 
-<!-- ============ ARMOURY ============ -->
-<section class="stage">
-  <div class="stage-head"><span class="stage-num">Stage 01</span><h2>The armoury</h2></div>
-  <p class="stage-sub">Every firearm in the game, sorted by the suppression profile its rounds actually carry — not by what the weapon looks like. Pick one and the rest of the page follows it. Icons and category emblems are the game's own art, lifted from the texture assets.</p>
-
-  <div class="cattiles" id="cattiles" role="group" aria-label="Weapon categories"></div>
-  <p class="catnote" id="catnote"></p>
-
-  <div class="panel">
-    <div class="pickbar">
-      <input type="search" id="search" placeholder="Search 521 weapons — try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
-      <span class="count" id="wcount"></span>
+<!-- ============ SUBJECT ============ -->
+<div class="subjectbar">
+  <img class="ico" id="subjIcon" alt="">
+  <div class="subjpick">
+    <div class="ctl">
+      <label for="typeSel">Weapon type</label>
+      <select id="typeSel"></select>
     </div>
-    <div class="wgrid" id="wgrid" role="group" aria-label="Weapons"></div>
+    <div class="ctl">
+      <label for="wpnSel">Weapon — for its rate of fire</label>
+      <select id="wpnSel"></select>
+    </div>
   </div>
-</section>
-
-<!-- ============ CHAIN ============ -->
-<section class="stage">
-  <div class="stage-head"><span class="stage-num">Stage 02</span><h2>Which profile your pick carries</h2></div>
-  <p class="stage-sub">Suppression is a property of the round in flight, not the gun that fired it. The weapon names a projectile, the projectile names a suppression profile — unless the weapon overrides that choice outright.</p>
-
-  <div class="loadout" id="loadout"></div>
-  <div class="chain" id="chain"></div>
-  <div class="callout" id="chainNote"></div>
-</section>
+  <div class="subjmeta" id="subjMeta"></div>
+</div>
+<p class="subjnote">This pair drives the two sections below. The full armoury further down is a
+separate lookup and does not touch them.</p>
 
 <!-- ============ PASSBY ============ -->
 <section class="stage">
-  <div class="stage-head"><span class="stage-num">Stage 03</span><h2>A round goes past you</h2></div>
+  <div class="stage-head"><span class="stage-num">Stage 01</span><h2>A round goes past you</h2></div>
   <p class="stage-sub">The only thing that matters is the perpendicular distance between the bullet's path and your body. Range to the shooter is irrelevant — a sniper at 600 m and a rifleman at 40 m apply identical pressure if the round passes the same distance from your head.</p>
 
   <div class="grid2">
@@ -267,25 +291,25 @@ footer li{margin-bottom:6px; max-width:78ch}
         <label for="dist">Bullet passes at <span class="readout" id="distRead">1.50 m</span></label>
         <input type="range" id="dist" min="0" max="800" step="5" value="150" aria-label="Miss distance in Unreal units">
       </div>
-      <div class="stats">
-        <div class="stat hot"><span class="k">Power / round</span><span class="v" id="powRead">0.000</span></div>
-        <div class="stat"><span class="k">Rounds to cap</span><span class="v" id="capRead">—</span></div>
-      </div>
+      <table class="readrows" id="readRows">
+        <thead><tr><th>Profile</th><th>Power / round</th><th>Rounds to cap</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
 
     <div class="panel">
       <h3>Suppression added per round</h3>
       <div class="chips" id="chips" role="group" aria-label="Suppression profiles to plot"></div>
       <svg id="curveChart" viewBox="0 0 720 380" role="img" aria-label="Suppression power per round against miss distance, by weapon profile"></svg>
-      <p class="figcap"><b>Every curve dies at 5–7 m.</b> Outside that a passing round does nothing at all, and the differences between classes live almost entirely inside the first two metres. Your selected weapon's profile is drawn thicker; the y-scale rescales when you add the DMR or sniper curves, which open an order of magnitude above the rest.</p>
+      <p class="figcap"><b>Every curve dies at 5–7 m.</b> Outside that a passing round does nothing at all, and the differences between classes live almost entirely inside the first two metres. The type selected at the top is drawn thicker; the y-scale rescales when you add the DMR or sniper curves, which open an order of magnitude above the rest.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ BUILD-UP ============ -->
 <section class="stage">
-  <div class="stage-head"><span class="stage-num">Stage 04</span><h2>Pressure stacks, then stops</h2></div>
-  <p class="stage-sub">Each passing round adds its power to a running total, clamped at the profile's ceiling — <code>MaxSuppressionThreshold</code>. A weapon's real advantage is <em>how fast it pins you</em>, not how far past the cap it can push.</p>
+  <div class="stage-head"><span class="stage-num">Stage 02</span><h2>Pressure stacks, then stops</h2></div>
+  <p class="stage-sub">Each passing round adds its power to a running total, clamped at the profile's ceiling — <code>MaxSuppressionThreshold</code>. A weapon's real advantage is <em>how fast it pins you</em>, not how far past the cap it can push. Power comes from the type selected at the top; rate of fire comes from the specific weapon beside it.</p>
 
   <div class="grid2">
     <div class="panel">
@@ -317,7 +341,7 @@ footer li{margin-bottom:6px; max-width:78ch}
 
 <!-- ============ RECEIVING END ============ -->
 <section class="stage">
-  <div class="stage-head"><span class="stage-num">Stage 05</span><h2>What it does to the man being shot at</h2></div>
+  <div class="stage-head"><span class="stage-num">Stage 03</span><h2>What it does to the man being shot at</h2></div>
   <p class="stage-sub">On the receiving end the engine works from a <em>closeness ratio</em> — 0 for a round at the edge of the envelope, 1 for one that nearly clipped you. Three curve sets read that ratio: camera punch, weapon-alignment punch and flinch. A fourth tracks how numb you have become.</p>
 
   <div class="trio">
@@ -337,6 +361,33 @@ footer li{margin-bottom:6px; max-width:78ch}
       <p class="figcap">At 7.5 immunity camera location punch is down to <b>0.35×</b> and weapon alignment to <b>0.30×</b>. Stay under fire long enough and you shoot back nearly steady.</p>
     </div>
   </div>
+</section>
+
+<!-- ============ ARMOURY ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 04</span><h2>The armoury</h2></div>
+  <p class="stage-sub">Every firearm in the game, sorted by the suppression profile its rounds actually carry — not by what the weapon looks like. This is a lookup: picking a weapon here shows its wiring in the next section and changes nothing above. Icons and category emblems are the game's own art, lifted from the texture assets.</p>
+
+  <div class="cattiles" id="cattiles" role="group" aria-label="Weapon categories"></div>
+  <p class="catnote" id="catnote"></p>
+
+  <div class="panel">
+    <div class="pickbar">
+      <input type="search" id="search" placeholder="Search every weapon — try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
+      <span class="count" id="wcount"></span>
+    </div>
+    <div class="wgrid" id="wgrid" role="group" aria-label="Weapons"></div>
+  </div>
+</section>
+
+<!-- ============ CHAIN ============ -->
+<section class="stage">
+  <div class="stage-head"><span class="stage-num">Stage 05</span><h2>Which profile your pick carries</h2></div>
+  <p class="stage-sub">Suppression is a property of the round in flight, not the gun that fired it. The weapon names a projectile, the projectile names a suppression profile — unless the weapon overrides that choice outright. This traces whichever weapon is selected in the armoury above.</p>
+
+  <div class="loadout" id="loadout"></div>
+  <div class="chain" id="chain"></div>
+  <div class="callout" id="chainNote"></div>
 </section>
 
 <!-- ============ BLAST ============ -->
@@ -365,7 +416,7 @@ footer li{margin-bottom:6px; max-width:78ch}
 <!-- ============ REFERENCE ============ -->
 <section class="stage">
   <div class="stage-head"><span class="stage-num">Reference</span><h2>The categories, side by side</h2></div>
-  <p class="stage-sub">Eleven profiles carry every firearm in the game. Eight of them are curve-driven passby profiles; shotguns sit on flat ones, launchers carry none at all.</p>
+  <p class="stage-sub">Ten categories carry every firearm on this page. Eight are curve-driven passby profiles; shotguns sit on flat, curve-free ones, and launchers carry no passby suppression at all.</p>
   <div class="tablewrap">
     <table id="catTable"><thead><tr>
       <th>Category</th><th>Weapons</th><th>Envelope</th><th>@1 m</th><th>@2 m</th><th>@3 m</th><th>Ceiling</th><th>Sway add</th><th>Rounds to cap @1 m</th>
@@ -384,7 +435,7 @@ footer li{margin-bottom:6px; max-width:78ch}
 <footer>
   <h3>Reading the numbers honestly</h3>
   <ul>
-    <li><b>Read directly from the assets:</b> every power, ceiling, radius, sway figure and curve key, the weapon → projectile → profile wiring for all 904 weapon assets, the display names, and the icons — which are the content-browser thumbnails with the editor's checkerboard keyed back out to alpha.</li>
+    <li><b>Read directly from the assets:</b> every power, ceiling, radius, sway figure and curve key, the weapon → projectile → profile wiring for every weapon asset, the display names, and the icons — which are the content-browser thumbnails with the editor's checkerboard keyed back out to alpha.</li>
     <li><b>Inferred:</b> that the curve's X axis is perpendicular miss distance rather than range to shooter — the property is <code>PowerToDistanceCurve</code>, its companion is <code>ObstructedClosenessMult</code>, and a 5 m ceiling only makes sense as closeness. Also that <code>SuppressionPower</code> is the fallback used when a profile has no curve, which is how the shotgun and tank profiles are shaped.</li>
     <li><b>Category emblems</b> are the game's own role icons — rifleman, machine gunner, breacher and so on — matched to each profile. Squad ships no per-profile art, so the pairing is mine.</li>
     <li><b>Not available:</b> the decay rate, the exact mapping from suppression to screen effect, and the closeness-ratio normalisation all live in <code>/Script/Squad</code>, compiled C++ that the mod SDK ships without source.</li>
@@ -446,14 +497,65 @@ function ceilingOf(w){
 /* ---------- state ---------- */
 const OVERRIDES = D.weapons.filter(w => w.override).length;
 const byName = n => D.weapons.find(w => w.name===n);
+// the canonical weapon of a category: the one with the most asset variants
+function flagship(catId){
+  const pool = D.weapons.filter(w => w.cat===catId);
+  return pool.slice().sort((a,b) => (b.variants-a.variants) || (a.name.length-b.name.length))[0];
+}
 const state = {
   dist: 150,
   visible: new Set(['Rifle','BattleRifle','MMG','SMG']),
-  cat: 'rifle',
-  q: '',
-  weapon: byName('M4A1') || D.weapons[0],
+  cat: 'rifle',            // armoury filter
+  q: '',                   // armoury search
+  subject: byName('M4A1') || flagship('rifle'),   // drives stages 01 and 02
+  browse: byName('M4A1') || D.weapons[0],         // drives the armoury chain only
   t: 0, playing: false
 };
+
+/* ================= subject: weapon type + weapon ================= */
+const typeSel=document.getElementById('typeSel'), wpnSel=document.getElementById('wpnSel');
+D.cats.forEach(c=>{
+  const o=document.createElement('option');
+  o.value=c.id; o.textContent=`${c.label} — ${c.count}`;
+  typeSel.appendChild(o);
+});
+function weaponsOfType(id){
+  return D.weapons.filter(w=>w.cat===id).slice().sort((a,b)=>a.name.localeCompare(b.name));
+}
+function fillWeapons(catId, pick){
+  wpnSel.textContent='';
+  weaponsOfType(catId).forEach(w=>{
+    const o=document.createElement('option');
+    o.value=w.name; o.textContent=`${w.name}${w.rpm?'  ·  '+w.rpm+' rpm':''}`;
+    wpnSel.appendChild(o);
+  });
+  state.subject = pick || flagship(catId) || weaponsOfType(catId)[0];
+  wpnSel.value = state.subject.name;
+}
+typeSel.addEventListener('change', ()=>{
+  const c=typeSel.value;
+  fillWeapons(c);
+  // an explicit choice puts that curve on the chart; a refresh never does
+  const p=profileByAsset(state.subject.profile);
+  if(p) state.visible.add(p.id);
+  state.t=0; update();
+});
+wpnSel.addEventListener('change', ()=>{
+  const w=weaponsOfType(typeSel.value).find(x=>x.name===wpnSel.value);
+  if(w) state.subject=w;
+  state.t=0; update();
+});
+function renderSubject(){
+  const w=state.subject, p=profileByAsset(w.profile);
+  const icon=w.iconKey && D.icons[w.iconKey];
+  const img=document.getElementById('subjIcon');
+  if(icon){ img.src=icon; img.hidden=false; } else { img.removeAttribute('src'); img.hidden=true; }
+  document.getElementById('subjMeta').innerHTML =
+    `<span class="big">${esc(w.name)}</span>` +
+    `<b>${esc(w.catLabel)}</b> · ${w.rpm?w.rpm+' rpm':'rate not set'} · ` +
+    `${w.mv?w.mv+' m/s':'—'} · ceiling ${fmt(ceilingOf(w),2)}` +
+    (p ? ` · envelope ${(envelope(p)/100).toFixed(1)} m` : ' · flat profile, no curve');
+}
 
 /* ================= armoury ================= */
 const catBox = document.getElementById('cattiles');
@@ -490,11 +592,11 @@ function renderArmoury(){
   list.forEach(w => {
     const b=document.createElement('button');
     b.className='wcard'; b.type='button';
-    b.setAttribute('aria-pressed', w===state.weapon);
+    b.setAttribute('aria-pressed', w===state.browse);
     const icon = w.iconKey && D.icons[w.iconKey];
     b.innerHTML = (icon ? `<img class="ico" src="${icon}" alt="">` : '<span></span>') +
       `<span><span class="wn">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'} · ${esc(w.catLabel)}</span></span>`;
-    b.addEventListener('click', ()=>{ state.weapon=w; state.t=0; renderArmoury(); update(); });
+    b.addEventListener('click', ()=>{ state.browse=w; renderArmoury(); renderLoadout(); });
     frag.appendChild(b);
   });
   wgrid.appendChild(frag);
@@ -502,7 +604,7 @@ function renderArmoury(){
 
 /* ================= loadout + chain ================= */
 function renderLoadout(){
-  const w = state.weapon, icon = w.iconKey && D.icons[w.iconKey];
+  const w = state.browse, icon = w.iconKey && D.icons[w.iconKey];
   const p = profileByAsset(w.profile);
   document.getElementById('loadout').innerHTML =
     (icon ? `<img class="ico" src="${icon}" alt="">` : '<span></span>') +
@@ -545,7 +647,7 @@ function drawPassby(){
   el('path',{d:`M ${cx-13} ${cy-20} L ${cx} ${cy-8} L ${cx+13} ${cy-20} Z`,fill:css('--calm'),opacity:.28},passSvg);
   el('text',{x:cx,y:cy+22,'text-anchor':'middle',class:'tick'},passSvg).textContent='YOU';
 
-  const d=state.dist/100, y=track(d), w=state.weapon;
+  const d=state.dist/100, y=track(d), w=state.subject;
   const p=profileByAsset(w.profile), env=envelope(p);
   const power=powerAt(w,state.dist);
   const col = power>0 ? css('--signal') : css('--ink3');
@@ -579,6 +681,27 @@ D.profiles.forEach((p,i)=>{
 function syncChips(){
   D.profiles.forEach(p => p._chip.setAttribute('aria-pressed', state.visible.has(p.id)));
 }
+/* one readout row per plotted profile, at the current miss distance */
+function renderReadRows(){
+  const tb=document.querySelector('#readRows tbody');
+  tb.textContent='';
+  const mine=profileByAsset(state.subject.profile);
+  const rows=D.profiles.map((p,i)=>({p,i})).filter(o=>state.visible.has(o.p.id))
+    .map(o=>({p:o.p, col:css(SERIES[o.i]), val:evalCurve(o.p.keys,state.dist)}))
+    .sort((a,b)=>b.val-a.val);
+  if(!rows.length){
+    tb.innerHTML='<tr><td colspan="3" class="none">No profiles selected — turn one on beside the chart.</td></tr>';
+    return;
+  }
+  rows.forEach(r=>{
+    const cap=r.p.thr!=null?r.p.thr:0;
+    const tr=document.createElement('tr');
+    if(mine && r.p.id===mine.id) tr.className='active';
+    tr.innerHTML=`<td><span class="swatch" style="background:${r.col}"></span>${esc(r.p.label)}</td>`+
+      `<td>${fmt(r.val)}</td><td>${r.val>0&&cap?Math.ceil(cap/r.val):'—'}</td>`;
+    tb.appendChild(tr);
+  });
+}
 function niceMax(v){
   if(v<=0) return 1;
   const pow=Math.pow(10,Math.floor(Math.log10(v)));
@@ -588,7 +711,7 @@ function niceMax(v){
 function drawCurves(){
   clear(curveSvg);
   const W=720,H=380,mL=54,mR=104,mT=16,mB=46,iw=W-mL-mR,ih=H-mT-mB,xMax=800;
-  const mine = profileByAsset(state.weapon.profile);
+  const mine = profileByAsset(state.subject.profile);
   const vis = D.profiles.map((p,i)=>({p,i})).filter(o=>state.visible.has(o.p.id));
   let yMax=0; vis.forEach(o=>o.p.keys.forEach(k=>{ if(k.y>yMax) yMax=k.y; }));
   yMax=niceMax(yMax||0.15);
@@ -651,7 +774,7 @@ function drawCurves(){
 
 /* ================= build-up ================= */
 function sim(){
-  const w=state.weapon;
+  const w=state.subject;
   const power=powerAt(w,state.dist);
   const rpm=w.rpm||0;
   const rate=power*(rpm/60);
@@ -685,7 +808,7 @@ function drawBuild(){
   el('path',{d:d,fill:'none',stroke:css('--signal'),'stroke-width':2.5,'stroke-linejoin':'round'},buildSvg);
   if(rate<=0){
     el('text',{x:mL+iw/2,y:mT+ih/2,'text-anchor':'middle',class:'dlab',fill:css('--ink3')},buildSvg)
-      .textContent = state.weapon.rpm ? 'No suppression at this distance' : 'This weapon has no passby suppression';
+      .textContent = state.subject.rpm ? 'No suppression at this distance' : 'This weapon has no passby suppression';
   }
   const t=Math.min(state.t,span), v=Math.min(cap,rate*t);
   el('line',{x1:X(t),y1:mT,x2:X(t),y2:mT+ih,stroke:css('--ink2'),'stroke-width':1},buildSvg);
@@ -839,18 +962,13 @@ function step(now){
 }
 
 function update(){
-  // a weapon's own profile is always on the chart, so the pick is never invisible
-  const mine=profileByAsset(state.weapon.profile);
-  if(mine) state.visible.add(mine.id);
   const {power,rpm,rate,cap,ttc}=sim();
   document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m';
   document.getElementById('dist2Read').textContent=fmt(state.dist/100,2)+' m';
-  document.getElementById('powRead').textContent=fmt(power);
-  document.getElementById('capRead').textContent = power>0 ? Math.ceil(cap/power) : '—';
   document.getElementById('rpmRead').innerHTML=(rpm||'—')+'<span class="u">rpm</span>';
   document.getElementById('rateRead').innerHTML=fmt(rate,2)+'<span class="u">/s</span>';
   document.getElementById('ttcRead').innerHTML=(isFinite(ttc)?fmt(ttc,2):'∞')+'<span class="u">s</span>';
-  renderLoadout(); drawPassby(); syncChips(); drawCurves();
+  renderSubject(); drawPassby(); syncChips(); renderReadRows(); drawCurves();
   tick();
 }
 
@@ -864,9 +982,15 @@ function tick(){
   document.getElementById('meterCapLab').textContent='cap '+fmt(cap,2);
 }
 
-renderArmoury(); allTable(); catTable(); blastTable(); drawBlast(); drawSoldier(); update();
+const C = D.counts || {};
+document.getElementById('cWeapons').textContent = C.weapons != null ? C.weapons : D.weapons.length;
+document.getElementById('cAssets').textContent  = C.assets  != null ? C.assets  : '—';
+document.getElementById('cProfiles').textContent= C.profiles!= null ? C.profiles: '—';
+typeSel.value = state.subject.cat;
+fillWeapons(state.subject.cat, state.subject);
+renderArmoury(); renderLoadout(); allTable(); catTable(); blastTable(); drawBlast(); drawSoldier(); update();
 window.addEventListener('resize',()=>{ drawSoldier(); drawBlast(); });
-const redrawAll=()=>{ update(); drawSoldier(); drawBlast(); catTable(); allTable(); };
+const redrawAll=()=>{ update(); renderLoadout(); drawSoldier(); drawBlast(); catTable(); allTable(); };
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);
 new MutationObserver(redrawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});
 })();

@@ -13,7 +13,7 @@ Squad Mod SDK for rebuilding — not needed just to host what is already built.
 
 ## Hosting the page
 
-The page is **one static HTML file** with everything inlined: data, 393 icons, all
+The page is **one static HTML file** with everything inlined: data, 369 icons, all
 scripts. No build step, no backend, no database. Anything that can serve a file works.
 
 ### On your network
@@ -109,7 +109,7 @@ Four files hold an absolute SDK path — `squad.py` (`CONTENT`, the one that mat
 
 | File | Contents |
 |---|---|
-| `squad_all_weapons_suppression.csv` | all 521 weapons, power sampled at 1/2/3/4 m |
+| `squad_all_weapons_suppression.csv` | all 521 weapons, power sampled at 1/2/3/4 m (the dashboard shows 477 — smoke rounds are excluded there) |
 | `squad_rifle_suppression.csv` | the original ten-rifle sample |
 | `all_profiles.json` | all 58 suppression profiles with raw curve keys |
 | `all_weapons_raw.json` | every weapon asset before grouping, 904 rows |

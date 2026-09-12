@@ -4,8 +4,13 @@ Extracts the suppression system out of **Squad v10.5.3** and turns it into a bro
 web page. Nothing here is scraped from a wiki or measured in-game — every number is read
 directly out of the shipped `.uasset` binaries in the Squad Mod SDK.
 
-The output is a single self-contained HTML file covering all **521 weapons**, their
-suppression profiles, the distance curves behind them, and the soldier-side effects.
+The output is a single self-contained HTML file covering **477 weapons**, their suppression
+profiles, the distance curves behind them, and the soldier-side effects. Page by
+**Osaka [29th ID]**.
+
+The extraction resolves all 521 firearms in the game; the 44 that carry
+`Projectile_SuppressionNone` — smoke and signalling rounds, which suppress nothing — are
+kept in the CSV but excluded from the dashboard.
 
 ```
 Squad Mod SDK (.uasset)  ──▶  parser  ──▶  JSON  ──▶  one HTML file  ──▶  any web server
@@ -42,7 +47,8 @@ python3 serve.py    # then open the printed LAN URL
 ```
 
 If you only want the data, `squad_all_weapons_suppression.csv` is already in this
-directory — 521 rows, one per weapon, with power sampled at 1/2/3/4 m.
+directory — 521 rows, one per weapon, with power sampled at 1/2/3/4 m. That file is the
+complete set, smoke rounds included.
 
 Point the toolkit at a different SDK install by editing `CONTENT` at the top of
 `squad.py`; `extract_all.py`, `dump_all.py` and `build_gui_data.py` each hold one
@@ -98,6 +104,14 @@ Explosives zero their passby power and suppress radially instead, using
 `OuterRadius`, against their own `MaxRadialSuppressionThreshold`. A hand grenade is
 **5.5 power out to 22.5 m** against a rifle round's 0.125 at 1 m — roughly forty rifle
 rounds arriving at once, against a ceiling of 6.5 rather than 1.15.
+
+### Two independent selections on the page
+
+The page carries two pickers that deliberately do **not** talk to each other. The pair at
+the top — weapon type and weapon — drives the passby and build-up sections: the type
+supplies the curve, the weapon supplies only its rate of fire. The armoury further down is
+a lookup; picking a weapon there traces its asset wiring in the section beneath it and
+changes nothing above.
 
 ### The receiving end
 
