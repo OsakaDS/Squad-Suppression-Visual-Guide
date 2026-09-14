@@ -5,8 +5,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 base = json.load(open(os.path.join(HERE, 'payload.json')))       # profiles / flat / blast / soldier
 allw = json.load(open(os.path.join(HERE, 'all_weapons.json')))   # weapons / icons / catIcons
 
-# 'none' (smoke and signalling rounds) is deliberately excluded from the dashboard
-CAT_ORDER = ['rifle','battlerifle','dmr','sniper','lsw','lmg','mmg','smg','hmg','explosive']
+CAT_ORDER = ['rifle','battlerifle','dmr','sniper','lsw','lmg','mmg','smg','hmg','explosive','none']
 CAT_LABEL = {'rifle':'Rifle','battlerifle':'Battle rifle','dmr':'DMR','sniper':'Sniper rifle',
              'lsw':'LSW','lmg':'LMG','mmg':'MMG','smg':'SMG / pistol','hmg':'Shotgun / HMG',
              'explosive':'Explosive','none':'No suppression'}
@@ -35,17 +34,18 @@ for c in CAT_ORDER:
                  'icon': allw['catIcons'].get(c), 'iconSrc': allw['catSource'].get(c),
                  'profileId': CAT_PROFILE.get(c)})
 
-keep = {c['id'] for c in cats}
-weapons = [w for w in allw['weapons'] if w['cat'] in keep]
-used = {w['iconKey'] for w in weapons if w.get('iconKey')}
-base['weapons'] = weapons
-base['icons'] = {k: v for k, v in allw['icons'].items() if k in used}
+import io, base64, glob
+from PIL import Image
+_logo = glob.glob(os.path.join(HERE, 'branding', '*.png'))
+def _uri(size):
+    im = Image.open(_logo[0]).convert('RGBA'); im.thumbnail((size, size), Image.LANCZOS)
+    b = io.BytesIO(); im.save(b, 'PNG', optimize=True)
+    return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
+base['logo'] = _uri(200) if _logo else None
+base['weapons'] = allw['weapons']
+base['icons'] = allw['icons']
 base['cats'] = cats
-base['counts'] = {'weapons': len(weapons),
-                  'assets': sum(w['variants'] for w in weapons),
-                  'profiles': len({w['profile'] for w in weapons})}
 json.dump(base, open(os.path.join(HERE, 'page_payload.json'), 'w'), separators=(',', ':'))
 n = os.path.getsize(os.path.join(HERE, 'page_payload.json'))
-print(f"payload {n/1024:.0f} KB | weapons {len(base['weapons'])} | assets {base['counts']['assets']} "
-      f"| icons {len(base['icons'])} | cats {len(cats)}")
+print(f"payload {n/1024:.0f} KB | weapons {len(base['weapons'])} | icons {len(base['icons'])} | cats {len(cats)}")
 for c in cats: print(f"   {c['label']:16s} {c['count']:>3}  icon={c['iconSrc']}")

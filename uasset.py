@@ -131,7 +131,9 @@ class Package:
         r = Reader(self.d, off)
         while r.o < end - 8:
             name = self.fname(r.o); r.o += 8
-            if name == 'None': break
+            if name == 'None':
+                self.last_props_end = r.o   # offset just past the terminator
+                break
             tn = self.read_typename(r)
             size = r.i32()
             flags = r.u8()
@@ -142,7 +144,10 @@ class Package:
                 ext = r.u32()
                 if ext & 1: r.o += 16
             vstart = r.o
-            val = self.read_value(tn, vstart, vstart + size, depth)
+            if tn['name'] == 'BoolProperty':
+                val = bool(flags & 0x10)          # value is carried in the tag flags, not the payload
+            else:
+                val = self.read_value(tn, vstart, vstart + size, depth)
             props.append({'name': name, 'type': tn['name'], 'typename': tn,
                           'index': arr_idx, 'size': size, 'value': val})
             r.o = vstart + size

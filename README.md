@@ -4,13 +4,16 @@ Extracts the suppression system out of **Squad v10.5.3** and turns it into a bro
 web page. Nothing here is scraped from a wiki or measured in-game — every number is read
 directly out of the shipped `.uasset` binaries in the Squad Mod SDK.
 
-The output is a single self-contained HTML file covering **477 weapons**, their suppression
-profiles, the distance curves behind them, and the soldier-side effects. Page by
-**Osaka [29th ID]**.
+The output is two self-contained HTML pages by **Osaka [29th ID]**:
 
-The extraction resolves all 521 firearms in the game; the 44 that carry
-`Projectile_SuppressionNone` — smoke and signalling rounds, which suppress nothing — are
-kept in the CSV but excluded from the dashboard.
+- **`guide.html`** — the field guide for players: how suppression works, how to use it, and a
+  fireteam-against-a-target tool. Organised around eight weapon kits (shotguns are left out for
+  now), each with the game's role emblem, an armoury at the end listing what is in each kit, and every
+  figure labelled READ / INFERRED / UNKNOWN.
+- **`suppression.html`** — the data page for modders: all **521 weapons** with icons, the
+  asset wiring behind each one, and every profile curve.
+
+Both are branded with the 29th Infantry Division logo (`branding/`).
 
 ```
 Squad Mod SDK (.uasset)  ──▶  parser  ──▶  JSON  ──▶  one HTML file  ──▶  any web server
@@ -47,8 +50,7 @@ python3 serve.py    # then open the printed LAN URL
 ```
 
 If you only want the data, `squad_all_weapons_suppression.csv` is already in this
-directory — 521 rows, one per weapon, with power sampled at 1/2/3/4 m. That file is the
-complete set, smoke rounds included.
+directory — 521 rows, one per weapon, with power sampled at 1/2/3/4 m.
 
 Point the toolkit at a different SDK install by editing `CONTENT` at the top of
 `squad.py`; `extract_all.py`, `dump_all.py` and `build_gui_data.py` each hold one
@@ -104,14 +106,6 @@ Explosives zero their passby power and suppress radially instead, using
 `OuterRadius`, against their own `MaxRadialSuppressionThreshold`. A hand grenade is
 **5.5 power out to 22.5 m** against a rifle round's 0.125 at 1 m — roughly forty rifle
 rounds arriving at once, against a ceiling of 6.5 rather than 1.15.
-
-### Two independent selections on the page
-
-The page carries two pickers that deliberately do **not** talk to each other. The pair at
-the top — weapon type and weapon — drives the passby and build-up sections: the type
-supplies the curve, the weapon supplies only its rate of fire. The armoury further down is
-a lookup; picking a weapon there traces its asset wiring in the section beneath it and
-changes nothing above.
 
 ### The receiving end
 
@@ -202,16 +196,34 @@ files hash identically.
 | 5 | `build_gui_data.py` | `gui_data.json` — profiles, curves, soldier data |
 | 6 | `build_payload.py` | `payload.json` — the page's base payload |
 | 7 | `merge_payload.py` | `page_payload.json` — + weapons and icons |
-| 8 | `build_page.py` | `suppression.html` — template + payload |
-| 9 | `make_site.py` | `site/index.html` — standalone document |
+| 8 | `build_page.py` | `suppression.html` — data page: template + payload |
+| 9 | `build_guide_payload.py` | `guide_payload.json` — per-kit figures, soldier curves, effect thresholds, logo |
+| 10 | `build_guide.py` | `guide.html` — field guide: template + payload |
+| 11 | `make_site.py` | `site/index.html` (guide) and `site/modders.html` (data page) |
 
-Edit the page itself in **`suppression.template.html`**, never in `suppression.html` —
-the latter is generated and your changes will be overwritten by step 8.
+Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
+generated `.html` files — steps 8 and 10 overwrite them.
 
 `make_site.py` exists because the page is authored as an artifact body. Serving it
 yourself needs a doctype, `<meta charset="utf-8">` and a favicon that the artifact host
 would otherwise supply. Without the charset tag every en dash and middot on the page
 renders as mojibake.
+
+## Reading blueprint logic, not just values
+
+`graph.py` parses the node graphs inside a Blueprint asset — the K2Node exports and their
+binary pin lists, including links between nodes — and `decompile.py` turns a graph into
+pseudo-code. That is how the soldier's punch and immunity logic in `SUPPRESSION_LOGIC.md` was
+recovered: 542 nodes, 1,140 links, none unresolved.
+
+```bash
+python3 decompile.py <path to BP_*.uasset> 'Suppress|Flinch'    # regex over graph + entry names
+```
+
+Two format details worth knowing: a `BoolProperty` value lives in the tag's flags byte
+(`0x10` = true), and the pin body ends with a 16-byte GUID plus a 4-byte flags word — no
+trailer — while classes derived from `K2Node_EditablePinBase` append their own data after the
+pin list.
 
 ## Extending it to other data
 
@@ -257,9 +269,12 @@ to know those numbers is guessing.
 | `curve.py` | `FRichCurve` key decoding |
 | `textures.py` | icon recovery from asset thumbnails |
 | `squad.py` | blueprint chains, property merging, redirector following |
-| `suppression.template.html` | the page — edit this one |
+| `graph.py` / `decompile.py` | Blueprint node-graph parser and pseudo-code decompiler |
+| `guide.template.html` | the field guide — edit this one |
+| `suppression.template.html` | the data page — edit this one |
+| `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic, with confidence labels |
 | `serve.py` | gzipping static server for the LAN |
-| `site/index.html` | the built page |
+| `site/index.html`, `site/modders.html` | the built pages |
 
 See **[RUNBOOK.md](RUNBOOK.md)** for hosting commands — LAN, systemd, Docker and public
 static hosts.

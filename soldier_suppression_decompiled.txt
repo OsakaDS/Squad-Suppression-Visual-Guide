@@ -1,0 +1,80 @@
+
+##### AdjustSuppressionLevel :: AdjustSuppressionLevel   [node 268]
+ENTRY AdjustSuppressionLevel(Delta: real)
+UnderSuppressionPercentage = FMax(A=(Delta + UnderSuppressionPercentage), B=0.0)
+
+##### EventGraph :: Setup Suppression   [node 254]
+ENTRY Setup Suppression(OutputDelegate: delegate)
+SuppressionEffectPresetIndex = 0
+PresetAsset = Map_Find(TargetMap=SuppresionPresets, Key=VariableSet.Output_Get).Value
+
+##### EventGraph :: OnSuppressionEventDelegate   [node 249]
+ENTRY OnSuppressionEventDelegate(OutputDelegate: delegate, IsRadial: bool, AddedSuppressionAmount: real, NewSupressionLevel: real, SuppressionResistance: real, ClosenessRatio: real, SuppressionSourcePoint: struct, ProjStartOverlapPoint: struct, ProjEndOverlapPoint: struct, SuppressionInfoClass: class)
+Can Execute Cosmetic Events():
+  True:
+    LastSuppressionClosenessRatio = ClosenessRatio
+    if ((NewSupressionLevel > 0.0) and (AddedSuppressionAmount > 0)):
+      bActivelySuppressed = true
+      if K2_IsTimerPausedHandle(Handle=TimerHandle_SuppressionStartDecayTimer):
+        K2_UnPauseTimerHandle(Handle=TimerHandle_SuppressionStartDecayTimer)
+        sequence step 0:
+          Subsystem<SQGenericPunchSubsystem>.AddGenericWeaponPunch(self=Subsystem<SQGenericPunchSubsystem>, WeaponSwayData=<none>, WeaponAlignmentData={Curve: SuppressionPunchWeaponAlignment, Multiplier: ((RandomizedVectorOffset(Variability=SuppressionWeaponAlignmentPunchMagnitudeVariability) * (WeaponAlignmentPunchByClosenessRatioCurve.GetFloatValue(self=WeaponAlignmentPunchByClosenessRatioCurve, InTime=LastSuppressionClosenessRatio) * WeaponAlignmentSuppressionImmunityCurve.GetFloatValue(self=WeaponAlignmentSuppressionImmunityCurve, InTime=SuppressionImmunityFactor))) * SelectFloat(A=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→1.000000, Option 1→ADSSuppressionPunchWeaponAlignmentMultiplier), B=1.000000, bPickA=SoldierMovement.IsAimingDownSights(self=SoldierMovement))), Offset: RandomFloatInRange(Min=0.0, Max=360.000000), OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, WeaponLocationData=<none>)
+          Subsystem<SQGenericPunchSubsystem>.AddGenericCameraPunch(self=Subsystem<SQGenericPunchSubsystem>, CameraRotationData={Curve: SuppressionPunchCameraRotation, Multiplier: ((RandomizedVectorOffset(Variability=SuppressionCameraRotPunchMagnitudeVariability) * (CameraRotPunchByClosenessRatioCurve.GetFloatValue(self=CameraRotPunchByClosenessRatioCurve, InTime=LastSuppressionClosenessRatio) * CameraRotBySuppressionImmunityCurve.GetFloatValue(self=CameraRotBySuppressionImmunityCurve, InTime=SuppressionImmunityFactor))) * SelectFloat(A=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→1.000000, Option 1→ADSSuppressionPunchCameraRotationMultiplier), B=1.000000, bPickA=SoldierMovement.IsAimingDownSights(self=SoldierMovement))), Offset: RandomFloatInRange(Min=0.0, Max=360.000000), OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, CameraLocationData={Curve: SuppressionPunchCameraLocation, Multiplier: SelectVector(A=0, 0, 0, A_X=0.0, A_Y=BreakVector(InVec=((RandomizedVectorOffset(Variability=SuppressionCameraLocPunchMagnitudeVariability) * (CameraLocPunchByClosenessRatioCurve.GetFloatValue(self=CameraLocPunchByClosenessRatioCurve, InTime=LastSuppressionClosenessRatio) * CameraLocSuppressionImmunityCurve.GetFloatValue(self=CameraLocSuppressionImmunityCurve, InTime=SuppressionImmunityFactor))) * SelectFloat(A=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→1.000000, Option 1→ADSSuppressionPunchCameraLocationMultiplier), B=1.000000, bPickA=SoldierMovement.IsAimingDownSights(self=SoldierMovement)))).Y, A_Z=BreakVector(InVec=((RandomizedVectorOffset(Variability=SuppressionCameraLocPunchMagnitudeVariability) * (CameraLocPunchByClosenessRatioCurve.GetFloatValue(self=CameraLocPunchByClosenessRatioCurve, InTime=LastSuppressionClosenessRatio) * CameraLocSuppressionImmunityCurve.GetFloatValue(self=CameraLocSuppressionImmunityCurve, InTime=SuppressionImmunityFactor))) * SelectFloat(A=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→1.000000, Option 1→ADSSuppressionPunchCameraLocationMultiplier), B=1.000000, bPickA=SoldierMovement.IsAimingDownSights(self=SoldierMovement)))).Z, B=((RandomizedVectorOffset(Variability=SuppressionCameraLocPunchMagnitudeVariability) * (CameraLocPunchByClosenessRatioCurve.GetFloatValue(self=CameraLocPunchByClosenessRatioCurve, InTime=LastSuppressionClosenessRatio) * CameraLocSuppressionImmunityCurve.GetFloatValue(self=CameraLocSuppressionImmunityCurve, InTime=SuppressionImmunityFactor))) * SelectFloat(A=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→1.000000, Option 1→ADSSuppressionPunchCameraLocationMultiplier), B=1.000000, bPickA=SoldierMovement.IsAimingDownSights(self=SoldierMovement))), bPickA=select(IsValid(Object=CurrentWeaponStaticInfo): Option 0→false, Option 1→DisableSuppressionXAxisCameraLocationPunch)), Offset: RandomFloatInRange(Min=0.0, Max=360.000000), OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+        sequence step 1:
+          if UseExperimentalSuppressionFirstShotFlinch:
+            # ── enter collapsed graph 'Experimental - Suppression First Shot Flinch' ──
+              sequence step 0:
+                if (SuppressionImmunityFactor == 0):
+                  Final Flinch Value = SuppressionFlinchByClosenessRatio.GetFloatValue(self=SuppressionFlinchByClosenessRatio, InTime=LastSuppressionClosenessRatio)
+                  if bIsBipodDeployed:
+                    if SoldierMovement.IsAimingDownSights(self=SoldierMovement):
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericCameraPunch(self=Subsystem<SQGenericPunchSubsystem>, CameraRotationData={Curve: SuppressionFlinchCameraRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, CameraLocationData={Curve: SuppressionFlinchCameraLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: 0.0, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+                    else:
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericCameraPunch(self=Subsystem<SQGenericPunchSubsystem>, CameraRotationData={Curve: SuppressionFlinchCameraRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, CameraLocationData={Curve: SuppressionFlinchCameraLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+                  else:
+                    if bIsProne:
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericWeaponPunch(self=Subsystem<SQGenericPunchSubsystem>, WeaponSwayData=<none>, WeaponAlignmentData={Curve: SuppressionFlinchGunRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, WeaponLocationData={Curve: SuppressionFlinchGunLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: (Final Flinch Value / 2.000000), Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericCameraPunch(self=Subsystem<SQGenericPunchSubsystem>, CameraRotationData={Curve: SuppressionFlinchCameraRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, CameraLocationData={Curve: SuppressionFlinchCameraLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: (Final Flinch Value / 2.000000), Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+                    else:
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericWeaponPunch(self=Subsystem<SQGenericPunchSubsystem>, WeaponSwayData=<none>, WeaponAlignmentData={Curve: SuppressionFlinchGunRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, WeaponLocationData={Curve: SuppressionFlinchGunLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+                      Subsystem<SQGenericPunchSubsystem>.AddGenericCameraPunch(self=Subsystem<SQGenericPunchSubsystem>, CameraRotationData={Curve: SuppressionFlinchCameraRotationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000}, CameraLocationData={Curve: SuppressionFlinchCameraLocationCurve, Multiplier: 1.000000,1.000000,1.000000, Multiplier_X: Final Flinch Value, Multiplier_Y: Final Flinch Value, Multiplier_Z: Final Flinch Value, Offset: 0.000000, OffsetAxis: 1.000000,0.000000,0.000000, PauseTime: 0.000000, PostPauseSafetyTimeout: 0.000000, ID: None, bUniquePunch: false, bShouldReplaceActiveUniquePunch: false, PlayRate: 1.000000})
+              sequence step 1:
+            # ── leave 'Experimental - Suppression First Shot Flinch' ──
+            [collapsed graph: Experimental - Suppression First Shot Flinch]
+        sequence step 2:
+          if (SuppressionImmunityFactor == 0):
+            SuppressionImmunityFactor = SuppressionImmunityFirstShotIncrementByClosenessRatio.GetFloatValue(self=SuppressionImmunityFirstShotIncrementByClosenessRatio, InTime=LastSuppressionClosenessRatio)
+      else:
+        SuppressionImmunityDecayStartTimer = 0.0
+        → continues at [261] ExecutionSequence
+
+##### EventGraph :: UpdateSuppressionImmunity   [node 255]
+ENTRY UpdateSuppressionImmunity(OutputDelegate: delegate)
+SuppressionImmunityFactor = FClamp(Value=(SuppressionImmunityFactor + SelectFloat(A=(SuppressionImmunityIncrement * SuppressionImmunityTickRate), B=(0 - (SuppressionImmunityIncrement * SuppressionImmunityTickRate)), bPickA=bActivelySuppressed)), Min=0.0, Max=MaxSuppressionImmunityFactor)
+
+##### EventGraph :: SuppressionImmunityDecayTimer   [node 252]
+ENTRY SuppressionImmunityDecayTimer(OutputDelegate: delegate)
+if (SuppressionImmunityDecayStartTimer >= SuppressionImmunityDecayThreshold):
+  bActivelySuppressed = false
+  K2_PauseTimerHandle(Handle=TimerHandle_SuppressionStartDecayTimer)
+  SuppressionImmunityDecayStartTimer = 0.0
+else:
+  SuppressionImmunityDecayStartTimer = (SuppressionImmunityDecayStartTimer + SuppressionImmunityTickRate)
+
+##### RandomizedVectorOffset :: RandomizedVectorOffset   [node 270]
+ENTRY RandomizedVectorOffset(Variability: struct)
+return ReturnValue=MakeVector(X=RandomFloatInRange(Min=((Variability * -1.000000) + 1.000000), Max=(BreakVector(InVec=Variability).X + 1.000000)), Y=RandomFloatInRange(Min=((Variability * -1.000000) + 1.000000), Max=(BreakVector(InVec=Variability).Y + 1.000000)), Z=RandomFloatInRange(Min=((Variability * -1.000000) + 1.000000), Max=(BreakVector(InVec=Variability).Z + 1.000000)))
+
+##### Suppression Immunity :: Suppression Immunity   [node 272]
+ENTRY Suppression Immunity()
+SuppressionImmunityFactor = FClamp(Value=(SuppressionImmunityFactor + 0.020000), Min=0.0, Max=1.0)
+PrintString(InString=Conv_DoubleToString(InDouble=VariableSet.Output_Get), bPrintToScreen=true, bPrintToLog=true, TextColor=(R=0.000000,G=0.660000,B=1.000000,A=1.000000), Duration=2.000000, Key=None)
+
+##### SwitchSuppressionVFX :: SwitchSuppressionVFX   [node 273]
+ENTRY SwitchSuppressionVFX(SwitchForward: bool)
+sequence step 0:
+  MaxPresetIndex = (Map_Length(TargetMap=SuppresionPresets) - 1)
+sequence step 1:
+  SuppressionEffectPresetIndex = SelectInt(A=SelectInt(A=0, B=(SuppressionEffectPresetIndex + 1), bPickA=(SuppressionEffectPresetIndex == MaxPresetIndex)), B=SelectInt(A=MaxPresetIndex, B=(SuppressionEffectPresetIndex + -1), bPickA=(SuppressionEffectPresetIndex == 0)), bPickA=SwitchForward)
+sequence step 2:
+  PresetAsset = Map_Find(TargetMap=SuppresionPresets, Key=SuppressionEffectPresetIndex).Value

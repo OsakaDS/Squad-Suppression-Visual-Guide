@@ -32,7 +32,7 @@ ORDER = [
     ('Projectile_Suppression_LMG',            'LMG',             'RPK, M249, 5.56 belt-fed'),
     ('Projectile_Suppression_LSW',            'LSW',             'L86A2, M27, auto rifles'),
     ('Projectile_Suppression_SMG',            'SMG / pistol',    'MP5, Uzi, sidearms, AS VAL'),
-    ('Projectile_Suppression_PrecisionRifle', 'Precision rifle', 'DMRs with optics'),
+    ('Projectile_Suppression_PrecisionRifle', 'Precision Rifle (DMR)', 'DMRs with optics'),
     ('Projectile_Suppression_SniperRifle',    'Sniper rifle',    'M110, SV-98, Mosin'),
 ]
 profiles = [pack(n, l, c) for n, l, c in ORDER]
