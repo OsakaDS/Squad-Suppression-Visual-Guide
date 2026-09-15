@@ -210,6 +210,16 @@ td.name{font-weight:600}
 .readrows.bump tr.on td{color:var(--ink); font-weight:600}
 .readrows.bump tr.on td:first-child{box-shadow:inset 3px 0 0 var(--gold); padding-left:9px}
 .readrows.bump tr:not(.on) td{color:var(--ink3)}
+.twoclocks{border:1px solid var(--navy); background:var(--panel); padding:18px 20px 20px; margin:0 0 30px; box-shadow:var(--shadow)}
+.twoclocks h3{color:var(--navy); margin-bottom:10px}
+.clocks{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:0 0 16px}
+.clock{background:var(--panel); padding:14px 16px}
+.clock .cn{font-family:var(--fd); font-size:19px; text-transform:uppercase; letter-spacing:.05em; margin:0 0 6px}
+.clock.p .cn{color:var(--gold)} .clock.i .cn{color:var(--navy)}
+.clock p{margin:0 0 6px; font-size:14.5px; color:var(--ink2)}
+.clock p b{color:var(--ink); font-weight:600}
+.contrast{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; margin-top:14px}
+.contrast .who{font-family:var(--fd); font-size:15px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink2); margin:0 0 8px}
 .btn{font-family:var(--fm); font-size:12px; letter-spacing:.09em; text-transform:uppercase; padding:8px 16px;
   border:1px solid var(--navy); background:var(--navy); color:var(--panel); cursor:pointer; border-radius:0}
 .btn:hover{background:var(--gold); border-color:var(--gold)}
@@ -356,6 +366,24 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
       </div>
     </div>
     <div class="callout"><b>Immunity doesn't care what is shooting at you.</b> It belongs to the soldier under fire, and builds at the same rate whether the rounds come from a pistol or an MMG <span class="conf read">READ</span>. The one kit that behaves differently is the <b>bolt-action sniper</b>: the SV-98 needs 1.95 s between shots and the C14 and Timberwolf 2.31 s <span class="conf read">READ</span>, so the 1-second window lapses between shots, the target's immunity drains in the gap, and every shot lands on a fresher, less numb target. Every automatic kit fires far too often to let that happen.</div>
+  </div>
+
+  <div class="twoclocks">
+    <h3>Two clocks run on the target — the kit sets one of them, and has no say in the other <span class="conf read">READ</span></h3>
+    <div class="clocks">
+      <div class="clock p"><p class="cn">Pressure</p>
+        <p><b>How suppressed they are right now.</b> Drives what they see — vignette, desaturation, blur — and how much their weapon sways.</p>
+        <p>Each round adds the kit's power at that miss distance, up to the kit's ceiling. <b>The kit controls this completely:</b> how much per round, how high it can go, how fast it climbs.</p></div>
+      <div class="clock i"><p class="cn">Immunity</p>
+        <p><b>How numb they've become.</b> Shrinks only the <em>kick</em> — the camera jolt and weapon drift of each round that follows.</p>
+        <p>Not added per round. A clock: +1.0 per second while any round has passed in the last second, −1.0 per second otherwise, capped at 7.5 for everyone. <b>The kit has no say</b> — except that a slow bolt-action lets the second lapse between shots.</p></div>
+    </div>
+    <p class="figcap" style="max-width:none"><b>The kick of a single round does not depend on what fired it.</b> A rifle round and a sniper round passing at the same distance jolt the camera identically. Kits differ in how many kicks arrive and how much pressure builds behind them — which is what the contrast below shows, and what Rules 1–4 above add up to.</p>
+    <div class="contrast">
+      <div><p class="who">Under an M4 · 833 rpm · rounds at 2 m</p><svg id="cmpA" viewBox="0 0 360 316" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an M4"></svg></div>
+      <div><p class="who">Under an SV-98 · 31 rpm · rounds at 2 m</p><svg id="cmpB" viewBox="0 0 360 316" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an SV-98"></svg></div>
+    </div>
+    <p class="figcap" style="max-width:none">Five seconds each. The M4 pins its target in under a second and then sits at the rifle ceiling of 1.15 — vignette and sway, nothing worse — while seventy fading kicks build the target's immunity to the maximum. The SV-98's first round alone puts pressure at 3.0, where blur begins, and with two seconds between shots the target's immunity never builds: every round kicks at close to full strength. <b>The kit chooses what state the target is in; immunity chooses how much your follow-up rounds still rattle them.</b></p>
   </div>
 </section>
 
@@ -742,6 +770,52 @@ function drawBlast(){
   D.blast.forEach(b=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'—'}</td><td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'—'}</td><td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'—'}</td><td class="num">${b.thr!=null?fmt(b.thr,2):'—'}</td>`; tb.appendChild(tr); });
 }
 
+/* ================= the two-clocks contrast ================= */
+function drawContrast(){
+  const S=D.soldier, c=closeness(200), T=5;
+  [['cmpA','rifle'],['cmpB','sniper']].forEach(([id,kid])=>{
+    const k=D.kits.find(x=>x.id===kid); const rpm=k.rpmPractical||k.rpm; const gap=60/rpm; const power=kitPower(k,200);
+    const shots=[]; for(let s=0;s*gap<=T+1e-9;s++) shots.push(s*gap);
+    const pressure=t=>Math.min(k.ceiling, power*shots.filter(s=>s<=t).length);
+    const immAt=t=>{ if(t<0) return 0; let v=firstShot(c), tt=0; const dt=0.05;
+      while(tt<t){ tt+=dt; const last=Math.max(...shots.filter(s=>s<=tt),-9); const active=(tt-last)<=C.window; v=Math.max(0,Math.min(C.max,v+(active?1:-1)*C.increment*dt)); } return v; };
+    const svg=document.getElementById(id); clear(svg);
+    // three strips; each has a title row of its own above a plot area, so no text sits on a line or an axis
+    const W=360,H=316,mL=44,mR=12,RH=94,TITLE=12,PAD=8; const X=t=>mL+(t/T)*(W-mL-mR); const mid=mL+(W-mL-mR)/2;
+    let y0=4;
+    const strip=(title,color,right)=>{
+      const top=y0+TITLE+PAD, bot=y0+RH-6;
+      el('text',{x:mid,y:y0+TITLE-1,'text-anchor':'middle',class:'axlab',fill:color},svg).textContent=title;
+      if(right) el('text',{x:W-mR,y:y0+TITLE-1,'text-anchor':'end',class:'tick',fill:css('--ink3')},svg).textContent=right;
+      el('line',{x1:mL,y1:bot,x2:W-mR,y2:bot,stroke:css('--rule-strong')},svg);
+      el('line',{x1:mL,y1:top,x2:mL,y2:bot,stroke:css('--rule')},svg);
+      y0+=RH; return {top,bot};
+    };
+    // pressure
+    { const {top,bot}=strip('pressure',css('--gold')); const hi=4.0; const Y=v=>bot-(v/hi)*(bot-top);   // shared scale: the sniper's 3.0 line keeps headroom for its label
+      el('text',{x:mL-5,y:top+3.5,'text-anchor':'end',class:'tick'},svg).textContent=hi.toFixed(1);
+      el('text',{x:mL-5,y:bot+3.5,'text-anchor':'end',class:'tick'},svg).textContent='0';
+      let d=''; for(let px=0;px<=W-mL-mR;px+=2){ const t=px/(W-mL-mR)*T; d+=(px?'L':'M')+X(t).toFixed(1)+' '+Y(Math.min(hi,pressure(t))).toFixed(1)+' '; }
+      el('path',{d,fill:'none',stroke:css('--gold'),'stroke-width':2.2},svg);
+      const yc=Y(k.ceiling); el('line',{x1:mL,y1:yc,x2:W-mR,y2:yc,stroke:css('--ink3'),'stroke-dasharray':'4 3'},svg);
+      const ly = (yc-top>14) ? yc-4 : yc+11;            // keep the ceiling label off the title row
+      el('text',{x:W-mR,y:ly,'text-anchor':'end',class:'dlab',fill:css('--ink2')},svg).textContent='ceiling '+k.ceiling.toFixed(2); }
+    // immunity
+    { const {top,bot}=strip('immunity',css('--navy')); const hi=7.5; const Y=v=>bot-(v/hi)*(bot-top);
+      el('text',{x:mL-5,y:top+3.5,'text-anchor':'end',class:'tick'},svg).textContent='7.5';
+      el('text',{x:mL-5,y:bot+3.5,'text-anchor':'end',class:'tick'},svg).textContent='0';
+      let d=''; for(let px=0;px<=W-mL-mR;px+=2){ const t=px/(W-mL-mR)*T; d+=(px?'L':'M')+X(t).toFixed(1)+' '+Y(Math.min(hi,immAt(t))).toFixed(1)+' '; }
+      el('path',{d,fill:'none',stroke:css('--navy'),'stroke-width':2.2},svg); }
+    // kick per round
+    { const {top,bot}=strip('kick per round',css('--s1'),shots.length+' rounds');
+      el('text',{x:mL-5,y:top+3.5,'text-anchor':'end',class:'tick'},svg).textContent='1.0';
+      el('text',{x:mL-5,y:bot+3.5,'text-anchor':'end',class:'tick'},svg).textContent='0';
+      shots.forEach((s,i)=>{ const im=i===0?0:immAt(s-0.001); const kick=evalCurve(S.closeness.camRot,c)*evalCurve(S.immunity.camRot,im);
+        const x=X(s); el('line',{x1:x,y1:bot,x2:x,y2:bot-(bot-top)*kick,stroke:css('--s1'),'stroke-width':shots.length>20?1.2:3},svg); }); }
+    for(let s=0;s<=T;s++) el('text',{x:X(s),y:H-4,'text-anchor':'middle',class:'tick'},svg).textContent=s+' s';
+  });
+}
+
 /* ================= 05 ARMOURY ================= */
 const arm = {kit: 'rifle', q: ''};
 function armoury(){
@@ -765,7 +839,7 @@ document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.v
 /* ================= boot ================= */
 document.getElementById('logo').src=D.logo; document.getElementById('logoFoot').src=D.logoSmall;
 ['ver','ver2','ver3'].forEach(i=>document.getElementById(i).textContent=D.version); document.getElementById('author').textContent=D.author;
-function drawAll(){ drawRule1(); kitTable(); drawRule3(); drawTimeline(); qa(); drawTool(); drawBlast(); }
+function drawAll(){ drawRule1(); kitTable(); drawRule3(); drawTimeline(); drawContrast(); qa(); drawTool(); drawBlast(); }
 toolKits(); drawAll(); armoury();
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
 new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});
