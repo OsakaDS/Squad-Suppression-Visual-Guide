@@ -55,7 +55,7 @@ Uses `docker-compose.yml` and `nginx.conf`. Pulls the image on first run. Down w
 
 ### On the public internet
 
-Upload `site/index.html` to any static host — **GitHub Pages, Netlify Drop, Cloudflare
+Upload `docs/index.html` to any static host — **GitHub Pages, Netlify Drop, Cloudflare
 Pages**. It is a single file; drag and drop works, and all three are free.
 
 For a temporary public link straight off this machine, needing nothing installed:
@@ -96,7 +96,7 @@ in resolved weapons is the fastest signal that an asset format or a property nam
 
 Nothing is destructive; every script rewrites its own outputs from the game assets, so
 rerunning is always safe. To get back to a known-good page without rebuilding, keep a
-copy of `site/index.html` — it has no dependencies and will serve forever.
+copy of `docs/index.html` — it has no dependencies and will serve forever.
 
 ### Pointing at a different SDK install
 
@@ -114,8 +114,8 @@ Four files hold an absolute SDK path — `squad.py` (`CONTENT`, the one that mat
 | `squad_rifle_suppression.csv` | the original ten-rifle sample |
 | `all_profiles.json` | all 58 suppression profiles with raw curve keys |
 | `all_weapons_raw.json` | every weapon asset before grouping, 904 rows |
-| `site/index.html` | the field guide |
-| `site/modders.html` | the data page |
+| `docs/index.html` | the field guide |
+| `docs/modders.html` | the data page |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic |
 
 ## Gotchas

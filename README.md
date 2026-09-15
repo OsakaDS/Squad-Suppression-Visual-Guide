@@ -218,7 +218,7 @@ files hash identically.
 | 9 | `build_page.py` | `suppression.html` — data page: template + payload |
 | 10 | `build_guide_payload.py` | `guide_payload.json` — per-kit figures, soldier curves, effect thresholds, logo |
 | 11 | `build_guide.py` | `guide.html` — field guide: template + payload |
-| 12 | `make_site.py` | `site/index.html` (guide) and `site/modders.html` (data page) |
+| 12 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
 
 Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
 generated `.html` files — steps 9 and 11 overwrite them.
@@ -299,7 +299,7 @@ to know those numbers is guessing.
 | `suppression.template.html` | the data page — edit this one |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic, with confidence labels |
 | `serve.py` | gzipping static server for the LAN |
-| `site/index.html`, `site/modders.html` | the built pages |
+| `docs/index.html`, `docs/modders.html` | the built pages |
 
 See **[RUNBOOK.md](RUNBOOK.md)** for hosting commands — LAN, systemd, Docker and public
 static hosts.

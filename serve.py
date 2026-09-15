@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Serve site/ on the LAN. Gzips on the fly (1.3 MB -> ~780 KB) and sets a UTF-8 charset.
+"""Serve docs/ on the LAN. Gzips on the fly (1.3 MB -> ~780 KB) and sets a UTF-8 charset.
 
     python3 serve.py            # port 8080, reachable from other machines
     python3 serve.py 9000       # different port
@@ -8,7 +8,7 @@ import gzip, io, os, socket, sys
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'site')
+ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs')
 ZIPPABLE = ('text/html', 'text/css', 'application/javascript', 'application/json',
             'image/svg+xml', 'text/plain', 'text/csv')
 

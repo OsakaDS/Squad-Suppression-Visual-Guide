@@ -15,7 +15,7 @@ def wrap(src_name, out_name, DESC):
   body = open(os.path.join(HERE, src_name), encoding='utf-8').read()
   title = re.search(r'<title>(.*?)</title>', body).group(1)
   body = body.replace(f'<title>{title}</title>', '', 1).lstrip()
-  OUT = os.path.join(HERE, 'site', out_name)
+  OUT = os.path.join(HERE, 'docs', out_name)
   FAVICON = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E"
            "%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%A2%3C/text%3E%3C/svg%3E")
   doc = f"""<!doctype html>

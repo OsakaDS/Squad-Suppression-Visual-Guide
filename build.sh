@@ -13,5 +13,5 @@ python3 build_csv.py        # every weapon as a row   -> squad_all_weapons_suppr
 python3 build_page.py       # template + payload      -> suppression.html (modders page)
 python3 build_guide_payload.py  # per-kit + soldier data -> guide_payload.json
 python3 build_guide.py      # guide template + payload -> guide.html
-python3 make_site.py        # standalone documents    -> site/index.html (guide), site/modders.html
+python3 make_site.py        # standalone documents    -> docs/index.html (guide), docs/modders.html
 echo "done — serve it with: python3 serve.py"
