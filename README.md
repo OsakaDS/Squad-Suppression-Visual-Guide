@@ -34,8 +34,9 @@ the shooter. Both are wrong, and the assets say so plainly:
 - The distance that matters is **how close the round passed you**, not how far away the
   shooter was. A sniper at 600 m and a rifleman at 40 m apply identical pressure if their
   rounds pass the same distance from your head.
-- Shotguns are the hardest suppressors in the game per trigger pull, sitting on a flat
-  curve-free profile that applies full power at any distance.
+- Rifle fire alone can never blur, desaturate or dirty your screen. Every screen effect
+  except the vignette switches on above the highest suppression level a rifle can reach
+  (1.15); the heavy effects belong to marksmen, snipers and explosives.
 
 You cannot get to any of that by playing. You get to it by reading the data.
 
@@ -92,12 +93,14 @@ passing round does nothing at all. Totals accumulate and clamp at
 | LMG | 0.200 | 6.0 m | 1.25 | 7 |
 | LSW | 0.300 | 5.0 m | 1.25 | 5 |
 | SMG / pistol | 0.100 | 5.0 m | 1.15 | 12 |
-| DMR | 2.000 | 5.0 m | 2.00 | 1 |
+| Precision Rifle (DMR) | 2.000 | 5.0 m | 2.00 | 1 |
 | Sniper rifle | 3.000 | 5.0 m | 3.00 | 1 |
 | Shotgun / HMG | 0.500 | flat — no curve | 2.00 | 4 |
 
-A single sniper round passing at 1 m fills its entire ceiling. Shotguns and the KS-23
-have no curve at all, so their flat value applies at any miss distance.
+A single sniper round passing at 1 m fills its entire ceiling. Shotguns and the KS-23 have
+no curve at all — one flat value instead of a distance curve. How far out that value still
+applies, and whether it counts per pellet, is decided in the game's C++ and isn't known,
+which is why shotguns are left out of the field guide for now.
 
 ### Blast — a separate, larger model
 
@@ -109,11 +112,26 @@ rounds arriving at once, against a ceiling of 6.5 rather than 1.15.
 
 ### The receiving end
 
-Soldier-side curves work from a 0–1 **closeness ratio**. Flinch is a step function, not a
-ramp: nothing below 0.33, then 0.6, then full past 0.67. Near misses also bank
-**immunity** — 1 point past 0.33 closeness, 2 past 0.67 — and immunity reduces camera
-punch to 0.35× and weapon-alignment punch to 0.30× at 7.5 points. Stay under fire long
-enough and you shoot back nearly steady.
+The soldier blueprint's node graph was decoded in full — see `SUPPRESSION_LOGIC.md`.
+Squad's C++ hands the blueprint each round's result, including the new suppression level
+and a 0–1 **closeness ratio**, and the blueprint reacts:
+
+- **Punch.** Every round that adds suppression kicks the target's camera and weapon,
+  scaled by how close it passed, by the target's current immunity, and by the target's own
+  weapon if he is aiming down sights — times a random 0.75–1.25, in a random direction.
+  Nothing about the shooter's weapon enters the blueprint's kick calculation.
+- **Immunity** is a 0–7.5 number on the soldier under fire. It rises 1.0 per second while
+  he is "actively suppressed" — a state that lasts 1 second after each qualifying round —
+  and drains 1.0 per second otherwise. The first round of a fresh engagement kicks at full
+  strength, then grants 1.0 or 2.0 immunity at once depending on closeness. At 7.5, camera
+  location punch is 0.35×, camera rotation 0.60× and weapon alignment 0.30×; most of that
+  reduction arrives in the first two points. Immunity only reduces the kick — not the
+  suppression level, the screen effects or the sway.
+- **Flinch** has curves in the assets, but they belong to an experimental first-shot flinch
+  the developers left disabled (*"Experimental and not currently used"*). It is not live.
+- **Screen effects** key on the suppression level: vignette from 0, film grain from 1.0,
+  desaturation and colour shift from 1.4, chromatic aberration from 1.9, blur and screen
+  dirt from about 3.0, fisheye from 5.0.
 
 ---
 

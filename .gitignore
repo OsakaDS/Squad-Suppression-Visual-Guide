@@ -1,0 +1,16 @@
+# Secrets — never commit keys or credentials
+git_key
+git_key.pub
+git_ssh_key
+git_ssh_key.pub
+id_rsa*
+id_ed25519*
+*.pem
+.env
+
+# Python build artefacts
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
