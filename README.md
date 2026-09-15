@@ -214,13 +214,20 @@ files hash identically.
 | 5 | `build_gui_data.py` | `gui_data.json` — profiles, curves, soldier data |
 | 6 | `build_payload.py` | `payload.json` — the page's base payload |
 | 7 | `merge_payload.py` | `page_payload.json` — + weapons and icons |
-| 8 | `build_page.py` | `suppression.html` — data page: template + payload |
-| 9 | `build_guide_payload.py` | `guide_payload.json` — per-kit figures, soldier curves, effect thresholds, logo |
-| 10 | `build_guide.py` | `guide.html` — field guide: template + payload |
-| 11 | `make_site.py` | `site/index.html` (guide) and `site/modders.html` (data page) |
+| 8 | `build_csv.py` | `squad_all_weapons_suppression.csv` — one row per weapon, with fire mode and bolt cycle |
+| 9 | `build_page.py` | `suppression.html` — data page: template + payload |
+| 10 | `build_guide_payload.py` | `guide_payload.json` — per-kit figures, soldier curves, effect thresholds, logo |
+| 11 | `build_guide.py` | `guide.html` — field guide: template + payload |
+| 12 | `make_site.py` | `site/index.html` (guide) and `site/modders.html` (data page) |
 
 Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
-generated `.html` files — steps 8 and 10 overwrite them.
+generated `.html` files — steps 9 and 11 overwrite them.
+
+**Rate of fire** is not one number. Automatics report their cyclic rate from `TimeBetweenShots`.
+Bolt-actions inherit a meaningless 0.072 s there from the generic rifle base; their real cycle is
+`ManualBoltingCompletionTime` on the weapon's StaticInfo (SV-98 1.95 s, C14 and Timberwolf
+2.31 s), and the pipeline uses that. `Firemodes` is a list of burst lengths — `1` semi, `-1` full
+auto — which is how each weapon gets its `fire` tag.
 
 `make_site.py` exists because the page is authored as an artifact body. Serving it
 yourself needs a doctype, `<meta charset="utf-8">` and a favicon that the artifact host

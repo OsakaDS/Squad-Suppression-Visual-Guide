@@ -264,10 +264,10 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
     <p class="rule-lede">Each passing round adds its value to a running total on the target. That total is clamped at the round's ceiling. So a kit's real advantage is <em>how fast it gets someone to the ceiling</em>, and a high-ceiling kit can push a target deeper than a low-ceiling one ever can — but nobody can be suppressed past the ceiling of whatever is hitting them.</p>
     <div class="tablewrap">
       <table id="kitTable"><thead><tr>
-        <th>Kit</th><th>Weapons</th><th>Per round @1 m</th><th>Per round @2 m</th><th>Envelope</th><th>Ceiling</th><th>Rounds to pin @1 m</th><th>Typical rate</th>
+        <th>Kit</th><th>Weapons</th><th>Per round @1 m</th><th>Per round @2 m</th><th>Envelope</th><th>Ceiling</th><th>Rounds to pin @1 m</th><th>Rate</th>
       </tr></thead><tbody></tbody></table>
     </div>
-    <p class="figcap">"Rounds to pin" is the ceiling divided by the per-round value at 1 m — the number of close rounds it takes to reach the cap. A single precision-rifle or sniper round passing at 1 m pins outright. Rates are cyclic and come from the game; bolt-actions and semi-autos never reach them in practice. The full list of what is in each kit is in the armoury at the bottom of the page.</p>
+    <p class="figcap">"Rounds to pin" is the ceiling divided by the per-round value at 1 m — the number of close rounds it takes to reach the cap. A single precision-rifle or sniper round passing at 1 m pins outright. Rates are the kit's typical weapon: cyclic for automatics, and for bolt-actions the real cycle time read from the weapon's bolt animation (an SV-98 needs 1.95 s between shots). Semi-autos show their cyclic figure, which is an upper bound a player never reaches. The full list of what is in each kit is in the armoury at the bottom of the page.</p>
   </div>
 
   <!-- RULE 3 -->
@@ -338,7 +338,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
         <p class="figcap"><b>Level decay:</b> a decay rate of 0.5 exists in the assets <span class="conf read">READ</span>, but whether that is level-per-second or a fraction is <span class="conf unk">UNKNOWN</span>. If it is level-per-second, a rifle's full 1.15 is gone about 2.3 s after fire stops.</p>
       </div>
     </div>
-    <div class="callout"><b>Immunity doesn't care what is shooting at you.</b> It belongs to the soldier under fire, and builds at the same rate whether the rounds come from a pistol or an MMG <span class="conf read">READ</span>. The one kit that behaves differently is the <b>bolt-action sniper</b>: at roughly one shot every two seconds, the 1-second window lapses between shots, so the target's immunity drains in the gap and every shot lands on a fresher, less numb target. Every automatic kit fires far too often to let that happen. <span style="color:var(--ink3)">(The sniper's two-second interval is this guide's assumed practical rate, not a game value.)</span></div>
+    <div class="callout"><b>Immunity doesn't care what is shooting at you.</b> It belongs to the soldier under fire, and builds at the same rate whether the rounds come from a pistol or an MMG <span class="conf read">READ</span>. The one kit that behaves differently is the <b>bolt-action sniper</b>: the SV-98 needs 1.95 s between shots and the C14 and Timberwolf 2.31 s <span class="conf read">READ</span>, so the 1-second window lapses between shots, the target's immunity drains in the gap, and every shot lands on a fresher, less numb target. Every automatic kit fires far too often to let that happen.</div>
   </div>
 </section>
 
@@ -363,7 +363,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
         <div class="stat"><span class="k">Time to pin</span><span class="v" id="ttcRead">—<span class="u">s</span></span></div>
         <div class="stat"><span class="k">Level reached</span><span class="v" id="capRead">—</span></div>
       </div>
-      <p class="figcap" style="margin-top:14px">Rates for automatics are cyclic from the game. DMR, sniper, battle rifle and shotgun default to an assumed practical rate — change them. Mixed fire: each kit stops adding once the level passes its own ceiling <span class="conf inf">INFERRED</span>. Closeness ratio is mapped from miss distance as 1 at 1 m to 0 at 8 m, from the soldier's <code>FullSuppressionRadius</code> / <code>SuppressionRadius</code> <span class="conf inf">INFERRED</span>.</p>
+      <p class="figcap" style="margin-top:14px">Automatics use their cyclic rate and bolt-actions their real bolt cycle, both from the game <span class="conf read">READ</span>. Semi-auto kits default to an assumed 150 rpm, since a player's finger is the limit — change it. Mixed fire: each kit stops adding once the level passes its own ceiling <span class="conf inf">INFERRED</span>. Closeness ratio is mapped from miss distance as 1 at 1 m to 0 at 8 m, from the soldier's <code>FullSuppressionRadius</code> / <code>SuppressionRadius</code> <span class="conf inf">INFERRED</span>.</p>
     </div>
     <div>
       <div class="panel">
@@ -455,6 +455,7 @@ const closeness = d => Math.max(0, Math.min(1, (C.radius - d) / (C.radius - C.fu
 const firstShot = c => evalCurve(D.soldier.firstShot, c);
 const kitColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
 const curveKits = D.kits.filter(k => k.keys.length);
+const MODE={bolt:'bolt-action',semi:'semi-auto',auto:'automatic'};
 const shotgun = D.kits.find(k => k.id==='shotgun');
 
 /* ---------- state ---------- */
@@ -564,7 +565,7 @@ function kitTable(){
     tr.innerHTML=`<td class="name">${k.emblem?`<img class="emblem" src="${k.emblem}" alt="">`:''}<span class="swatch" style="display:inline-block;width:9px;height:9px;margin-right:8px;background:${kitColor(i)}"></span>${esc(k.label)}</td>
       <td class="num">${k.count}</td><td class="num">${fmt(p1)}</td><td class="num">${fmt(p2)}</td>
       <td class="num">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num">${fmt(k.ceiling,2)}</td>
-      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'—'}</td><td class="num">${k.rpm||'—'}<span style="color:var(--ink3)"> rpm</span></td>`; tb.appendChild(tr); });
+      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'—'}</td><td class="num">${k.rpm||'—'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'—'}</span></td>`; tb.appendChild(tr); });
 }
 
 /* ================= RULE 3 ================= */
@@ -673,7 +674,7 @@ function toolKits(){
   D.kits.forEach((k,i)=>{
     const row=document.createElement('div'); row.className='kitrow';
     const on=state.tool.has(k.id);
-    row.innerHTML=`<label class="kl"><input type="checkbox" ${on?'checked':''} data-kit="${k.id}" style="accent-color:var(--gold)"> ${k.emblem?`<img class="emblem" src="${k.emblem}" alt="" style="margin:0">`:''}<span class="sw" style="background:${kitColor(i)}"></span> ${esc(k.label)} <small>${k.rpmAssumed?'assumed':'cyclic'}</small></label>
+    row.innerHTML=`<label class="kl"><input type="checkbox" ${on?'checked':''} data-kit="${k.id}" style="accent-color:var(--gold)"> ${k.emblem?`<img class="emblem" src="${k.emblem}" alt="" style="margin:0">`:''}<span class="sw" style="background:${kitColor(i)}"></span> ${esc(k.label)} <small>${MODE[k.fire]||''}${k.rpmAssumed?' · assumed':''}</small></label>
       <input type="number" min="1" max="1500" step="1" value="${state.rpm[k.id]}" data-rpm="${k.id}" aria-label="${esc(k.label)} rounds per minute">`;
     box.appendChild(row);
   });
@@ -739,7 +740,7 @@ function armoury(){
   const frag=document.createDocumentFragment(); const kitLabel=Object.fromEntries(D.kits.map(k=>[k.id,k.label]));
   list.forEach(w=>{ const d=document.createElement('div'); d.className='wcard'; d.setAttribute('role','listitem');
     d.innerHTML=(w.icon&&D.icons[w.icon]?`<img src="${D.icons[w.icon]}" alt="">`:'<span></span>')+
-      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
+      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
   grid.appendChild(frag);
 }
 document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.value.trim().toLowerCase(); armoury(); });

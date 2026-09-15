@@ -36,6 +36,14 @@ for cat in CATS:
             vals = squad.suppression_values(si) if si else {}
             dn = res.get('DisplayName'); tex = res.get('HUDSelectedTexture')
             rate = wc.get('TimeBetweenShots')
+            # bolt-actions keep their real cycle time on the StaticInfo, not in WeaponConfig
+            bolt, bolt_t = None, None
+            sinfo = res.get('ItemStaticInfoClass')
+            if sinfo and sinfo[0]:
+                sres, _ = squad.merged(sinfo[0])
+                bolt = sres.get('bRequiresManualBolt', (None,))[0]
+                bolt_t = sres.get('ManualBoltingCompletionTime', (None,))[0]
+            fm = wc.get('Firemodes', (None,))[0]     # burst lengths: 1 = semi, -1 = full auto
             rows.append({
                 'cat': c,
                 'asset': gp.replace('/Game/Blueprints/Items/', ''),
@@ -46,6 +54,8 @@ for cat in CATS:
                 'override': bool(ovr and ovr[0]),
                 'override_src': (ovr[1].split('/')[-1] if (ovr and ovr[0]) else None),
                 'tbs': round(rate[0], 5) if rate else None,
+                'bolt': bool(bolt), 'bolt_time': round(bolt_t, 3) if bolt_t else None,
+                'firemodes': fm if isinstance(fm, list) else None,
                 'mv': wc.get('MuzzleVelocity', (None,))[0],
                 'moa': wc.get('MOA', (None,))[0],
                 'mag': wc.get('RoundsPerMag', (None,))[0],

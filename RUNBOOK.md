@@ -81,7 +81,7 @@ costs about 150 KB.
 ./build.sh
 ```
 
-Runs the eleven-step chain end to end in about a second and is byte-reproducible. The steps
+Runs the twelve-step chain end to end in about a second and is byte-reproducible. The steps
 and what each produces are tabulated in [README.md](README.md#reproducing-it). To run one
 stage on its own, invoke that script directly — each writes its own JSON and the next
 step picks it up.

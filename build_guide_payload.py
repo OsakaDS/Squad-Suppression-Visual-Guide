@@ -39,7 +39,12 @@ flat = {'Projectile_SuppressionHMG': {'power': 0.5, 'thr': 2.0}}
 kits = []
 for kid, label, asset, cat in KITS:
     ws = [w for w in allw if w['cat'] == cat and w['rpm']]
+    # the sniper kit is bolt-action: pick the flagship among bolt guns so the kit's rate is a real one
+    if cat == 'sniper': ws = [w for w in ws if w.get('fire') == 'bolt'] or ws
     rpms = sorted(w['rpm'] for w in ws)
+    from collections import Counter
+    modes = Counter(w.get('fire') for w in ws if w.get('fire'))
+    kit_mode = modes.most_common(1)[0][0] if modes else None
     flagship = sorted(ws, key=lambda w: (-w['variants'], len(w['name'])))[0] if ws else None
     p = prof.get(asset)
     kits.append({
@@ -53,8 +58,10 @@ for kid, label, asset, cat in KITS:
         'rpmMin': rpms[0] if rpms else None, 'rpmMax': rpms[-1] if rpms else None,
         'example': flagship['name'] if flagship else None,
         # a rate a player can actually sustain — cyclic for automatics; an assumption (labelled) for the rest
-        'rpmPractical': {'dmr': 150, 'sniper': 30, 'br': 200, 'shotgun': 60}.get(kid, flagship['rpm'] if flagship else 0),
-        'rpmAssumed': kid in ('dmr', 'sniper', 'br', 'shotgun'),
+        # bolt-actions carry a real cycle time (READ); semi-autos are player-limited, so an assumption stays for those
+        'rpmPractical': (150 if kit_mode == 'semi' else (flagship['rpm'] if flagship else 0)),
+        'rpmAssumed': kit_mode == 'semi',
+        'fire': kit_mode,
         'emblem': ALL['catIcons'].get(cat),
     })
 
@@ -109,7 +116,7 @@ def uri(size):
     return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
 # the armoury: every weapon in the eight kits, with its icon
 kit_cats = {k['cat']: k for k in kits}
-weapons = [{'name': w['name'], 'kit': kit_cats[w['cat']]['id'], 'rpm': w['rpm'], 'mv': w['mv'],
+weapons = [{'name': w['name'], 'kit': kit_cats[w['cat']]['id'], 'rpm': w['rpm'], 'fire': w.get('fire'), 'mv': w['mv'],
             'icon': w.get('iconKey'), 'variants': w['variants'], 'override': w['override']}
            for w in allw if w['cat'] in kit_cats]
 weapons.sort(key=lambda w: (w['kit'], w['name'].lower()))

@@ -44,13 +44,27 @@ for (name, profile), rs in groups.items():
     rep = sorted(rs, key=plainness)[0]
     icon = next((x['icon'] for x in sorted(rs, key=plainness) if x['icon']), None)
     cid, clabel = cat_of(profile)
-    rpms = sorted({round(60 / x['tbs']) for x in rs if x['tbs']})
+    def eff(x):
+        # a bolt-action can't fire again until the bolt montage completes; otherwise the cyclic delay rules
+        if x.get('bolt') and x.get('bolt_time'):
+            return round(60 / max(x['tbs'] or 0, x['bolt_time']))
+        return round(60 / x['tbs']) if x['tbs'] else None
+    def mode(x):
+        if x.get('bolt'): return 'bolt'
+        fm = x.get('firemodes') or []
+        if any(v == -1 for v in fm): return 'auto'
+        if fm: return 'semi'
+        return None
+    rpms = sorted({eff(x) for x in rs if eff(x)})
+    cyclic = sorted({round(60 / x['tbs']) for x in rs if x['tbs']})
     weapons.append({
         'name': name, 'cat': cid, 'catLabel': clabel, 'profile': profile,
         'folder': rep['cat'], 'asset': rep['asset'], 'icon': icon,
         'projectile': rep['projectile'], 'override': rep['override'],
         'overrideSrc': rep['override_src'],
         'rpm': rpms[0] if rpms else None, 'rpmAlt': rpms[1:] if len(rpms) > 1 else None,
+        'rpmCyclic': cyclic[0] if cyclic else None,
+        'fire': mode(rep), 'boltTime': rep.get('bolt_time'),
         'mv': round(rep['mv'] / 100) if rep['mv'] else None,
         'moa': rep['moa'], 'mag': rep['mag'], 'pen': rep['pen'],
         'power': round(rep['power'], 4) if rep['power'] is not None else None,

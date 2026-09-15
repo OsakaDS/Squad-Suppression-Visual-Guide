@@ -369,7 +369,7 @@ footer li{margin-bottom:6px; max-width:78ch}
   <p class="figcap" style="margin:0 0 12px">Follows the category filter and the search box above. Power figures are read off each weapon's own profile curve.</p>
   <div class="tablewrap tall">
     <table id="allTable"><thead><tr>
-      <th></th><th>Weapon</th><th>Category</th><th>@1 m</th><th>@2 m</th><th>Ceiling</th><th>Cyclic</th><th>Per second @1 m</th><th>Muzzle</th><th>Variants</th>
+      <th></th><th>Weapon</th><th>Category</th><th>@1 m</th><th>@2 m</th><th>Ceiling</th><th>Rate</th><th>Mode</th><th>Per second @1 m</th><th>Muzzle</th><th>Variants</th>
     </tr></thead><tbody></tbody></table>
   </div>
 </section>
@@ -486,7 +486,7 @@ function renderArmoury(){
     b.setAttribute('aria-pressed', w===state.weapon);
     const icon = w.iconKey && D.icons[w.iconKey];
     b.innerHTML = (icon ? `<img class="ico" src="${icon}" alt="">` : '<span></span>') +
-      `<span><span class="wn">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'} · ${esc(w.catLabel)}</span></span>`;
+      `<span><span class="wn">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'}${w.fire?' '+w.fire:''} · ${esc(w.catLabel)}</span></span>`;
     b.addEventListener('click', ()=>{ state.weapon=w; state.t=0; renderArmoury(); update(); });
     frag.appendChild(b);
   });
@@ -781,7 +781,7 @@ function allTable(){
       `<td class="num">${p1?fmt(p1):'—'}</td>`+
       `<td class="num">${p2?fmt(p2):'—'}</td>`+
       `<td class="num">${cap?fmt(cap,2):'—'}</td>`+
-      `<td class="num">${w.rpm||'—'}</td>`+
+      `<td class="num">${w.rpm||'—'}</td><td>${w.fire||'—'}</td>`+
       `<td class="num">${(p1&&w.rpm)?fmt(p1*w.rpm/60,2):'—'}</td>`+
       `<td class="num">${w.mv?w.mv+' m/s':'—'}</td>`+
       `<td class="num">${w.variants}</td>`;
@@ -823,9 +823,6 @@ function step(now){
 }
 
 function update(){
-  // a weapon's own profile is always on the chart, so the pick is never invisible
-  const mine=profileByAsset(state.weapon.profile);
-  if(mine) state.visible.add(mine.id);
   const {power,rpm,rate,cap,ttc}=sim();
   document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m';
   document.getElementById('dist2Read').textContent=fmt(state.dist/100,2)+' m';
