@@ -1,0 +1,831 @@
+<title>Squad Suppression Field Guide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Oswald:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#e7e8e4; --grid:#d8d9d4;
+  --panel:#f7f7f4; --inset:#ecece8;
+  --ink:#14163a; --ink2:#484b64; --ink3:#7a7d8e;
+  --rule:#cccec8; --rule-strong:#adb0aa;
+  --navy:#1b1e5e; --navy-soft:#dfe0ee;
+  --gold:#9c7a24; --gold-soft:#efe5c9;
+  --green:#2d5a2b; --green-soft:#dbe8d7;
+  --grey:#6e6e6e; --grey-soft:#e2e2e0;
+  --icon-invert:1;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --s5:#e87ba4; --s6:#008300; --s7:#4a3aa7; --s8:#e34948;
+  --shadow:0 1px 0 rgba(20,22,58,.06);
+  --fs:'Saira Stencil One','Oswald','Arial Narrow',sans-serif;
+  --fd:'Oswald','Arial Narrow','Helvetica Neue',sans-serif;
+  --fb:'Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif;
+  --fm:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#121328; --grid:#1b1c33;
+    --panel:#1b1c35; --inset:#242647;
+    --ink:#eceef6; --ink2:#b4b7ca; --ink3:#80839a;
+    --rule:#31335a; --rule-strong:#474a75;
+    --navy:#8b90e0; --navy-soft:#262a5c;
+    --gold:#d6b45c; --gold-soft:#3a3120;
+    --green:#82c27a; --green-soft:#1f3a1e;
+    --grey:#a0a0a0; --grey-soft:#2d2d3a;
+    --icon-invert:0;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+    --shadow:0 1px 0 rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#121328; --grid:#1b1c33;
+  --panel:#1b1c35; --inset:#242647;
+  --ink:#eceef6; --ink2:#b4b7ca; --ink3:#80839a;
+  --rule:#31335a; --rule-strong:#474a75;
+  --navy:#8b90e0; --navy-soft:#262a5c;
+  --gold:#d6b45c; --gold-soft:#3a3120;
+  --green:#82c27a; --green-soft:#1f3a1e;
+  --grey:#a0a0a0; --grey-soft:#2d2d3a;
+  --icon-invert:0;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --s5:#d55181; --s6:#008300; --s7:#9085e9; --s8:#e66767;
+  --shadow:0 1px 0 rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--fb); font-size:16px; line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:28px 28px}
+.wrap{max-width:1120px; margin:0 auto; padding:0 20px 72px}
+a{color:var(--gold)}
+code{font-family:var(--fm); font-size:.88em; background:var(--inset); padding:1px 4px; border:1px solid var(--rule)}
+
+/* ---------- masthead ---------- */
+header.mast{display:grid; grid-template-columns:auto minmax(0,1fr); gap:32px; align-items:center;
+  padding:40px 0 26px; border-bottom:3px solid var(--navy)}
+header.mast img{width:170px; height:170px}
+.kicker{font-family:var(--fm); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin:0 0 8px}
+h1{font-family:var(--fs); font-weight:400; font-size:clamp(34px,5.4vw,58px); line-height:1; margin:0 0 12px;
+   letter-spacing:.02em; text-transform:uppercase; color:var(--navy); text-wrap:balance}
+.dek{max-width:64ch; font-size:18px; color:var(--ink2); margin:0}
+.dek b{color:var(--ink); font-weight:600}
+.byline{font-family:var(--fm); font-size:12px; letter-spacing:.06em; color:var(--ink3); margin:14px 0 0}
+.byline b{color:var(--ink2); font-weight:500}
+@media (max-width:700px){ header.mast{grid-template-columns:1fr; gap:18px} header.mast img{width:120px;height:120px} }
+
+/* confidence labels — the one visual convention the whole page runs on */
+.legend{display:flex; flex-wrap:wrap; gap:10px 22px; margin:18px 0 0; font-size:13.5px; color:var(--ink2); align-items:center}
+.conf{display:inline-block; font-family:var(--fm); font-size:10px; letter-spacing:.12em; padding:2px 6px; border:1px solid; vertical-align:2px; white-space:nowrap}
+.conf.read{color:var(--green); border-color:var(--green); background:var(--green-soft)}
+.conf.inf{color:var(--gold); border-color:var(--gold); background:var(--gold-soft)}
+.conf.unk{color:var(--grey); border-color:var(--grey); background:var(--grey-soft)}
+
+/* ---------- sections ---------- */
+.sec{border-bottom:1px solid var(--rule); padding:34px 0 40px}
+.sec:last-of-type{border-bottom:none}
+.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px}
+.sec-num{font-family:var(--fs); font-size:15px; color:var(--gold); letter-spacing:.08em; flex:none}
+h2{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spacing:.04em; font-size:clamp(21px,2.6vw,27px); margin:0; line-height:1.15; color:var(--navy)}
+.sec-sub{max-width:70ch; color:var(--ink2); margin:8px 0 22px; font-size:16px}
+h3{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spacing:.07em; font-size:14px; color:var(--ink2); margin:0 0 12px}
+.rule{margin:0 0 30px}
+.rule:last-child{margin-bottom:0}
+.rule-title{font-family:var(--fd); font-size:22px; font-weight:500; margin:0 0 6px; color:var(--ink)}
+.rule-title .n{color:var(--gold); font-family:var(--fs); font-size:18px; margin-right:10px}
+.rule-lede{max-width:70ch; color:var(--ink2); margin:0 0 16px}
+
+.panel{background:var(--panel); border:1px solid var(--rule); padding:20px; box-shadow:var(--shadow)}
+.grid2{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:18px; align-items:start}
+.grid-eq{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:start}
+.grid-tool{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:18px; align-items:start}
+@media (max-width:820px){ .grid2,.grid-tool{grid-template-columns:1fr} }
+
+.callout{border-left:4px solid var(--gold); background:var(--gold-soft); padding:14px 18px; margin:18px 0 0; font-size:15.5px; max-width:78ch}
+.callout b{font-weight:600}
+.figcap{font-size:13.5px; color:var(--ink2); margin:10px 0 0; max-width:68ch}
+.figcap b{color:var(--ink); font-weight:600}
+
+/* ---------- controls ---------- */
+.ctl{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+.ctl label{font-family:var(--fm); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3)}
+.readout{font-family:var(--fm); font-variant-numeric:tabular-nums; color:var(--ink)}
+input[type=range]{width:100%; accent-color:var(--gold); margin:2px 0}
+input[type=number]{font-family:var(--fm); font-size:13px; width:74px; padding:4px 6px; background:var(--inset); color:var(--ink); border:1px solid var(--rule-strong); border-radius:0}
+:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px}
+.chip{display:inline-flex; align-items:center; gap:7px; font-family:var(--fm); font-size:11.5px; letter-spacing:.02em;
+  padding:5px 9px 5px 7px; border:1px solid var(--rule-strong); background:transparent; color:var(--ink3); cursor:pointer; line-height:1.2}
+.chip .sw{width:11px; height:11px; flex:none; background:currentColor; opacity:.35; color:var(--c)}
+.chip[aria-pressed="true"]{color:var(--ink); background:var(--inset); border-color:var(--ink3)}
+.chip[aria-pressed="true"] .sw{opacity:1}
+.chip.flat .sw{background:repeating-linear-gradient(90deg,currentColor 0 3px,transparent 3px 5px)}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:16px}
+.stat{background:var(--panel); padding:11px 13px}
+.stat .k{font-family:var(--fm); font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink3); display:block}
+.stat .v{font-family:var(--fd); font-weight:500; font-size:26px; line-height:1.15; font-variant-numeric:tabular-nums; display:block; margin-top:2px}
+.stat .u{font-family:var(--fm); font-size:11px; color:var(--ink3); margin-left:3px}
+.stat.hot .v{color:var(--gold)}
+
+/* ---------- tables ---------- */
+.tablewrap{overflow-x:auto; border:1px solid var(--rule); background:var(--panel)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:520px}
+th,td{text-align:right; padding:8px 11px; border-bottom:1px solid var(--rule); white-space:nowrap}
+th{font-family:var(--fm); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink3); font-weight:400; border-bottom:1px solid var(--rule-strong); vertical-align:bottom}
+td:first-child,th:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-family:var(--fm); font-variant-numeric:tabular-nums}
+td.name{font-weight:600}
+.readrows{min-width:0; width:100%; table-layout:fixed; margin-top:16px; font-size:13.5px}
+.readrows th{padding:0 0 6px 8px; background:transparent; white-space:normal; line-height:1.25; vertical-align:bottom}
+.readrows td{padding:6px 0 6px 8px; border-bottom:1px solid var(--rule); font-family:var(--fm); font-variant-numeric:tabular-nums; white-space:nowrap; vertical-align:top}
+.readrows th:first-child, .readrows td:first-child{padding-left:0; white-space:normal; font-family:var(--fb); line-height:1.3}
+.readrows th:first-child{font-family:var(--fm)}
+.readrows .kitcell{display:flex; align-items:baseline; gap:7px}
+.readrows .swatch{display:inline-block; flex:none; width:9px; height:9px}
+#readRows col.c1{width:50%} #readRows col.c2{width:24%} #readRows col.c3{width:26%}
+.readrows.bump col.c1{width:56%} .readrows.bump col.c2{width:44%}
+.readrows .none{color:var(--ink3); font-family:var(--fb); text-align:left; padding:12px 0}
+
+/* ---------- Q&A cards ---------- */
+.qa{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.q{background:var(--panel); padding:18px 20px 20px}
+.q h4{font-family:var(--fd); font-weight:500; font-size:19px; margin:0 0 10px; color:var(--navy); line-height:1.2}
+.q .rule-line{font-size:15.5px; margin:0 0 8px}
+.q .rule-line b{font-weight:600}
+.q .num{font-family:var(--fm); font-size:12.5px; color:var(--ink2); margin:0 0 10px; line-height:1.6}
+.q .do{border-top:1px solid var(--rule); padding-top:10px; margin:0; font-size:14.5px; color:var(--ink2)}
+.q .do b{color:var(--ink); font-weight:600}
+
+/* ---------- effects ladder ---------- */
+.ladder-note{font-size:13.5px; color:var(--ink2); margin:8px 0 0}
+.fx-list{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:6px}
+.fx-list li{display:grid; grid-template-columns:150px minmax(0,1fr) 88px; gap:10px; align-items:center; font-size:14px}
+.fx-list .bar{height:10px; background:var(--inset); border:1px solid var(--rule); position:relative}
+.fx-list .bar i{position:absolute; top:0; bottom:0; left:0; background:var(--gold); display:block}
+.fx-list .st{font-family:var(--fm); font-size:11px; letter-spacing:.05em; text-align:right; color:var(--ink2)}
+.fx-list .st.full{color:var(--gold); font-weight:500}
+.fx-list .st.no{color:var(--ink3)}
+
+.emblem{width:22px; height:22px; object-fit:contain; vertical-align:middle; margin-right:8px; filter:invert(var(--icon-invert))}
+.cattiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(122px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:18px}
+.cattile{background:var(--panel); border:none; padding:14px 10px 12px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center; color:var(--ink2)}
+.cattile img{width:38px; height:38px; object-fit:contain; opacity:.55; filter:invert(var(--icon-invert))}
+.cattile .cl{font-family:var(--fd); font-size:13px; text-transform:uppercase; letter-spacing:.05em; line-height:1.1}
+.cattile .cc{font-family:var(--fm); font-size:10.5px; color:var(--ink3)}
+.cattile:hover{background:var(--inset)}
+.cattile[aria-pressed="true"]{background:var(--inset); color:var(--ink); box-shadow:inset 0 -3px 0 var(--gold)}
+.cattile[aria-pressed="true"] img{opacity:1}
+.pickbar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:14px}
+.pickbar input[type=search]{flex:1 1 220px; font-family:var(--fb); font-size:15px; padding:8px 10px; background:var(--inset); color:var(--ink); border:1px solid var(--rule-strong); border-radius:0}
+.pickbar .count{font-family:var(--fm); font-size:11.5px; color:var(--ink3); letter-spacing:.05em}
+.wgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(212px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); max-height:460px; overflow-y:auto}
+.wcard{background:var(--panel); padding:10px 12px; display:grid; grid-template-columns:60px minmax(0,1fr); gap:10px; align-items:center}
+.wcard img{width:60px; height:26px; object-fit:contain; object-position:left center; opacity:.8; filter:invert(var(--icon-invert))}
+.wcard .wn{font-size:13.5px; line-height:1.25; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.wcard .wm{font-family:var(--fm); font-size:10.5px; color:var(--ink3); letter-spacing:.03em}
+.empty{padding:26px; color:var(--ink3); font-family:var(--fm); font-size:13px}
+.hint{font-size:13px; color:var(--ink3); margin:-10px 0 16px; line-height:1.4}
+.readrows.bump{margin:0 0 14px}
+.readrows.bump th:last-child, .readrows.bump td:last-child{text-align:right}
+.readrows.bump tr.on td{color:var(--ink); font-weight:600}
+.readrows.bump tr.on td:first-child{box-shadow:inset 3px 0 0 var(--gold); padding-left:9px}
+.readrows.bump tr:not(.on) td{color:var(--ink3)}
+.twoclocks{border:1px solid var(--navy); background:var(--panel); padding:18px 20px 20px; margin:0 0 30px; box-shadow:var(--shadow)}
+.twoclocks h3{color:var(--navy); margin-bottom:10px}
+.clocks{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:0 0 16px}
+.clock{background:var(--panel); padding:14px 16px}
+.clock .cn{font-family:var(--fd); font-size:19px; text-transform:uppercase; letter-spacing:.05em; margin:0 0 6px}
+.clock.p .cn{color:var(--gold)} .clock.i .cn{color:var(--navy)}
+.clock p{margin:0 0 6px; font-size:14.5px; color:var(--ink2)}
+.clock p b{color:var(--ink); font-weight:600}
+.contrast{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; margin-top:14px}
+.contrast .who{font-family:var(--fd); font-size:15px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink2); margin:0 0 8px}
+.btn{font-family:var(--fm); font-size:12px; letter-spacing:.09em; text-transform:uppercase; padding:8px 16px;
+  border:1px solid var(--navy); background:var(--navy); color:var(--panel); cursor:pointer; border-radius:0}
+.btn:hover{background:var(--gold); border-color:var(--gold)}
+.kitrows{display:grid; gap:6px; margin-bottom:14px}
+.kitrow{display:grid; grid-template-columns:minmax(0,1fr) 84px; gap:10px; align-items:center; font-size:13.5px}
+.kitrow .kl{display:flex; align-items:center; gap:8px}
+.kitrow .kl .sw{width:10px; height:10px}
+.kitrow small{font-family:var(--fm); font-size:10.5px; color:var(--ink3); letter-spacing:.03em}
+
+svg{display:block; max-width:100%}
+.tick{font-family:var(--fm); font-size:10px; fill:var(--ink3)}
+.axlab{font-family:var(--fm); font-size:10.5px; letter-spacing:.08em; fill:var(--ink3); text-transform:uppercase}
+.dlab{font-family:var(--fm); font-size:11px; font-weight:500}
+
+footer{border-top:3px solid var(--navy); padding-top:20px; margin-top:8px; font-size:14px; color:var(--ink2)}
+footer h3{margin-bottom:8px}
+footer p{max-width:78ch; margin:0 0 10px}
+footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <img id="logo" alt="29th Infantry Division">
+  <div>
+    <p class="kicker">29th Infantry Division · Squad <span id="ver">v10.5.3</span></p>
+    <h1>Suppression<br>A Field Guide</h1>
+    <p class="kicker" style="margin-top:-6px">Version 2 · draft for comparison</p>
+    <p class="dek">What a round passing your head actually does in Squad, how fast it pins you, and how to use that against people who haven't read this. Every number was taken from the game's own files — <b>not measured, not guessed, not copied from a wiki</b>.</p>
+    <p class="byline">by <b id="author">Osaka [29th ID]</b></p>
+    <div class="legend">
+      <span><span class="conf read">READ</span> taken straight from the game assets</span>
+      <span><span class="conf inf">INFERRED</span> follows from names and structure; the code is in compiled C++</span>
+      <span><span class="conf unk">UNKNOWN</span> not settled without the source or in-game testing</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 HOW IT WORKS ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">01</span><h2>How it works — four rules</h2></div>
+  <p class="sec-sub">Squad does not keep a suppression stat on the gun. It keeps one on the <em>round</em>: a profile shared by every weapon of that kit, a curve keyed on how close the round passed you, and a ceiling on how much pressure can stack. Everything else follows from those three things.</p>
+
+  <div class="twoclocks">
+    <h3>Two clocks run on the target — the kit sets one of them, and has no say in the other <span class="conf read">READ</span></h3>
+    <div class="clocks">
+      <div class="clock p"><p class="cn">Pressure</p>
+        <p><b>How suppressed they are right now.</b> Drives what they see — vignette, desaturation, blur — and how much their weapon sways.</p>
+        <p>Each round adds the kit's power at that miss distance, up to the kit's ceiling. <b>The kit controls this completely:</b> how much per round, how high it can go, how fast it climbs.</p></div>
+      <div class="clock i"><p class="cn">Immunity</p>
+        <p><b>How numb they've become.</b> Shrinks only the <em>kick</em> — the camera jolt and weapon drift of each round that follows.</p>
+        <p>Not added per round. A clock: +1.0 per second while any round has passed in the last second, −1.0 per second otherwise, capped at 7.5 for everyone. <b>The kit has no say</b> — except that a slow bolt-action lets the second lapse between shots.</p></div>
+    </div>
+    <p class="figcap" style="max-width:none"><b>The kick of a single round does not depend on what fired it.</b> A rifle round and a sniper round passing at the same distance jolt the camera identically. Kits differ in how many kicks arrive and how much pressure builds behind them — which is what the contrast below shows.</p>
+    <div class="contrast">
+      <div><p class="who">Under an M4 · 833 rpm · rounds at 2 m</p><svg id="cmpA" viewBox="0 0 360 300" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an M4"></svg></div>
+      <div><p class="who">Under an SV-98 · 31 rpm · rounds at 2 m</p><svg id="cmpB" viewBox="0 0 360 300" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an SV-98"></svg></div>
+    </div>
+    <p class="figcap" style="max-width:none">Five seconds each. The M4 pins its target in under a second and then sits at the rifle ceiling of 1.15 — vignette and sway, nothing worse — while seventy fading kicks build the target's immunity to the maximum. The SV-98's first round alone puts pressure at 3.0, where blur begins, and with two seconds between shots the target's immunity never builds: every round kicks at close to full strength. <b>The kit chooses what state the target is in; immunity chooses how much your follow-up rounds still rattle them.</b></p>
+  </div>
+
+  <!-- RULE 1 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 1</span>Pressure: it's how close the round passes, not how far away the shooter is <span class="conf read">READ</span></p>
+    <p class="rule-lede">The only input is the perpendicular distance between the bullet's path and your body. A sniper at 600 m and a rifleman at 40 m apply identical pressure if their rounds pass at the same distance from your head. Every kit's curve is dead by 5–7 m; outside that, a passing round does nothing.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Miss distance</h3>
+        <svg id="passby" viewBox="0 0 280 240" role="img" aria-label="Top-down view of a round passing a soldier at the selected miss distance"></svg>
+        <div class="ctl" style="margin:16px 0 0">
+          <label for="dist">Round passes at <span class="readout" id="distRead">1.50 m</span></label>
+          <input type="range" id="dist" min="0" max="800" step="5" value="150" aria-label="Miss distance">
+        </div>
+        <table class="readrows" id="readRows"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Kit</th><th>Per round</th><th>Rounds to pin</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="panel">
+        <h3>Pressure added per round, by kit</h3>
+        <div class="chips" id="kitChips" role="group" aria-label="Kits to plot"></div>
+        <svg id="curveChart" viewBox="0 0 720 380" role="img" aria-label="Suppression added per round against miss distance, by kit"></svg>
+        <p class="figcap"><b>The differences between kits live inside the first two metres.</b> By 3 m a battle rifle and an assault rifle are nearly the same round; by 5 m they are both nothing. The y-scale rescales when you add the DMR or sniper curves, which open an order of magnitude above the rest.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 2 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 2</span>Pressure stacks, then stops — at the kit's ceiling <span class="conf read">READ</span></p>
+    <p class="rule-lede">Each passing round adds its value to a running total on the target. That total is clamped at the round's ceiling. So a kit's real advantage is <em>how fast it gets someone to the ceiling</em>, and a high-ceiling kit can push a target deeper than a low-ceiling one ever can — but nobody can be suppressed past the ceiling of whatever is hitting them.</p>
+    <div class="tablewrap">
+      <table id="kitTable"><thead><tr>
+        <th>Kit</th><th>Weapons</th><th>Per round @1 m</th><th>Per round @2 m</th><th>Envelope</th><th>Ceiling</th><th>Rounds to pressure ceiling @1 m</th><th>Rate</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+    <p class="figcap">"Rounds to pressure ceiling" is the kit's ceiling divided by its per-round value at 1 m — the number of close rounds it takes to reach the cap. A single precision-rifle or sniper round passing at 1 m pins outright. Rates are the kit's typical weapon: cyclic for automatics, and for bolt-actions the real cycle time read from the weapon's bolt animation (an SV-98 needs 1.95 s between shots). Semi-autos show their cyclic figure, which is an upper bound a player never reaches. The full list of what is in each kit is in the armoury at the bottom of the page.</p>
+  </div>
+
+  <!-- RULE 3 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 3</span>What it does to you: a kick, a wobble, and a shrinking view</p>
+    <p class="rule-lede">Three separate things happen. The wobble and the shrinking view are <b>pressure</b> — the kit's doing. The kick is per round and shrinks with <b>immunity</b> — the target's doing. <b>The size of a single kick doesn't depend on what fired the round</b>: it is closeness × the target's numbness × the target's own weapon if aiming down sights.</p>
+
+    <div class="grid-eq">
+      <div class="panel">
+        <h3>The kick — camera and weapon punch <span class="conf read">READ</span></h3>
+        <svg id="closeChart" viewBox="0 0 340 250" role="img" aria-label="Punch multiplier against closeness ratio"></svg>
+        <p class="figcap"><b>Half the kick arrives by closeness 0.1.</b> Anything inside the envelope throws your view; the last stretch to a near-clip adds the rest. Weapon alignment ramps more slowly — and in a random direction every time.</p>
+      </div>
+      <div class="panel">
+        <h3>…which fades as you get numb <span class="conf read">READ</span></h3>
+        <svg id="immChart" viewBox="0 0 340 250" role="img" aria-label="Punch multiplier against immunity"></svg>
+        <p class="figcap"><b>Immunity climbs 1.0 per second under fire</b>, to 7.5. At the top, camera location punch is 0.35× and weapon alignment 0.30×. Weapon alignment starts at 0.70 — even a fresh first round only ever throws your gun 70 % of full.</p>
+      </div>
+      <div class="panel">
+        <h3>The wobble — extra sway <span class="conf read">READ</span> <span class="conf inf">INFERRED use</span></h3>
+        <svg id="swayChart" viewBox="0 0 340 250" role="img" aria-label="Additional sway against suppression"></svg>
+        <p class="figcap"><b>Half the extra sway is already there at level 0.1.</b> Even light suppression costs most of the sway penalty; the curve saturates at 1.0, which every kit can reach. The curve is read from the assets; how the game applies it is C++.</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:18px">
+      <h3>The shrinking view — screen effects and the level that switches each one on <span class="conf read">READ</span></h3>
+      <div class="grid2">
+        <div>
+          <svg id="ladder" viewBox="0 0 340 300" role="img" aria-label="Kit ceilings against the suppression level"></svg>
+          <p class="ladder-note">This is the <b>pressure</b> scale. Kit ceilings drawn on it; a kit can never push a target above its own line. Immunity is a separate 0–7.5 number and does not appear here.</p>
+        </div>
+        <div>
+          <ul class="fx-list" id="fxList"></ul>
+          <p class="ladder-note">Bars show the level range each effect fades in over. Vignette is always on and simply gets stronger.</p>
+        </div>
+      </div>
+      <div class="callout"><b>Rifle fire alone will never blur, desaturate or dirty your screen.</b> Rifles, SMGs and battle rifles cap at 1.15, and every effect except the vignette starts above that. What they <em>will</em> do is kick your aim on every round and shrink your view — and they do most of that damage in the first second. The "can't see anything" state belongs to machine guns at the margin, marksmen, snipers, and above all to explosives.</div>
+    </div>
+
+    <p class="figcap" style="margin-top:16px"><b>Aiming down an optic roughly halves the camera kick</b> on 65 weapons (camera location ×0.4, sideways kick disabled). Belt-fed machine guns are the steadiest platforms under fire by design: in ADS their camera rotation punch is ×0.2. <span class="conf read">READ</span> from each weapon's data; the default for weapons that don't set it is <span class="conf unk">UNKNOWN</span>.</p>
+  </div>
+
+  <!-- RULE 4 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 4</span>The two clocks run in opposite directions</p>
+    <p class="rule-lede">Both climb while you're under fire — pressure hurts you, immunity protects you. <b>Immunity doesn't care what is shooting at you</b>: it builds at the same 1.0 per second under a pistol as under an MMG, the one exception being a bolt-action slow enough to let the 1-second window lapse between shots. Immunity is fully known; how pressure decays is not.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Immunity over an engagement <span class="conf read">READ</span></h3>
+        <div class="ctl"><label for="fireFor">Under fire for <span class="readout" id="fireForRead">6.0 s</span></label><input type="range" id="fireFor" min="1" max="12" step="0.5" value="6"></div>
+        <p class="hint">An unbroken stream of rounds passing within range — no gap between rounds longer than 1 second.</p>
+        <div class="ctl"><label for="firstDist">Rounds pass at <span class="readout" id="firstDistRead">2.40 m</span></label><input type="range" id="firstDist" min="0" max="800" step="10" value="240" aria-label="Miss distance of the rounds"></div>
+        <p class="hint" id="firstDistNote"></p>
+        <table class="readrows bump" aria-label="Immunity granted by the first round, by miss distance">
+          <colgroup><col class="c1"><col class="c2"></colgroup>
+          <thead><tr><th>First round passes</th><th>Immunity granted at once</th></tr></thead>
+          <tbody>
+            <tr data-bump="2"><td>within 3.3 m</td><td>+2.0</td></tr>
+            <tr data-bump="1"><td>3.3 – 5.7 m</td><td>+1.0</td></tr>
+            <tr data-bump="0"><td>beyond 5.7 m</td><td>none</td></tr>
+          </tbody>
+        </table>
+        <p class="figcap">The first round of an engagement always hits at full strength — it lands <em>before</em> any immunity is granted. The bump then softens the rest of that burst. Immunity rises 1.0 per second while rounds keep coming, holds for 1 second after the last one, then drains at 1.0 per second. The metre bands assume closeness runs from full at 1 m to zero at 8 m <span class="conf inf">INFERRED</span>; the bump values themselves are <span class="conf read">READ</span>.</p>
+      </div>
+      <div class="panel">
+        <svg id="timeline" viewBox="0 0 720 300" role="img" aria-label="Immunity over time through an engagement"></svg>
+        <p class="figcap"><b>Level decay:</b> a decay rate of 0.5 exists in the assets <span class="conf read">READ</span>, but whether that is level-per-second or a fraction is <span class="conf unk">UNKNOWN</span>. If it is level-per-second, a rifle's full 1.15 is gone about 2.3 s after fire stops.</p>
+      </div>
+    </div>
+    <div class="callout"><b>Bolt-actions keep their kick.</b> The SV-98 needs 1.95 s between shots and the C14 and Timberwolf 2.31 s <span class="conf read">READ</span>, so the 1-second window lapses between shots, the target's immunity drains in the gap, and every shot lands on a fresher, less numb target. Every automatic kit fires far too often for that. <b>One thing the files don't settle:</b> the blueprint only counts a round that <em>added</em> pressure, so whether rounds arriving at a target already at the ceiling still keep the window open — and immunity climbing — is decided in C++ <span class="conf unk">UNKNOWN</span>.</div>
+  </div>
+</section>
+
+<!-- ============ 02 USING IT ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Using it</h2></div>
+  <p class="sec-sub">Five questions a fireteam leader actually asks, each answered as the rule, the number behind it, and what to do about it.</p>
+  <div class="qa" id="qa"></div>
+</section>
+
+<!-- ============ 03 THE TOOL ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Your fireteam against a target</h2></div>
+  <p class="sec-sub">Tick the kits firing, set how close the rounds pass, and read off how fast the target is pinned, how hard each round kicks as they go numb, and exactly which effects they will and won't see.</p>
+  <div class="grid-tool">
+    <div class="panel">
+      <h3>Who is firing</h3>
+      <div class="kitrows" id="toolKits"></div>
+      <div class="ctl"><label for="dist2">Rounds pass at <span class="readout" id="dist2Read">1.50 m</span></label><input type="range" id="dist2" min="0" max="800" step="5" value="150"></div>
+      <div class="stats">
+        <div class="stat hot"><span class="k">Build rate</span><span class="v" id="rateRead">—<span class="u">/s</span></span></div>
+        <div class="stat"><span class="k">Time to pin</span><span class="v" id="ttcRead">—<span class="u">s</span></span></div>
+        <div class="stat"><span class="k">Level reached</span><span class="v" id="capRead">—</span></div>
+      </div>
+      <p class="figcap" style="margin-top:14px">Automatics use their cyclic rate and bolt-actions their real bolt cycle, both from the game <span class="conf read">READ</span>. Semi-auto kits default to an assumed 150 rpm, since a player's finger is the limit — change it. Mixed fire: each kit stops adding once the level passes its own ceiling <span class="conf inf">INFERRED</span>. Closeness ratio is mapped from miss distance as 1 at 1 m to 0 at 8 m, from the soldier's <code>FullSuppressionRadius</code> / <code>SuppressionRadius</code> <span class="conf inf">INFERRED</span>.</p>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>Level building against the ceilings</h3>
+        <svg id="buildChart" viewBox="0 0 720 260" role="img" aria-label="Suppression level over time against kit ceilings"></svg>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <h3>How hard each round kicks across the burst — and the immunity that shrinks it</h3>
+        <svg id="punchChart" viewBox="0 0 720 260" role="img" aria-label="Punch multiplier and immunity over time under sustained fire"></svg>
+        <p class="figcap">Kick = closeness × immunity curve, with the first-shot bump; the dashed navy line is the target's immunity on its own 0–7.5 scale (right). It follows the fastest kit selected: an automatic keeps the 1-second window open, a bolt-action lets it lapse and immunity saw-tooths. The random 0.75–1.25 per-round factor and ADS multipliers are not applied.</p>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <h3>What the target sees at the level reached</h3>
+        <ul class="fx-list" id="toolFx"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 EXPLOSIVES ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Why one grenade beats a magazine</h2></div>
+  <p class="sec-sub">Explosives don't use the passby rules at all. They suppress radially on detonation, with their own power, their own curve and their own — much higher — ceiling. <span class="conf read">READ</span></p>
+  <div class="grid2">
+    <div class="panel">
+      <svg id="blastChart" viewBox="0 0 400 300" role="img" aria-label="Inner and outer suppression radius for explosive sources"></svg>
+    </div>
+    <div class="panel">
+      <div class="tablewrap"><table id="blastTable"><thead><tr><th>Source</th><th>Power</th><th>Full to</th><th>Zero at</th><th>Ceiling</th></tr></thead><tbody></tbody></table></div>
+      <p class="figcap"><b>5.5 from a hand grenade at 6 m</b> against 0.125 from a rifle round at 1 m — some forty rifle rounds arriving at once, against a ceiling of 6.5 rather than 1.15. A grenade is the only infantry-carried thing that reaches the fisheye effect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 ARMOURY ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The armoury — what is in each kit</h2></div>
+  <p class="sec-sub">Every weapon in the eight kits, sorted by the suppression profile its rounds carry — not by what it looks like. Icons are the game's own inventory art.</p>
+  <div class="cattiles" id="cattiles" role="group" aria-label="Kits"></div>
+  <div class="panel">
+    <div class="pickbar">
+      <input type="search" id="search" placeholder="Search — try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
+      <span class="count" id="wcount"></span>
+    </div>
+    <div class="wgrid" id="wgrid" role="list" aria-label="Weapons"></div>
+  </div>
+</section>
+
+<footer>
+  <img class="logo" id="logoFoot" alt="">
+  <h3>Where these numbers come from</h3>
+  <p>Every value on this page was read out of the Squad <span id="ver2">v10.5.3</span> Mod SDK asset files — the weapon and projectile blueprints, the suppression profile assets and their curves, and the soldier blueprint's node graph, which was decoded to recover the punch and immunity logic. Nothing was measured in-game. What the game's compiled C++ does with those values — the level maths, the miss-distance test, the decay — is labelled <span class="conf inf">INFERRED</span> or <span class="conf unk">UNKNOWN</span> throughout; the labels are the point. If you test any of it on a server, it can be confirmed.</p>
+  <p>The asset wiring behind each weapon — which projectile it fires, which profile that carries, and where a weapon overrides it — lives on the <a href="modders.html">data page</a>. The decoded logic itself is documented in the project's <code>SUPPRESSION_LOGIC.md</code>.</p>
+  <p class="byline">Guide by <b>Osaka [29th ID]</b> · data as of Squad <span id="ver3">v10.5.3</span> · the values will change; check the version</p>
+</footer>
+</div>
+
+<script id="payload" type="application/json">__PAYLOAD__</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById('payload').textContent);
+const SERIES = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => { const n=document.createElementNS(NS, tag); for(const k in attrs) n.setAttribute(k, attrs[k]); if(parent) parent.appendChild(n); return n; };
+const clear = s => { while(s.firstChild) s.removeChild(s.firstChild); };
+const fmt = (v,d=3) => Number(v).toFixed(d);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const C = D.soldier.const;
+
+/* ---------- curves ---------- */
+function evalCurve(keys, x){
+  if(!keys || !keys.length) return 0;
+  if(x <= keys[0].x) return keys[0].y;
+  if(x >= keys[keys.length-1].x) return keys[keys.length-1].y;
+  for(let i=0;i<keys.length-1;i++){
+    const a=keys[i], b=keys[i+1]; if(x<a.x||x>b.x) continue;
+    const diff=b.x-a.x; if(diff<=0) return b.y; const t=(x-a.x)/diff;
+    if(a.i==='Constant') return a.y; if(a.i==='Linear') return a.y+t*(b.y-a.y);
+    const p0=a.y,p3=b.y,p1=p0+a.l*diff/3,p2=p3-b.a*diff/3,u=1-t;
+    return u*u*u*p0+3*u*u*t*p1+3*u*t*t*p2+t*t*t*p3;
+  }
+  return 0;
+}
+const kitPower = (k, d) => k.keys.length ? evalCurve(k.keys, d) : (k.flatPower||0);
+const envelope = k => k.keys.length ? k.keys[k.keys.length-1].x : null;
+const closeness = d => Math.max(0, Math.min(1, (C.radius - d) / (C.radius - C.fullRadius)));
+const firstShot = c => evalCurve(D.soldier.firstShot, c);
+const kitColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
+const curveKits = D.kits.filter(k => k.keys.length);
+const MODE={bolt:'bolt-action',semi:'semi-auto',auto:'automatic'};
+const shotgun = D.kits.find(k => k.id==='shotgun');
+
+/* ---------- state ---------- */
+const state = {
+  dist: 150,
+  visible: new Set(['rifle','br','mmg','dmr']),
+  tool: new Set(['rifle','rifle2'].slice(0,1)),
+  rpm: Object.fromEntries(D.kits.map(k => [k.id, k.rpmPractical || k.rpm || 0])),
+  fireFor: 6, firstDist: 240,
+};
+state.tool = new Set(['rifle']);
+
+/* ---------- generic line chart ---------- */
+function lineChart(svg, cfg){
+  clear(svg);
+  // a y-axis title sits above the plot, so reserve headroom for it rather than letting it run off the left edge
+  const W=cfg.w, H=cfg.h, mL=cfg.mL||48, mR=cfg.mR||16, mT=Math.max(cfg.mT||14, cfg.yLabel?30:14), mB=cfg.mB||40, iw=W-mL-mR, ih=H-mT-mB;
+  const X=v=>mL+(v/cfg.xMax)*iw, Y=v=>mT+ih-(v/cfg.yMax)*ih;
+  const xt = cfg.xTicks || 4, yt = cfg.yTicks || 4;
+  for(let s=0;s<=xt;s++){ const v=cfg.xMax*s/xt, x=X(v);
+    el('line',{x1:x,y1:mT,x2:x,y2:mT+ih,stroke:css('--rule'),'stroke-width':1},svg);
+    el('text',{x:x,y:mT+ih+16,'text-anchor':'middle',class:'tick'},svg).textContent=cfg.xFmt?cfg.xFmt(v):v; }
+  for(let s=0;s<=yt;s++){ const v=cfg.yMax*s/yt, y=Y(v);
+    el('line',{x1:mL,y1:y,x2:mL+iw,y2:y,stroke:s===0?css('--rule-strong'):css('--rule'),'stroke-width':1},svg);
+    el('text',{x:mL-8,y:y+3.5,'text-anchor':'end',class:'tick'},svg).textContent=cfg.yFmt?cfg.yFmt(v):v; }
+  (cfg.hlines||[]).forEach(h=>{ el('line',{x1:mL,y1:Y(h.y),x2:mL+iw,y2:Y(h.y),stroke:h.color||css('--ink2'),'stroke-width':1.5,'stroke-dasharray':'5 4'},svg);
+    if(h.label) el('text',{x:mL+iw-4,y:Y(h.y)-5,'text-anchor':'end',class:'dlab',fill:h.color||css('--ink2')},svg).textContent=h.label; });
+  const placed=[];
+  cfg.series.forEach(s=>{
+    let d=''; const step = cfg.step||2;
+    for(let px=0;px<=iw;px+=step){ const xv=(px/iw)*cfg.xMax; const yv=Math.min(cfg.yMax, s.f(xv));
+      d+=(px===0?'M':'L')+X(xv).toFixed(1)+' '+Y(yv).toFixed(1)+' '; }
+    el('path',{d:d,fill:'none',stroke:s.color,'stroke-width':s.width||2,'stroke-linejoin':'round','stroke-linecap':'round',
+       'stroke-dasharray':s.dash||'none',opacity:s.opacity==null?1:s.opacity},svg);
+    (s.dots||[]).forEach(pt=>el('circle',{cx:X(pt.x),cy:Y(Math.min(cfg.yMax,pt.y)),r:3.5,fill:s.color,stroke:css('--panel'),'stroke-width':1.5},svg));
+    if(s.label){ const lx = s.labelAt!=null ? s.labelAt : cfg.xMax*0.98; let ly=Y(Math.min(cfg.yMax,s.f(lx)))-7;
+      while(placed.some(v=>Math.abs(v-ly)<12)) ly+=12; placed.push(ly);
+      const lab=el('text',{x:Math.min(X(lx),W-mR-2),y:ly,'text-anchor':'end',class:'dlab',fill:s.color},svg); lab.textContent=s.label; keepInside(lab,W,H); }
+  });
+  if(cfg.cursor!=null){ const cx=X(cfg.cursor);
+    el('line',{x1:cx,y1:mT,x2:cx,y2:mT+ih,stroke:css('--ink'),'stroke-width':1,'stroke-dasharray':'4 3'},svg);
+    cfg.series.forEach(s=>el('circle',{cx:cx,cy:Y(Math.min(cfg.yMax,s.f(cfg.cursor))),r:4.5,fill:s.color,stroke:css('--panel'),'stroke-width':2},svg)); }
+  if(cfg.xLabel) el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent=cfg.xLabel;
+  if(cfg.yLabel) el('text',{x:4,y:12,'text-anchor':'start',class:'axlab'},svg).textContent=cfg.yLabel;
+  return {X,Y,mL,mT,iw,ih};
+}
+/* nudge a text label back inside the drawing if it would overflow any edge */
+function keepInside(node, W, H, pad=2){
+  const b=node.getBBox(); if(!b.width) return;
+  let dx=0, dy=0;
+  if(b.x < pad) dx = pad - b.x; else if(b.x+b.width > W-pad) dx = (W-pad) - (b.x+b.width);
+  if(b.y < pad) dy = pad - b.y; else if(b.y+b.height > H-pad) dy = (H-pad) - (b.y+b.height);
+  if(dx) node.setAttribute('x', +node.getAttribute('x') + dx);
+  if(dy) node.setAttribute('y', +node.getAttribute('y') + dy);
+}
+function niceMax(v){ if(v<=0) return 1; const p=Math.pow(10,Math.floor(Math.log10(v))); for(const m of [1,1.25,1.5,2,2.5,3,4,5,7.5,10]) if(v<=m*p) return m*p; return 10*p; }
+
+/* ================= RULE 1 ================= */
+const chipBox=document.getElementById('kitChips');
+D.kits.forEach((k,i)=>{
+  const b=document.createElement('button'); b.className='chip'+(k.keys.length?'':' flat'); b.type='button';
+  b.setAttribute('aria-pressed', state.visible.has(k.id)); b.style.setProperty('--c', i<8?'var('+SERIES[i]+')':'var(--grey)');
+  b.innerHTML='<span class="sw"></span>'+esc(k.label);
+  b.addEventListener('click',()=>{ if(state.visible.has(k.id)) state.visible.delete(k.id); else state.visible.add(k.id); b.setAttribute('aria-pressed',state.visible.has(k.id)); drawRule1(); });
+  chipBox.appendChild(b);
+});
+const passSvg=document.getElementById('passby');
+function drawPassby(){
+  clear(passSvg); const W=280,H=240,cx=150,cy=190,maxM=8; const track=m=>cy-(m/maxM)*150;
+  for(let m=2;m<=8;m+=2){ el('line',{x1:26,y1:track(m),x2:W-10,y2:track(m),stroke:css('--rule'),'stroke-width':1},passSvg);
+    el('text',{x:22,y:track(m)+3.5,'text-anchor':'end',class:'tick'},passSvg).textContent=m+' m'; }
+  el('circle',{cx:cx,cy:cy,r:7,fill:css('--navy')},passSvg);
+  el('path',{d:`M ${cx-13} ${cy-20} L ${cx} ${cy-8} L ${cx+13} ${cy-20} Z`,fill:css('--navy'),opacity:.28},passSvg);
+  el('text',{x:cx,y:cy+22,'text-anchor':'middle',class:'tick'},passSvg).textContent='YOU';
+  const d=state.dist/100, y=track(d); const any=[...state.visible].some(id=>kitPower(D.kits.find(k=>k.id===id),state.dist)>0);
+  const col=any?css('--gold'):css('--ink3');
+  el('line',{x1:10,y1:y,x2:W-10,y2:y,stroke:col,'stroke-width':2,'stroke-linecap':'round'},passSvg);
+  el('path',{d:`M ${W-22} ${y-5} L ${W-10} ${y} L ${W-22} ${y+5} Z`,fill:col},passSvg);
+  el('line',{x1:cx,y1:y,x2:cx,y2:cy-8,stroke:col,'stroke-width':1,'stroke-dasharray':'3 3'},passSvg);
+  const my=(y+cy)/2;
+  el('text',{x:cx+8,y:my-3,class:'dlab',fill:col},passSvg).textContent=fmt(d,2)+' m';
+  el('text',{x:cx+8,y:my+10,class:'tick',fill:col},passSvg).textContent='closeness '+fmt(closeness(state.dist),2);
+}
+function drawRule1(){
+  drawPassby();
+  const vis=D.kits.map((k,i)=>({k,i})).filter(o=>state.visible.has(o.k.id));
+  let yMax=0; vis.forEach(o=>{ o.k.keys.forEach(p=>{ if(p.y>yMax) yMax=p.y; }); if(!o.k.keys.length) yMax=Math.max(yMax,o.k.flatPower); }); yMax=niceMax(yMax||0.15);
+  lineChart(document.getElementById('curveChart'),{w:720,h:380,mL:54,mR:104,mB:46,xMax:800,yMax:yMax,xTicks:8,yTicks:5,
+    xFmt:v=>(v/100)+' m', yFmt:v=>v>=1?v.toFixed(1):v.toFixed(3), xLabel:'Miss distance', yLabel:'Per round', cursor:state.dist,
+    series:vis.map(o=>({f:x=>kitPower(o.k,x),color:kitColor(o.i),label:o.k.label,labelAt:o.k.keys.length?o.k.keys[0].x+40:700,
+      dash:o.k.keys.length?'none':'6 4', dots:o.k.keys.map(p=>({x:p.x,y:p.y}))}))});
+  const tb=document.querySelector('#readRows tbody'); tb.textContent='';
+  const rows=vis.map(o=>({k:o.k,col:kitColor(o.i),val:kitPower(o.k,state.dist)})).sort((a,b)=>b.val-a.val);
+  if(!rows.length){ tb.innerHTML='<tr><td colspan="3" class="none">Pick a kit beside the chart.</td></tr>'; }
+  rows.forEach(r=>{ const tr=document.createElement('tr');
+    tr.innerHTML=`<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.k.label)}</span></span></td><td>${fmt(r.val)}</td><td>${r.val>0?Math.ceil(r.k.ceiling/r.val):'—'}</td>`; tb.appendChild(tr); });
+}
+document.getElementById('dist').addEventListener('input',e=>{ state.dist=+e.target.value; document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m'; drawRule1(); });
+document.getElementById('curveChart').addEventListener('pointermove',ev=>{ const svg=ev.currentTarget,r=svg.getBoundingClientRect();
+  const v=Math.max(0,Math.min(800,(((ev.clientX-r.left)/r.width*720)-54)/562*800)); state.dist=Math.round(v/5)*5;
+  document.getElementById('dist').value=state.dist; document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m'; drawRule1(); });
+
+/* ================= RULE 2 ================= */
+function kitTable(){
+  const tb=document.querySelector('#kitTable tbody'); tb.textContent='';
+  D.kits.forEach((k,i)=>{ const p1=kitPower(k,100), p2=kitPower(k,200), env=envelope(k); const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="name">${k.emblem?`<img class="emblem" src="${k.emblem}" alt="">`:''}<span class="swatch" style="display:inline-block;width:9px;height:9px;margin-right:8px;background:${kitColor(i)}"></span>${esc(k.label)}</td>
+      <td class="num">${k.count}</td><td class="num">${fmt(p1)}</td><td class="num">${fmt(p2)}</td>
+      <td class="num">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num">${fmt(k.ceiling,2)}</td>
+      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'—'}</td><td class="num">${k.rpm||'—'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'—'}</span></td>`; tb.appendChild(tr); });
+}
+
+/* ================= RULE 3 ================= */
+function drawRule3(){
+  const S=D.soldier;
+  lineChart(document.getElementById('closeChart'),{w:340,h:250,mL:40,mR:14,xMax:1,yMax:1.1,xTicks:4,yTicks:4,xFmt:v=>v.toFixed(2),yFmt:v=>v.toFixed(2),xLabel:'Closeness ratio (1 = nearly clipped you)',
+    series:[{f:x=>evalCurve(S.closeness.camRot,x),color:css('--s1'),label:'Camera',labelAt:0.7,dots:S.closeness.camRot.map(p=>({x:p.x,y:p.y}))},
+            {f:x=>evalCurve(S.closeness.weapon,x),color:css('--s3'),label:'Weapon',labelAt:0.55,dots:S.closeness.weapon.map(p=>({x:p.x,y:p.y}))}]});
+  lineChart(document.getElementById('immChart'),{w:340,h:250,mL:40,mR:14,xMax:7.5,yMax:1.1,xTicks:5,yTicks:4,xFmt:v=>v.toFixed(1),yFmt:v=>v.toFixed(2),xLabel:'Immunity (0 → 7.5, +1 per second)',
+    series:[{f:x=>evalCurve(S.immunity.camRot,x),color:css('--s1'),label:'Camera rotation',labelAt:7.2},
+            {f:x=>evalCurve(S.immunity.camLoc,x),color:css('--s2'),label:'Camera location',labelAt:7.2},
+            {f:x=>evalCurve(S.immunity.weapon,x),color:css('--s3'),label:'Weapon',labelAt:7.2}]});
+  const sx=S.sway.X, sy=S.sway.Y;
+  lineChart(document.getElementById('swayChart'),{w:340,h:250,mL:40,mR:14,xMax:1,yMax:45,xTicks:4,yTicks:3,xFmt:v=>v.toFixed(2),yFmt:v=>v.toFixed(0),xLabel:'Suppression (0 → 1)',
+    series:[{f:x=>evalCurve(sx,x),color:css('--s1'),label:'Sway amount',labelAt:0.6,dots:sx.map(p=>({x:p.x,y:p.y}))},
+            {f:x=>evalCurve(sy,x)*8,color:css('--s3'),label:'Sway speed ×8',labelAt:0.9,opacity:.8}]});
+  // ladder + effects list
+  const svg=document.getElementById('ladder'); clear(svg);
+  const W=340,H=300,mL=140,mR=30,mT=12,mB=34,iw=W-mL-mR, ih=H-mT-mB, LMAX=7;
+  const X=v=>mL+(v/LMAX)*iw;
+  for(let l=0;l<=LMAX;l++){ const x=X(l); el('line',{x1:x,y1:mT,x2:x,y2:mT+ih,stroke:css('--rule'),'stroke-width':1},svg); el('text',{x:x,y:mT+ih+15,'text-anchor':'middle',class:'tick'},svg).textContent=l; }
+  const rows=D.kits.slice().sort((a,b)=>a.ceiling-b.ceiling); const rh=ih/rows.length;
+  rows.forEach((k,i)=>{ const y=mT+i*rh+rh/2; const ci=D.kits.indexOf(k);
+    el('text',{x:mL-8,y:y+3.5,'text-anchor':'end',class:'tick',fill:css('--ink2')},svg).textContent=k.label;
+    el('rect',{x:X(0),y:y-5,width:X(k.ceiling)-X(0),height:10,fill:kitColor(ci),opacity:.85,stroke:css('--panel'),'stroke-width':1},svg);
+    el('text',{x:X(k.ceiling)+5,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=k.ceiling.toFixed(2); });
+  el('text',{x:mL,y:H-4,class:'axlab'},svg).textContent='Suppression level';
+  fxList(document.getElementById('fxList'), null);
+}
+function fxList(ul, level){
+  ul.textContent='';
+  D.effects.forEach(e=>{
+    const li=document.createElement('li'); const lo=e.from/7*100, hi=Math.max(e.to,e.from+0.05)/7*100;
+    let st='', cls='';
+    if(level!=null){
+      if(e.id==='vignette'){ const v=evalCurve(D.soldier.vignette,level); st=level>0?'strength '+fmt(v,2):'none'; cls=level>0?'full':'no'; }
+      else if(level>=e.to){ st='full'; cls='full'; }
+      else if(level>e.from){ st=Math.round((level-e.from)/(e.to-e.from)*100)+' %'; cls=''; }
+      else { st='no'; cls='no'; }
+    } else st = e.id==='vignette' ? 'from 0' : `${e.from} → ${e.to}`;
+    li.innerHTML=`<span>${esc(e.label)}</span><span class="bar"><i style="left:${lo}%;width:${e.id==='vignette'?100:hi-lo}%"></i></span><span class="st ${cls}">${st}</span>`;
+    ul.appendChild(li);
+  });
+}
+
+/* ================= RULE 4 ================= */
+function immunityAt(t, fireFor, c){
+  // t seconds from the first round; firing continuously for fireFor seconds
+  if(t<0) return 0;
+  const bump=firstShot(c);
+  if(t<=fireFor) return Math.min(C.max, bump + t*C.increment);
+  const peak=Math.min(C.max, bump + fireFor*C.increment);
+  if(t<=fireFor+C.window) return peak;                    // still "actively suppressed" for 1 s
+  return Math.max(0, peak - (t-fireFor-C.window)*C.increment);
+}
+function drawTimeline(){
+  const f=state.fireFor, c=closeness(state.firstDist); const span=Math.max(15, f+C.window+C.max+1);
+  const bump=firstShot(c);
+  document.getElementById('firstDistNote').textContent = `closeness ${fmt(c,2)} · first round grants ${bump>0?'+'+fmt(bump,1)+' immunity':'no immunity'}`;
+  document.querySelectorAll('.readrows.bump tbody tr').forEach(tr=>tr.classList.toggle('on', +tr.dataset.bump === Math.round(bump)));
+  lineChart(document.getElementById('timeline'),{w:720,h:300,mL:48,mR:22,xMax:span,yMax:8,xTicks:5,yTicks:4,xFmt:v=>v.toFixed(0)+' s',yFmt:v=>v.toFixed(1),xLabel:'Seconds from the first round',yLabel:'Immunity',
+    hlines:[{y:C.max,label:'max 7.5',color:css('--ink3')}],
+    series:[{f:t=>immunityAt(t,f,c),color:css('--gold'),width:2.5,label:'immunity',labelAt:f}]});
+  // shade the firing window
+  const svg=document.getElementById('timeline'); const mL=48,mR=22,mT=30,mB=40,iw=720-mL-mR,ih=300-mT-mB; const X=v=>mL+(v/span)*iw;
+  const g=el('rect',{x:X(0),y:mT,width:X(f)-X(0),height:ih,fill:css('--gold'),opacity:.08}); svg.insertBefore(g, svg.firstChild);
+  el('text',{x:X(f/2),y:mT+14,'text-anchor':'middle',class:'dlab',fill:css('--gold')},svg).textContent='under fire';
+  el('text',{x:X(f+C.window/2),y:mT+ih-6,'text-anchor':'middle',class:'tick',fill:css('--ink3')},svg).textContent='+1 s';
+}
+document.getElementById('fireFor').addEventListener('input',e=>{ state.fireFor=+e.target.value; document.getElementById('fireForRead').textContent=fmt(state.fireFor,1)+' s'; drawTimeline(); });
+document.getElementById('firstDist').addEventListener('input',e=>{ state.firstDist=+e.target.value; document.getElementById('firstDistRead').textContent=fmt(state.firstDist/100,2)+' m'; drawTimeline(); });
+
+/* ================= 02 Q&A ================= */
+function qa(){
+  const rifle=D.kits.find(k=>k.id==='rifle'), mmg=D.kits.find(k=>k.id==='mmg'), sn=D.kits.find(k=>k.id==='sniper'), dmr=D.kits.find(k=>k.id==='dmr');
+  const cards=[
+    ['How close do my rounds need to land?',
+     `<b>Inside 5 m of the target, and the closer the better.</b> The last two metres are where the difference is made; at 1 m a rifle round is worth ${fmt(kitPower(rifle,100))}, at 3 m ${fmt(kitPower(rifle,300))}, at 5 m nothing.`,
+     `Rifle envelope 5.0 m · MMG 7.0 m · half the camera kick already at closeness 0.1`,
+     `<b>Aim at the cover, not the sky.</b> Rounds over the top by more than a few metres do nothing. Put them on the parapet, the door frame, the tree line at head height.`],
+    ['Which kit pins fastest?',
+     `<b>A DMR or sniper: one close round.</b> A rifle needs about ${Math.ceil(rifle.ceiling/kitPower(rifle,100))} at 1 m; an MMG ${Math.ceil(mmg.ceiling/kitPower(mmg,100))}, and it reaches 7 m out. Every rifle in the game shares one profile — an M4 and an AK pin identically; only rate of fire differs.`,
+     `Rifle ${fmt(kitPower(rifle,100))}/round · MMG ${fmt(kitPower(mmg,100))} · DMR ${fmt(kitPower(dmr,100),1)} · sniper ${fmt(kitPower(sn,100),1)} — ceilings 1.15 / 1.75 / 2.0 / 3.0`,
+     `<b>Give the marksman the first shot.</b> One near miss puts the target at cap before the rifles have finished their burst; the rifles then keep them there.`],
+    ['Does aiming down sights help me under fire?',
+     `<b>Yes, on most weapons — it roughly halves the camera kick.</b> 65 optic-equipped weapons take camera location punch at ×0.4 and lose the sideways component entirely. Belt-fed machine guns get camera rotation at ×0.2 in ADS.`,
+     `READ from each weapon's data · default for the rest is UNKNOWN`,
+     `<b>Stay in the sight when a burst comes in</b> rather than dropping out to look. On an MG, keep the bipod down and the optic up — it is the steadiest thing on the field.`],
+    ['How long does it last?',
+     `<b>The kick fades while you keep firing; the level fades after you stop.</b> Immunity builds 1.0 per second under fire to a maximum of 7.5 — about 5.5 s of sustained fire after a close first round — and most of the numbing lands in the first two points. It holds 1 s after the last round, then drains at 1.0 per second.`,
+     `Immunity READ · level decay rate 0.5 READ, its units UNKNOWN`,
+     `<b>Make the first round count — short pauses don't reset anyone.</b> The first round against a fresh target kicks at full strength. A 2-second pause only takes a numb target from 7.5 to 6.5, which barely changes the kick; getting that full-strength first round back takes a pause of about one second plus one second per point of immunity, up to 8.5 s.`],
+    ['Why does my rifle fire stop rattling them?',
+     `<b>Because you've numbed them and your pressure has nowhere left to go.</b> Seventy rounds in five seconds takes a target's immunity to 7.5 — every kick down to about a third — while your pressure stalled at the rifle ceiling of 1.15 three seconds earlier.`,
+     `Rifle ceiling 1.15 · immunity +1.0/s to 7.5 · camera kick 0.35× at max`,
+     `<b>Change their state instead of adding rounds.</b> A marksman's round or a grenade raises the ceiling and switches on effects a rifle never can; more rifle fire just feeds their immunity.`],
+    ['What will they actually see?',
+     `<b>From rifle fire: a shrinking vignette and a kicked aim — that's all.</b> Desaturation and colour shift need level 1.4, blur and screen dirt 3.0, fisheye 5.0. Rifles cap at 1.15.`,
+     `Rifle / SMG / BR cap 1.15 · MMG 1.75 · DMR 2.0 · sniper 3.0 · grenade 6.5`,
+     `<b>If you need someone blind, use a grenade or a marksman.</b> If you only have rifles, you are buying sway and a kicked sight picture — still worth having, but don't expect them to stop seeing you.`],
+  ];
+  const box=document.getElementById('qa'); box.textContent='';
+  cards.forEach(([q,rule,num,doit])=>{ const d=document.createElement('div'); d.className='q';
+    d.innerHTML=`<h4>${q}</h4><p class="rule-line">${rule}</p><p class="num">${esc(num)}</p><p class="do">${doit}</p>`; box.appendChild(d); });
+}
+
+/* ================= 03 TOOL ================= */
+function toolKits(){
+  const box=document.getElementById('toolKits'); box.textContent='';
+  D.kits.forEach((k,i)=>{
+    const row=document.createElement('div'); row.className='kitrow';
+    const on=state.tool.has(k.id);
+    row.innerHTML=`<label class="kl"><input type="checkbox" ${on?'checked':''} data-kit="${k.id}" style="accent-color:var(--gold)"> ${k.emblem?`<img class="emblem" src="${k.emblem}" alt="" style="margin:0">`:''}<span class="sw" style="background:${kitColor(i)}"></span> ${esc(k.label)} <small>${MODE[k.fire]||''}${k.rpmAssumed?' · assumed':''}</small></label>
+      <input type="number" min="1" max="1500" step="1" value="${state.rpm[k.id]}" data-rpm="${k.id}" aria-label="${esc(k.label)} rounds per minute">`;
+    box.appendChild(row);
+  });
+  box.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',e=>{ const id=e.target.dataset.kit; if(e.target.checked) state.tool.add(id); else state.tool.delete(id); drawTool(); }));
+  box.querySelectorAll('input[type=number]').forEach(nb=>nb.addEventListener('input',e=>{ state.rpm[e.target.dataset.rpm]=Math.max(0,+e.target.value||0); drawTool(); }));
+}
+function simulate(d){
+  const kits=D.kits.filter(k=>state.tool.has(k.id));
+  const rates=kits.map(k=>({k,rate:kitPower(k,d)*(state.rpm[k.id]||0)/60}));
+  const capMax=kits.length?Math.max(...kits.map(k=>k.ceiling)):0;
+  const dt=0.02, span=12; let L=0, t=0, ttc=null; const pts=[{t:0,L:0}];
+  while(t<span){ let dL=0; rates.forEach(r=>{ if(L<r.k.ceiling-1e-9) dL+=r.rate*dt; }); L=Math.min(capMax,L+dL); t+=dt; pts.push({t,L});
+    if(ttc==null && L>=capMax-1e-6 && capMax>0) ttc=t; }
+  const rate0=rates.reduce((a,r)=>a+r.rate,0);
+  return {kits,rates,capMax,pts,ttc,rate0,reached:L};
+}
+function drawTool(){
+  const d=state.dist2, sim=simulate(d), c=closeness(d);
+  document.getElementById('rateRead').innerHTML=fmt(sim.rate0,2)+'<span class="u">/s</span>';
+  document.getElementById('ttcRead').innerHTML=(sim.ttc!=null?fmt(sim.ttc,2):(sim.rate0>0?'>12':'∞'))+'<span class="u">s</span>';
+  document.getElementById('capRead').textContent=sim.kits.length?fmt(sim.reached,2)+' / '+fmt(sim.capMax,2):'—';
+  const span=Math.min(12, Math.max(3, sim.ttc!=null?sim.ttc*1.8:8));
+  const yMax=niceMax(Math.max(sim.capMax||1, 1.2)*1.15);
+  const caps=[...new Set(sim.kits.map(k=>k.ceiling))].map(v=>({y:v,label:'cap '+v.toFixed(2)+' — '+sim.kits.filter(k=>k.ceiling===v).map(k=>k.label).join(', '),color:css('--ink3')}));
+  lineChart(document.getElementById('buildChart'),{w:720,h:260,mL:48,mR:22,xMax:span,yMax:yMax,xTicks:6,yTicks:4,xFmt:v=>v.toFixed(1)+' s',yFmt:v=>v.toFixed(2),xLabel:'Seconds of fire',yLabel:'Level',hlines:caps,
+    series:[{f:t=>{ const i=Math.min(sim.pts.length-1,Math.round(t/0.02)); return sim.pts[i].L; },color:css('--gold'),width:2.5}]});
+  const S=D.soldier;
+  // immunity as the game runs it: +1/s while any round has passed in the last second, -1/s otherwise
+  const rpmMax=Math.max(0,...sim.kits.map(k=>state.rpm[k.id]||0)); const gap=rpmMax>0?60/rpmMax:Infinity;
+  const imm=t=>{ if(t<=0) return 0; let v=firstShot(c), last=0, tt=0; const dt=0.05;
+    while(tt<t){ tt+=dt; const shots=Math.floor(tt/gap); const lastShot=shots*gap; const active=(tt-lastShot)<=C.window; v=Math.max(0,Math.min(C.max, v+(active?1:-1)*C.increment*dt)); } return v; };
+  const svgP=document.getElementById('punchChart');
+  lineChart(svgP,{w:720,h:260,mL:48,mR:120,xMax:8,yMax:1.1,xTicks:8,yTicks:4,xFmt:v=>v+' s',yFmt:v=>v.toFixed(2),xLabel:'Seconds under fire (first round at 0)',yLabel:'Kick ×',
+    series:[{f:t=>imm(t)/C.max*1.1,color:css('--navy'),dash:'6 4',width:2,label:'immunity (right)',labelAt:7.9},{f:t=>evalCurve(S.closeness.camRot,c)*evalCurve(S.immunity.camRot,t<=0?0:imm(t)),color:css('--s1'),label:'camera rotation',labelAt:7.9},
+            {f:t=>evalCurve(S.closeness.camLoc,c)*evalCurve(S.immunity.camLoc,t<=0?0:imm(t)),color:css('--s2'),label:'camera location',labelAt:7.9},
+            {f:t=>evalCurve(S.closeness.weapon,c)*evalCurve(S.immunity.weapon,t<=0?0:imm(t)),color:css('--s3'),label:'weapon',labelAt:7.9}]});
+  // right-hand axis for immunity
+  { const W=720,H=260,mL=48,mR=120,mT=30,mB=40,ih=H-mT-mB; for(const v of [0,2.5,5,7.5]){ const y=mT+ih-(v/7.5)*ih; el('text',{x:W-mR+6,y:y+3.5,class:'tick',fill:css('--navy')},svgP).textContent=v.toFixed(1); } el('text',{x:W-mR+6,y:mT-8,class:'axlab',fill:css('--navy')},svgP).textContent='Immunity'; }
+  fxList(document.getElementById('toolFx'), sim.kits.length && sim.rate0>0 ? sim.reached : 0);
+}
+document.getElementById('dist2').addEventListener('input',e=>{ state.dist2=+e.target.value; document.getElementById('dist2Read').textContent=fmt(state.dist2/100,2)+' m'; drawTool(); });
+state.dist2=150;
+
+/* ================= 04 BLAST ================= */
+function drawBlast(){
+  const svg=document.getElementById('blastChart'); clear(svg); const rows=D.blast.filter(b=>b.outer);
+  const W=400,H=300,mL=124,mR=30,mT=14,mB=40,iw=W-mL-mR, xMax=8000, rowH=(H-mT-mB)/rows.length, X=v=>mL+(v/xMax)*iw;
+  for(let m=0;m<=80;m+=20){ const x=X(m*100); el('line',{x1:x,y1:mT,x2:x,y2:H-mB+4,stroke:css('--rule'),'stroke-width':1},svg); el('text',{x:x,y:H-mB+18,'text-anchor':'middle',class:'tick'},svg).textContent=m+' m'; }
+  rows.forEach((b,i)=>{ const y=mT+i*rowH+rowH/2; el('text',{x:mL-10,y:y+3.5,'text-anchor':'end',class:'tick',fill:css('--ink2')},svg).textContent=b.label;
+    el('line',{x1:X(0),y1:y,x2:X(b.inner),y2:y,stroke:css('--rule-strong'),'stroke-width':2},svg);
+    el('rect',{x:X(b.inner),y:y-5,width:Math.max(2,X(b.outer)-X(b.inner)),height:10,rx:2,fill:css('--gold'),opacity:.9,stroke:css('--panel'),'stroke-width':1},svg);
+    el('text',{x:X(b.outer)+7,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=(b.outer/100)+' m'; });
+  el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent='Distance from the blast';
+  const tb=document.querySelector('#blastTable tbody'); tb.textContent='';
+  D.blast.forEach(b=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'—'}</td><td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'—'}</td><td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'—'}</td><td class="num">${b.thr!=null?fmt(b.thr,2):'—'}</td>`; tb.appendChild(tr); });
+}
+
+/* ================= the two-clocks contrast ================= */
+function drawContrast(){
+  const S=D.soldier, c=closeness(200), T=5;
+  const specs=[['cmpA','rifle'],['cmpB','sniper']];
+  specs.forEach(([id,kid])=>{
+    const k=D.kits.find(x=>x.id===kid); const rpm=k.rpmPractical||k.rpm; const gap=60/rpm; const power=kitPower(k,200);
+    const shots=[]; for(let s=0;s*gap<=T+1e-9;s++) shots.push(s*gap);
+    // pressure: each shot adds power, clamp at ceiling (no decay modelled)
+    const pressure=t=>Math.min(k.ceiling, power*shots.filter(s=>s<=t).length);
+    const immAt=t=>{ if(t<0) return 0; let v=firstShot(c), tt=0; const dt=0.05;
+      while(tt<t){ tt+=dt; const last=Math.max(...shots.filter(s=>s<=tt),-9); const active=(tt-last)<=C.window; v=Math.max(0,Math.min(C.max,v+(active?1:-1)*C.increment*dt)); } return v; };
+    const svg=document.getElementById(id); clear(svg);
+    const W=360,H=300,mL=40,mR=12; const rows=[['pressure',0,3.2,t=>pressure(t),css('--gold')],['immunity',0,7.5,t=>immAt(t),css('--navy')]];
+    let y0=8; const rh=84;
+    rows.forEach(([name,lo,hi,f,col])=>{
+      const X=t=>mL+(t/T)*(W-mL-mR), Y=v=>y0+rh-14-((v-lo)/(hi-lo))*(rh-22);
+      el('line',{x1:mL,y1:Y(lo),x2:W-mR,y2:Y(lo),stroke:css('--rule-strong')},svg);
+      el('text',{x:2,y:y0+10,class:'axlab',fill:col},svg).textContent=name;
+      el('text',{x:mL-4,y:Y(hi)+3,'text-anchor':'end',class:'tick'},svg).textContent=hi;
+      let d=''; for(let px=0;px<=W-mL-mR;px+=2){ const t=px/(W-mL-mR)*T; d+=(px?'L':'M')+X(t).toFixed(1)+' '+Y(Math.min(hi,f(t))).toFixed(1)+' '; }
+      el('path',{d,fill:'none',stroke:col,'stroke-width':2.2},svg);
+      if(name==='pressure'){ const yc=Y(k.ceiling); el('line',{x1:mL,y1:yc,x2:W-mR,y2:yc,stroke:css('--ink3'),'stroke-dasharray':'4 3'},svg); el('text',{x:W-mR,y:yc-4,'text-anchor':'end',class:'dlab',fill:css('--ink2')},svg).textContent='ceiling '+k.ceiling.toFixed(2); }
+      y0+=rh;
+    });
+    // per-round kick ticks
+    const X=t=>mL+(t/T)*(W-mL-mR); const base=y0+rh-16, top=y0+8;
+    el('text',{x:2,y:y0+10,class:'axlab',fill:css('--s1')},svg).textContent='kick per round';
+    el('line',{x1:mL,y1:base,x2:W-mR,y2:base,stroke:css('--rule-strong')},svg);
+    shots.forEach((s,i)=>{ const im = i===0?0:immAt(s-0.001); const kick=evalCurve(S.closeness.camRot,c)*evalCurve(S.immunity.camRot,im); const x=X(s); el('line',{x1:x,y1:base,x2:x,y2:base-(base-top)*kick,stroke:css('--s1'),'stroke-width':shots.length>20?1.2:3},svg); });
+    el('text',{x:mL-4,y:top+3,'text-anchor':'end',class:'tick'},svg).textContent='1.0';
+    for(let s=0;s<=T;s++){ el('text',{x:X(s),y:H-6,'text-anchor':'middle',class:'tick'},svg).textContent=s+' s'; }
+    el('text',{x:W-mR,y:base+12,'text-anchor':'end',class:'tick',fill:css('--ink3')},svg).textContent=shots.length+' rounds';
+  });
+}
+
+/* ================= 05 ARMOURY ================= */
+const arm = {kit: 'rifle', q: ''};
+function armoury(){
+  const tiles=document.getElementById('cattiles'); tiles.textContent='';
+  D.kits.forEach(k=>{ const b=document.createElement('button'); b.className='cattile'; b.type='button';
+    b.setAttribute('aria-pressed', !arm.q && arm.kit===k.id);
+    b.innerHTML=(k.emblem?`<img src="${k.emblem}" alt="">`:'')+`<span class="cl">${esc(k.label)}</span><span class="cc">${k.count}</span>`;
+    b.addEventListener('click',()=>{ arm.kit=k.id; arm.q=''; document.getElementById('search').value=''; armoury(); }); tiles.appendChild(b); });
+  const list=D.weapons.filter(w=> arm.q ? w.name.toLowerCase().includes(arm.q) : w.kit===arm.kit);
+  document.getElementById('wcount').textContent=`${list.length} shown`;
+  const grid=document.getElementById('wgrid'); grid.textContent='';
+  if(!list.length){ const d=document.createElement('div'); d.className='empty'; d.textContent='Nothing matches that.'; grid.appendChild(d); return; }
+  const frag=document.createDocumentFragment(); const kitLabel=Object.fromEntries(D.kits.map(k=>[k.id,k.label]));
+  list.forEach(w=>{ const d=document.createElement('div'); d.className='wcard'; d.setAttribute('role','listitem');
+    d.innerHTML=(w.icon&&D.icons[w.icon]?`<img src="${D.icons[w.icon]}" alt="">`:'<span></span>')+
+      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
+  grid.appendChild(frag);
+}
+document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.value.trim().toLowerCase(); armoury(); });
+
+/* ================= boot ================= */
+document.getElementById('logo').src=D.logo; document.getElementById('logoFoot').src=D.logoSmall;
+['ver','ver2','ver3'].forEach(i=>document.getElementById(i).textContent=D.version); document.getElementById('author').textContent=D.author;
+function drawAll(){ drawContrast(); drawRule1(); kitTable(); drawRule3(); drawTimeline(); qa(); drawTool(); drawBlast(); }
+toolKits(); drawAll(); armoury();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
+new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});
+})();
+</script>
