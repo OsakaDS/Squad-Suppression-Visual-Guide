@@ -212,6 +212,26 @@ td.name{font-weight:600}
 .kitrow .kl .sw{width:10px; height:10px}
 .kitrow small{font-family:var(--fm); font-size:10.5px; color:var(--ink3); letter-spacing:.03em}
 
+/* ---------- tabs ---------- */
+.tabs{display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); border-top:none; margin:0 0 2px}
+.tab{flex:1 1 0; min-width:0; background:var(--panel); border:none; cursor:pointer; padding:15px 18px; text-align:left;
+  font-family:var(--fd); font-weight:500; font-size:clamp(16px,2.2vw,21px); text-transform:uppercase; letter-spacing:.05em;
+  color:var(--ink3); box-shadow:inset 0 -3px 0 transparent; line-height:1.15}
+.tab .sub{display:block; font-family:var(--fm); font-size:10.5px; letter-spacing:.07em; color:var(--ink3); text-transform:none; margin-top:5px}
+.tab:hover{background:var(--inset); color:var(--ink2)}
+.tab[aria-selected="true"]{color:var(--navy); background:var(--inset); box-shadow:inset 0 -3px 0 var(--gold)}
+.tab[aria-selected="true"] .sub{color:var(--gold)}
+@media (max-width:560px){ .tabs{flex-direction:column} }
+.pane[hidden]{display:none}
+.wgrid.veh{grid-template-columns:repeat(auto-fill,minmax(266px,1fr)); max-height:560px}
+.wcard.veh{align-items:start; padding:11px 12px}
+.wcard.veh img{margin-top:3px}
+.wcard.veh .wn{display:block; white-space:normal; line-height:1.22}
+.wcard.veh .wm{display:block; margin-top:3px}
+.wcard .wv{display:block; font-family:var(--fm); font-size:10px; color:var(--ink3); margin-top:3px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+#vTypeChips{margin:0 0 14px}
+
 svg{display:block; max-width:100%}
 .tick{font-family:var(--fm); font-size:10px; fill:var(--ink3)}
 .axlab{font-family:var(--fm); font-size:10.5px; letter-spacing:.08em; fill:var(--ink3); text-transform:uppercase}
@@ -239,6 +259,13 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
     </div>
   </div>
 </header>
+
+<nav class="tabs" role="tablist" aria-label="Which weapons">
+  <button class="tab" type="button" role="tab" id="tb-inf" aria-controls="pane-inf" aria-selected="true">Infantry Weapons<span class="sub" id="tabCountInf"></span></button>
+  <button class="tab" type="button" role="tab" id="tb-veh" aria-controls="pane-veh" aria-selected="false">Vehicle Weapons<span class="sub" id="tabCountVeh"></span></button>
+</nav>
+
+<div class="pane" id="pane-inf" role="tabpanel" aria-labelledby="tb-inf">
 
 <!-- ============ 01 HOW IT WORKS ============ -->
 <section class="sec">
@@ -440,16 +467,193 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
   </div>
 </section>
 
+</div><!-- /pane-inf -->
+
+<div class="pane" id="pane-veh" role="tabpanel" aria-labelledby="tb-veh" hidden>
+
+<!-- ============ V01 HOW IT WORKS ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">01</span><h2>How it works: four rules</h2></div>
+  <p class="sec-sub">Vehicle rounds run through the same machinery as everything else: a profile carried by the round, a ceiling on how much pressure it can stack, and the target's own immunity clock deciding how hard each round still kicks. What changes is the shape of all three. <span id="vCounts"></span></p>
+
+  <!-- RULE 1 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 1</span>A vehicle round does not taper. Same value wherever it passes <span class="conf read">READ</span> <span class="conf unk">UNKNOWN edge</span></p>
+    <p class="rule-lede">An infantry round is worth less the further off it flies, because its profile is a curve that runs out. Most vehicle profiles carry no curve at all, just one number. Inside whatever radius the game tests, a .50 cracking past your ear and one passing at arm's length are worth the same. The coax is the exception: it carries the machine gun curve you already know from the infantry tab.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Miss distance</h3>
+        <svg id="vpassby" viewBox="0 0 280 240" role="img" aria-label="Top-down view of a vehicle round passing a soldier at the selected miss distance"></svg>
+        <div class="ctl">
+          <label for="vdist">Round passes at <span class="readout" id="vdistRead">1.50 m</span></label>
+          <input type="range" id="vdist" min="0" max="800" step="5" value="150" aria-label="Miss distance">
+        </div>
+        <table class="readrows" id="vReadRows"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Class</th><th>Per round</th><th>Rounds to pin</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="panel">
+        <h3>Pressure added per round, by class</h3>
+        <div class="chips" id="vChips" role="group" aria-label="Classes to plot"></div>
+        <svg id="vCurveChart" viewBox="0 0 720 380" role="img" aria-label="Suppression added per round against miss distance, by vehicle weapon class"></svg>
+        <p class="figcap">Flat lines are profiles with no distance curve: the value is the same at every miss distance the game still counts. The rifle and the coax are drawn for scale, and both are curves. <b>A tank sabot round is worth twelve rifle rounds at 1 m, and it keeps that value out to wherever the test ends.</b></p>
+      </div>
+    </div>
+    <div class="callout"><b>Where a flat profile stops applying is the one thing the files don't settle.</b> The value itself is <span class="conf read">READ</span>. The miss-distance test that decides whether a round counts at all lives in compiled C++ <span class="conf unk">UNKNOWN</span>, so treat the flat lines as "full value anywhere it could plausibly matter" rather than "full value to infinity". The soldier's own radius properties stop at 8 m, which is the best clue there is.</div>
+  </div>
+
+  <!-- RULE 2 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 2</span>The ceilings are higher, so worse things happen to your screen <span class="conf read">READ</span></p>
+    <p class="rule-lede">Every profile clamps the target's level at its own ceiling. Infantry kits top out between 1.15 and 3.0, which is why rifle fire can never blur anyone. Vehicle passby profiles sit at 1.75 and 2.0, and the explosive ones run to 6.0. Those are the numbers that decide what the target's screen does, and they are the real difference between being shot at by a rifleman and by a tank.</p>
+    <div class="tablewrap">
+      <table id="vClassTable"><thead><tr>
+        <th>Class</th><th>Systems</th><th>Model</th><th>Per round</th><th>Reach</th><th>Ceiling</th><th>Rounds to pin</th><th>Typical rate</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="panel">
+        <h3>Class ceilings against the level <span class="conf read">READ</span></h3>
+        <svg id="vLadder" viewBox="0 0 340 330" role="img" aria-label="Vehicle weapon class ceilings against the suppression level"></svg>
+      </div>
+      <div class="panel">
+        <h3>What switches on, and at what level</h3>
+        <ul class="fx-list" id="vFxList"></ul>
+        <p class="figcap" style="margin-top:14px"><b>Blur starts at 3.0 and fisheye at 5.0.</b> Nothing a soldier carries except a grenade gets there, and no vehicle gun gets there by passby either. Only the explosive profiles do, which is why a single HE shell does something to a target that a full belt of coax never can.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 3 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 3</span>Most vehicle weapons suppress by blast, not by passing you <span class="conf read">READ</span> <span class="conf inf">INFERRED shape</span></p>
+    <p class="rule-lede">Of the classes below, nine out of fourteen carry a radial profile: the round does nothing on the way past and everything when it goes off. Full power out to the inner radius, fading to nothing at the outer one, and the outer radii here are enormous next to anything infantry carries. Several of them zero the passby power outright, which is why a missile flying over your head is worth nothing until it lands.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>How far each blast reaches</h3>
+        <svg id="vBlastChart" viewBox="0 0 452 340" role="img" aria-label="Inner and outer suppression radius for vehicle explosive sources"></svg>
+      </div>
+      <div class="panel">
+        <h3>The blast profiles vehicles carry</h3>
+        <div class="tablewrap"><table id="vBlastTable"><thead><tr><th>Source</th><th>Power</th><th>Full to</th><th>Zero at</th><th>Ceiling</th></tr></thead><tbody></tbody></table></div>
+        <p class="figcap"><b>The hand grenade is in the table for scale.</b> It reaches 22.5 m, which puts it between an AGS burst and an ATGM. A 120 mm barrage reaches 75 m, and a tank HE shell 50 m. Falloff between the two radii is drawn as a straight line <span class="conf inf">INFERRED</span>: none of these profiles carries an impact curve, so the shape is the C++ default.</p>
+      </div>
+    </div>
+    <div class="callout"><b>Two autocannon HE profiles have no outer radius set at all.</b> Inner is 3.5 m, outer is left to the class default in C++ <span class="conf unk">UNKNOWN</span>, so those two rows show their inner radius only. Everything else in the table is <span class="conf read">READ</span>.</div>
+  </div>
+
+  <!-- RULE 4 -->
+  <div class="rule">
+    <p class="rule-title"><span class="n">RULE 4</span>The gun's rate decides whether you ever go numb <span class="conf read">READ</span></p>
+    <p class="rule-lede">Immunity is the target's clock, not the gun's: plus 1.0 a second while rounds keep arriving, held for one second after the last one, then draining at 1.0 a second. A coax never lets that clock run down. A main gun cannot keep it running at all, because reloading takes longer than the whole drain. Same target, same curves, opposite outcome.</p>
+    <div class="panel">
+      <h3>Immunity through twenty seconds, by rate of fire <span class="conf read">READ</span></h3>
+      <div class="ctl">
+        <label for="vgap">Rounds pass at <span class="readout" id="vgapRead">2.00 m</span></label>
+        <input type="range" id="vgap" min="0" max="800" step="10" value="200" aria-label="Miss distance of the rounds">
+      </div>
+      <svg id="vImmChart" viewBox="0 0 720 300" role="img" aria-label="Immunity over twenty seconds under three different rates of fire"></svg>
+      <p class="figcap"><b>The sawtooth is a tank gun.</b> Each shell grants its bump, the clock holds it for a second, and then it drains away with seconds to spare before the next one arrives. Every shell therefore lands on a target with no immunity at all, kicking at full strength. The coax line is flat at the top from about five seconds on, where every round it fires is kicking at roughly a third.</p>
+    </div>
+  </div>
+
+  <div class="twoclocks">
+    <h3>The same two clocks, read for vehicles <span class="conf read">READ</span></h3>
+    <div class="clocks">
+      <div class="clock p"><p class="cn">Pressure</p>
+        <p><b>What the class decides.</b> The level, <code>UnderSuppressionPercentage</code>, and the ceiling it stops at. Vehicle guns hold a target at 1.75 or 2.0; explosives take it to 4.0, 5.0 or 6.0, which is where blur and fisheye live.</p></div>
+      <div class="clock i"><p class="cn">Immunity</p>
+        <p><b>What the rate of fire decides.</b> <code>SuppressionImmunityFactor</code> again, same 0 to 7.5, same 1.0 a second. A belt-fed gun pins the clock at the top, a main gun never gets it off the floor.</p></div>
+    </div>
+    <p class="figcap" style="max-width:none">A vehicle brings both extremes to the same fight. The coax puts a target at its ceiling in half a second and then numbs them; the main gun ignores the ceiling race entirely and lands one enormous, full-strength event every eight seconds. Section 04 puts those two side by side.</p>
+  </div>
+</section>
+
+<!-- ============ V02 USING IT ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Using it</h2></div>
+  <p class="sec-sub">Six questions, answered from the numbers above.</p>
+  <div class="qa" id="vqa"></div>
+</section>
+
+<!-- ============ V03 TOOL ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Under fire from a vehicle</h2></div>
+  <p class="sec-sub">Pick what is shooting at you, how close the rounds pass, and whether a shell lands. The build-up is <span class="conf inf">INFERRED</span>: per-round values and ceilings are read from the assets, and the level is accumulated at the weapon's own rate.</p>
+  <div class="grid-tool">
+    <div class="panel">
+      <h3>What is firing</h3>
+      <div class="kitrows" id="vToolKits"></div>
+      <div class="ctl"><label for="vdist2">Rounds pass at <span class="readout" id="vdist2Read">1.50 m</span></label><input type="range" id="vdist2" min="0" max="800" step="5" value="150"></div>
+      <div class="ctl">
+        <label for="vshell">Plus one <span class="readout" id="vshellRead">HE shell</span> landing at <span class="readout" id="vshellDistRead">15 m</span></label>
+        <select id="vshell" aria-label="Explosive source"><option value="">nothing</option></select>
+        <input type="range" id="vshellDist" min="0" max="8000" step="50" value="1500" aria-label="Distance to the detonation">
+      </div>
+      <div class="stats">
+        <div class="stat hot"><span class="k">Build rate</span><span class="v" id="vrateRead">-<span class="u">/s</span></span></div>
+        <div class="stat"><span class="k">Time to pin</span><span class="v" id="vttcRead">-<span class="u">s</span></span></div>
+        <div class="stat"><span class="k">Level reached</span><span class="v" id="vcapRead">-</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <h3>Level building against the ceilings</h3>
+        <svg id="vBuildChart" viewBox="0 0 720 260" role="img" aria-label="Suppression level over time against class ceilings"></svg>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <h3>What the target sees at the level reached</h3>
+        <ul class="fx-list" id="vToolFx"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V04 SHELL VS BELT ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">04</span><h2>One shell against a belt</h2></div>
+  <p class="sec-sub">Five seconds of coaxial fire at 2 m against a single high-explosive shell at 15 m. Same target, same curves, two completely different states to be in.</p>
+  <div class="contrast">
+    <div class="panel">
+      <p class="who">Coax · 706 rpm · rounds at 2 m</p>
+      <svg id="vcmpA" viewBox="0 0 360 316" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under coaxial fire"></svg>
+      <ul class="fx-list" id="vfxA" style="margin-top:14px"></ul>
+    </div>
+    <div class="panel">
+      <p class="who">One HE shell · landing 15 m away</p>
+      <svg id="vcmpB" viewBox="0 0 360 316" role="img" aria-label="Pressure and immunity over five seconds from a single high explosive shell"></svg>
+      <ul class="fx-list" id="vfxB" style="margin-top:14px"></ul>
+    </div>
+  </div>
+  <p class="figcap" style="max-width:none"><b>Fifty-nine rounds against one.</b> The belt reaches the coax ceiling in under a second and then spends the rest of the burst numbing the target, so the last forty rounds kick at about a third of the first. The shell arrives once, lands above the blur threshold, and finds a target with no immunity at all. The decay after each is <span class="conf unk">UNKNOWN</span>: <code>SuppressionEffectsDecayRate</code> is 0.5 in the assets but the units are not settled, so both charts stop at the moment the fire does.</p>
+</section>
+
+<!-- ============ V05 ARMOURY ============ -->
+<section class="sec">
+  <div class="sec-head"><span class="sec-num">05</span><h2>The armoury: what each vehicle brings</h2></div>
+  <p class="sec-sub">Every vehicle-mounted and emplaced weapon in the game, grouped by the suppression profile its rounds carry. Faction skins are folded together, so one row is one weapon system. Icons are the game's own vehicle weapon art.</p>
+  <div class="cattiles" id="vcattiles" role="group" aria-label="Classes"></div>
+  <div class="panel">
+    <div class="pickbar">
+      <input type="search" id="vsearch" placeholder="Search: try “Kornet”, “M2”, “125mm”, “BMP”" aria-label="Search vehicle weapons">
+      <span class="count" id="vwcount"></span>
+    </div>
+    <div class="chips" id="vTypeChips" role="group" aria-label="Vehicle types"></div>
+    <div class="wgrid veh" id="vwgrid" role="list" aria-label="Vehicle weapons"></div>
+  </div>
+</section>
+
+</div><!-- /pane-veh -->
+
 <footer>
   <img class="logo" id="logoFoot" alt="">
   <h3>Where these numbers come from</h3>
-  <p>Every value on this page was read out of the Squad <span id="ver2">v10.5.3</span> Mod SDK asset files: the weapon and projectile blueprints, the suppression profile assets and their curves, and the soldier blueprint's node graph, which was decoded to recover the punch and immunity logic. Nothing was measured in-game. What the game's compiled C++ does with those values (the level maths, the miss-distance test, the decay) is labelled <span class="conf inf">INFERRED</span> or <span class="conf unk">UNKNOWN</span> throughout; the labels are the point. If you test any of it on a server, it can be confirmed.</p>
+  <p>Every value on this page was read out of the Squad <span id="ver2">v10.5.3</span> Mod SDK asset files: the weapon and projectile blueprints, the suppression profile assets and their curves, and the soldier blueprint's node graph, which was decoded to recover the punch and immunity logic. The vehicle tab adds every vehicle-mounted and emplaced weapon in the game, resolved through the same chain and grouped so that one row is one weapon system rather than one faction skin. Nothing was measured in-game. What the game's compiled C++ does with those values (the level maths, the miss-distance test, the decay) is labelled <span class="conf inf">INFERRED</span> or <span class="conf unk">UNKNOWN</span> throughout; the labels are the point. If you test any of it on a server, it can be confirmed.</p>
   <p>The asset wiring behind each weapon (which projectile it fires, which profile that carries, and where a weapon overrides it) lives on the <a href="modders.html">data page</a>. The decoded logic itself is documented in the project's <code>SUPPRESSION_LOGIC.md</code>.</p>
   <p class="byline">Guide by <b>Osaka [29th ID]</b> · data as of Squad <span id="ver3">v10.5.3</span> · the values will change; check the version</p>
 </footer>
 </div>
 
 <script id="payload" type="application/json">__PAYLOAD__</script>
+<script id="vpayload" type="application/json">__VPAYLOAD__</script>
 <script>
 (function(){
 "use strict";
@@ -551,24 +755,25 @@ D.kits.forEach((k,i)=>{
   chipBox.appendChild(b);
 });
 const passSvg=document.getElementById('passby');
-function drawPassby(){
+function drawPassby(svg, dist, any){
+  const passSvg=svg;
   clear(passSvg); const W=280,H=240,cx=150,cy=190,maxM=8; const track=m=>cy-(m/maxM)*150;
   for(let m=2;m<=8;m+=2){ el('line',{x1:26,y1:track(m),x2:W-10,y2:track(m),stroke:css('--rule'),'stroke-width':1},passSvg);
     el('text',{x:22,y:track(m)+3.5,'text-anchor':'end',class:'tick'},passSvg).textContent=m+' m'; }
   el('circle',{cx:cx,cy:cy,r:7,fill:css('--navy')},passSvg);
   el('path',{d:`M ${cx-13} ${cy-20} L ${cx} ${cy-8} L ${cx+13} ${cy-20} Z`,fill:css('--navy'),opacity:.28},passSvg);
   el('text',{x:cx,y:cy+22,'text-anchor':'middle',class:'tick'},passSvg).textContent='YOU';
-  const d=state.dist/100, y=track(d); const any=[...state.visible].some(id=>kitPower(D.kits.find(k=>k.id===id),state.dist)>0);
+  const d=dist/100, y=track(d);
   const col=any?css('--gold'):css('--ink3');
   el('line',{x1:10,y1:y,x2:W-10,y2:y,stroke:col,'stroke-width':2,'stroke-linecap':'round'},passSvg);
   el('path',{d:`M ${W-22} ${y-5} L ${W-10} ${y} L ${W-22} ${y+5} Z`,fill:col},passSvg);
   el('line',{x1:cx,y1:y,x2:cx,y2:cy-8,stroke:col,'stroke-width':1,'stroke-dasharray':'3 3'},passSvg);
   const my=(y+cy)/2;
   el('text',{x:cx+8,y:my-3,class:'dlab',fill:col},passSvg).textContent=fmt(d,2)+' m';
-  el('text',{x:cx+8,y:my+10,class:'tick',fill:col},passSvg).textContent='closeness '+fmt(closeness(state.dist),2);
+  el('text',{x:cx+8,y:my+10,class:'tick',fill:col},passSvg).textContent='closeness '+fmt(closeness(dist),2);
 }
 function drawRule1(){
-  drawPassby();
+  drawPassby(passSvg, state.dist, [...state.visible].some(id=>kitPower(D.kits.find(k=>k.id===id),state.dist)>0));
   const vis=D.kits.map((k,i)=>({k,i})).filter(o=>state.visible.has(o.k.id));
   let yMax=0; vis.forEach(o=>{ o.k.keys.forEach(p=>{ if(p.y>yMax) yMax=p.y; }); if(!o.k.keys.length) yMax=Math.max(yMax,o.k.flatPower); }); yMax=niceMax(yMax||0.15);
   lineChart(document.getElementById('curveChart'),{w:720,h:380,mL:54,mR:104,mB:46,xMax:800,yMax:yMax,xTicks:8,yTicks:5,
@@ -823,11 +1028,389 @@ function armoury(){
 }
 document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.value.trim().toLowerCase(); armoury(); });
 
+/* ================= VEHICLE WEAPONS ================= */
+const V = JSON.parse(document.getElementById('vpayload').textContent);
+const vPassby = V.classes.filter(c => c.model === 'passby' && (c.power || c.keys.length));
+const vBlastCls = V.classes.filter(c => c.model === 'blast');
+const vPower = (c, d) => c.keys.length ? evalCurve(c.keys, d) : (c.power || 0);
+const vCeiling = c => c.model === 'blast' ? (c.radialCeiling || 0) : (c.ceiling || 0);
+const vColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
+const vIdx = Object.fromEntries(vPassby.map((c, i) => [c.id, i]));
+const m1 = v => (v / 100).toFixed(1) + ' m';
+const rifleKit = D.kits.find(k => k.id === 'rifle');
+
+/* power a blast still carries at a distance: full to the inner radius, straight line
+   to zero at the outer one (INFERRED: no profile here carries an impact curve) */
+function vBlastPower(b, d){
+  if(b.power == null) return 0;
+  const inner = b.inner || 0;
+  if(d <= inner) return b.power;
+  if(b.outer == null || b.outer <= inner) return 0;
+  if(d >= b.outer) return 0;
+  return b.power * (1 - (d - inner) / (b.outer - inner));
+}
+
+const vstate = {
+  dist: 150, dist2: 150, gap: 200,
+  visible: new Set(['coax', 'hmg', 'acap', 'tankap']),
+  tool: new Set(['coax']),
+  rpm: Object.fromEntries(V.classes.map(c => [c.id, c.rpm || 0])),
+  shell: '', shellDist: 1500,
+};
+
+/* ---------- immunity under a given rate of fire ---------- */
+function vImmSamples(rpm, T, c, dt){
+  dt = dt || 0.05;
+  const gap = 60 / rpm, n = Math.round(T / dt), arr = new Float64Array(n + 1);
+  let v = 0, shots = 0;
+  for(let i = 0; i <= n; i++){
+    const t = i * dt;
+    const fired = Math.floor(t / gap + 1e-9) + 1;          // the first round lands at t = 0
+    if(fired > shots){ shots = fired; if(v <= 1e-6) v = Math.min(C.max, v + firstShot(c)); }
+    const since = t - (shots - 1) * gap;
+    if(i > 0) v = Math.max(0, Math.min(C.max, v + (since <= C.window ? 1 : -1) * C.increment * dt));
+    arr[i] = v;
+  }
+  return { arr, f: t => arr[Math.max(0, Math.min(n, Math.round(t / dt)))] };
+}
+
+/* ================= V RULE 1 ================= */
+const vChipBox = document.getElementById('vChips');
+vPassby.forEach((c, i) => {
+  const b = document.createElement('button'); b.className = 'chip' + (c.keys.length ? '' : ' flat'); b.type = 'button';
+  b.setAttribute('aria-pressed', vstate.visible.has(c.id)); b.style.setProperty('--c', i < 8 ? 'var(' + SERIES[i] + ')' : 'var(--grey)');
+  b.innerHTML = '<span class="sw"></span>' + esc(c.label);
+  b.addEventListener('click', () => { vstate.visible.has(c.id) ? vstate.visible.delete(c.id) : vstate.visible.add(c.id);
+    b.setAttribute('aria-pressed', vstate.visible.has(c.id)); vDrawRule1(); });
+  vChipBox.appendChild(b);
+});
+function vDrawRule1(){
+  const vis = vPassby.filter(c => vstate.visible.has(c.id));
+  drawPassby(document.getElementById('vpassby'), vstate.dist, vis.some(c => vPower(c, vstate.dist) > 0));
+  const yMax = niceMax(Math.max(0.2, ...vis.map(c => c.keys.length ? Math.max(...c.keys.map(k => k.y)) : (c.power || 0))));
+  const series = vis.map(c => ({ f: x => vPower(c, x), color: vColor(vIdx[c.id]), label: c.label,
+      labelAt: c.keys.length ? c.keys[0].x + 40 : 640, dash: c.keys.length ? 'none' : '7 4',
+      dots: c.keys.map(k => ({ x: k.x, y: k.y })) }));
+  series.push({ f: x => kitPower(rifleKit, x), color: css('--ink3'), label: 'rifle, for scale', labelAt: 150, width: 1.5, opacity: .9, dash: '2 3' });
+  lineChart(document.getElementById('vCurveChart'), { w: 720, h: 380, mL: 54, mR: 116, mB: 46, xMax: 800, yMax: yMax,
+    xTicks: 8, yTicks: 5, xFmt: v => (v / 100) + ' m', yFmt: v => v >= 1 ? v.toFixed(1) : v.toFixed(3),
+    xLabel: 'Miss distance', yLabel: 'Per round', cursor: vstate.dist, series: series });
+  const tb = document.querySelector('#vReadRows tbody'); tb.textContent = '';
+  const rows = vis.map(c => ({ c, col: vColor(vIdx[c.id]), val: vPower(c, vstate.dist) })).sort((a, b) => b.val - a.val);
+  if(!rows.length){ tb.innerHTML = '<tr><td colspan="3" class="none">Pick a class beside the chart.</td></tr>'; return; }
+  rows.forEach(r => { const tr = document.createElement('tr');
+    tr.innerHTML = `<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.c.label)}</span></span></td>`
+      + `<td>${fmt(r.val)}</td><td>${r.val > 0 ? Math.ceil(vCeiling(r.c) / r.val) : '-'}</td>`;
+    tb.appendChild(tr); });
+}
+document.getElementById('vdist').addEventListener('input', e => { vstate.dist = +e.target.value;
+  document.getElementById('vdistRead').textContent = fmt(vstate.dist / 100, 2) + ' m'; vDrawRule1(); });
+
+/* ================= V RULE 2 ================= */
+function vClassTable(){
+  const tb = document.querySelector('#vClassTable tbody'); tb.textContent = '';
+  V.classes.forEach(c => {
+    const blast = c.model === 'blast';
+    const per = blast ? c.blastPower : vPower(c, 100);
+    const reach = blast ? (c.outer != null ? m1(c.inner || 0) + ' to ' + m1(c.outer) : m1(c.inner || 0) + ' +?')
+                        : (c.keys.length ? 'to ' + m1(c.keys[c.keys.length - 1].x) : 'flat');
+    const ceil = vCeiling(c);
+    const pins = per > 0 ? Math.ceil(ceil / per) : null;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="name">${c.emblem ? `<img class="emblem" src="${V.icons[c.emblem]}" alt="">` : ''}${esc(c.label)}</td>`
+      + `<td class="num">${c.count}</td><td class="num" style="color:var(--ink3)">${blast ? 'blast' : (c.keys.length ? 'passby curve' : 'passby flat')}</td>`
+      + `<td class="num">${per != null ? fmt(per, per >= 1 ? 2 : 3) : '?'}</td><td class="num">${reach}</td>`
+      + `<td class="num">${ceil ? fmt(ceil, 2) : '-'}</td><td class="num">${pins || (blast ? '1' : '-')}</td>`
+      + `<td class="num">${c.rpm || '-'}<span style="color:var(--ink3)"> rpm</span></td>`;
+    tb.appendChild(tr);
+  });
+}
+function vDrawLadder(){
+  const svg = document.getElementById('vLadder'); clear(svg);
+  const W = 340, H = 330, mL = 146, mR = 30, mT = 12, mB = 34, iw = W - mL - mR, ih = H - mT - mB, LMAX = 7;
+  const X = v => mL + (v / LMAX) * iw;
+  for(let l = 0; l <= LMAX; l++){ const x = X(l);
+    el('line', { x1: x, y1: mT, x2: x, y2: mT + ih, stroke: css('--rule'), 'stroke-width': 1 }, svg);
+    el('text', { x: x, y: mT + ih + 15, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = l; }
+  const rows = V.classes.filter(c => vCeiling(c) > 0).slice().sort((a, b) => vCeiling(a) - vCeiling(b));
+  const rh = ih / rows.length;
+  rows.forEach((c, i) => { const y = mT + i * rh + rh / 2, cap = vCeiling(c);
+    el('text', { x: mL - 8, y: y + 3.5, 'text-anchor': 'end', class: 'tick', fill: css('--ink2') }, svg).textContent = c.label;
+    el('rect', { x: X(0), y: y - Math.min(6, rh / 2 - 1), width: X(cap) - X(0), height: Math.min(12, rh - 2),
+      fill: c.model === 'blast' ? css('--gold') : css('--navy'), opacity: .85, stroke: css('--panel'), 'stroke-width': 1 }, svg);
+    el('text', { x: X(cap) + 5, y: y + 3.5, class: 'dlab', fill: css('--ink2') }, svg).textContent = cap.toFixed(2); });
+  el('text', { x: mL, y: H - 4, class: 'axlab' }, svg).textContent = 'Suppression level';
+  fxList(document.getElementById('vFxList'), null);
+}
+
+/* ================= V RULE 3 ================= */
+function vBlastRows(){
+  const g = (D.blast || []).find(b => /grenade/i.test(b.label) && b.outer === 2250);
+  return V.blast.concat(g ? [Object.assign({}, g, { ref: true })] : []).sort((a, b) => (b.outer || b.inner || 0) - (a.outer || a.inner || 0));
+}
+function vDrawBlast(){
+  const svg = document.getElementById('vBlastChart'); clear(svg);
+  const rows = vBlastRows();
+  const W = 452, H = 340, mL = 176, mR = 36, mT = 14, mB = 40, iw = W - mL - mR, xMax = 7600;
+  const rowH = (H - mT - mB) / rows.length, X = v => mL + (v / xMax) * iw;
+  for(let m = 0; m <= 75; m += 25){ const x = X(m * 100);
+    el('line', { x1: x, y1: mT, x2: x, y2: H - mB + 4, stroke: css('--rule'), 'stroke-width': 1 }, svg);
+    el('text', { x: x, y: H - mB + 18, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = m + ' m'; }
+  rows.forEach((b, i) => {
+    const y = mT + i * rowH + rowH / 2, col = b.ref ? css('--ink3') : css('--gold');
+    el('text', { x: mL - 10, y: y + 3.5, 'text-anchor': 'end', class: 'tick', fill: b.ref ? css('--ink3') : css('--ink2') }, svg).textContent = b.label;
+    el('line', { x1: X(0), y1: y, x2: X(b.inner || 0), y2: y, stroke: css('--rule-strong'), 'stroke-width': 2 }, svg);
+    if(b.outer != null){
+      el('rect', { x: X(b.inner || 0), y: y - 5, width: Math.max(2, X(b.outer) - X(b.inner || 0)), height: 10, rx: 2,
+        fill: col, opacity: b.ref ? .55 : .9, stroke: css('--panel'), 'stroke-width': 1 }, svg);
+      el('text', { x: X(b.outer) + 7, y: y + 3.5, class: 'dlab', fill: css('--ink2') }, svg).textContent = (b.outer / 100) + ' m';
+    } else {
+      el('rect', { x: X(b.inner || 0) - 3, y: y - 5, width: 6, height: 10, fill: col, opacity: .9 }, svg);
+      el('line', { x1: X(b.inner || 0), y1: y, x2: X(b.inner || 0) + 26, y2: y, stroke: col, 'stroke-width': 2, 'stroke-dasharray': '3 3' }, svg);
+      el('text', { x: X(b.inner || 0) + 32, y: y + 3.5, class: 'dlab', fill: css('--ink3') }, svg).textContent = 'edge unknown';
+    }
+  });
+  el('text', { x: mL, y: H - 6, class: 'axlab' }, svg).textContent = 'Distance from the blast';
+  const tb = document.querySelector('#vBlastTable tbody'); tb.textContent = '';
+  rows.forEach(b => { const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="name"${b.ref ? ' style="color:var(--ink3)"' : ''}>${esc(b.label)}${b.ref ? ' <span style="color:var(--ink3)">(infantry)</span>' : ''}</td>`
+      + `<td class="num">${b.power != null ? fmt(b.power, 2) : '?'}</td><td class="num">${b.inner != null ? m1(b.inner) : '-'}</td>`
+      + `<td class="num">${b.outer != null ? m1(b.outer) : '?'}</td><td class="num">${b.thr != null ? fmt(b.thr, 2) : '?'}</td>`;
+    tb.appendChild(tr); });
+}
+
+/* ================= V RULE 4 ================= */
+function vDrawImmunity(){
+  const c = closeness(vstate.gap), T = 20;
+  const picks = [['coax', css('--s1')], ['acap', css('--s3')], ['tankap', css('--s2')]];
+  const series = picks.map(([id, col]) => {
+    const cl = V.classes.find(x => x.id === id), rpm = cl.rpm || 60;
+    const s = vImmSamples(rpm, T, c, 0.05);
+    return { f: t => s.f(t), color: col, label: cl.label + ' · ' + rpm + ' rpm', labelAt: id === 'tankap' ? 12 : 19, width: 2.2 };
+  });
+  lineChart(document.getElementById('vImmChart'), { w: 720, h: 300, mL: 48, mR: 150, xMax: T, yMax: 8, xTicks: 5, yTicks: 4,
+    xFmt: v => v.toFixed(0) + ' s', yFmt: v => v.toFixed(1), xLabel: 'Seconds from the first round', yLabel: 'Immunity',
+    hlines: [{ y: C.max, label: 'max 7.5', color: css('--ink3') }], series: series });
+}
+document.getElementById('vgap').addEventListener('input', e => { vstate.gap = +e.target.value;
+  document.getElementById('vgapRead').textContent = fmt(vstate.gap / 100, 2) + ' m'; vDrawImmunity(); });
+
+/* ================= V 02 Q&A ================= */
+function vqa(){
+  const coax = V.classes.find(c => c.id === 'coax'), hmg = V.classes.find(c => c.id === 'hmg'),
+        ac = V.classes.find(c => c.id === 'acap'), tank = V.classes.find(c => c.id === 'tankap'),
+        he = V.classes.find(c => c.id === 'tankhe'), heat = V.classes.find(c => c.id === 'tankheat');
+  const coaxPin = Math.ceil(vCeiling(coax) / vPower(coax, 100));
+  const cards = [
+    ['What actually pins me, the coax or the main gun?',
+     `<b>The coax, every time.</b> ${fmt(vPower(coax, 100))} a round against a ${fmt(vCeiling(coax), 2)} ceiling is ${coaxPin} rounds, and at ${coax.rpm} rpm that is under half a second. The main gun fires once every six to nine seconds.`,
+     `Coax ${fmt(vPower(coax, 100))}/round · ceiling ${fmt(vCeiling(coax), 2)} · ${coax.rpm} rpm · sabot ${fmt(tank.power, 2)}/round · ${tank.rpm} rpm`,
+     `<b>Treat the coax as the suppressing weapon and the main gun as the killing one.</b> Breaking the coax's line on you is worth more than being a metre further from where the shell lands.`],
+    ['Does it matter how close their rounds pass?',
+     `<b>For most vehicle guns, no.</b> The .50 at ${fmt(hmg.power, 2)}, the autocannon at ${fmt(ac.power, 2)} and the sabot at ${fmt(tank.power, 2)} carry no distance curve: one value, applied wherever the round passes. Only the coax tapers, out to ${m1(coax.keys.length ? coax.keys[coax.keys.length - 1].x : 700)}.`,
+     `Flat profiles READ · the radius where the test stops is UNKNOWN`,
+     `<b>Do not count on a wide miss.</b> Against vehicle guns the only things that help are cover and not being in the arc at all.`],
+    ['How far from a shell am I still suppressed?',
+     `<b>Much further than the kill radius.</b> A tank HE round is at full power to ${m1(he.inner)} and still reaches to ${m1(he.outer)}. A 120 mm barrage reaches 75 m. A hand grenade, for comparison, reaches 22.5 m.`,
+     `Radii READ · straight-line falloff between them INFERRED`,
+     `<b>Out of the blast is not out of the suppression.</b> After a shell lands near you, move properly or break line of sight; shuffling five metres changes nothing.`],
+    ['Why does a tank round still rattle me when the coax stopped?',
+     `<b>Because your immunity drains between shells.</b> Reloading takes six to nine seconds, and the clock holds for one second then drains at 1.0 a second from a maximum of ${fmt(C.max, 1)}. Every shell therefore lands on a fresh target at full kick, while ${coax.rpm} rpm of coax has you at maximum immunity in about five seconds.`,
+     `Immunity +1.0/s to ${fmt(C.max, 1)}, holds 1 s, drains 1.0/s · READ`,
+     `<b>Move late under a coax, move between shells under a main gun.</b> Under the coax the kick is fading the whole time; under the gun it never fades at all.`],
+    ['What can a vehicle make me see that infantry cannot?',
+     `<b>Blur, screen dirt and fisheye.</b> Rifles cap at 1.15 and MMGs at 1.75, and blur needs 3.0 while fisheye needs 5.0. No vehicle gun reaches those by passby either: only the explosive profiles do, at ${fmt(vCeiling(heat), 2)} for HEAT and ${fmt(vCeiling(he), 2)} for HE.`,
+     `Ceilings and thresholds both READ`,
+     `<b>If your screen goes soft and warps, it was not a rifle.</b> Assume a shell or a vehicle, and reposition instead of trying to fight back through it.`],
+    ['Does any of this suppress the crew inside a vehicle?',
+     `<b>The files do not say.</b> Everything on this page is applied by the soldier blueprint, which contains no vehicle or seat gating anywhere in its suppression logic. Whether a seated crewman is treated as a soldier for this is decided in compiled C++.`,
+     `Soldier blueprint decoded in full · crew handling UNKNOWN`,
+     `<b>Do not plan around suppressing a vehicle.</b> Nothing in the assets supports it, so assume the crew sees you normally until someone tests it on a server.`],
+  ];
+  const box = document.getElementById('vqa'); box.textContent = '';
+  cards.forEach(([q, rule, num, doit]) => { const d = document.createElement('div'); d.className = 'q';
+    d.innerHTML = `<h4>${q}</h4><p class="rule-line">${rule}</p><p class="num">${esc(num)}</p><p class="do">${doit}</p>`; box.appendChild(d); });
+}
+
+/* ================= V 03 TOOL ================= */
+function vToolKits(){
+  const box = document.getElementById('vToolKits'); box.textContent = '';
+  vPassby.forEach(c => {
+    const row = document.createElement('div'); row.className = 'kitrow';
+    row.innerHTML = `<label class="kl"><input type="checkbox" ${vstate.tool.has(c.id) ? 'checked' : ''} data-vk="${c.id}" style="accent-color:var(--gold)">`
+      + `${c.emblem ? `<img class="emblem" src="${V.icons[c.emblem]}" alt="" style="margin:0">` : ''}`
+      + `<span class="sw" style="background:${vColor(vIdx[c.id])}"></span> ${esc(c.label)} <small>cap ${fmt(vCeiling(c), 2)}</small></label>`
+      + `<input type="number" min="1" max="2000" step="1" value="${vstate.rpm[c.id]}" data-vrpm="${c.id}" aria-label="${esc(c.label)} rounds per minute">`;
+    box.appendChild(row);
+  });
+  box.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', e => {
+    const id = e.target.dataset.vk; e.target.checked ? vstate.tool.add(id) : vstate.tool.delete(id); vDrawTool(); }));
+  box.querySelectorAll('input[type=number]').forEach(nb => nb.addEventListener('input', e => {
+    vstate.rpm[e.target.dataset.vrpm] = Math.max(0, +e.target.value || 0); vDrawTool(); }));
+  const sel = document.getElementById('vshell');
+  vBlastRows().filter(b => !b.ref).forEach(b => { const o = document.createElement('option'); o.value = b.label; o.textContent = b.label; sel.appendChild(o); });
+}
+function vSimulate(){
+  const d = vstate.dist2;
+  const cls = vPassby.filter(c => vstate.tool.has(c.id));
+  const rates = cls.map(c => ({ c, rate: vPower(c, d) * (vstate.rpm[c.id] || 0) / 60 }));
+  const shell = vstate.shell ? vBlastRows().find(b => b.label === vstate.shell) : null;
+  const shellPower = shell ? vBlastPower(shell, vstate.shellDist) : 0;
+  const caps = cls.map(c => vCeiling(c)).concat(shell && shellPower > 0 ? [shell.thr || 0] : []);
+  const capMax = caps.length ? Math.max(...caps) : 0;
+  const dt = 0.02, span = 12; let L = Math.min(capMax, shellPower), t = 0, ttc = null;
+  const pts = [{ t: 0, L: L }];
+  while(t < span){ let dL = 0; rates.forEach(r => { if(L < vCeiling(r.c) - 1e-9) dL += r.rate * dt; });
+    L = Math.min(capMax, L + dL); t += dt; pts.push({ t, L });
+    if(ttc == null && capMax > 0 && L >= capMax - 1e-6) ttc = t; }
+  return { cls, rates, capMax, pts, ttc, rate0: rates.reduce((a, r) => a + r.rate, 0), reached: L, shell, shellPower };
+}
+function vDrawTool(){
+  const sim = vSimulate();
+  document.getElementById('vrateRead').innerHTML = fmt(sim.rate0, 2) + '<span class="u">/s</span>';
+  document.getElementById('vttcRead').innerHTML = (sim.ttc != null ? fmt(sim.ttc, 2) : (sim.rate0 > 0 ? '>12' : '∞')) + '<span class="u">s</span>';
+  document.getElementById('vcapRead').textContent = (sim.cls.length || sim.shellPower) ? fmt(sim.reached, 2) + ' / ' + fmt(sim.capMax, 2) : '-';
+  const span = Math.min(12, Math.max(3, sim.ttc != null ? sim.ttc * 1.8 : 8));
+  const yMax = niceMax(Math.max(sim.capMax || 1, 1.2) * 1.15);
+  const caps = [...new Set(sim.cls.map(c => vCeiling(c)))].map(v => ({ y: v, label: 'cap ' + v.toFixed(2), color: css('--ink3') }));
+  if(sim.shell && sim.shellPower > 0 && sim.shell.thr) caps.push({ y: sim.shell.thr, label: 'blast cap ' + sim.shell.thr.toFixed(2), color: css('--gold') });
+  lineChart(document.getElementById('vBuildChart'), { w: 720, h: 260, mL: 48, mR: 132, xMax: span, yMax: yMax, xTicks: 6, yTicks: 4,
+    xFmt: v => v.toFixed(1) + ' s', yFmt: v => v.toFixed(2), xLabel: 'Seconds of fire', yLabel: 'Level', hlines: caps,
+    series: [{ f: t => { const i = Math.min(sim.pts.length - 1, Math.round(t / 0.02)); return sim.pts[i].L; }, color: css('--gold'), width: 2.5 }] });
+  fxList(document.getElementById('vToolFx'), (sim.cls.length && sim.rate0 > 0) || sim.shellPower > 0 ? sim.reached : 0);
+}
+document.getElementById('vdist2').addEventListener('input', e => { vstate.dist2 = +e.target.value;
+  document.getElementById('vdist2Read').textContent = fmt(vstate.dist2 / 100, 2) + ' m'; vDrawTool(); });
+document.getElementById('vshell').addEventListener('change', e => { vstate.shell = e.target.value;
+  document.getElementById('vshellRead').textContent = e.target.value || 'nothing'; vDrawTool(); });
+document.getElementById('vshellDist').addEventListener('input', e => { vstate.shellDist = +e.target.value;
+  document.getElementById('vshellDistRead').textContent = (vstate.shellDist / 100).toFixed(0) + ' m'; vDrawTool(); });
+
+/* ================= V 04 SHELL AGAINST BELT ================= */
+function vDrawContrast(){
+  const S = D.soldier, T = 5;
+  const coax = V.classes.find(c => c.id === 'coax');
+  const shell = V.blast.find(b => /Tank HE/i.test(b.label)) || V.blast[0];
+  const cBelt = closeness(200), cShell = closeness(200);
+  const gap = 60 / (coax.rpm || 700);
+  const shots = []; for(let s = 0; s * gap <= T + 1e-9; s++) shots.push(s * gap);
+  const beltImm = vImmSamples(coax.rpm || 700, T, cBelt, 0.02);
+  const shellPower = vBlastPower(shell, 1500);
+  const beltLevel = t => Math.min(vCeiling(coax), vPower(coax, 200) * shots.filter(s => s <= t).length);
+  const shellLevel = t => t < 0 ? 0 : Math.min(shell.thr || 6, shellPower);
+  const shellImm = vImmSamples(6, T, cShell, 0.02);     // one round, then nothing for the rest
+
+  [['vcmpA', { level: beltLevel, cap: vCeiling(coax), imm: t => beltImm.f(t), shots: shots, kick: true, right: shots.length + ' rounds' }],
+   ['vcmpB', { level: shellLevel, cap: shell.thr || 6, imm: t => (t < 0 ? 0 : shellImm.f(Math.min(t, 1.2))), shots: [0], kick: true, right: '1 detonation' }]
+  ].forEach(([id, o]) => {
+    const svg = document.getElementById(id); clear(svg);
+    const W = 360, H = 316, mL = 44, mR = 12, RH = 94, TITLE = 12, PAD = 8;
+    const X = t => mL + (t / T) * (W - mL - mR), mid = mL + (W - mL - mR) / 2;
+    let y0 = 4;
+    const strip = (title, color, right) => {
+      const top = y0 + TITLE + PAD, bot = y0 + RH - 6;
+      el('text', { x: mid, y: y0 + TITLE - 1, 'text-anchor': 'middle', class: 'axlab', fill: color }, svg).textContent = title;
+      if(right) el('text', { x: W - mR, y: y0 + TITLE - 1, 'text-anchor': 'end', class: 'tick', fill: css('--ink3') }, svg).textContent = right;
+      el('line', { x1: mL, y1: bot, x2: W - mR, y2: bot, stroke: css('--rule-strong') }, svg);
+      el('line', { x1: mL, y1: top, x2: mL, y2: bot, stroke: css('--rule') }, svg);
+      y0 += RH; return { top, bot };
+    };
+    { const { top, bot } = strip('pressure', css('--gold'), 'cap ' + o.cap.toFixed(2));
+      const hi = 6.5, Y = v => bot - (v / hi) * (bot - top);
+      el('text', { x: mL - 5, y: top + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = hi.toFixed(1);
+      el('text', { x: mL - 5, y: bot + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = '0';
+      [['blur 3.0', 3.0], ['fisheye 5.0', 5.0]].forEach(([lab, lv]) => {
+        el('line', { x1: mL, y1: Y(lv), x2: W - mR, y2: Y(lv), stroke: css('--ink3'), 'stroke-width': 1, 'stroke-dasharray': '2 4' }, svg);
+        el('text', { x: mL + 3, y: Y(lv) - 3, class: 'tick', fill: css('--ink3') }, svg).textContent = lab; });
+      let d = ''; for(let px = 0; px <= W - mL - mR; px += 2){ const t = px / (W - mL - mR) * T;
+        d += (px ? 'L' : 'M') + X(t).toFixed(1) + ' ' + Y(Math.min(hi, o.level(t))).toFixed(1) + ' '; }
+      el('path', { d, fill: 'none', stroke: css('--gold'), 'stroke-width': 2.2 }, svg); }
+    { const { top, bot } = strip('immunity', css('--navy'));
+      const hi = 7.5, Y = v => bot - (v / hi) * (bot - top);
+      el('text', { x: mL - 5, y: top + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = '7.5';
+      el('text', { x: mL - 5, y: bot + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = '0';
+      let d = ''; for(let px = 0; px <= W - mL - mR; px += 2){ const t = px / (W - mL - mR) * T;
+        d += (px ? 'L' : 'M') + X(t).toFixed(1) + ' ' + Y(Math.min(hi, o.imm(t))).toFixed(1) + ' '; }
+      el('path', { d, fill: 'none', stroke: css('--navy'), 'stroke-width': 2.2 }, svg); }
+    { const { top, bot } = strip('kick per round', css('--s1'), o.right);
+      el('text', { x: mL - 5, y: top + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = '1.0';
+      el('text', { x: mL - 5, y: bot + 3.5, 'text-anchor': 'end', class: 'tick' }, svg).textContent = '0';
+      o.shots.forEach((s, i) => { const im = i === 0 ? 0 : o.imm(s - 0.001);
+        const kick = evalCurve(S.closeness.camRot, cBelt) * evalCurve(S.immunity.camRot, im);
+        const x = X(s); el('line', { x1: x, y1: bot, x2: x, y2: bot - (bot - top) * kick, stroke: css('--s1'),
+          'stroke-width': o.shots.length > 20 ? 1.2 : 4 }, svg); }); }
+    for(let s = 0; s <= T; s++) el('text', { x: X(s), y: H - 4, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = s + ' s';
+  });
+  fxList(document.getElementById('vfxA'), vCeiling(coax));
+  fxList(document.getElementById('vfxB'), Math.min(shell.thr || 6, shellPower));
+}
+
+/* ================= V 05 ARMOURY ================= */
+const varm = { cls: 'coax', q: '', vt: '' };
+function vArmoury(){
+  const tiles = document.getElementById('vcattiles'); tiles.textContent = '';
+  V.classes.forEach(c => { const b = document.createElement('button'); b.className = 'cattile'; b.type = 'button';
+    b.setAttribute('aria-pressed', !varm.q && varm.cls === c.id);
+    b.innerHTML = (c.emblem ? `<img src="${V.icons[c.emblem]}" alt="">` : '') + `<span class="cl">${esc(c.label)}</span><span class="cc">${c.count}</span>`;
+    b.addEventListener('click', () => { varm.cls = c.id; varm.q = ''; document.getElementById('vsearch').value = ''; vArmoury(); });
+    tiles.appendChild(b); });
+  const chips = document.getElementById('vTypeChips'); chips.textContent = '';
+  [{ id: '', label: 'All vehicle types', count: V.weapons.length }].concat(V.vtypes).forEach(t => {
+    const b = document.createElement('button'); b.className = 'chip'; b.type = 'button';
+    b.setAttribute('aria-pressed', varm.vt === t.id);
+    b.innerHTML = esc(t.label) + ' <span style="color:var(--ink3)">' + t.count + '</span>';
+    b.addEventListener('click', () => { varm.vt = varm.vt === t.id ? '' : t.id; vArmoury(); });
+    chips.appendChild(b); });
+  let list = V.weapons.filter(w => varm.q
+    ? (w.name + ' ' + (w.veh || []).join(' ')).toLowerCase().includes(varm.q)
+    : w.cls === varm.cls);
+  if(varm.vt) list = list.filter(w => w.vt === varm.vt);
+  document.getElementById('vwcount').textContent = `${list.length} shown`;
+  const grid = document.getElementById('vwgrid'); grid.textContent = '';
+  if(!list.length){ const d = document.createElement('div'); d.className = 'empty'; d.textContent = 'Nothing matches that.'; grid.appendChild(d); return; }
+  const frag = document.createDocumentFragment();
+  list.forEach(w => {
+    const d = document.createElement('div'); d.className = 'wcard veh'; d.setAttribute('role', 'listitem');
+    const supp = w.model === 'blast'
+      ? (w.blastPower != null ? 'blast ' + fmt(w.blastPower, 2) + ' to ' + (w.outer != null ? m1(w.outer) : '?') : 'blast')
+      : (w.power ? 'passby ' + fmt(w.power, w.power >= 1 ? 2 : 3) : 'no suppression');
+    const veh = (w.veh || []).join(', ') + (w.nveh > (w.veh || []).length ? ' +' + (w.nveh - w.veh.length) : '');
+    d.innerHTML = (w.icon && V.icons[w.icon] ? `<img src="${V.icons[w.icon]}" alt="">` : '<span></span>')
+      + `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span>`
+      + `<span class="wm">${w.rpm ? w.rpm + ' rpm · ' : ''}${supp}${w.ceiling || w.radialCeiling ? ' · cap ' + fmt(w.model === 'blast' ? w.radialCeiling : w.ceiling, 2) : ''}</span>`
+      + `<span class="wv" title="${esc((w.veh || []).join(', '))}">${esc(veh)}</span></span>`;
+    frag.appendChild(d);
+  });
+  grid.appendChild(frag);
+}
+document.getElementById('vsearch').addEventListener('input', e => { varm.q = e.target.value.trim().toLowerCase(); vArmoury(); });
+
+function vDrawAll(){ vDrawRule1(); vClassTable(); vDrawLadder(); vDrawBlast(); vDrawImmunity(); vqa(); vDrawTool(); vDrawContrast(); }
+
+/* ================= tabs ================= */
+const PANES = { inf: document.getElementById('pane-inf'), veh: document.getElementById('pane-veh') };
+const TABS = { inf: document.getElementById('tb-inf'), veh: document.getElementById('tb-veh') };
+let vReady = false;
+function showTab(which, scroll){
+  for(const k in PANES){ PANES[k].hidden = (k !== which); TABS[k].setAttribute('aria-selected', String(k === which)); }
+  if(which === 'veh'){ if(!vReady){ vReady = true; vToolKits(); vArmoury(); } vDrawAll(); }
+  try { history.replaceState(null, '', which === 'veh' ? '#vehicles' : '#infantry'); } catch(e){}
+  if(scroll) window.scrollTo(0, 0);
+}
+TABS.inf.addEventListener('click', () => showTab('inf', true));
+TABS.veh.addEventListener('click', () => showTab('veh', true));
+document.getElementById('tabCountInf').textContent = D.kits.reduce((a, k) => a + k.count, 0) + ' weapons · ' + D.kits.length + ' kits';
+document.getElementById('tabCountVeh').textContent = V.counts.systems + ' systems · ' + V.counts.vehicles + ' vehicles';
+document.getElementById('vCounts').textContent =
+  `${V.counts.assets} weapon assets on ${V.counts.vehicles} vehicles fold into ${V.counts.systems} distinct systems across ${V.classes.length} classes, and this tab is built from all of them.`;
+
 /* ================= boot ================= */
 document.getElementById('logo').src=D.logo; document.getElementById('logoFoot').src=D.logoSmall;
 ['ver','ver2','ver3'].forEach(i=>document.getElementById(i).textContent=D.version); document.getElementById('author').textContent=D.author;
-function drawAll(){ drawRule1(); kitTable(); drawRule3(); drawTimeline(); drawContrast(); qa(); drawTool(); drawBlast(); }
+function drawAll(){ drawRule1(); kitTable(); drawRule3(); drawTimeline(); drawContrast(); qa(); drawTool(); drawBlast();
+  if(vReady && !PANES.veh.hidden) vDrawAll(); }
 toolKits(); drawAll(); armoury();
+showTab(location.hash === '#vehicles' ? 'veh' : 'inf', false);
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
 new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});
 })();
