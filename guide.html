@@ -512,16 +512,14 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
         <th>Class</th><th>Systems</th><th>Model</th><th>Per round</th><th>Reach</th><th>Ceiling</th><th>Rounds to pin</th><th>Typical rate</th>
       </tr></thead><tbody></tbody></table>
     </div>
-    <div class="grid2" style="margin-top:18px">
-      <div class="panel">
-        <h3>Class ceilings against the level <span class="conf read">READ</span></h3>
-        <svg id="vLadder" viewBox="0 0 340 330" role="img" aria-label="Vehicle weapon class ceilings against the suppression level"></svg>
-      </div>
-      <div class="panel">
-        <h3>What switches on, and at what level</h3>
-        <ul class="fx-list" id="vFxList"></ul>
-        <p class="figcap" style="margin-top:14px"><b>Blur starts at 3.0 and fisheye at 5.0.</b> Nothing a soldier carries except a grenade gets there, and no vehicle gun gets there by passby either. Only the explosive profiles do, which is why a single HE shell does something to a target that a full belt of coax never can.</p>
-      </div>
+    <div class="panel" style="margin-top:18px">
+      <h3>Class ceilings against the level <span class="conf read">READ</span></h3>
+      <svg id="vLadder" viewBox="0 0 1000 460" role="img" aria-label="Vehicle weapon class ceilings against the suppression level"></svg>
+    </div>
+    <div class="panel" style="margin-top:18px">
+      <h3>What switches on, and at what level</h3>
+      <ul class="fx-list" id="vFxList"></ul>
+      <p class="figcap" style="margin-top:14px"><b>Blur starts at 3.0 and fisheye at 5.0.</b> No vehicle gun gets near either by passby: those ceilings are 1.75 and 2.00, and the one outlier, the helicopter minigun at 3.00, sits exactly on the blur line. Every explosive profile here clears blur comfortably. <b>Fisheye is tighter than it looks.</b> The strongest single detonation in the game reaches exactly 5.0, the threshold itself, so one shell buys everything up to and including screen dirt, but not the warp. Only a second shell starts it, and two take the target to the 6.00 ceiling, halfway up the fisheye ramp. Gunfire cannot help: a weapon stops contributing once the level is already above its own ceiling, and no vehicle gun's ceiling is anywhere near 5.0. A hand grenade, at 5.5, is the one thing in the game that clears the threshold outright.</p>
     </div>
   </div>
 
@@ -529,16 +527,14 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
   <div class="rule">
     <p class="rule-title"><span class="n">RULE 3</span>Most vehicle weapons suppress by blast, not by passing you <span class="conf read">READ</span> <span class="conf inf">INFERRED shape</span></p>
     <p class="rule-lede">Of the classes below, <span id="vBlastCount">eight of the fourteen</span> carry a radial profile: the round does nothing on the way past and everything when it goes off. Full power out to the inner radius, fading to nothing at the outer one, and the outer radii here are enormous next to anything infantry carries. Several of them zero the passby power outright, which is why a missile flying over your head is worth nothing until it lands.</p>
-    <div class="grid2">
-      <div class="panel">
-        <h3>How far each blast reaches</h3>
-        <svg id="vBlastChart" viewBox="0 0 452 340" role="img" aria-label="Inner and outer suppression radius for vehicle explosive sources"></svg>
-      </div>
-      <div class="panel">
+    <div class="panel">
+      <h3>How far each blast reaches</h3>
+      <svg id="vBlastChart" viewBox="0 0 1000 460" role="img" aria-label="Inner and outer suppression radius for vehicle explosive sources"></svg>
+    </div>
+    <div class="panel" style="margin-top:18px">
         <h3>The blast profiles vehicles carry</h3>
         <div class="tablewrap"><table id="vBlastTable"><thead><tr><th>Source</th><th>Power</th><th>Full to</th><th>Zero at</th><th>Ceiling</th></tr></thead><tbody></tbody></table></div>
-        <p class="figcap"><b>The hand grenade is in the table for scale.</b> It reaches 22.5 m, which puts it between an AGS burst and an ATGM. A 120 mm barrage reaches 75 m, and a tank HE shell 50 m. Falloff between the two radii is drawn as a straight line <span class="conf inf">INFERRED</span>: none of these profiles carries an impact curve, so the shape is the C++ default.</p>
-      </div>
+        <p class="figcap"><b>The thin line is the full-power zone</b>, out to the inner radius, and the bar is where the power fades to nothing. <b>The hand grenade is in the chart and the table for scale.</b> It reaches 22.5 m, which puts it between an AGS burst and an ATGM. A 120 mm barrage reaches 75 m, and a tank HE shell 50 m. Falloff between the two radii is drawn as a straight line <span class="conf inf">INFERRED</span>: none of these profiles carries an impact curve, so the shape is the C++ default.</p>
     </div>
     <div class="callout"><b>Two autocannon HE profiles have no outer radius set at all.</b> Inner is 3.5 m, outer is left to the class default in C++ <span class="conf unk">UNKNOWN</span>, so those two rows show their inner radius only. Everything else in the table is <span class="conf read">READ</span>.</div>
   </div>
@@ -573,14 +569,14 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 <!-- ============ V02 USING IT ============ -->
 <section class="sec">
   <div class="sec-head"><span class="sec-num">02</span><h2>Using it</h2></div>
-  <p class="sec-sub">Six questions, answered from the numbers above.</p>
+  <p class="sec-sub">Five questions, answered from the numbers above.</p>
   <div class="qa" id="vqa"></div>
 </section>
 
 <!-- ============ V03 TOOL ============ -->
 <section class="sec">
   <div class="sec-head"><span class="sec-num">03</span><h2>Under fire from a vehicle</h2></div>
-  <p class="sec-sub">Pick what is shooting at you, how close the rounds pass, and whether a shell lands. The build-up is <span class="conf inf">INFERRED</span>: per-round values and ceilings are read from the assets, and the level is accumulated at the weapon's own rate.</p>
+  <p class="sec-sub">Pick what is shooting at you, how close the rounds pass, and whether a shell lands. The build-up is <span class="conf inf">INFERRED</span>: per-round values and ceilings are read from the assets, and the level is accumulated at the weapon's own rate. Each weapon stops adding once the level is already past its own ceiling <span class="conf inf">INFERRED</span>, which is why piling more machine gun fire onto a target that has just taken a shell changes nothing at all.</p>
   <div class="grid-tool">
     <div class="panel">
       <h3>What is firing</h3>
@@ -626,7 +622,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
       <ul class="fx-list" id="vfxB" style="margin-top:14px"></ul>
     </div>
   </div>
-  <p class="figcap" style="max-width:none"><b>Fifty-nine rounds against one.</b> The belt reaches the coax ceiling in under a second and then spends the rest of the burst numbing the target, so the last forty rounds kick at about a third of the first. The shell arrives once, lands above the blur threshold, and finds a target with no immunity at all. The decay after each is <span class="conf unk">UNKNOWN</span>: <code>SuppressionEffectsDecayRate</code> is 0.5 in the assets but the units are not settled, so both charts stop at the moment the fire does.</p>
+  <p class="figcap" style="max-width:none"><b>Fifty-nine rounds against one.</b> The belt reaches the coax ceiling in under a second and then spends the rest of the burst numbing the target, so the last forty rounds kick at about a third of the first. The shell arrives once, lands well above the blur threshold and exactly on the fisheye one, and finds a target with no immunity at all. The decay after each is <span class="conf unk">UNKNOWN</span>: <code>SuppressionEffectsDecayRate</code> is 0.5 in the assets but the units are not settled, so both charts stop at the moment the fire does.</p>
 </section>
 
 <!-- ============ V05 ARMOURY ============ -->
@@ -842,7 +838,9 @@ function fxList(ul, level){
     if(level!=null){
       if(e.id==='vignette'){ const v=evalCurve(D.soldier.vignette,level); st=level>0?'strength '+fmt(v,2):'none'; cls=level>0?'full':'no'; }
       else if(level>=e.to){ st='full'; cls='full'; }
-      else if(level>e.from){ st=Math.round((level-e.from)/(e.to-e.from)*100)+' %'; cls=''; }
+      else if(level>=e.from && level>0){                 // exactly on the trigger reads as "threshold", not "no"
+        const pct=Math.round((level-e.from)/(e.to-e.from)*100);
+        st = pct===0 ? 'threshold' : pct+' %'; cls = pct===0 ? 'no' : ''; }
       else { st='no'; cls='no'; }
     } else st = e.id==='vignette' ? 'from 0' : `${e.from} → ${e.to}`;
     li.innerHTML=`<span>${esc(e.label)}</span><span class="bar"><i style="left:${lo}%;width:${e.id==='vignette'?100:hi-lo}%"></i></span><span class="st ${cls}">${st}</span>`;
@@ -1045,6 +1043,15 @@ const vIdx = Object.fromEntries(vPassby.map((c, i) => [c.id, i]));
 const m1 = v => (v / 100).toFixed(1) + ' m';
 const rifleKit = D.kits.find(k => k.id === 'rifle');
 
+/* fit a row label into the gutter a chart has for it, tightening before trimming */
+function vFitLabel(node, text, gutter, fs){
+  let t = text;
+  if(gutter < 150){ t = t.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s*\/\s*/g, '/').trim(); }
+  const max = Math.max(4, Math.floor(gutter / (fs * 0.56)));
+  node.textContent = t.length > max ? t.slice(0, max - 1).trim() + '…' : t;
+  if(node.textContent !== text){ const ti = document.createElementNS(NS, 'title'); ti.textContent = text; node.appendChild(ti); }
+}
+
 /* power a blast still carries at a distance: full to the inner radius, straight line
    to zero at the outer one (INFERRED: no profile here carries an impact curve) */
 function vBlastPower(b, d){
@@ -1111,6 +1118,12 @@ function vDrawRule1(){
 }
 document.getElementById('vdist').addEventListener('input', e => { vstate.dist = +e.target.value;
   document.getElementById('vdistRead').textContent = fmt(vstate.dist / 100, 2) + ' m'; vDrawRule1(); });
+document.getElementById('vCurveChart').addEventListener('pointermove', ev => {
+  const svg = ev.currentTarget, r = svg.getBoundingClientRect();     // 720 wide, 54 left margin, 550 of plot
+  const v = Math.max(0, Math.min(800, (((ev.clientX - r.left) / r.width * 720) - 54) / 550 * 800));
+  vstate.dist = Math.round(v / 5) * 5;
+  document.getElementById('vdist').value = vstate.dist;
+  document.getElementById('vdistRead').textContent = fmt(vstate.dist / 100, 2) + ' m'; vDrawRule1(); });
 
 /* ================= V RULE 2 ================= */
 function vClassTable(){
@@ -1133,19 +1146,27 @@ function vClassTable(){
 }
 function vDrawLadder(){
   const svg = document.getElementById('vLadder'); clear(svg);
-  const W = 340, H = 330, mL = 146, mR = 30, mT = 12, mB = 34, iw = W - mL - mR, ih = H - mT - mB, LMAX = 7;
+  const rows = V.classes.filter(c => vCeiling(c) > 0).slice().sort((a, b) => vCeiling(a) - vCeiling(b));
+  // drawn at 1:1 with the panel it sits in, so 13 px of type is 13 px on screen at any width
+  const W = Math.round(Math.max(300, svg.getBoundingClientRect().width || 1000));
+  const narrow = W < 560, FS = narrow ? 11 : 13;
+  const rh = narrow ? 26 : 30, mT = FS + 14, mB = 44, ih = rows.length * rh, H = ih + mT + mB;
+  const mL = Math.min(214, Math.round(W * 0.42)), mR = narrow ? 46 : 60, iw = W - mL - mR, LMAX = 7;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
   const X = v => mL + (v / LMAX) * iw;
   for(let l = 0; l <= LMAX; l++){ const x = X(l);
     el('line', { x1: x, y1: mT, x2: x, y2: mT + ih, stroke: css('--rule'), 'stroke-width': 1 }, svg);
-    el('text', { x: x, y: mT + ih + 15, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = l; }
-  const rows = V.classes.filter(c => vCeiling(c) > 0).slice().sort((a, b) => vCeiling(a) - vCeiling(b));
-  const rh = ih / rows.length;
+    el('text', { x: x, y: mT + ih + 17, 'text-anchor': 'middle', class: 'tick', 'font-size': FS - 1 }, svg).textContent = l; }
+  // the two thresholds the whole rule is about
+  [['blur 3.0', 3], ['fisheye 5.0', 5]].forEach(([lab, lv]) => {
+    el('line', { x1: X(lv), y1: mT, x2: X(lv), y2: mT + ih, stroke: css('--gold'), 'stroke-width': 1.5, 'stroke-dasharray': '4 4', opacity: .8 }, svg);
+    el('text', { x: X(lv) + 4, y: FS + 2, class: 'dlab', 'font-size': FS - 1, fill: css('--gold') }, svg).textContent = narrow ? lab.split(' ')[0] : lab; });
   rows.forEach((c, i) => { const y = mT + i * rh + rh / 2, cap = vCeiling(c);
-    el('text', { x: mL - 8, y: y + 3.5, 'text-anchor': 'end', class: 'tick', fill: css('--ink2') }, svg).textContent = c.label;
-    el('rect', { x: X(0), y: y - Math.min(6, rh / 2 - 1), width: X(cap) - X(0), height: Math.min(12, rh - 2),
+    vFitLabel(el('text', { x: mL - 10, y: y + FS * 0.36, 'text-anchor': 'end', class: 'tick', 'font-size': FS, fill: css('--ink2') }, svg), c.label, mL - 14, FS);
+    el('rect', { x: X(0), y: y - Math.min(9, rh / 2 - 3), width: X(cap) - X(0), height: Math.min(18, rh - 6),
       fill: c.model === 'blast' ? css('--gold') : css('--navy'), opacity: .85, stroke: css('--panel'), 'stroke-width': 1 }, svg);
-    el('text', { x: X(cap) + 5, y: y + 3.5, class: 'dlab', fill: css('--ink2') }, svg).textContent = cap.toFixed(2); });
-  el('text', { x: mL, y: H - 4, class: 'axlab' }, svg).textContent = 'Suppression level';
+    el('text', { x: X(cap) + 6, y: y + FS * 0.36, class: 'dlab', 'font-size': FS, fill: css('--ink2') }, svg).textContent = cap.toFixed(2); });
+  el('text', { x: mL, y: H - 6, class: 'axlab', 'font-size': FS - 1 }, svg).textContent = 'Suppression level';
   fxList(document.getElementById('vFxList'), null);
 }
 
@@ -1157,26 +1178,31 @@ function vBlastRows(){
 function vDrawBlast(){
   const svg = document.getElementById('vBlastChart'); clear(svg);
   const rows = vBlastRows();
-  const W = 452, H = 340, mL = 176, mR = 36, mT = 14, mB = 40, iw = W - mL - mR, xMax = 7600;
-  const rowH = (H - mT - mB) / rows.length, X = v => mL + (v / xMax) * iw;
+  const W = Math.round(Math.max(300, svg.getBoundingClientRect().width || 1000));
+  const narrow = W < 560, FS = narrow ? 11 : 13;
+  const rowH = narrow ? 24 : 28, mT = 12, mB = 40, ih = rows.length * rowH, H = ih + mT + mB;
+  const mL = Math.min(230, Math.round(W * 0.44)), mR = narrow ? 56 : 84, iw = W - mL - mR, xMax = 7600;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const X = v => mL + (v / xMax) * iw;
   for(let m = 0; m <= 75; m += 25){ const x = X(m * 100);
-    el('line', { x1: x, y1: mT, x2: x, y2: H - mB + 4, stroke: css('--rule'), 'stroke-width': 1 }, svg);
-    el('text', { x: x, y: H - mB + 18, 'text-anchor': 'middle', class: 'tick' }, svg).textContent = m + ' m'; }
+    el('line', { x1: x, y1: mT, x2: x, y2: mT + ih + 4, stroke: css('--rule'), 'stroke-width': 1 }, svg);
+    el('text', { x: x, y: mT + ih + 20, 'text-anchor': 'middle', class: 'tick', 'font-size': FS - 1 }, svg).textContent = m + ' m'; }
   rows.forEach((b, i) => {
-    const y = mT + i * rowH + rowH / 2, col = b.ref ? css('--ink3') : css('--gold');
-    el('text', { x: mL - 10, y: y + 3.5, 'text-anchor': 'end', class: 'tick', fill: b.ref ? css('--ink3') : css('--ink2') }, svg).textContent = b.label;
+    const y = mT + i * rowH + rowH / 2, col = b.ref ? css('--ink3') : css('--gold'), bh = Math.min(14, rowH - 8);
+    vFitLabel(el('text', { x: mL - 10, y: y + FS * 0.36, 'text-anchor': 'end', class: 'tick', 'font-size': FS,
+      fill: b.ref ? css('--ink3') : css('--ink2') }, svg), b.label, mL - 14, FS);
     el('line', { x1: X(0), y1: y, x2: X(b.inner || 0), y2: y, stroke: css('--rule-strong'), 'stroke-width': 2 }, svg);
     if(b.outer != null){
-      el('rect', { x: X(b.inner || 0), y: y - 5, width: Math.max(2, X(b.outer) - X(b.inner || 0)), height: 10, rx: 2,
+      el('rect', { x: X(b.inner || 0), y: y - bh / 2, width: Math.max(2, X(b.outer) - X(b.inner || 0)), height: bh, rx: 2,
         fill: col, opacity: b.ref ? .55 : .9, stroke: css('--panel'), 'stroke-width': 1 }, svg);
-      el('text', { x: X(b.outer) + 7, y: y + 3.5, class: 'dlab', fill: css('--ink2') }, svg).textContent = (b.outer / 100) + ' m';
+      el('text', { x: X(b.outer) + 8, y: y + FS * 0.36, class: 'dlab', 'font-size': FS, fill: css('--ink2') }, svg).textContent = (b.outer / 100) + ' m';
     } else {
-      el('rect', { x: X(b.inner || 0) - 3, y: y - 5, width: 6, height: 10, fill: col, opacity: .9 }, svg);
-      el('line', { x1: X(b.inner || 0), y1: y, x2: X(b.inner || 0) + 26, y2: y, stroke: col, 'stroke-width': 2, 'stroke-dasharray': '3 3' }, svg);
-      el('text', { x: X(b.inner || 0) + 32, y: y + 3.5, class: 'dlab', fill: css('--ink3') }, svg).textContent = 'edge unknown';
+      el('rect', { x: X(b.inner || 0) - 3, y: y - bh / 2, width: 6, height: bh, fill: col, opacity: .9 }, svg);
+      el('line', { x1: X(b.inner || 0), y1: y, x2: X(b.inner || 0) + 30, y2: y, stroke: col, 'stroke-width': 2, 'stroke-dasharray': '3 3' }, svg);
+      el('text', { x: X(b.inner || 0) + 36, y: y + FS * 0.36, class: 'dlab', 'font-size': FS - 1, fill: css('--ink3') }, svg).textContent = narrow ? 'edge ?' : 'edge unknown';
     }
   });
-  el('text', { x: mL, y: H - 6, class: 'axlab' }, svg).textContent = 'Distance from the blast';
+  el('text', { x: mL, y: H - 6, class: 'axlab', 'font-size': FS - 1 }, svg).textContent = 'Distance from the blast';
   const tb = document.querySelector('#vBlastTable tbody'); tb.textContent = '';
   rows.forEach(b => { const tr = document.createElement('tr');
     tr.innerHTML = `<td class="name"${b.ref ? ' style="color:var(--ink3)"' : ''}>${esc(b.label)}${b.ref ? ' <span style="color:var(--ink3)">(infantry)</span>' : ''}</td>`
@@ -1227,13 +1253,9 @@ function vqa(){
      `Immunity +1.0/s to ${fmt(C.max, 1)}, holds 1 s, drains 1.0/s · READ`,
      `<b>Move late under a coax, move between shells under a main gun.</b> Under the coax the kick is fading the whole time; under the gun it never fades at all.`],
     ['What can a vehicle make me see that infantry cannot?',
-     `<b>Blur, screen dirt and fisheye.</b> Rifles cap at 1.15 and MMGs at 1.75, and blur needs 3.0 while fisheye needs 5.0. No vehicle gun reaches those by passby either: only the explosive profiles do, at ${fmt(vCeiling(heat), 2)} for HEAT and ${fmt(vCeiling(he), 2)} for HE.`,
-     `Ceilings and thresholds both READ`,
-     `<b>If your screen goes soft and warps, it was not a rifle.</b> Assume a shell or a vehicle, and reposition instead of trying to fight back through it.`],
-    ['Does any of this suppress the crew inside a vehicle?',
-     `<b>The files do not say.</b> Everything on this page is applied by the soldier blueprint, which contains no vehicle or seat gating anywhere in its suppression logic. Whether a seated crewman is treated as a soldier for this is decided in compiled C++.`,
-     `Soldier blueprint decoded in full · crew handling UNKNOWN`,
-     `<b>Do not plan around suppressing a vehicle.</b> Nothing in the assets supports it, so assume the crew sees you normally until someone tests it on a server.`],
+     `<b>Blur and screen dirt outright. Fisheye only if a second one lands.</b> Rifles cap at 1.15 and MMGs at 1.75, while blur needs 3.0 and fisheye 5.0. No vehicle gun gets near either by passby, so this is explosives only: HEAT caps at ${fmt(vCeiling(heat), 2)} and HE at ${fmt(vCeiling(he), 2)}. The catch is that the strongest single detonation in the game puts you at exactly 5.0, the fisheye threshold itself, so one shell buys the blur but not the warp, and gunfire cannot make up the difference because a weapon stops adding once the level is above its own ceiling.`,
+     `Ceilings and thresholds both READ · one shell reaches 5.00, fisheye starts above 5.0`,
+     `<b>If your screen goes soft, it was not a rifle.</b> Assume a shell or a vehicle and reposition. If it also warps, a second one has already landed, and staying put is how the third one finds you.`],
   ];
   const box = document.getElementById('vqa'); box.textContent = '';
   cards.forEach(([q, rule, num, doit]) => { const d = document.createElement('div'); d.className = 'q';
@@ -1398,6 +1420,9 @@ function vArmoury(){
 document.getElementById('vsearch').addEventListener('input', e => { varm.q = e.target.value.trim().toLowerCase(); vArmoury(); });
 
 function vDrawAll(){ vDrawRule1(); vClassTable(); vDrawLadder(); vDrawBlast(); vDrawImmunity(); vqa(); vDrawTool(); vDrawContrast(); }
+/* these two size themselves to the panel, so they are the only charts that care about a resize */
+let vRz; window.addEventListener('resize', () => { clearTimeout(vRz); vRz = setTimeout(() => {
+  if(vReady && !PANES.veh.hidden){ vDrawLadder(); vDrawBlast(); } }, 150); });
 
 /* ================= tabs ================= */
 const PANES = { inf: document.getElementById('pane-inf'), veh: document.getElementById('pane-veh') };
