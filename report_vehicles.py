@@ -34,7 +34,7 @@ for k, v in uniq.items():
     systems.append(rep)
 
 def fmt(x, n=2):
-    return '—' if x is None else (f'{x:.{n}f}' if isinstance(x, float) else str(x))
+    return '-' if x is None else (f'{x:.{n}f}' if isinstance(x, float) else str(x))
 
 print(f"{len(rows)} weapon assets  ->  {len(systems)} distinct systems  across {len({s['vehicleFolder'] for s in systems})} vehicle folders\n")
 
@@ -66,9 +66,9 @@ for w in want:
         tag = (s['name'] or s['asset'].split('/')[-1])
         if w.lower() not in (tag + s['asset']).lower() or s['role'] in ('Smoke',): continue
         if s['role'] in seen and w in ('M2',): continue
-        supp = (f"{s['profile'][:30]}" if s['profile'] else '—')
+        supp = (f"{s['profile'][:30]}" if s['profile'] else '-')
         val = (f"blast {fmt(s['impactPower'])}" if s['impactPower'] is not None else f"passby {fmt(s['power'],3)}")
-        print(f"{tag[:34]:34s} {str(s['vehicle'])[:20]:20s} {s['role'][:17]:17s} {str(s['rpm'] or '—'):>5s} "
+        print(f"{tag[:34]:34s} {str(s['vehicle'])[:20]:20s} {s['role'][:17]:17s} {str(s['rpm'] or '-'):>5s} "
               f"{fmt(s['dmgMax'],0):>6s} {fmt(s['penMM'],0):>5s} {supp[:22]:>22s} {val:>11s}")
         seen.add(s['role']); break
 

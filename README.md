@@ -1,16 +1,16 @@
 # Squad suppression toolkit
 
 Extracts the suppression system out of **Squad v10.5.3** and turns it into a browsable
-web page. Nothing here is scraped from a wiki or measured in-game — every number is read
+web page. Nothing here is scraped from a wiki or measured in-game. Every number is read
 directly out of the shipped `.uasset` binaries in the Squad Mod SDK.
 
 The output is two self-contained HTML pages by **Osaka [29th ID]**:
 
-- **`guide.html`** — the field guide for players: how suppression works, how to use it, and a
+- **`guide.html`** is the field guide for players: how suppression works, how to use it, and a
   fireteam-against-a-target tool. Organised around eight weapon kits (shotguns are left out for
   now), each with the game's role emblem, an armoury at the end listing what is in each kit, and every
   figure labelled READ / INFERRED / UNKNOWN.
-- **`suppression.html`** — the data page for modders: all **521 weapons** with icons, the
+- **`suppression.html`** is the data page for modders: all **521 weapons** with icons, the
   asset wiring behind each one, and every profile curve.
 
 Both are branded with the 29th Infantry Division logo (`branding/`).
@@ -28,7 +28,7 @@ Squad's suppression is undocumented and widely misunderstood. Ask around and you
 told that heavier calibres suppress harder, or that suppression falls off with range to
 the shooter. Both are wrong, and the assets say so plainly:
 
-- Every assault rifle in the game — M4A1, AK-74M, L85A2, QBZ95-1, AKM — shares **one
+- Every assault rifle in the game (M4A1, AK-74M, L85A2, QBZ95-1, AKM) shares **one
   identical profile**. Calibre, faction and muzzle velocity change nothing. Only rate of
   fire separates them.
 - The distance that matters is **how close the round passed you**, not how far away the
@@ -51,7 +51,7 @@ python3 serve.py    # then open the printed LAN URL
 ```
 
 If you only want the data, `squad_all_weapons_suppression.csv` is already in this
-directory — 521 rows, one per weapon, with power sampled at 1/2/3/4 m.
+directory, 521 rows, one per weapon, with power sampled at 1/2/3/4 m.
 
 Point the toolkit at a different SDK install by editing `CONTENT` at the top of
 `squad.py`; `extract_all.py`, `dump_all.py` and `build_gui_data.py` each hold one
@@ -78,7 +78,7 @@ not an exception: the AKM fires a 7.62 mm round whose default profile is machine
 grade, and overrides itself back down to the ordinary rifle profile. The G3 and M14 use
 it in the opposite direction.
 
-### Passby — a round goes past you
+### Passby: a round goes past you
 
 `PowerToDistanceCurve` maps **perpendicular miss distance** (Unreal units, 100 uu = 1 m)
 to suppression added per round. Every small-arms envelope dies at 5–7 m; outside it a
@@ -95,37 +95,37 @@ passing round does nothing at all. Totals accumulate and clamp at
 | SMG / pistol | 0.100 | 5.0 m | 1.15 | 12 |
 | Precision Rifle (DMR) | 2.000 | 5.0 m | 2.00 | 1 |
 | Sniper rifle | 3.000 | 5.0 m | 3.00 | 1 |
-| Shotgun / HMG | 0.500 | flat — no curve | 2.00 | 4 |
+| Shotgun / HMG | 0.500 | flat, no curve | 2.00 | 4 |
 
 A single sniper round passing at 1 m fills its entire ceiling. Shotguns and the KS-23 have
-no curve at all — one flat value instead of a distance curve. How far out that value still
+no curve at all, one flat value instead of a distance curve. How far out that value still
 applies, and whether it counts per pellet, is decided in the game's C++ and isn't known,
 which is why shotguns are left out of the field guide for now.
 
-### Blast — a separate, larger model
+### Blast: a separate, larger model
 
 Explosives zero their passby power and suppress radially instead, using
 `ImpactSuppressionPower` and `ImpactSuppressionDistanceCurve` between `InnerRadius` and
 `OuterRadius`, against their own `MaxRadialSuppressionThreshold`. A hand grenade is
-**5.5 power out to 22.5 m** against a rifle round's 0.125 at 1 m — roughly forty rifle
+**5.5 power out to 22.5 m** against a rifle round's 0.125 at 1 m, roughly forty rifle
 rounds arriving at once, against a ceiling of 6.5 rather than 1.15.
 
 ### The receiving end
 
-The soldier blueprint's node graph was decoded in full — see `SUPPRESSION_LOGIC.md`.
+The soldier blueprint's node graph was decoded in full. See `SUPPRESSION_LOGIC.md`.
 Squad's C++ hands the blueprint each round's result, including the new suppression level
 and a 0–1 **closeness ratio**, and the blueprint reacts:
 
 - **Punch.** Every round that adds suppression kicks the target's camera and weapon,
   scaled by how close it passed, by the target's current immunity, and by the target's own
-  weapon if he is aiming down sights — times a random 0.75–1.25, in a random direction.
+  weapon if he is aiming down sights, and finally by a random 0.75–1.25, in a random direction.
   Nothing about the shooter's weapon enters the blueprint's kick calculation.
 - **Immunity** is a 0–7.5 number on the soldier under fire. It rises 1.0 per second while
-  he is "actively suppressed" — a state that lasts 1 second after each qualifying round —
+  he is "actively suppressed", a state that lasts 1 second after each qualifying round,
   and drains 1.0 per second otherwise. The first round of a fresh engagement kicks at full
   strength, then grants 1.0 or 2.0 immunity at once depending on closeness. At 7.5, camera
   location punch is 0.35×, camera rotation 0.60× and weapon alignment 0.30×; most of that
-  reduction arrives in the first two points. Immunity only reduces the kick — not the
+  reduction arrives in the first two points. Immunity only reduces the kick, not the
   suppression level, the screen effects or the sway.
 - **Flinch** has curves in the assets, but they belong to an experimental first-shot flinch
   the developers left disabled (*"Experimental and not currently used"*). It is not live.
@@ -139,7 +139,7 @@ and a 0–1 **closeness ratio**, and the blueprint reacts:
 
 ### Why parse the binaries directly
 
-The Mod SDK ships **Win64 binaries only** — there is no Linux `UnrealEditor` to run a
+The Mod SDK ships **Win64 binaries only**. There is no Linux `UnrealEditor` to run a
 commandlet with, and `Engine/Source` contains just `Developer/` and `Programs/`, so the
 CoreUObject source isn't available to consult either. The assets are uncooked editor
 packages, which is good news: they still carry a name table and tagged properties in the
@@ -168,18 +168,18 @@ soft-object-path count/offset, then a `LocalizationId` FString that leaves the f
 fields **unaligned**, then gatherable-text, export and import counts and offsets. Import
 entries are 40 bytes, export entries 112.
 
-**3. `FRichCurveKey` is 27 bytes** — three enum bytes (interp, tangent, tangent weight)
+**3. `FRichCurveKey` is 27 bytes**, three enum bytes (interp, tangent, tangent weight)
 followed by six floats: time, value, arrive tangent, arrive weight, leave tangent, leave
 weight. `curve.py` reads these, and the page evaluates them the way UE does, including
 cubic segments as a Bézier built from the stored tangents.
 
-**4. ObjectRedirectors are everywhere.** `Projectile_Suppression_GPMG` is not a profile —
+**4. ObjectRedirectors are everywhere.** `Projectile_Suppression_GPMG` is not a profile,
 it is a redirector to `Projectile_Suppression_MMG`. The destination is the package index
 in the last four bytes of the 17-byte export blob. `squad.py` follows them transparently;
 without that, five weapon classes resolve to nothing.
 
 Blueprint defaults only store properties that **differ from the parent**, so reading a
-weapon means walking its `_C` class chain upward and merging — most-derived wins. That is
+weapon means walking its `_C` class chain upward and merging; most-derived wins. That is
 what `squad.merged()` does, and why `BP_AK74M` looks nearly empty on its own while
 `BP_GenericRifle` three levels up holds the projectile class.
 
@@ -195,7 +195,7 @@ alpha = clamp((luma - 128) / 127)      # 128/64 checker -> 0, white weapon -> op
 ```
 
 `textures.py` does this, giving 382 clean weapon icons plus 11 category emblems taken
-from the game's own role art. Category emblems are matched to profiles by hand — Squad
+from the game's own role art. Category emblems are matched to profiles by hand. Squad
 ships no per-profile artwork.
 
 ---
@@ -207,27 +207,27 @@ files hash identically.
 
 | Step | Script | Produces |
 |---|---|---|
-| 1 | `extract_all.py` | `all_weapons_raw.json` — every weapon asset, resolved |
-| 2 | `build_all.py` | `all_weapons.json` — grouped weapons + base64 icons |
-| 3 | `dump_all.py` | `all_profiles.json` — all 58 suppression profiles |
-| 4 | `report.py` | `squad_rifle_suppression.{csv,json}` — ten-rifle sample |
-| 5 | `build_gui_data.py` | `gui_data.json` — profiles, curves, soldier data |
-| 6 | `build_payload.py` | `payload.json` — the page's base payload |
-| 7 | `merge_payload.py` | `page_payload.json` — + weapons and icons |
-| 8 | `build_csv.py` | `squad_all_weapons_suppression.csv` — one row per weapon, with fire mode and bolt cycle |
-| 9 | `build_page.py` | `suppression.html` — data page: template + payload |
-| 10 | `build_guide_payload.py` | `guide_payload.json` — per-kit figures, soldier curves, effect thresholds, logo |
-| 11 | `build_guide.py` | `guide.html` — field guide: template + payload |
+| 1 | `extract_all.py` | `all_weapons_raw.json`, every weapon asset, resolved |
+| 2 | `build_all.py` | `all_weapons.json`, grouped weapons + base64 icons |
+| 3 | `dump_all.py` | `all_profiles.json`, all 58 suppression profiles |
+| 4 | `report.py` | `squad_rifle_suppression.{csv,json}`, ten-rifle sample |
+| 5 | `build_gui_data.py` | `gui_data.json`, profiles, curves, soldier data |
+| 6 | `build_payload.py` | `payload.json`, the page's base payload |
+| 7 | `merge_payload.py` | `page_payload.json`, + weapons and icons |
+| 8 | `build_csv.py` | `squad_all_weapons_suppression.csv`, one row per weapon, with fire mode and bolt cycle |
+| 9 | `build_page.py` | `suppression.html`, data page: template + payload |
+| 10 | `build_guide_payload.py` | `guide_payload.json`, per-kit figures, soldier curves, effect thresholds, logo |
+| 11 | `build_guide.py` | `guide.html`, field guide: template + payload |
 | 12 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
 
 Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
-generated `.html` files — steps 9 and 11 overwrite them.
+generated `.html` files, steps 9 and 11 overwrite them.
 
 **Rate of fire** is not one number. Automatics report their cyclic rate from `TimeBetweenShots`.
 Bolt-actions inherit a meaningless 0.072 s there from the generic rifle base; their real cycle is
 `ManualBoltingCompletionTime` on the weapon's StaticInfo (SV-98 1.95 s, C14 and Timberwolf
-2.31 s), and the pipeline uses that. `Firemodes` is a list of burst lengths — `1` semi, `-1` full
-auto — which is how each weapon gets its `fire` tag.
+2.31 s), and the pipeline uses that. `Firemodes` is a list of burst lengths (`1` semi, `-1` full
+auto), which is how each weapon gets its `fire` tag.
 
 `make_site.py` exists because the page is authored as an artifact body. Serving it
 yourself needs a doctype, `<meta charset="utf-8">` and a favicon that the artifact host
@@ -236,8 +236,8 @@ renders as mojibake.
 
 ## Reading blueprint logic, not just values
 
-`graph.py` parses the node graphs inside a Blueprint asset — the K2Node exports and their
-binary pin lists, including links between nodes — and `decompile.py` turns a graph into
+`graph.py` parses the node graphs inside a Blueprint asset: the K2Node exports and their
+binary pin lists, including links between nodes. `decompile.py` turns a graph into
 pseudo-code. That is how the soldier's punch and immunity logic in `SUPPRESSION_LOGIC.md` was
 recovered: 542 nodes, 1,140 links, none unresolved.
 
@@ -246,15 +246,15 @@ python3 decompile.py <path to BP_*.uasset> 'Suppress|Flinch'    # regex over gra
 ```
 
 Two format details worth knowing: a `BoolProperty` value lives in the tag's flags byte
-(`0x10` = true), and the pin body ends with a 16-byte GUID plus a 4-byte flags word — no
-trailer — while classes derived from `K2Node_EditablePinBase` append their own data after the
+(`0x10` = true), and the pin body ends with a 16-byte GUID plus a 4-byte flags word and no
+trailer, while classes derived from `K2Node_EditablePinBase` append their own data after the
 pin list.
 
 ## Extending it to other data
 
 The parser knows nothing about suppression specifically. To pull a different system:
 
-1. Find an asset that mentions it: `grep -al "Penetration" **/*.uasset` — note that
+1. Find an asset that mentions it: `grep -al "Penetration" **/*.uasset`. Note that
    **`grep` needs `-a`** on these files, or it silently reports nothing.
 2. Dump its properties to see the field names:
    ```python
@@ -276,30 +276,30 @@ Read directly from the assets: every power, ceiling, radius, sway value and curv
 the full weapon → projectile → profile wiring, display names, and icons.
 
 **Inferred, not stated:** that the curve's X axis is perpendicular miss distance rather
-than range to shooter — the property is `PowerToDistanceCurve`, its companion is
+than range to shooter. The property is `PowerToDistanceCurve`, its companion is
 `ObstructedClosenessMult`, and a 5 m envelope only makes sense as closeness. Also that
 `SuppressionPower` is the fallback used when a profile has no curve, which is how the
 shotgun and tank profiles are shaped.
 
 **Not available at all:** the decay rate once fire stops, the mapping from a suppression
 value to the screen effect, and how the closeness ratio is normalised. All three live in
-`/Script/Squad` — compiled C++ that the Mod SDK ships without source. Anything claiming
+`/Script/Squad`, which is compiled C++ that the Mod SDK ships without source. Anything claiming
 to know those numbers is guessing.
 
 ## Layout
 
 | | |
 |---|---|
-| `uasset.py` | UE 5.7 package reader — names, imports, exports, tagged properties |
+| `uasset.py` | UE 5.7 package reader, names, imports, exports, tagged properties |
 | `curve.py` | `FRichCurve` key decoding |
 | `textures.py` | icon recovery from asset thumbnails |
 | `squad.py` | blueprint chains, property merging, redirector following |
 | `graph.py` / `decompile.py` | Blueprint node-graph parser and pseudo-code decompiler |
-| `guide.template.html` | the field guide — edit this one |
-| `suppression.template.html` | the data page — edit this one |
+| `guide.template.html` | the field guide, edit this one, not the output |
+| `suppression.template.html` | the data page, edit this one |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic, with confidence labels |
 | `serve.py` | gzipping static server for the LAN |
 | `docs/index.html`, `docs/modders.html` | the built pages |
 
-See **[RUNBOOK.md](RUNBOOK.md)** for hosting commands — LAN, systemd, Docker and public
+See **[RUNBOOK.md](RUNBOOK.md)** for hosting commands: LAN, systemd, Docker and public
 static hosts.

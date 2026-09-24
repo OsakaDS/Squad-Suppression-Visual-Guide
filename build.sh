@@ -14,4 +14,4 @@ python3 build_page.py       # template + payload      -> suppression.html (modde
 python3 build_guide_payload.py  # per-kit + soldier data -> guide_payload.json
 python3 build_guide.py      # guide template + payload -> guide.html
 python3 make_site.py        # standalone documents    -> docs/index.html (guide), docs/modders.html
-echo "done — serve it with: python3 serve.py"
+echo "done, serve it with: python3 serve.py"

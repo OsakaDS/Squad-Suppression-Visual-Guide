@@ -76,7 +76,7 @@ h1{font-family:var(--fs); font-weight:400; font-size:clamp(34px,5.4vw,58px); lin
 .byline b{color:var(--ink2); font-weight:500}
 @media (max-width:700px){ header.mast{grid-template-columns:1fr; gap:18px} header.mast img{width:120px;height:120px} }
 
-/* confidence labels — the one visual convention the whole page runs on */
+/* confidence labels: the one visual convention the whole page runs on */
 .legend{display:flex; flex-wrap:wrap; gap:10px 22px; margin:18px 0 0; font-size:13.5px; color:var(--ink2); align-items:center}
 .conf{display:inline-block; font-family:var(--fm); font-size:10px; letter-spacing:.12em; padding:2px 6px; border:1px solid; vertical-align:2px; white-space:nowrap}
 .conf.read{color:var(--green); border-color:var(--green); background:var(--green-soft)}
@@ -231,7 +231,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
     <p class="kicker">29th Infantry Division · Squad <span id="ver">v10.5.3</span></p>
     <h1>Suppression<br>A Field Guide</h1>
     <p class="kicker" style="margin-top:-6px">Version 2 · draft for comparison</p>
-    <p class="dek">What a round passing your head actually does in Squad, how fast it pins you, and how to use that against people who haven't read this. Every number was taken from the game's own files — <b>not measured, not guessed, not copied from a wiki</b>.</p>
+    <p class="dek">What a round passing your head actually does in Squad, how fast it pins you, and how to use that against people who haven't read this. Every number was taken from the game's own files. <b>Not measured, not guessed, not copied from a wiki</b>.</p>
     <p class="byline">by <b id="author">Osaka [29th ID]</b></p>
     <div class="legend">
       <span><span class="conf read">READ</span> taken straight from the game assets</span>
@@ -243,25 +243,25 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 
 <!-- ============ 01 HOW IT WORKS ============ -->
 <section class="sec">
-  <div class="sec-head"><span class="sec-num">01</span><h2>How it works — four rules</h2></div>
+  <div class="sec-head"><span class="sec-num">01</span><h2>How it works: four rules</h2></div>
   <p class="sec-sub">Squad does not keep a suppression stat on the gun. It keeps one on the <em>round</em>: a profile shared by every weapon of that kit, a curve keyed on how close the round passed you, and a ceiling on how much pressure can stack. Everything else follows from those three things.</p>
 
   <div class="twoclocks">
-    <h3>Two clocks run on the target — the kit sets one of them, and has no say in the other <span class="conf read">READ</span></h3>
+    <h3>Two clocks run on the target. The kit sets one of them, and has no say in the other <span class="conf read">READ</span></h3>
     <div class="clocks">
       <div class="clock p"><p class="cn">Pressure</p>
-        <p><b>How suppressed they are right now.</b> The game's own name for it is the suppression level (<code>UnderSuppressionPercentage</code>); <em>pressure</em> is this guide's word, to keep it apart from immunity. Drives what they see — vignette, desaturation, blur — and how much their weapon sways.</p>
+        <p><b>How suppressed they are right now.</b> The game's own name for it is the suppression level (<code>UnderSuppressionPercentage</code>); <em>pressure</em> is this guide's word, to keep it apart from immunity. Drives what they see (vignette, desaturation, blur) and how much their weapon sways.</p>
         <p>Each round adds the kit's power at that miss distance, up to the kit's ceiling. <b>The kit controls this completely:</b> how much per round, how high it can go, how fast it climbs.</p></div>
       <div class="clock i"><p class="cn">Immunity</p>
-        <p><b>How numb they've become.</b> The game's own term (<code>SuppressionImmunityFactor</code>). Shrinks only the <em>kick</em> — the camera jolt and weapon drift of each round that follows, which the game calls <em>punch</em>.</p>
-        <p>Not added per round. A clock: +1.0 per second while any round has passed in the last second, −1.0 per second otherwise, capped at 7.5 for everyone. <b>The kit has no say</b> — except that a slow bolt-action lets the second lapse between shots.</p></div>
+        <p><b>How numb they've become.</b> The game's own term (<code>SuppressionImmunityFactor</code>). Shrinks only the <em>kick</em>, the camera jolt and weapon drift of each round that follows, which the game calls <em>punch</em>.</p>
+        <p>Not added per round. A clock: +1.0 per second while any round has passed in the last second, −1.0 per second otherwise, capped at 7.5 for everyone. <b>The kit has no say</b>, except that a slow bolt-action lets the second lapse between shots.</p></div>
     </div>
-    <p class="figcap" style="max-width:none"><b>The kick of a single round does not depend on what fired it.</b> A rifle round and a sniper round passing at the same distance jolt the camera identically. Kits differ in how many kicks arrive and how much pressure builds behind them — which is what the contrast below shows.</p>
+    <p class="figcap" style="max-width:none"><b>The kick of a single round does not depend on what fired it.</b> A rifle round and a sniper round passing at the same distance jolt the camera identically. Kits differ in how many kicks arrive and how much pressure builds behind them, which is what the contrast below shows.</p>
     <div class="contrast">
       <div><p class="who">Under an M4 · 833 rpm · rounds at 2 m</p><svg id="cmpA" viewBox="0 0 360 316" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an M4"></svg></div>
       <div><p class="who">Under an SV-98 · 31 rpm · rounds at 2 m</p><svg id="cmpB" viewBox="0 0 360 316" role="img" aria-label="Pressure, immunity and per-round kick over five seconds under an SV-98"></svg></div>
     </div>
-    <p class="figcap" style="max-width:none">Five seconds each. The M4 pins its target in under a second and then sits at the rifle ceiling of 1.15 — vignette and sway, nothing worse — while seventy fading kicks build the target's immunity to the maximum. The SV-98's first round alone puts pressure at 3.0, where blur begins, and with two seconds between shots the target's immunity never builds: every round kicks at close to full strength. <b>The kit chooses what state the target is in; immunity chooses how much your follow-up rounds still rattle them.</b></p>
+    <p class="figcap" style="max-width:none">Five seconds each. The M4 pins its target in under a second and then sits at the rifle ceiling of 1.15 (vignette and sway, nothing worse) while seventy fading kicks build the target's immunity to the maximum. The SV-98's first round alone puts pressure at 3.0, where blur begins, and with two seconds between shots the target's immunity never builds: every round kicks at close to full strength. <b>The kit chooses what state the target is in; immunity chooses how much your follow-up rounds still rattle them.</b></p>
   </div>
 
   <!-- RULE 1 -->
@@ -289,41 +289,41 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 
   <!-- RULE 2 -->
   <div class="rule">
-    <p class="rule-title"><span class="n">RULE 2</span>Pressure stacks, then stops — at the kit's ceiling <span class="conf read">READ</span></p>
-    <p class="rule-lede">Each passing round adds its value to a running total on the target. That total is clamped at the round's ceiling. So a kit's real advantage is <em>how fast it gets someone to the ceiling</em>, and a high-ceiling kit can push a target deeper than a low-ceiling one ever can — but nobody can be suppressed past the ceiling of whatever is hitting them.</p>
+    <p class="rule-title"><span class="n">RULE 2</span>Pressure stacks, then stops at the kit's ceiling <span class="conf read">READ</span></p>
+    <p class="rule-lede">Each passing round adds its value to a running total on the target. That total is clamped at the round's ceiling. So a kit's real advantage is <em>how fast it gets someone to the ceiling</em>, and a high-ceiling kit can push a target deeper than a low-ceiling one ever can. But nobody can be suppressed past the ceiling of whatever is hitting them.</p>
     <div class="tablewrap">
       <table id="kitTable"><thead><tr>
         <th>Kit</th><th>Weapons</th><th>Per round @1 m</th><th>Per round @2 m</th><th>Envelope</th><th>Ceiling</th><th>Rounds to pressure ceiling @1 m</th><th>Rate</th>
       </tr></thead><tbody></tbody></table>
     </div>
-    <p class="figcap">"Rounds to pressure ceiling" is the kit's ceiling divided by its per-round value at 1 m — the number of close rounds it takes to reach the cap. A single precision-rifle or sniper round passing at 1 m pins outright. Rates are the kit's typical weapon: cyclic for automatics, and for bolt-actions the real cycle time read from the weapon's bolt animation (an SV-98 needs 1.95 s between shots). Semi-autos show their cyclic figure, which is an upper bound a player never reaches. The full list of what is in each kit is in the armoury at the bottom of the page.</p>
+    <p class="figcap">"Rounds to pressure ceiling" is the kit's ceiling divided by its per-round value at 1 m, the number of close rounds it takes to reach the cap. A single precision-rifle or sniper round passing at 1 m pins outright. Rates are the kit's typical weapon: cyclic for automatics, and for bolt-actions the real cycle time read from the weapon's bolt animation (an SV-98 needs 1.95 s between shots). Semi-autos show their cyclic figure, which is an upper bound a player never reaches. The full list of what is in each kit is in the armoury at the bottom of the page.</p>
   </div>
 
   <!-- RULE 3 -->
   <div class="rule">
     <p class="rule-title"><span class="n">RULE 3</span>What it does to you: a kick, a wobble, and a shrinking view</p>
-    <p class="rule-lede">Three separate things happen. The wobble and the shrinking view are <b>pressure</b> — the kit's doing. The kick is per round and shrinks with <b>immunity</b> — the target's doing. <b>The size of a single kick doesn't depend on what fired the round</b>: it is closeness × the target's numbness × the target's own weapon if aiming down sights.</p>
+    <p class="rule-lede">Three separate things happen. The wobble and the shrinking view are <b>pressure</b>, the kit's doing. The kick is per round and shrinks with <b>immunity</b>, the target's doing. <b>The size of a single kick doesn't depend on what fired the round</b>: it is closeness × the target's numbness × the target's own weapon if aiming down sights.</p>
 
     <div class="grid-eq">
       <div class="panel">
-        <h3>The kick — camera and weapon punch <span class="conf read">READ</span></h3>
+        <h3>The kick: camera and weapon punch <span class="conf read">READ</span></h3>
         <svg id="closeChart" viewBox="0 0 340 250" role="img" aria-label="Punch multiplier against closeness ratio"></svg>
-        <p class="figcap"><b>Half the kick arrives by closeness 0.1.</b> Anything inside the envelope throws your view; the last stretch to a near-clip adds the rest. Weapon alignment ramps more slowly — and in a random direction every time.</p>
+        <p class="figcap"><b>Half the kick arrives by closeness 0.1.</b> Anything inside the envelope throws your view; the last stretch to a near-clip adds the rest. Weapon alignment ramps more slowly, and in a random direction every time.</p>
       </div>
       <div class="panel">
         <h3>…which fades as you get numb <span class="conf read">READ</span></h3>
         <svg id="immChart" viewBox="0 0 340 250" role="img" aria-label="Punch multiplier against immunity"></svg>
-        <p class="figcap"><b>Immunity climbs 1.0 per second under fire</b>, to 7.5. At the top, camera location punch is 0.35× and weapon alignment 0.30×. Weapon alignment starts at 0.70 — even a fresh first round only ever throws your gun 70 % of full.</p>
+        <p class="figcap"><b>Immunity climbs 1.0 per second under fire</b>, to 7.5. At the top, camera location punch is 0.35× and weapon alignment 0.30×. Weapon alignment starts at 0.70. Even a fresh first round only ever throws your gun 70 % of full.</p>
       </div>
       <div class="panel">
-        <h3>The wobble — extra sway <span class="conf read">READ</span> <span class="conf inf">INFERRED use</span></h3>
+        <h3>The wobble: extra sway <span class="conf read">READ</span> <span class="conf inf">INFERRED use</span></h3>
         <svg id="swayChart" viewBox="0 0 340 250" role="img" aria-label="Additional sway against suppression"></svg>
         <p class="figcap"><b>Half the extra sway is already there at level 0.1.</b> Even light suppression costs most of the sway penalty; the curve saturates at 1.0, which every kit can reach. The curve is read from the assets; how the game applies it is C++.</p>
       </div>
     </div>
 
     <div class="panel" style="margin-top:18px">
-      <h3>The shrinking view — screen effects and the level that switches each one on <span class="conf read">READ</span></h3>
+      <h3>The shrinking view: screen effects and the level that switches each one on <span class="conf read">READ</span></h3>
       <div class="grid2">
         <div>
           <svg id="ladder" viewBox="0 0 340 300" role="img" aria-label="Kit ceilings against the suppression level"></svg>
@@ -334,7 +334,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
           <p class="ladder-note">Bars show the level range each effect fades in over. Vignette is always on and simply gets stronger.</p>
         </div>
       </div>
-      <div class="callout"><b>Rifle fire alone will never blur, desaturate or dirty your screen.</b> Rifles, SMGs and battle rifles cap at 1.15, and every effect except the vignette starts above that. What they <em>will</em> do is kick your aim on every round and shrink your view — and they do most of that damage in the first second. The "can't see anything" state belongs to machine guns at the margin, marksmen, snipers, and above all to explosives.</div>
+      <div class="callout"><b>Rifle fire alone will never blur, desaturate or dirty your screen.</b> Rifles, SMGs and battle rifles cap at 1.15, and every effect except the vignette starts above that. What they <em>will</em> do is kick your aim on every round and shrink your view, and they do most of that damage in the first second. The "can't see anything" state belongs to machine guns at the margin, marksmen, snipers, and above all to explosives.</div>
     </div>
 
     <p class="figcap" style="margin-top:16px"><b>Aiming down an optic roughly halves the camera kick</b> on 65 weapons (camera location ×0.4, sideways kick disabled). Belt-fed machine guns are the steadiest platforms under fire by design: in ADS their camera rotation punch is ×0.2. <span class="conf read">READ</span> from each weapon's data; the default for weapons that don't set it is <span class="conf unk">UNKNOWN</span>.</p>
@@ -343,12 +343,12 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
   <!-- RULE 4 -->
   <div class="rule">
     <p class="rule-title"><span class="n">RULE 4</span>The two clocks run in opposite directions</p>
-    <p class="rule-lede">Both climb while you're under fire — pressure hurts you, immunity protects you. <b>Immunity doesn't care what is shooting at you</b>: it builds at the same 1.0 per second under a pistol as under an MMG, the one exception being a bolt-action slow enough to let the 1-second window lapse between shots. Immunity is fully known; how pressure decays is not.</p>
+    <p class="rule-lede">Both climb while you're under fire: pressure hurts you, immunity protects you. <b>Immunity doesn't care what is shooting at you</b>: it builds at the same 1.0 per second under a pistol as under an MMG, the one exception being a bolt-action slow enough to let the 1-second window lapse between shots. Immunity is fully known; how pressure decays is not.</p>
     <div class="grid2">
       <div class="panel">
         <h3>Immunity over an engagement <span class="conf read">READ</span></h3>
         <div class="ctl"><label for="fireFor">Under fire for <span class="readout" id="fireForRead">6.0 s</span></label><input type="range" id="fireFor" min="1" max="12" step="0.5" value="6"></div>
-        <p class="hint">An unbroken stream of rounds passing within range — no gap between rounds longer than 1 second.</p>
+        <p class="hint">An unbroken stream of rounds passing within range, with no gap between rounds longer than 1 second.</p>
         <div class="ctl"><label for="firstDist">Rounds pass at <span class="readout" id="firstDistRead">2.40 m</span></label><input type="range" id="firstDist" min="0" max="800" step="10" value="240" aria-label="Miss distance of the rounds"></div>
         <p class="hint" id="firstDistNote"></p>
         <table class="readrows bump" aria-label="Immunity granted by the first round, by miss distance">
@@ -360,14 +360,14 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
             <tr data-bump="0"><td>beyond 5.7 m</td><td>none</td></tr>
           </tbody>
         </table>
-        <p class="figcap">The first round of an engagement always hits at full strength — it lands <em>before</em> any immunity is granted. The bump then softens the rest of that burst. Immunity rises 1.0 per second while rounds keep coming, holds for 1 second after the last one, then drains at 1.0 per second. The metre bands assume closeness runs from full at 1 m to zero at 8 m <span class="conf inf">INFERRED</span>; the bump values themselves are <span class="conf read">READ</span>.</p>
+        <p class="figcap">The first round of an engagement always hits at full strength: it lands <em>before</em> any immunity is granted. The bump then softens the rest of that burst. Immunity rises 1.0 per second while rounds keep coming, holds for 1 second after the last one, then drains at 1.0 per second. The metre bands assume closeness runs from full at 1 m to zero at 8 m <span class="conf inf">INFERRED</span>; the bump values themselves are <span class="conf read">READ</span>.</p>
       </div>
       <div class="panel">
         <svg id="timeline" viewBox="0 0 720 300" role="img" aria-label="Immunity over time through an engagement"></svg>
         <p class="figcap"><b>Level decay:</b> a decay rate of 0.5 exists in the assets <span class="conf read">READ</span>, but whether that is level-per-second or a fraction is <span class="conf unk">UNKNOWN</span>. If it is level-per-second, a rifle's full 1.15 is gone about 2.3 s after fire stops.</p>
       </div>
     </div>
-    <div class="callout"><b>Bolt-actions keep their kick.</b> The SV-98 needs 1.95 s between shots and the C14 and Timberwolf 2.31 s <span class="conf read">READ</span>, so the 1-second window lapses between shots, the target's immunity drains in the gap, and every shot lands on a fresher, less numb target. Every automatic kit fires far too often for that. <b>One thing the files don't settle:</b> the blueprint only counts a round that <em>added</em> pressure, so whether rounds arriving at a target already at the ceiling still keep the window open — and immunity climbing — is decided in C++ <span class="conf unk">UNKNOWN</span>.</div>
+    <div class="callout"><b>Bolt-actions keep their kick.</b> The SV-98 needs 1.95 s between shots and the C14 and Timberwolf 2.31 s <span class="conf read">READ</span>, so the 1-second window lapses between shots, the target's immunity drains in the gap, and every shot lands on a fresher, less numb target. Every automatic kit fires far too often for that. <b>One thing the files don't settle:</b> the blueprint only counts a round that <em>added</em> pressure, so whether rounds arriving at a target already at the ceiling still keep the window open, and immunity climbing, is decided in C++ <span class="conf unk">UNKNOWN</span>.</div>
   </div>
 </section>
 
@@ -388,11 +388,11 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
       <div class="kitrows" id="toolKits"></div>
       <div class="ctl"><label for="dist2">Rounds pass at <span class="readout" id="dist2Read">1.50 m</span></label><input type="range" id="dist2" min="0" max="800" step="5" value="150"></div>
       <div class="stats">
-        <div class="stat hot"><span class="k">Build rate</span><span class="v" id="rateRead">—<span class="u">/s</span></span></div>
-        <div class="stat"><span class="k">Time to pin</span><span class="v" id="ttcRead">—<span class="u">s</span></span></div>
-        <div class="stat"><span class="k">Level reached</span><span class="v" id="capRead">—</span></div>
+        <div class="stat hot"><span class="k">Build rate</span><span class="v" id="rateRead">-<span class="u">/s</span></span></div>
+        <div class="stat"><span class="k">Time to pin</span><span class="v" id="ttcRead">-<span class="u">s</span></span></div>
+        <div class="stat"><span class="k">Level reached</span><span class="v" id="capRead">-</span></div>
       </div>
-      <p class="figcap" style="margin-top:14px">Automatics use their cyclic rate and bolt-actions their real bolt cycle, both from the game <span class="conf read">READ</span>. Semi-auto kits default to an assumed 150 rpm, since a player's finger is the limit — change it. Mixed fire: each kit stops adding once the level passes its own ceiling <span class="conf inf">INFERRED</span>. Closeness ratio is mapped from miss distance as 1 at 1 m to 0 at 8 m, from the soldier's <code>FullSuppressionRadius</code> / <code>SuppressionRadius</code> <span class="conf inf">INFERRED</span>.</p>
+      <p class="figcap" style="margin-top:14px">Automatics use their cyclic rate and bolt-actions their real bolt cycle, both from the game <span class="conf read">READ</span>. Semi-auto kits default to an assumed 150 rpm, since a player's finger is the limit, so change it. Mixed fire: each kit stops adding once the level passes its own ceiling <span class="conf inf">INFERRED</span>. Closeness ratio is mapped from miss distance as 1 at 1 m to 0 at 8 m, from the soldier's <code>FullSuppressionRadius</code> / <code>SuppressionRadius</code> <span class="conf inf">INFERRED</span>.</p>
     </div>
     <div>
       <div class="panel">
@@ -400,7 +400,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
         <svg id="buildChart" viewBox="0 0 720 260" role="img" aria-label="Suppression level over time against kit ceilings"></svg>
       </div>
       <div class="panel" style="margin-top:18px">
-        <h3>How hard each round kicks across the burst — and the immunity that shrinks it</h3>
+        <h3>How hard each round kicks across the burst, and the immunity that shrinks it</h3>
         <svg id="punchChart" viewBox="0 0 720 260" role="img" aria-label="Punch multiplier and immunity over time under sustained fire"></svg>
         <p class="figcap">Kick = closeness × immunity curve, with the first-shot bump; the dashed navy line is the target's immunity on its own 0–7.5 scale (right). It follows the fastest kit selected: an automatic keeps the 1-second window open, a bolt-action lets it lapse and immunity saw-tooths. The random 0.75–1.25 per-round factor and ADS multipliers are not applied.</p>
       </div>
@@ -415,26 +415,26 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 <!-- ============ 04 EXPLOSIVES ============ -->
 <section class="sec">
   <div class="sec-head"><span class="sec-num">04</span><h2>Why one grenade beats a magazine</h2></div>
-  <p class="sec-sub">Explosives don't use the passby rules at all. They suppress radially on detonation, with their own power, their own curve and their own — much higher — ceiling. <span class="conf read">READ</span></p>
+  <p class="sec-sub">Explosives don't use the passby rules at all. They suppress radially on detonation, with their own power, their own curve and their own much higher ceiling. <span class="conf read">READ</span></p>
   <div class="grid2">
     <div class="panel">
       <svg id="blastChart" viewBox="0 0 400 300" role="img" aria-label="Inner and outer suppression radius for explosive sources"></svg>
     </div>
     <div class="panel">
       <div class="tablewrap"><table id="blastTable"><thead><tr><th>Source</th><th>Power</th><th>Full to</th><th>Zero at</th><th>Ceiling</th></tr></thead><tbody></tbody></table></div>
-      <p class="figcap"><b>5.5 from a hand grenade at 6 m</b> against 0.125 from a rifle round at 1 m — some forty rifle rounds arriving at once, against a ceiling of 6.5 rather than 1.15. A grenade is the only infantry-carried thing that reaches the fisheye effect.</p>
+      <p class="figcap"><b>5.5 from a hand grenade at 6 m</b> against 0.125 from a rifle round at 1 m, some forty rifle rounds arriving at once, against a ceiling of 6.5 rather than 1.15. A grenade is the only infantry-carried thing that reaches the fisheye effect.</p>
     </div>
   </div>
 </section>
 
 <!-- ============ 05 ARMOURY ============ -->
 <section class="sec">
-  <div class="sec-head"><span class="sec-num">05</span><h2>The armoury — what is in each kit</h2></div>
-  <p class="sec-sub">Every weapon in the eight kits, sorted by the suppression profile its rounds carry — not by what it looks like. Icons are the game's own inventory art.</p>
+  <div class="sec-head"><span class="sec-num">05</span><h2>The armoury: what is in each kit</h2></div>
+  <p class="sec-sub">Every weapon in the eight kits, sorted by the suppression profile its rounds carry, not by what it looks like. Icons are the game's own inventory art.</p>
   <div class="cattiles" id="cattiles" role="group" aria-label="Kits"></div>
   <div class="panel">
     <div class="pickbar">
-      <input type="search" id="search" placeholder="Search — try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
+      <input type="search" id="search" placeholder="Search: try “PKM”, “M4”, “Mosin”" aria-label="Search weapons">
       <span class="count" id="wcount"></span>
     </div>
     <div class="wgrid" id="wgrid" role="list" aria-label="Weapons"></div>
@@ -444,8 +444,8 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 <footer>
   <img class="logo" id="logoFoot" alt="">
   <h3>Where these numbers come from</h3>
-  <p>Every value on this page was read out of the Squad <span id="ver2">v10.5.3</span> Mod SDK asset files — the weapon and projectile blueprints, the suppression profile assets and their curves, and the soldier blueprint's node graph, which was decoded to recover the punch and immunity logic. Nothing was measured in-game. What the game's compiled C++ does with those values — the level maths, the miss-distance test, the decay — is labelled <span class="conf inf">INFERRED</span> or <span class="conf unk">UNKNOWN</span> throughout; the labels are the point. If you test any of it on a server, it can be confirmed.</p>
-  <p>The asset wiring behind each weapon — which projectile it fires, which profile that carries, and where a weapon overrides it — lives on the <a href="modders.html">data page</a>. The decoded logic itself is documented in the project's <code>SUPPRESSION_LOGIC.md</code>.</p>
+  <p>Every value on this page was read out of the Squad <span id="ver2">v10.5.3</span> Mod SDK asset files: the weapon and projectile blueprints, the suppression profile assets and their curves, and the soldier blueprint's node graph, which was decoded to recover the punch and immunity logic. Nothing was measured in-game. What the game's compiled C++ does with those values (the level maths, the miss-distance test, the decay) is labelled <span class="conf inf">INFERRED</span> or <span class="conf unk">UNKNOWN</span> throughout; the labels are the point. If you test any of it on a server, it can be confirmed.</p>
+  <p>The asset wiring behind each weapon (which projectile it fires, which profile that carries, and where a weapon overrides it) lives on the <a href="modders.html">data page</a>. The decoded logic itself is documented in the project's <code>SUPPRESSION_LOGIC.md</code>.</p>
   <p class="byline">Guide by <b>Osaka [29th ID]</b> · data as of Squad <span id="ver3">v10.5.3</span> · the values will change; check the version</p>
 </footer>
 </div>
@@ -580,7 +580,7 @@ function drawRule1(){
   const rows=vis.map(o=>({k:o.k,col:kitColor(o.i),val:kitPower(o.k,state.dist)})).sort((a,b)=>b.val-a.val);
   if(!rows.length){ tb.innerHTML='<tr><td colspan="3" class="none">Pick a kit beside the chart.</td></tr>'; }
   rows.forEach(r=>{ const tr=document.createElement('tr');
-    tr.innerHTML=`<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.k.label)}</span></span></td><td>${fmt(r.val)}</td><td>${r.val>0?Math.ceil(r.k.ceiling/r.val):'—'}</td>`; tb.appendChild(tr); });
+    tr.innerHTML=`<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.k.label)}</span></span></td><td>${fmt(r.val)}</td><td>${r.val>0?Math.ceil(r.k.ceiling/r.val):'-'}</td>`; tb.appendChild(tr); });
 }
 document.getElementById('dist').addEventListener('input',e=>{ state.dist=+e.target.value; document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m'; drawRule1(); });
 document.getElementById('curveChart').addEventListener('pointermove',ev=>{ const svg=ev.currentTarget,r=svg.getBoundingClientRect();
@@ -594,7 +594,7 @@ function kitTable(){
     tr.innerHTML=`<td class="name">${k.emblem?`<img class="emblem" src="${k.emblem}" alt="">`:''}<span class="swatch" style="display:inline-block;width:9px;height:9px;margin-right:8px;background:${kitColor(i)}"></span>${esc(k.label)}</td>
       <td class="num">${k.count}</td><td class="num">${fmt(p1)}</td><td class="num">${fmt(p2)}</td>
       <td class="num">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num">${fmt(k.ceiling,2)}</td>
-      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'—'}</td><td class="num">${k.rpm||'—'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'—'}</span></td>`; tb.appendChild(tr); });
+      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'-'}</td><td class="num">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
 }
 
 /* ================= RULE 3 ================= */
@@ -676,25 +676,25 @@ function qa(){
      `Rifle envelope 5.0 m · MMG 7.0 m · half the camera kick already at closeness 0.1`,
      `<b>Aim at the cover, not the sky.</b> Rounds over the top by more than a few metres do nothing. Put them on the parapet, the door frame, the tree line at head height.`],
     ['Which kit pins fastest?',
-     `<b>A DMR or sniper: one close round.</b> A rifle needs about ${Math.ceil(rifle.ceiling/kitPower(rifle,100))} at 1 m; an MMG ${Math.ceil(mmg.ceiling/kitPower(mmg,100))}, and it reaches 7 m out. Every rifle in the game shares one profile — an M4 and an AK pin identically; only rate of fire differs.`,
-     `Rifle ${fmt(kitPower(rifle,100))}/round · MMG ${fmt(kitPower(mmg,100))} · DMR ${fmt(kitPower(dmr,100),1)} · sniper ${fmt(kitPower(sn,100),1)} — ceilings 1.15 / 1.75 / 2.0 / 3.0`,
+     `<b>A DMR or sniper: one close round.</b> A rifle needs about ${Math.ceil(rifle.ceiling/kitPower(rifle,100))} at 1 m; an MMG ${Math.ceil(mmg.ceiling/kitPower(mmg,100))}, and it reaches 7 m out. Every rifle in the game shares one profile: an M4 and an AK pin identically; only rate of fire differs.`,
+     `Rifle ${fmt(kitPower(rifle,100))}/round · MMG ${fmt(kitPower(mmg,100))} · DMR ${fmt(kitPower(dmr,100),1)} · sniper ${fmt(kitPower(sn,100),1)} · ceilings 1.15 / 1.75 / 2.0 / 3.0`,
      `<b>Give the marksman the first shot.</b> One near miss puts the target at cap before the rifles have finished their burst; the rifles then keep them there.`],
     ['Does aiming down sights help me under fire?',
-     `<b>Yes, on most weapons — it roughly halves the camera kick.</b> 65 optic-equipped weapons take camera location punch at ×0.4 and lose the sideways component entirely. Belt-fed machine guns get camera rotation at ×0.2 in ADS.`,
+     `<b>Yes, on most weapons. It roughly halves the camera kick.</b> 65 optic-equipped weapons take camera location punch at ×0.4 and lose the sideways component entirely. Belt-fed machine guns get camera rotation at ×0.2 in ADS.`,
      `READ from each weapon's data · default for the rest is UNKNOWN`,
-     `<b>Stay in the sight when a burst comes in</b> rather than dropping out to look. On an MG, keep the bipod down and the optic up — it is the steadiest thing on the field.`],
+     `<b>Stay in the sight when a burst comes in</b> rather than dropping out to look. On an MG, keep the bipod down and the optic up; it is the steadiest thing on the field.`],
     ['How long does it last?',
-     `<b>The kick fades while you keep firing; the level fades after you stop.</b> Immunity builds 1.0 per second under fire to a maximum of 7.5 — about 5.5 s of sustained fire after a close first round — and most of the numbing lands in the first two points. It holds 1 s after the last round, then drains at 1.0 per second.`,
+     `<b>The kick fades while you keep firing; the level fades after you stop.</b> Immunity builds 1.0 per second under fire to a maximum of 7.5, about 5.5 s of sustained fire after a close first round, and most of the numbing lands in the first two points. It holds 1 s after the last round, then drains at 1.0 per second.`,
      `Immunity READ · level decay rate 0.5 READ, its units UNKNOWN`,
-     `<b>Make the first round count — short pauses don't reset anyone.</b> The first round against a fresh target kicks at full strength. A 2-second pause only takes a numb target from 7.5 to 6.5, which barely changes the kick; getting that full-strength first round back takes a pause of about one second plus one second per point of immunity, up to 8.5 s.`],
+     `<b>Make the first round count. Short pauses don't reset anyone.</b> The first round against a fresh target kicks at full strength. A 2-second pause only takes a numb target from 7.5 to 6.5, which barely changes the kick; getting that full-strength first round back takes a pause of about one second plus one second per point of immunity, up to 8.5 s.`],
     ['Why does my rifle fire stop rattling them?',
-     `<b>Because you've numbed them and your pressure has nowhere left to go.</b> Seventy rounds in five seconds takes a target's immunity to 7.5 — every kick down to about a third — while your pressure stalled at the rifle ceiling of 1.15 three seconds earlier.`,
+     `<b>Because you've numbed them and your pressure has nowhere left to go.</b> Seventy rounds in five seconds takes a target's immunity to 7.5, every kick down to about a third, while your pressure stalled at the rifle ceiling of 1.15 three seconds earlier.`,
      `Rifle ceiling 1.15 · immunity +1.0/s to 7.5 · camera kick 0.35× at max`,
      `<b>Change their state instead of adding rounds.</b> A marksman's round or a grenade raises the ceiling and switches on effects a rifle never can; more rifle fire just feeds their immunity.`],
     ['What will they actually see?',
-     `<b>From rifle fire: a shrinking vignette and a kicked aim — that's all.</b> Desaturation and colour shift need level 1.4, blur and screen dirt 3.0, fisheye 5.0. Rifles cap at 1.15.`,
+     `<b>From rifle fire: a shrinking vignette and a kicked aim, that's all.</b> Desaturation and colour shift need level 1.4, blur and screen dirt 3.0, fisheye 5.0. Rifles cap at 1.15.`,
      `Rifle / SMG / BR cap 1.15 · MMG 1.75 · DMR 2.0 · sniper 3.0 · grenade 6.5`,
-     `<b>If you need someone blind, use a grenade or a marksman.</b> If you only have rifles, you are buying sway and a kicked sight picture — still worth having, but don't expect them to stop seeing you.`],
+     `<b>If you need someone blind, use a grenade or a marksman.</b> If you only have rifles, you are buying sway and a kicked sight picture. Still worth having, but don't expect them to stop seeing you.`],
   ];
   const box=document.getElementById('qa'); box.textContent='';
   cards.forEach(([q,rule,num,doit])=>{ const d=document.createElement('div'); d.className='q';
@@ -728,10 +728,10 @@ function drawTool(){
   const d=state.dist2, sim=simulate(d), c=closeness(d);
   document.getElementById('rateRead').innerHTML=fmt(sim.rate0,2)+'<span class="u">/s</span>';
   document.getElementById('ttcRead').innerHTML=(sim.ttc!=null?fmt(sim.ttc,2):(sim.rate0>0?'>12':'∞'))+'<span class="u">s</span>';
-  document.getElementById('capRead').textContent=sim.kits.length?fmt(sim.reached,2)+' / '+fmt(sim.capMax,2):'—';
+  document.getElementById('capRead').textContent=sim.kits.length?fmt(sim.reached,2)+' / '+fmt(sim.capMax,2):'-';
   const span=Math.min(12, Math.max(3, sim.ttc!=null?sim.ttc*1.8:8));
   const yMax=niceMax(Math.max(sim.capMax||1, 1.2)*1.15);
-  const caps=[...new Set(sim.kits.map(k=>k.ceiling))].map(v=>({y:v,label:'cap '+v.toFixed(2)+' — '+sim.kits.filter(k=>k.ceiling===v).map(k=>k.label).join(', '),color:css('--ink3')}));
+  const caps=[...new Set(sim.kits.map(k=>k.ceiling))].map(v=>({y:v,label:'cap '+v.toFixed(2)+': '+sim.kits.filter(k=>k.ceiling===v).map(k=>k.label).join(', '),color:css('--ink3')}));
   lineChart(document.getElementById('buildChart'),{w:720,h:260,mL:48,mR:22,xMax:span,yMax:yMax,xTicks:6,yTicks:4,xFmt:v=>v.toFixed(1)+' s',yFmt:v=>v.toFixed(2),xLabel:'Seconds of fire',yLabel:'Level',hlines:caps,
     series:[{f:t=>{ const i=Math.min(sim.pts.length-1,Math.round(t/0.02)); return sim.pts[i].L; },color:css('--gold'),width:2.5}]});
   const S=D.soldier;
@@ -762,7 +762,7 @@ function drawBlast(){
     el('text',{x:X(b.outer)+7,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=(b.outer/100)+' m'; });
   el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent='Distance from the blast';
   const tb=document.querySelector('#blastTable tbody'); tb.textContent='';
-  D.blast.forEach(b=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'—'}</td><td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'—'}</td><td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'—'}</td><td class="num">${b.thr!=null?fmt(b.thr,2):'—'}</td>`; tb.appendChild(tr); });
+  D.blast.forEach(b=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'-'}</td><td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'-'}</td><td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'-'}</td><td class="num">${b.thr!=null?fmt(b.thr,2):'-'}</td>`; tb.appendChild(tr); });
 }
 
 /* ================= the two-clocks contrast ================= */
@@ -826,7 +826,7 @@ function armoury(){
   const frag=document.createDocumentFragment(); const kitLabel=Object.fromEntries(D.kits.map(k=>[k.id,k.label]));
   list.forEach(w=>{ const d=document.createElement('div'); d.className='wcard'; d.setAttribute('role','listitem');
     d.innerHTML=(w.icon&&D.icons[w.icon]?`<img src="${D.icons[w.icon]}" alt="">`:'<span></span>')+
-      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'—'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
+      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'-'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
   grid.appendChild(frag);
 }
 document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.value.trim().toLowerCase(); armoury(); });

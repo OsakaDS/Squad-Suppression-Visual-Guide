@@ -7,9 +7,9 @@ served by your own web server gets none of that, so we add it here.
 import os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PAGES = [('guide.html', 'index.html',   "How suppression works in Squad v10.5.3 and how to use it — a field guide by Osaka [29th ID], built from the game's own asset data."),
-         ('guide_v2.html', 'v2.html', "Field guide, version 2 draft — the two-clocks framing."),
-         ('suppression.html', 'modders.html', "Every weapon, profile and curve in Squad v10.5.3, read straight out of the .uasset files — the data behind the field guide.")]
+PAGES = [('guide.html', 'index.html',   "How suppression works in Squad v10.5.3 and how to use it. A field guide by Osaka [29th ID], built from the game's own asset data."),
+         ('guide_v2.html', 'v2.html', "Field guide, version 2 draft, the two-clocks framing."),
+         ('suppression.html', 'modders.html', "Every weapon, profile and curve in Squad v10.5.3, read straight out of the .uasset files, the data behind the field guide.")]
 
 def wrap(src_name, out_name, DESC):
   body = open(os.path.join(HERE, src_name), encoding='utf-8').read()

@@ -57,7 +57,7 @@ for kid, label, asset, cat in KITS:
         'rpm': flagship['rpm'] if flagship else None,
         'rpmMin': rpms[0] if rpms else None, 'rpmMax': rpms[-1] if rpms else None,
         'example': flagship['name'] if flagship else None,
-        # a rate a player can actually sustain — cyclic for automatics; an assumption (labelled) for the rest
+        # a rate a player can actually sustain: cyclic for automatics; an assumption (labelled) for the rest
         # bolt-actions carry a real cycle time (READ); semi-autos are player-limited, so an assumption stays for those
         'rpmPractical': (150 if kit_mode == 'semi' else (flagship['rpm'] if flagship else 0)),
         'rpmAssumed': kit_mode == 'semi',

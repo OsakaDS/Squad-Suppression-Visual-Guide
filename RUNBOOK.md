@@ -1,4 +1,4 @@
-# Runbook — hosting and rebuilding
+# Runbook: hosting and rebuilding
 
 Operational commands for the Squad suppression toolkit. For what the software is, what
 it found and how the extraction works, see **[README.md](README.md)**.
@@ -7,14 +7,14 @@ it found and how the extraction works, see **[README.md](README.md)**.
 server, or rebuild the page after Squad updates.
 
 **Prerequisites:** Python 3.8+. `pip install pillow` for icon extraction. A copy of the
-Squad Mod SDK for rebuilding — not needed just to host what is already built.
+Squad Mod SDK for rebuilding, not needed just to host what is already built.
 
 ---
 
 ## Hosting the page
 
-The site is **two static HTML files** — `index.html` (the field guide, 150 KB) and
-`modders.html` (the data page, 1.3 MB) — with everything inlined. No backend, no database.
+The site is **two static HTML files**, `index.html` (the field guide, 150 KB) and
+`modders.html` (the data page, 1.3 MB), with everything inlined. No backend, no database.
 Anything that can serve a file works.
 
 ### On your network
@@ -23,13 +23,13 @@ Anything that can serve a file works.
 python3 serve.py
 ```
 
-Prints both URLs — `http://localhost:8080` and the LAN one, currently
+Prints both URLs, `http://localhost:8080` and the LAN one, currently
 `http://192.168.1.59:8080`. Pass a port as the first argument to change it. `serve.py`
 gzips on the fly (1332 KB → **777 KB** over the wire) and sets the UTF-8 charset that
 `python3 -m http.server` omits.
 
-If other machines can't reach it, check that a firewall isn't blocking the port — yours
-is currently inactive — and note that an active VPN interface can shadow LAN routes.
+If other machines can't reach it, check that a firewall isn't blocking the port (yours
+is currently inactive), and note that an active VPN interface can shadow LAN routes.
 
 ### Keep it running
 
@@ -55,7 +55,7 @@ Uses `docker-compose.yml` and `nginx.conf`. Pulls the image on first run. Down w
 
 ### On the public internet
 
-Upload `docs/index.html` to any static host — **GitHub Pages, Netlify Drop, Cloudflare
+Upload `docs/index.html` to any static host: **GitHub Pages, Netlify Drop, Cloudflare
 Pages**. It is a single file; drag and drop works, and all three are free.
 
 For a temporary public link straight off this machine, needing nothing installed:
@@ -69,7 +69,7 @@ Prints a public URL that lives as long as the SSH session.
 ### Offline networks
 
 The page inlines everything except the Google Fonts stylesheet. With no internet the type
-falls back to the declared stacks — the page still works, it just looks different. Inline
+falls back to the declared stacks; the page still works, it just looks different. Inline
 the three fonts as base64 in `suppression.template.html` if you need it truly offline;
 costs about 150 KB.
 
@@ -83,24 +83,24 @@ costs about 150 KB.
 
 Runs the twelve-step chain end to end in about a second and is byte-reproducible. The steps
 and what each produces are tabulated in [README.md](README.md#reproducing-it). To run one
-stage on its own, invoke that script directly — each writes its own JSON and the next
+stage on its own, invoke that script directly; each writes its own JSON and the next
 step picks it up.
 
 **Edit `guide.template.html` and `suppression.template.html`, never the generated `.html`
-files** — `build_guide.py` and `build_page.py` overwrite them.
+files**, because `build_guide.py` and `build_page.py` overwrite them.
 
-After a Squad update, rerun `./build.sh` and check the counts it prints — a jump or drop
+After a Squad update, rerun `./build.sh` and check the counts it prints; a jump or drop
 in resolved weapons is the fastest signal that an asset format or a property name moved.
 
 ### If a rebuild goes wrong
 
 Nothing is destructive; every script rewrites its own outputs from the game assets, so
 rerunning is always safe. To get back to a known-good page without rebuilding, keep a
-copy of `docs/index.html` — it has no dependencies and will serve forever.
+copy of `docs/index.html`; it has no dependencies and will serve forever.
 
 ### Pointing at a different SDK install
 
-Four files hold an absolute SDK path — `squad.py` (`CONTENT`, the one that matters),
+Four files hold an absolute SDK path: `squad.py` (`CONTENT`, the one that matters),
 `extract_all.py` (`ITEMS`), `dump_all.py` (`SI_DIR`) and `build_gui_data.py` (`SOLDIER`).
 `squad-suppression.service` also hard-codes this directory.
 
@@ -126,4 +126,4 @@ Four files hold an absolute SDK path — `squad.py` (`CONTENT`, the one that mat
   subdirectory.
 - Squad's asset paths are case-inconsistent (`FC_SuppressionPower_RIfles` in a reference
   vs the object's `..._Rifles`). `squad.asset_path()` falls back to a case-insensitive
-  directory lookup — keep that if you refactor it.
+  directory lookup; keep that if you refactor it.
