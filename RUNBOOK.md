@@ -81,7 +81,7 @@ costs about 150 KB.
 ./build.sh
 ```
 
-Runs the twelve-step chain end to end in about a second and is byte-reproducible. The steps
+Runs the thirteen-step chain end to end in about a second and is byte-reproducible. The steps
 and what each produces are tabulated in [README.md](README.md#reproducing-it). To run one
 stage on its own, invoke that script directly; each writes its own JSON and the next
 step picks it up.
@@ -91,6 +91,13 @@ files**, because `build_guide.py` and `build_page.py` overwrite them.
 
 After a Squad update, rerun `./build.sh` and check the counts it prints; a jump or drop
 in resolved weapons is the fastest signal that an asset format or a property name moved.
+
+The vehicle sweep sits outside `build.sh` because it is the slow part and only moves when
+the game does. Rerun it separately after an update:
+
+```bash
+python3 extract_vehicles.py && python3 report_vehicles.py && python3 build_vehicle_payload.py
+```
 
 ### If a rebuild goes wrong
 
@@ -111,10 +118,12 @@ Four files hold an absolute SDK path: `squad.py` (`CONTENT`, the one that matter
 | File | Contents |
 |---|---|
 | `squad_all_weapons_suppression.csv` | all 521 weapons, power sampled at 1/2/3/4 m |
+| `squad_vehicle_weapons.csv` | all 254 vehicle weapon systems, with class, profile and both models |
+| `vehicle_payload.json` | per-class figures and vehicle weapon art for the guide's second tab |
 | `squad_rifle_suppression.csv` | the original ten-rifle sample |
 | `all_profiles.json` | all 58 suppression profiles with raw curve keys |
 | `all_weapons_raw.json` | every weapon asset before grouping, 904 rows |
-| `docs/index.html` | the field guide |
+| `docs/index.html` | the field guide, both tabs |
 | `docs/modders.html` | the data page |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic |
 

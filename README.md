@@ -6,10 +6,11 @@ directly out of the shipped `.uasset` binaries in the Squad Mod SDK.
 
 The output is two self-contained HTML pages by **Osaka [29th ID]**:
 
-- **`guide.html`** is the field guide for players: how suppression works, how to use it, and a
-  fireteam-against-a-target tool. Organised around eight weapon kits (shotguns are left out for
-  now), each with the game's role emblem, an armoury at the end listing what is in each kit, and every
-  figure labelled READ / INFERRED / UNKNOWN.
+- **`guide.html`** is the field guide for players, in two tabs. **Infantry Weapons** covers the
+  eight kits (shotguns are left out for now), each with the game's role emblem, a
+  fireteam-against-a-target tool and an armoury of what is in each kit. **Vehicle Weapons** covers
+  every vehicle-mounted and emplaced weapon in the game, grouped into fourteen classes, with an
+  under-fire-from-a-vehicle tool of its own. Every figure is labelled READ / INFERRED / UNKNOWN.
 - **`suppression.html`** is the data page for modders: all **521 weapons** with icons, the
   asset wiring behind each one, and every profile curve.
 
@@ -200,6 +201,35 @@ ships no per-profile artwork.
 
 ---
 
+## What the vehicle side says
+
+546 vehicle weapon assets across 99 vehicle folders fold into **254 distinct weapon systems**
+on 141 vehicles, in fourteen classes. Faction skins collapse into one row, so a Desert and a
+Woodland BMP-2 autocannon count once.
+
+- **Most vehicle passby profiles carry no distance curve.** A .50 is worth 0.500 a round, an
+  autocannon sabot 0.700 and a tank sabot 1.500, wherever the round passes. Only the coax
+  tapers, on the same MMG curve infantry machine guns use. Where a flat profile stops applying
+  is a C++ decision and stays UNKNOWN.
+- **The ceilings are what make vehicles different.** Coax 1.75, everything else on passby 2.00,
+  and the explosive profiles 4.00 to 6.00. Blur needs 3.0 and fisheye 5.0, so those two effects
+  are unreachable by any gun and belong to shells.
+- **Eight of the fourteen classes suppress radially**, several of them with the passby power
+  zeroed outright, which is why a missile is worth nothing until it lands. A tank HE shell is
+  at full power to 16.9 m and still reaches 50 m; a 120 mm barrage reaches 75 m, against 22.5 m
+  for a hand grenade.
+- **A main gun's reload outlasts the immunity drain.** Six to nine seconds between shells
+  against a clock that holds for one second then drains at 1.0 a second means every shell lands
+  on a target with no immunity at all, kicking at full strength. A coax pins that same clock at
+  its maximum.
+- **One-shot guns cycle on their reload**, not on `TimeBetweenShots`, the same correction the
+  bolt-action rifles needed. A tank gun's honest rate is 8 rpm, not 60.
+
+`squad_vehicle_weapons.csv` has all 254 rows: vehicle, class, profile, rate, penetration and
+both suppression models.
+
+---
+
 ## Reproducing it
 
 `./build.sh` runs the chain below. It is byte-reproducible: run it twice and the output
@@ -217,11 +247,19 @@ files hash identically.
 | 8 | `build_csv.py` | `squad_all_weapons_suppression.csv`, one row per weapon, with fire mode and bolt cycle |
 | 9 | `build_page.py` | `suppression.html`, data page: template + payload |
 | 10 | `build_guide_payload.py` | `guide_payload.json`, per-kit figures, soldier curves, effect thresholds, logo |
-| 11 | `build_guide.py` | `guide.html`, field guide: template + payload |
-| 12 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
+| 11 | `build_vehicle_payload.py` | `vehicle_payload.json`, per-class figures, vehicle weapon art |
+| 12 | `build_guide.py` | `guide.html`, field guide: template + both payloads |
+| 13 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
+
+The vehicle sweep itself is not in `build.sh`, because it reads 546 assets across 99 vehicle
+folders and only changes when the game does. Run it by hand after an update:
+
+```bash
+python3 extract_vehicles.py && python3 report_vehicles.py
+```
 
 Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
-generated `.html` files, steps 9 and 11 overwrite them.
+generated `.html` files, steps 9 and 12 overwrite them.
 
 **Rate of fire** is not one number. Automatics report their cyclic rate from `TimeBetweenShots`.
 Bolt-actions inherit a meaningless 0.072 s there from the generic rifle base; their real cycle is
@@ -295,7 +333,8 @@ to know those numbers is guessing.
 | `textures.py` | icon recovery from asset thumbnails |
 | `squad.py` | blueprint chains, property merging, redirector following |
 | `graph.py` / `decompile.py` | Blueprint node-graph parser and pseudo-code decompiler |
-| `guide.template.html` | the field guide, edit this one, not the output |
+| `vehicle_classes.py` | how vehicle weapon assets fold into systems and classes, shared by the report and the payload |
+| `guide.template.html` | the field guide, both tabs, edit this one, not the output |
 | `suppression.template.html` | the data page, edit this one |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic, with confidence labels |
 | `serve.py` | gzipping static server for the LAN |

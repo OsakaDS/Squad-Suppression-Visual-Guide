@@ -102,6 +102,9 @@ h3{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spac
 .grid-eq{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:start}
 .grid-tool{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:18px; align-items:start}
 @media (max-width:820px){ .grid2,.grid-tool{grid-template-columns:1fr} }
+/* a grid track's automatic minimum is its content's min-width, which a wide table would
+   push past the viewport; let the track shrink and the table scroll inside its own box */
+.grid2>*, .grid-tool>*, .grid-eq>*, .contrast>*{min-width:0}
 
 .callout{border-left:4px solid var(--gold); background:var(--gold-soft); padding:14px 18px; margin:18px 0 0; font-size:15.5px; max-width:78ch}
 .callout b{font-weight:600}
@@ -525,7 +528,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
   <!-- RULE 3 -->
   <div class="rule">
     <p class="rule-title"><span class="n">RULE 3</span>Most vehicle weapons suppress by blast, not by passing you <span class="conf read">READ</span> <span class="conf inf">INFERRED shape</span></p>
-    <p class="rule-lede">Of the classes below, nine out of fourteen carry a radial profile: the round does nothing on the way past and everything when it goes off. Full power out to the inner radius, fading to nothing at the outer one, and the outer radii here are enormous next to anything infantry carries. Several of them zero the passby power outright, which is why a missile flying over your head is worth nothing until it lands.</p>
+    <p class="rule-lede">Of the classes below, <span id="vBlastCount">eight of the fourteen</span> carry a radial profile: the round does nothing on the way past and everything when it goes off. Full power out to the inner radius, fading to nothing at the outer one, and the outer radii here are enormous next to anything infantry carries. Several of them zero the passby power outright, which is why a missile flying over your head is worth nothing until it lands.</p>
     <div class="grid2">
       <div class="panel">
         <h3>How far each blast reaches</h3>
@@ -551,7 +554,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
         <input type="range" id="vgap" min="0" max="800" step="10" value="200" aria-label="Miss distance of the rounds">
       </div>
       <svg id="vImmChart" viewBox="0 0 720 300" role="img" aria-label="Immunity over twenty seconds under three different rates of fire"></svg>
-      <p class="figcap"><b>The sawtooth is a tank gun.</b> Each shell grants its bump, the clock holds it for a second, and then it drains away with seconds to spare before the next one arrives. Every shell therefore lands on a target with no immunity at all, kicking at full strength. The coax line is flat at the top from about five seconds on, where every round it fires is kicking at roughly a third.</p>
+      <p class="figcap"><b>The sawtooth is a tank gun.</b> Each shell grants its bump, the clock holds it for a second, and then it drains away with seconds to spare before the next one arrives. Every shell therefore lands on a target with no immunity at all, kicking at full strength. The coax line is flat at the top from about five seconds on, where every round it fires is kicking at roughly a third. <b>The coax and the autocannon draw the same line</b>, dashed over solid, because the clock belongs to the target: it does not care what is firing, only that something still is.</p>
     </div>
   </div>
 
@@ -689,6 +692,9 @@ const kitColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
 const curveKits = D.kits.filter(k => k.keys.length);
 const MODE={bolt:'bolt-action',semi:'semi-auto',auto:'automatic'};
 const shotgun = D.kits.find(k => k.id==='shotgun');
+/* rounds needed to reach a ceiling. The stored powers are float32, so 1.75/0.35 comes out
+   a hair over 5 and a plain Math.ceil would report 6. */
+const pins = (cap, per) => per > 0 ? Math.max(1, Math.ceil(cap/per - 1e-6)) : null;
 
 /* ---------- state ---------- */
 const state = {
@@ -784,7 +790,7 @@ function drawRule1(){
   const rows=vis.map(o=>({k:o.k,col:kitColor(o.i),val:kitPower(o.k,state.dist)})).sort((a,b)=>b.val-a.val);
   if(!rows.length){ tb.innerHTML='<tr><td colspan="3" class="none">Pick a kit beside the chart.</td></tr>'; }
   rows.forEach(r=>{ const tr=document.createElement('tr');
-    tr.innerHTML=`<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.k.label)}</span></span></td><td>${fmt(r.val)}</td><td>${r.val>0?Math.ceil(r.k.ceiling/r.val):'-'}</td>`; tb.appendChild(tr); });
+    tr.innerHTML=`<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.k.label)}</span></span></td><td>${fmt(r.val)}</td><td>${pins(r.k.ceiling, r.val) ?? '-'}</td>`; tb.appendChild(tr); });
 }
 document.getElementById('dist').addEventListener('input',e=>{ state.dist=+e.target.value; document.getElementById('distRead').textContent=fmt(state.dist/100,2)+' m'; drawRule1(); });
 document.getElementById('curveChart').addEventListener('pointermove',ev=>{ const svg=ev.currentTarget,r=svg.getBoundingClientRect();
@@ -798,7 +804,7 @@ function kitTable(){
     tr.innerHTML=`<td class="name">${k.emblem?`<img class="emblem" src="${k.emblem}" alt="">`:''}<span class="swatch" style="display:inline-block;width:9px;height:9px;margin-right:8px;background:${kitColor(i)}"></span>${esc(k.label)}</td>
       <td class="num">${k.count}</td><td class="num">${fmt(p1)}</td><td class="num">${fmt(p2)}</td>
       <td class="num">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num">${fmt(k.ceiling,2)}</td>
-      <td class="num">${p1>0?Math.ceil(k.ceiling/p1):'-'}</td><td class="num">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
+      <td class="num">${pins(k.ceiling, p1) ?? '-'}</td><td class="num">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
 }
 
 /* ================= RULE 3 ================= */
@@ -880,7 +886,7 @@ function qa(){
      `Rifle envelope 5.0 m · MMG 7.0 m · half the camera kick already at closeness 0.1`,
      `<b>Aim at the cover, not the sky.</b> Rounds over the top by more than a few metres do nothing. Put them on the parapet, the door frame, the tree line at head height.`],
     ['Which kit pins fastest?',
-     `<b>A DMR or sniper: one close round.</b> A rifle needs about ${Math.ceil(rifle.ceiling/kitPower(rifle,100))} at 1 m; an MMG ${Math.ceil(mmg.ceiling/kitPower(mmg,100))}, and it reaches 7 m out. Every rifle in the game shares one profile: an M4 and an AK pin identically; only rate of fire differs.`,
+     `<b>A DMR or sniper: one close round.</b> A rifle needs about ${pins(rifle.ceiling, kitPower(rifle,100))} at 1 m; an MMG ${pins(mmg.ceiling, kitPower(mmg,100))}, and it reaches 7 m out. Every rifle in the game shares one profile: an M4 and an AK pin identically; only rate of fire differs.`,
      `Rifle ${fmt(kitPower(rifle,100))}/round · MMG ${fmt(kitPower(mmg,100))} · DMR ${fmt(kitPower(dmr,100),1)} · sniper ${fmt(kitPower(sn,100),1)} · ceilings 1.15 / 1.75 / 2.0 / 3.0`,
      `<b>Give the marksman the first shot.</b> One near miss puts the target at cap before the rifles have finished their burst; the rifles then keep them there.`],
     ['Does aiming down sights help me under fire?',
@@ -1100,7 +1106,7 @@ function vDrawRule1(){
   if(!rows.length){ tb.innerHTML = '<tr><td colspan="3" class="none">Pick a class beside the chart.</td></tr>'; return; }
   rows.forEach(r => { const tr = document.createElement('tr');
     tr.innerHTML = `<td><span class="kitcell"><span class="swatch" style="background:${r.col}"></span><span>${esc(r.c.label)}</span></span></td>`
-      + `<td>${fmt(r.val)}</td><td>${r.val > 0 ? Math.ceil(vCeiling(r.c) / r.val) : '-'}</td>`;
+      + `<td>${fmt(r.val)}</td><td>${pins(vCeiling(r.c), r.val) ?? '-'}</td>`;
     tb.appendChild(tr); });
 }
 document.getElementById('vdist').addEventListener('input', e => { vstate.dist = +e.target.value;
@@ -1115,12 +1121,12 @@ function vClassTable(){
     const reach = blast ? (c.outer != null ? m1(c.inner || 0) + ' to ' + m1(c.outer) : m1(c.inner || 0) + ' +?')
                         : (c.keys.length ? 'to ' + m1(c.keys[c.keys.length - 1].x) : 'flat');
     const ceil = vCeiling(c);
-    const pins = per > 0 ? Math.ceil(ceil / per) : null;
+    const toPin = pins(ceil, per);
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="name">${c.emblem ? `<img class="emblem" src="${V.icons[c.emblem]}" alt="">` : ''}${esc(c.label)}</td>`
       + `<td class="num">${c.count}</td><td class="num" style="color:var(--ink3)">${blast ? 'blast' : (c.keys.length ? 'passby curve' : 'passby flat')}</td>`
       + `<td class="num">${per != null ? fmt(per, per >= 1 ? 2 : 3) : '?'}</td><td class="num">${reach}</td>`
-      + `<td class="num">${ceil ? fmt(ceil, 2) : '-'}</td><td class="num">${pins || (blast ? '1' : '-')}</td>`
+      + `<td class="num">${ceil ? fmt(ceil, 2) : '-'}</td><td class="num">${toPin || (blast ? '1' : '-')}</td>`
       + `<td class="num">${c.rpm || '-'}<span style="color:var(--ink3)"> rpm</span></td>`;
     tb.appendChild(tr);
   });
@@ -1182,11 +1188,13 @@ function vDrawBlast(){
 /* ================= V RULE 4 ================= */
 function vDrawImmunity(){
   const c = closeness(vstate.gap), T = 20;
-  const picks = [['coax', css('--s1')], ['acap', css('--s3')], ['tankap', css('--s2')]];
-  const series = picks.map(([id, col]) => {
+  // the coax and the autocannon trace exactly the same line, which is the point: the
+  // clock is the target's, so the autocannon is drawn dashed over the top of it
+  const picks = [['coax', css('--s1'), 8, 'none'], ['acap', css('--s3'), 16, '7 5'], ['tankap', css('--s2'), 12.5, 'none']];
+  const series = picks.map(([id, col, at, dash]) => {
     const cl = V.classes.find(x => x.id === id), rpm = cl.rpm || 60;
     const s = vImmSamples(rpm, T, c, 0.05);
-    return { f: t => s.f(t), color: col, label: cl.label + ' · ' + rpm + ' rpm', labelAt: id === 'tankap' ? 12 : 19, width: 2.2 };
+    return { f: t => s.f(t), color: col, label: cl.label + ' · ' + rpm + ' rpm', labelAt: at, width: 2.2, dash: dash };
   });
   lineChart(document.getElementById('vImmChart'), { w: 720, h: 300, mL: 48, mR: 150, xMax: T, yMax: 8, xTicks: 5, yTicks: 4,
     xFmt: v => v.toFixed(0) + ' s', yFmt: v => v.toFixed(1), xLabel: 'Seconds from the first round', yLabel: 'Immunity',
@@ -1200,7 +1208,7 @@ function vqa(){
   const coax = V.classes.find(c => c.id === 'coax'), hmg = V.classes.find(c => c.id === 'hmg'),
         ac = V.classes.find(c => c.id === 'acap'), tank = V.classes.find(c => c.id === 'tankap'),
         he = V.classes.find(c => c.id === 'tankhe'), heat = V.classes.find(c => c.id === 'tankheat');
-  const coaxPin = Math.ceil(vCeiling(coax) / vPower(coax, 100));
+  const coaxPin = pins(vCeiling(coax), vPower(coax, 100));
   const cards = [
     ['What actually pins me, the coax or the main gun?',
      `<b>The coax, every time.</b> ${fmt(vPower(coax, 100))} a round against a ${fmt(vCeiling(coax), 2)} ceiling is ${coaxPin} rounds, and at ${coax.rpm} rpm that is under half a second. The main gun fires once every six to nine seconds.`,
@@ -1354,17 +1362,21 @@ function vArmoury(){
     b.innerHTML = (c.emblem ? `<img src="${V.icons[c.emblem]}" alt="">` : '') + `<span class="cl">${esc(c.label)}</span><span class="cc">${c.count}</span>`;
     b.addEventListener('click', () => { varm.cls = c.id; varm.q = ''; document.getElementById('vsearch').value = ''; vArmoury(); });
     tiles.appendChild(b); });
-  const chips = document.getElementById('vTypeChips'); chips.textContent = '';
-  [{ id: '', label: 'All vehicle types', count: V.weapons.length }].concat(V.vtypes).forEach(t => {
-    const b = document.createElement('button'); b.className = 'chip'; b.type = 'button';
-    b.setAttribute('aria-pressed', varm.vt === t.id);
-    b.innerHTML = esc(t.label) + ' <span style="color:var(--ink3)">' + t.count + '</span>';
-    b.addEventListener('click', () => { varm.vt = varm.vt === t.id ? '' : t.id; vArmoury(); });
-    chips.appendChild(b); });
-  let list = V.weapons.filter(w => varm.q
+  // the type chips count what is actually in front of you, so no chip is a dead end
+  const base = V.weapons.filter(w => varm.q
     ? (w.name + ' ' + (w.veh || []).join(' ')).toLowerCase().includes(varm.q)
     : w.cls === varm.cls);
-  if(varm.vt) list = list.filter(w => w.vt === varm.vt);
+  const seen = {}; base.forEach(w => { if(w.vt) seen[w.vt] = (seen[w.vt] || 0) + 1; });
+  if(varm.vt && !seen[varm.vt]) varm.vt = '';
+  const chips = document.getElementById('vTypeChips'); chips.textContent = '';
+  const avail = V.vtypes.filter(t => seen[t.id]);
+  (avail.length > 1 ? [{ id: '', label: 'All vehicle types', count: base.length }].concat(avail) : []).forEach(t => {
+    const b = document.createElement('button'); b.className = 'chip'; b.type = 'button';
+    b.setAttribute('aria-pressed', varm.vt === t.id);
+    b.innerHTML = esc(t.label) + ' <span style="color:var(--ink3)">' + (t.id ? seen[t.id] : t.count) + '</span>';
+    b.addEventListener('click', () => { varm.vt = varm.vt === t.id ? '' : t.id; vArmoury(); });
+    chips.appendChild(b); });
+  const list = varm.vt ? base.filter(w => w.vt === varm.vt) : base;
   document.getElementById('vwcount').textContent = `${list.length} shown`;
   const grid = document.getElementById('vwgrid'); grid.textContent = '';
   if(!list.length){ const d = document.createElement('div'); d.className = 'empty'; d.textContent = 'Nothing matches that.'; grid.appendChild(d); return; }
@@ -1401,6 +1413,9 @@ TABS.inf.addEventListener('click', () => showTab('inf', true));
 TABS.veh.addEventListener('click', () => showTab('veh', true));
 document.getElementById('tabCountInf').textContent = D.kits.reduce((a, k) => a + k.count, 0) + ' weapons · ' + D.kits.length + ' kits';
 document.getElementById('tabCountVeh').textContent = V.counts.systems + ' systems · ' + V.counts.vehicles + ' vehicles';
+const WORDS = ['none','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve',
+  'thirteen','fourteen','fifteen','sixteen'];
+document.getElementById('vBlastCount').textContent = WORDS[vBlastCls.length] + ' of the ' + (WORDS[V.classes.length] || V.classes.length);
 document.getElementById('vCounts').textContent =
   `${V.counts.assets} weapon assets on ${V.counts.vehicles} vehicles fold into ${V.counts.systems} distinct systems across ${V.classes.length} classes, and this tab is built from all of them.`;
 
