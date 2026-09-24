@@ -97,7 +97,7 @@ L2A1 ILAW,Explosive,semi,30,30,,Explosion_Suppression_50mm_HEAT_NoPassby,no,BP_A
 L72A9 LASM,Explosive,semi,30,30,,Explosion_Suppression_50mm_HEAT_NoPassby,no,BP_M72A6_Rocket_Proj,RocketLaunchers/BP_M72A7_LASM,,,,,,2.0,,,,144,15.0,1,320,1,m72law
 M136 AT-4 CS High Explosive Anti-Tank,Explosive,semi,30,30,,Explosion_Suppression_50mm_HEAT_NoPassby,no,BP_AT4_Rocket_Proj2,RocketLaunchers/BP_M136AT4_2mags,,,,,,2.0,,,,290,10.0,1,420,1,at4
 M136 AT4,Explosive,semi,30,30,,Explosion_Suppression_50mm_HEAT_NoPassby,no,BP_AT4_Rocket_Proj2,RocketLaunchers/BP_M136AT4,,,,,,2.0,,,,290,10.0,1,420,1,at4
-M2 Carl Gustav (FFV441D HE),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_FFV441D_Rocket_Proj,RocketLaunchers/BP_CarlGustavM2_FFV441D_No78Mk1,,,,,,2.0,,,,255,7.0,1,9,2,carlgustavm2+no78mk1
+M2 Carl Gustav (FFV441D HE),Explosive,semi,900,900,,Explosion_Suppression_90mm_Frag_NoPassby,no,BP_FFV441D_Rocket_Proj,RocketLaunchers/BP_CarlGustavM2_FFV441D_No78Mk1,,,,,,2.0,,,,255,7.0,1,9,2,carlgustavm2+no78mk1
 M2 Carl Gustav (FFV551 HEAT),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_FFV551_Rocket_Proj2,RocketLaunchers/BP_CarlGustavM2_FFV551_No78Mk1,,,,,,2.0,,,,310,7.0,1,400,2,carlgustavm2+no78mk1
 M2 Carl Gustav (FFV751 Tandem),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_FFV751_Tandem_Heat_Proj2,RocketLaunchers/BP_CarlGustavM2_FFV751_No78Mk1,,,,,,2.0,,,,255,7.0,1,400,2,carlgustavm2+no78mk1
 M203,Explosive,semi,750,750,,Explosion_Suppression_GrenadeLauncher_NoPassby,no,BP_40MM_Proj2,GrenadeLaunchers/M4M203_UGL/BP_M4M203_UGL_Parent,,,,,,,,,,76,30.0,1,10,11,m203_gl

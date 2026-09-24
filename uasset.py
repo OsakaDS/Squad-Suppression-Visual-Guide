@@ -225,11 +225,13 @@ class Package:
         for skip in range(0, 8):
             o = off + skip
             i, n = struct.unpack_from('<ii', self.d, o)
-            if 0 <= i < len(self.names) and n == 0:
+            # an FName's Number may be non-zero (instanced names like TracerMaterial_0),
+            # so validate on the *type* name instead of requiring Number == 0
+            if 0 <= i < len(self.names) and 0 <= n < 1024:
                 nm = self.names[i]
                 if nm != 'None':
                     j, m = struct.unpack_from('<ii', self.d, o + 8)
-                    if 0 <= j < len(self.names) and self.names[j].endswith('Property'):
+                    if 0 <= j < len(self.names) and m == 0 and self.names[j].endswith('Property'):
                         return self.read_props(o, end)
         return []
 
