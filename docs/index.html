@@ -526,9 +526,10 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
     <p class="rule-lede">Every profile clamps the target's level at its own ceiling. Infantry kits top out between 1.15 and 3.0, which is why rifle fire can never blur anyone. Vehicle passby profiles sit at 1.75 and 2.0, and the explosive ones run to 6.0. Those are the numbers that decide what the target's screen does, and they are the real difference between being shot at by a rifleman and by a tank.</p>
     <div class="tablewrap">
       <table id="vClassTable"><thead><tr>
-        <th>Class</th><th>Systems</th><th>Model</th><th>Per round</th><th>Reach</th><th>Ceiling</th><th>Rounds to pin</th><th>Typical rate</th>
+        <th>Class</th><th>Systems</th><th>Model</th><th>Per round at 1 m</th><th>Reach</th><th>Ceiling</th><th>Rounds to pin</th><th>Typical rate</th>
       </tr></thead><tbody></tbody></table>
     </div>
+    <p class="figcap" style="max-width:none"><b>Reading the table.</b> <em>Per round at 1 m</em> is one round going past on a passby row, and one whole detonation on a blast row, where it applies anywhere inside the inner radius. <em>Reach</em> is where that value runs out: the envelope for a curve, no falloff at all for a flat profile, and inner radius to outer for a blast. <em>Ceiling</em> is the cap on the target's level from that class, so its rounds stop counting once the level is there, however long it keeps firing. <em>Rounds to pin</em> is the ceiling divided by the per-round value, and <em>typical rate</em> is the median across the systems in the class, taken from reload time where a gun loads one round at a time.</p>
     <div class="panel" style="margin-top:18px">
       <h3>Class ceilings against the level <span class="conf read">READ</span></h3>
       <svg id="vLadder" viewBox="0 0 1000 460" role="img" aria-label="Vehicle weapon class ceilings against the suppression level"></svg>
