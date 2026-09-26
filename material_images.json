@@ -1,0 +1,414 @@
+{
+ "PhysMat_ARMOR_10mm": {
+  "source": "M1151_Armor_Black_a",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_15mm": {
+  "source": "su25_a",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_35mm": {
+  "source": "T_Array_C_BaseColor",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_3mm": {
+  "source": "Armor_3mm",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_5mm": {
+  "source": "T_CF18_BaseColor",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_5mm_NoPass": {
+  "source": "Armor_5mm_NoPass",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_7mm": {
+  "source": "Armor_7mm",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_7mm_Glass": {
+  "source": "T_Glass_01_BC",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_7mm_NoPass": {
+  "source": "Armor_7mm_NoPass",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_9mm": {
+  "source": "T_MTLB_IMF_A",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_Gun": {
+  "source": "M1a2_armour_TurretBarrel",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_LPPV_Hatch_15mm": {
+  "source": "Armor_LPPV_Hatch_15mm",
+  "kind": "material"
+ },
+ "PhysMat_ARMOR_Medium": {
+  "source": "T_Null_VT_A",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_Thick": {
+  "source": "M1A1_USMC_A",
+  "kind": "texture"
+ },
+ "PhysMat_ARMOR_Thin": {
+  "source": "PMV_DPCU_Albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Armor_20mm": {
+  "source": "Armor_20mm",
+  "kind": "material"
+ },
+ "PhysMat_Armor_9mm_NoPass": {
+  "source": "Armor_9mm_NoPass",
+  "kind": "material"
+ },
+ "PhysMat_Asphalt": {
+  "source": "T_Asphalt_04_BC",
+  "kind": "texture"
+ },
+ "PhysMat_AsphaltWet": {
+  "source": "roadtex01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Brick": {
+  "source": "UV3_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Carpet": {
+  "source": "OfficeCarpet_BaseColor",
+  "kind": "texture"
+ },
+ "PhysMat_Ceramic": {
+  "source": "T_Ceramic_Tiles_01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Concrete": {
+  "source": "concrete_pavement_02_d",
+  "kind": "texture"
+ },
+ "PhysMat_Concrete_Deployable": {
+  "source": "concrete_base_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_CropField": {
+  "source": "T_forestplants01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Cushion": {
+  "source": "cushions_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Default": {
+  "source": "m1_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Dirt": {
+  "source": "T_Subpen_Dirt_A",
+  "kind": "texture"
+ },
+ "PhysMat_DirtGravel": {
+  "source": "dirtroad02_A",
+  "kind": "texture"
+ },
+ "PhysMat_DryMudWall": {
+  "source": "T_Loamwall_01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Equipment_Cloth": {
+  "source": "M_Closeline_Slow",
+  "kind": "material"
+ },
+ "PhysMat_Fabric": {
+  "source": "T_dirt_02_D",
+  "kind": "texture"
+ },
+ "PhysMat_Flesh": {
+  "source": "M_Tomato2",
+  "kind": "material"
+ },
+ "PhysMat_Gas_Can": {
+  "source": "Afg_Props2_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Glass": {
+  "source": "BaseTexture_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_GlassWindow": {
+  "source": "SM_Truck_Glass_a",
+  "kind": "texture"
+ },
+ "PhysMat_GlassWindshield": {
+  "source": "z8g_glass_a",
+  "kind": "texture"
+ },
+ "PhysMat_Grass": {
+  "source": "BlankPixel_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_GrassTall": {
+  "source": "grapevine_main",
+  "kind": "material"
+ },
+ "PhysMat_Gravel": {
+  "source": "Coal_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_HeavyMetal_Hollow": {
+  "source": "RoofTopPropsAtlas_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Helo_Engine": {
+  "source": "Null_D",
+  "kind": "texture"
+ },
+ "PhysMat_Helo_Loach": {
+  "source": "MI_Veh_Helo_engine_Loach",
+  "kind": "material"
+ },
+ "PhysMat_Leafs": {
+  "source": "T_Hedgerow01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Loose_Rocks": {
+  "source": "Scatter_Desert_Rocks_A",
+  "kind": "texture"
+ },
+ "PhysMat_M1a2_hull_front": {
+  "source": "M1a2_armour_hull_front_500mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_hull_side": {
+  "source": "M1a2_armour_hull_side_100mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_rear": {
+  "source": "M1a2_armour_hull_rear_50mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_sideskirt_front": {
+  "source": "FV4034_armour_sideskirt_100mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_sideskirt_rear": {
+  "source": "M1a2_armour_sideskirt_rear_10mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_top": {
+  "source": "M1a2_armour_top_90mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_turret_ammocompartment": {
+  "source": "M1a2_armour_turret_ammocompartment_100mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_turret_breech": {
+  "source": "M1a2_armour_turret_breech_300mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_turret_front": {
+  "source": "M1a2_armour_turret_front_600mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_turret_side": {
+  "source": "M1a2_armour_turret_side_300mm",
+  "kind": "material"
+ },
+ "PhysMat_M1a2_turretring": {
+  "source": "M1a2_armour_turretring_80mm",
+  "kind": "material"
+ },
+ "PhysMat_MetalThin": {
+  "source": "WhitePixel_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Metal_Barrel": {
+  "source": "NaniProps01_BaseColor",
+  "kind": "texture"
+ },
+ "PhysMat_Metal_SQ": {
+  "source": "SM_Metal_Container_a",
+  "kind": "texture"
+ },
+ "PhysMat_Metal_Stairs": {
+  "source": "Rust_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Metal_target": {
+  "source": "target_a",
+  "kind": "texture"
+ },
+ "PhysMat_Pinebranch": {
+  "source": "Pine_twigs_A",
+  "kind": "texture"
+ },
+ "PhysMat_Plaster": {
+  "source": "Plaster_dirtfade_D",
+  "kind": "texture"
+ },
+ "PhysMat_Plastic": {
+  "source": "T_dirt_02_D",
+  "kind": "texture"
+ },
+ "PhysMat_PlasticBag": {
+  "source": "Tarpaulin_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Pumpkin": {
+  "source": "T_Market_Box_a",
+  "kind": "texture"
+ },
+ "PhysMat_Razorwire": {
+  "source": "M_Afg_metal_alpha_razorwire",
+  "kind": "material"
+ },
+ "PhysMat_Rock": {
+  "source": "MI_RockMed_01",
+  "kind": "material"
+ },
+ "PhysMat_Rock_Deployable": {
+  "source": "T_Hesco_V3_A",
+  "kind": "texture"
+ },
+ "PhysMat_Rubber": {
+  "source": "T_Rubber_Worn_A",
+  "kind": "texture"
+ },
+ "PhysMat_Sand": {
+  "source": "T_Feildsoil02_A",
+  "kind": "texture"
+ },
+ "PhysMat_Sandbag": {
+  "source": "T_AmmoCrate_A",
+  "kind": "texture"
+ },
+ "PhysMat_Sandbag_Deployable": {
+  "source": "MI_Afg_sandbag01_deployable",
+  "kind": "material"
+ },
+ "PhysMat_Snow": {
+  "source": "T_SnowmanNew_BC",
+  "kind": "texture"
+ },
+ "PhysMat_SnowWet": {
+  "source": "MI_Snow",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_hull_UpperSide_Addon": {
+  "source": "T72B3_armour_hull_UpperSide_Addon",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_hull_front_lower": {
+  "source": "T72B3_armour_hull_front_lower",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_hull_front_upper": {
+  "source": "T72B3_armour_hull_front_upper",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_hull_rear": {
+  "source": "T62_armour_hull_side",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_hull_side": {
+  "source": "T_T72A_IMF_Hull_A",
+  "kind": "texture"
+ },
+ "PhysMat_T72B3_turret_front": {
+  "source": "T72B3_armour_turret_front",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_turret_rear": {
+  "source": "T_NSV_Cupola_Mount_A",
+  "kind": "texture"
+ },
+ "PhysMat_T72B3_turret_roof_front": {
+  "source": "T62_armour_turret_side",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_turret_roof_rear": {
+  "source": "T72B3_armour_turret_roof_rear",
+  "kind": "material"
+ },
+ "PhysMat_T72B3_turret_side": {
+  "source": "T62_armour_turret_cheek",
+  "kind": "material"
+ },
+ "PhysMat_Tile": {
+  "source": "CAF_RoofTiles_BaseColor",
+  "kind": "texture"
+ },
+ "PhysMat_Tire_Open": {
+  "source": "T_tractor_tire_A",
+  "kind": "texture"
+ },
+ "PhysMat_Trucks": {
+  "source": "T_M1151_Body_CRF_Camo_A",
+  "kind": "texture"
+ },
+ "PhysMat_Vehicle_AmmoRack": {
+  "source": "MI_Veh_ammo",
+  "kind": "material"
+ },
+ "PhysMat_Vehicle_Engine": {
+  "source": "Null_D",
+  "kind": "texture"
+ },
+ "PhysMat_Vehicle_EngineLarge": {
+  "source": "MI_Veh_engine_Large",
+  "kind": "material"
+ },
+ "PhysMat_Vehicle_NoPenetration": {
+  "source": "MI_Veh_NoPenetration",
+  "kind": "material"
+ },
+ "PhysMat_Water": {
+  "source": "M_Water_Lake",
+  "kind": "material"
+ },
+ "PhysMat_Water_Container": {
+  "source": "plasticdrum_a",
+  "kind": "texture"
+ },
+ "PhysMat_Wood": {
+  "source": "DirtyPlywood_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_WoodSolid": {
+  "source": "T_Woodplanks_painted01_A",
+  "kind": "texture"
+ },
+ "PhysMat_Wood_Creaky_floor": {
+  "source": "DirtyPlywood_albedo",
+  "kind": "texture"
+ },
+ "PhysMat_Wood_treelog": {
+  "source": "T_OldMossyWood_A",
+  "kind": "texture"
+ },
+ "PhysMat_armor_30mm": {
+  "source": "M_Array_A",
+  "kind": "texture"
+ },
+ "PhysMat_armor_40mm": {
+  "source": "Armor_40mm",
+  "kind": "material"
+ },
+ "PhysMat_armor_AAVP7A1_AddOn": {
+  "source": "Armor_35mm_AAVP7A1_AddOn",
+  "kind": "material"
+ },
+ "PhysMat_armor_FV510_AddOn": {
+  "source": "Armor_FV510_AddOn",
+  "kind": "material"
+ },
+ "PhysMat_vehicletracks": {
+  "source": "Armor_tracks",
+  "kind": "material"
+ }
+}

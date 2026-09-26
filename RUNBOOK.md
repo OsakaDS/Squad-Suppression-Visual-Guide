@@ -119,6 +119,8 @@ Four files hold an absolute SDK path: `squad.py` (`CONTENT`, the one that matter
 |---|---|
 | `squad_all_weapons_suppression.csv` | all 521 weapons, power sampled at 1/2/3/4 m |
 | `squad_vehicle_weapons.csv` | all 254 vehicle weapon systems, with class, profile and both models |
+| `squad_materials.csv` | all 129 physical materials, armour value and damage absorbed |
+| `all_materials.json` | the same, plus the ten heavy-calibre penetration curves |
 | `vehicle_payload.json` | per-class figures and vehicle weapon art for the guide's second tab |
 | `squad_rifle_suppression.csv` | the original ten-rifle sample |
 | `all_profiles.json` | all 58 suppression profiles with raw curve keys |

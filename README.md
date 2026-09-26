@@ -230,6 +230,49 @@ both suppression models.
 
 ---
 
+## Penetration and materials
+
+Squad puts penetration on the **material**, not on the surface type. Every `SQPhysicalMaterial`
+carries an armour value in millimetres and a damage cost for passing through it. Every weapon
+carries `ArmorPenetrationDepthMillimeters`, and the heavy calibres carry a distance curve as well.
+A round gets through when its penetration meets the material's thickness. 129 materials, 102 of
+them with an armour value.
+
+| cover | armour | absorbs |
+|---|---|---|
+| Glass, thin metal, fabric, leaves, oil drums | 1 mm | 5 to 100 |
+| Wood, floorboards | 3 mm | 30 |
+| Plaster, sheet metal, metal stairs | 5 mm | 50 to 70 |
+| Brick, concrete, tree logs | 10 mm | 100 to 120 |
+| Sandbags, including deployables | 12 mm | 120 |
+| Dry mud wall | 20 mm | 200 |
+| Rock, deployable rock and concrete | 100 mm | 75 |
+| All terrain: dirt, grass, sand, snow, asphalt, gravel, mud | 5000 mm | none |
+
+Against that, infantry get 1 mm on pistols and 9x19 submachine guns, 5 mm on 5.56 and 5.45,
+7 mm on 7.62, and 9 mm on the bolt-action precision rifles. The practical line therefore sits
+between 9 mm and 10 mm: nothing a rifleman carries goes through brick, concrete or sandbags, and
+everything they carry goes through wood, glass and plaster.
+
+Ten heavy calibres drop their penetration with distance instead, through curves keyed in metres
+(inferred from the magnitudes): a .50 falls from 28 mm to 4 mm by 2 km, a 30 mm APDS from 95 mm
+to 30 mm by 3 km, and a 120 mm sabot from 800 mm to 500 mm.
+
+Three vehicles have hand-built armour zones of eleven materials each. The M1A2 is 600 mm at the
+turret front and 10 mm on the rear side skirt; the T-72B3 is 700 mm at the turret front and 50 mm
+on the hull side; the T-62 is 250 mm and 80 mm. Every other vehicle uses generic plates named by
+thickness, from 3 mm to 400 mm, plus an engine and an ammo rack that each absorb 1000.
+
+**What is not settled:** how `DamageAbsorbed` combines with the round's damage is compiled C++, and
+where a weapon sets both a flat penetration and a curve, which one wins is UNKNOWN. Several
+disagree, for example the 30 mm APDS is 62 flat against 95 on its curve.
+
+`material_images.py` recovers a surface image for each material from the editor thumbnails. It gets
+the solid building materials right and fails on terrain and foliage, which are layer blends with no
+single base colour texture; those want a hand-picked source in its `CURATED` table.
+
+---
+
 ## Reproducing it
 
 `./build.sh` runs the chain below. It is byte-reproducible: run it twice and the output
@@ -334,6 +377,8 @@ to know those numbers is guessing.
 | `squad.py` | blueprint chains, property merging, redirector following |
 | `graph.py` / `decompile.py` | Blueprint node-graph parser and pseudo-code decompiler |
 | `vehicle_classes.py` | how vehicle weapon assets fold into systems and classes, shared by the report and the payload |
+| `extract_materials.py` | every physical material, its armour value and the penetration curves |
+| `material_images.py` | a surface image per material, recovered from editor thumbnails |
 | `guide.template.html` | the field guide, both tabs, edit this one, not the output |
 | `suppression.template.html` | the data page, edit this one |
 | `SUPPRESSION_LOGIC.md` | the decoded soldier-side logic, with confidence labels |
