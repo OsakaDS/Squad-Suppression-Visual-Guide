@@ -1,0 +1,1468 @@
+{
+ "PhysMat_ARMOR_10mm": [
+  {
+   "material": "Vehicles/M1151/Materials/MI_M1151_Technical_Armor_Black.uasset",
+   "name": "MI_M1151_Technical_Armor_Black",
+   "compiled": "PhysMat_ARMOR_10mm__1_compiled.png",
+   "texture": "PhysMat_ARMOR_10mm__1_texture.png",
+   "textureName": "M1151_Armor_Black_a"
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_10mm.uasset",
+   "name": "Armor_10mm",
+   "compiled": "PhysMat_ARMOR_10mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_15mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_15mm.uasset",
+   "name": "Armor_15mm",
+   "compiled": "PhysMat_ARMOR_15mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Vehicles/SU-25/Materials/MI_SU25.uasset",
+   "name": "MI_SU25",
+   "compiled": "PhysMat_ARMOR_15mm__2_compiled.png",
+   "texture": "PhysMat_ARMOR_15mm__2_texture.png",
+   "textureName": "su25_a"
+  }
+ ],
+ "PhysMat_ARMOR_35mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_35mm.uasset",
+   "name": "Armor_35mm",
+   "compiled": "PhysMat_ARMOR_35mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Tutorial_Demonstration_Colours/Demonstration_Armor_5.uasset",
+   "name": "Demonstration_Armor_5",
+   "compiled": "PhysMat_ARMOR_35mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_3mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_3mm.uasset",
+   "name": "Armor_3mm",
+   "compiled": "PhysMat_ARMOR_3mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_5mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_5mm.uasset",
+   "name": "Armor_5mm",
+   "compiled": "PhysMat_ARMOR_5mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Tutorial_Demonstration_Colours/Demonstration_Armor_1.uasset",
+   "name": "Demonstration_Armor_1",
+   "compiled": "PhysMat_ARMOR_5mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_5mm_NoPass": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_5mm_NoPass.uasset",
+   "name": "Armor_5mm_NoPass",
+   "compiled": "PhysMat_ARMOR_5mm_NoPass__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_7mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_7mm.uasset",
+   "name": "Armor_7mm",
+   "compiled": "PhysMat_ARMOR_7mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Tutorial_Demonstration_Colours/Demonstration_Armor_2.uasset",
+   "name": "Demonstration_Armor_2",
+   "compiled": "PhysMat_ARMOR_7mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_7mm_Glass": [
+  {
+   "material": "Environments/EastAsia/Materials/Tiles/Glass/MI_Glass_Reinforced_01.uasset",
+   "name": "MI_Glass_Reinforced_01",
+   "compiled": "PhysMat_ARMOR_7mm_Glass__1_compiled.png",
+   "texture": "PhysMat_ARMOR_7mm_Glass__1_texture.png",
+   "textureName": "T_Glass_01_BC"
+  },
+  {
+   "material": "Environments/EastAsia/Materials/Tiles/Glass/MI_Glass_Reinforced_Powerplant_01_Detail.uasset",
+   "name": "MI_Glass_Reinforced_Powerplant_01_Detail",
+   "compiled": "PhysMat_ARMOR_7mm_Glass__2_compiled.png",
+   "texture": "PhysMat_ARMOR_7mm_Glass__2_texture.png",
+   "textureName": "T_Concrete_Painted_01_A"
+  }
+ ],
+ "PhysMat_ARMOR_7mm_NoPass": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_7mm_NoPass.uasset",
+   "name": "Armor_7mm_NoPass",
+   "compiled": "PhysMat_ARMOR_7mm_NoPass__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_9mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_9mm.uasset",
+   "name": "Armor_9mm",
+   "compiled": "PhysMat_ARMOR_9mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_wheel.uasset",
+   "name": "Armor_wheel",
+   "compiled": "PhysMat_ARMOR_9mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_Gun": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_TurretBarrel.uasset",
+   "name": "M1a2_armour_TurretBarrel",
+   "compiled": "PhysMat_ARMOR_Gun__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_LPPV_Hatch_15mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_LPPV_Hatch_15mm.uasset",
+   "name": "Armor_LPPV_Hatch_15mm",
+   "compiled": "PhysMat_ARMOR_LPPV_Hatch_15mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_Medium": [
+  {
+   "material": "Vehicles/T64_BM2/Materials/Wreck/MI_T64BM2_Turret_Armor_Wreck.uasset",
+   "name": "MI_T64BM2_Turret_Armor_Wreck",
+   "compiled": "PhysMat_ARMOR_Medium__1_compiled.png",
+   "texture": "PhysMat_ARMOR_Medium__1_texture.png",
+   "textureName": "T_T64BM2_Turret_Armor_AFU_A"
+  },
+  {
+   "material": "Vehicles/BFV/Materials/MI_BFV_Wreck.uasset",
+   "name": "MI_BFV_Wreck",
+   "compiled": "PhysMat_ARMOR_Medium__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_Thick": [
+  {
+   "material": "Vehicles/M1A1_USMC/Materials/MI_M1A1Armor_Wreck.uasset",
+   "name": "MI_M1A1Armor_Wreck",
+   "compiled": "PhysMat_ARMOR_Thick__1_compiled.png",
+   "texture": "PhysMat_ARMOR_Thick__1_texture.png",
+   "textureName": "M1A1_USMC_A"
+  },
+  {
+   "material": "Vehicles/AUS_M1A1/Materials/MI_AUS_M1A1_Wreck.uasset",
+   "name": "MI_AUS_M1A1_Wreck",
+   "compiled": "PhysMat_ARMOR_Thick__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_ARMOR_Thin": [
+  {
+   "material": "Vehicles/M1A2/Materials/MI_M1A1Armor_Woodland.uasset",
+   "name": "MI_M1A1Armor_Woodland",
+   "compiled": "PhysMat_ARMOR_Thin__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Vehicles/M1A2/Materials/MI_M1A1Armor_Woodland_Barrel.uasset",
+   "name": "MI_M1A1Armor_Woodland_Barrel",
+   "compiled": "PhysMat_ARMOR_Thin__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Armor_20mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_20mm.uasset",
+   "name": "Armor_20mm",
+   "compiled": "PhysMat_Armor_20mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Armor_9mm_NoPass": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_9mm_NoPass.uasset",
+   "name": "Armor_9mm_NoPass",
+   "compiled": "PhysMat_Armor_9mm_NoPass__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Asphalt": [
+  {
+   "material": "Environments/MiddleEast/BasrahRoads/Material/MI_Roads_Asia_AsphaltRough_01a_RVT.uasset",
+   "name": "MI_Roads_Asia_AsphaltRough_01a_RVT",
+   "compiled": "PhysMat_Asphalt__1_compiled.png",
+   "texture": "PhysMat_Asphalt__1_texture.png",
+   "textureName": "T_Asphalt_04_BC"
+  },
+  {
+   "material": "Environments/MiddleEast/BasrahRoads/Material/MI_Roads_MiddleEast_AsphaltSand_01a.uasset",
+   "name": "MI_Roads_MiddleEast_AsphaltSand_01a",
+   "compiled": "PhysMat_Asphalt__2_compiled.png",
+   "texture": "PhysMat_Asphalt__2_texture.png",
+   "textureName": "T_Road_AsphaltRough_01a_BC"
+  }
+ ],
+ "PhysMat_AsphaltWet": [
+  {
+   "material": "Environments/Roads/Meshes/EU_Roads/Snowy/M_Belayaroad.uasset",
+   "name": "M_Belayaroad",
+   "compiled": "PhysMat_AsphaltWet__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Roads/Meshes/EU_Roads/M_Newroad_Master_Wet.uasset",
+   "name": "M_Newroad_Master_Wet",
+   "compiled": "PhysMat_AsphaltWet__2_compiled.png",
+   "texture": "PhysMat_AsphaltWet__2_texture.png",
+   "textureName": "T_Asphalt01_A"
+  }
+ ],
+ "PhysMat_Brick": [
+  {
+   "material": "Environments/EastAsia/Materials/Walls/MI_BrickWall_01a.uasset",
+   "name": "MI_BrickWall_01a",
+   "compiled": "PhysMat_Brick__1_compiled.png",
+   "texture": "PhysMat_Brick__1_texture.png",
+   "textureName": "T_BrickWall_01a_A"
+  },
+  {
+   "material": "Environments/Eastern_European/Materials/MI_Tile_Brick_Floor_01.uasset",
+   "name": "MI_Tile_Brick_Floor_01",
+   "compiled": "PhysMat_Brick__2_compiled.png",
+   "texture": "PhysMat_Brick__2_texture.png",
+   "textureName": "T_Brick_Floor_01_A"
+  }
+ ],
+ "PhysMat_Carpet": [
+  {
+   "material": "Environments/Generic/Materials/Misc/M_OfficeCarpet.uasset",
+   "name": "M_OfficeCarpet",
+   "compiled": "PhysMat_Carpet__1_compiled.png",
+   "texture": "PhysMat_Carpet__1_texture.png",
+   "textureName": "OfficeCarpet_BaseColor"
+  },
+  {
+   "material": "Environments/Afghan/materials/MI_cloth_alpha_01.uasset",
+   "name": "MI_cloth_alpha_01",
+   "compiled": "PhysMat_Carpet__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Ceramic": [
+  {
+   "material": "Environments/Afghan/Props/Materials/MI_Ceramic_rough.uasset",
+   "name": "MI_Ceramic_rough",
+   "compiled": "PhysMat_Ceramic__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/EastAsia/Materials/Tiles/Tiles/MI_Ceramic_Tile_01.uasset",
+   "name": "MI_Ceramic_Tile_01",
+   "compiled": "PhysMat_Ceramic__2_compiled.png",
+   "texture": "PhysMat_Ceramic__2_texture.png",
+   "textureName": "T_Ceramic_Tiles_01_A"
+  }
+ ],
+ "PhysMat_Concrete": [
+  {
+   "material": "Environments/Military/Camp/Slabs/MI_Concrete_WA.uasset",
+   "name": "MI_Concrete_WA",
+   "compiled": "PhysMat_Concrete__1_compiled.png",
+   "texture": "PhysMat_Concrete__1_texture.png",
+   "textureName": "concrete_pavement_02_d"
+  },
+  {
+   "material": "Environments/MaterialInstances/Talil/MI_Concrete.uasset",
+   "name": "MI_Concrete",
+   "compiled": "PhysMat_Concrete__2_compiled.png",
+   "texture": "PhysMat_Concrete__2_texture.png",
+   "textureName": "T_Concrete_Smooth_sekjcawb_A"
+  }
+ ],
+ "PhysMat_Concrete_Deployable": [
+  {
+   "material": "Environments/Eastern_European/Buildings/Bunkers/Materials/trench_walls_concrete.uasset",
+   "name": "trench_walls_concrete",
+   "compiled": "PhysMat_Concrete_Deployable__1_compiled.png",
+   "texture": "PhysMat_Concrete_Deployable__1_texture.png",
+   "textureName": "concrete_base_albedo"
+  },
+  {
+   "material": "Environments/Eastern_European/Buildings/Bunkers/Materials/mat_bunker_walls_ruined_corner.uasset",
+   "name": "mat_bunker_walls_ruined_corner",
+   "compiled": "PhysMat_Concrete_Deployable__2_compiled.png",
+   "texture": "PhysMat_Concrete_Deployable__2_texture.png",
+   "textureName": "concrete_base_albedo"
+  }
+ ],
+ "PhysMat_CropField": [
+  {
+   "material": "Environments/Vegitation/MiddleEast/Reeds/MI_reeds.uasset",
+   "name": "MI_reeds",
+   "compiled": "PhysMat_CropField__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Vegitation/MiddleEast/Grass/MI_plaingrass1.uasset",
+   "name": "MI_plaingrass1",
+   "compiled": "PhysMat_CropField__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Cushion": [
+  {
+   "material": "Environments/Afghan/Props/ground_clutter/materials/mat_cushions.uasset",
+   "name": "mat_cushions",
+   "compiled": "PhysMat_Cushion__1_compiled.png",
+   "texture": "PhysMat_Cushion__1_texture.png",
+   "textureName": "cushions_albedo"
+  },
+  {
+   "material": "Environments/Generic/Props/Sofa_01/MI_Sofa.uasset",
+   "name": "MI_Sofa",
+   "compiled": "PhysMat_Cushion__2_compiled.png",
+   "texture": "PhysMat_Cushion__2_texture.png",
+   "textureName": "Sofa_albedo"
+  }
+ ],
+ "PhysMat_Default": [
+  {
+   "material": "Vehicles/M1A2/Materials/MI_M1A1Armor.uasset",
+   "name": "MI_M1A1Armor",
+   "compiled": "PhysMat_Default__1_compiled.png",
+   "texture": "PhysMat_Default__1_texture.png",
+   "textureName": "m1_albedo"
+  },
+  {
+   "material": "Vehicles/T72A/Materials/MI_T72A_Mount.uasset",
+   "name": "MI_T72A_Mount",
+   "compiled": "PhysMat_Default__2_compiled.png",
+   "texture": "PhysMat_Default__2_texture.png",
+   "textureName": "T_T72A_IMF_Mount_A"
+  }
+ ],
+ "PhysMat_Dirt": [
+  {
+   "material": "Environments/Military/Subpen/Materials/MI_SubPen_Tile_Dirt_01.uasset",
+   "name": "MI_SubPen_Tile_Dirt_01",
+   "compiled": "PhysMat_Dirt__1_compiled.png",
+   "texture": "PhysMat_Dirt__1_texture.png",
+   "textureName": "T_Subpen_Dirt_A"
+  },
+  {
+   "material": "Environments/MiddleEast/Street/Trash/Materials/MI_Dirt_Piles_00.uasset",
+   "name": "MI_Dirt_Piles_00",
+   "compiled": "PhysMat_Dirt__2_compiled.png",
+   "texture": "PhysMat_Dirt__2_texture.png",
+   "textureName": "Dirt_Piles_Albedo"
+  }
+ ],
+ "PhysMat_DirtGravel": [
+  {
+   "material": "Environments/Roads/Materials/MI_Dirtroad02.uasset",
+   "name": "MI_Dirtroad02",
+   "compiled": "PhysMat_DirtGravel__1_compiled.png",
+   "texture": "PhysMat_DirtGravel__1_texture.png",
+   "textureName": "dirtroad02_A"
+  },
+  {
+   "material": "Environments/Roads/Materials/MI_Dirtroad03.uasset",
+   "name": "MI_Dirtroad03",
+   "compiled": "PhysMat_DirtGravel__2_compiled.png",
+   "texture": "PhysMat_DirtGravel__2_texture.png",
+   "textureName": "dirtroad02_A"
+  }
+ ],
+ "PhysMat_DryMudWall": [
+  {
+   "material": "Environments/Afghan/materials/MI_mixedbricks.uasset",
+   "name": "MI_mixedbricks",
+   "compiled": "PhysMat_DryMudWall__1_compiled.png",
+   "texture": "PhysMat_DryMudWall__1_texture.png",
+   "textureName": "T_Loamwall_01_A"
+  },
+  {
+   "material": "Environments/Afghan/materials/MI_Afg_Normalblend01.uasset",
+   "name": "MI_Afg_Normalblend01",
+   "compiled": "PhysMat_DryMudWall__2_compiled.png",
+   "texture": "PhysMat_DryMudWall__2_texture.png",
+   "textureName": "T_Loamwall_01_A"
+  }
+ ],
+ "PhysMat_Equipment_Cloth": [
+  {
+   "material": "Environments/MiddleEast/Buildings/Props/Cloth/M_Closeline_Slow.uasset",
+   "name": "M_Closeline_Slow",
+   "compiled": "PhysMat_Equipment_Cloth__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Fabric": [
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_fabric_01.uasset",
+   "name": "MI_fabric_01",
+   "compiled": "PhysMat_Fabric__1_compiled.png",
+   "texture": "PhysMat_Fabric__1_texture.png",
+   "textureName": "white_high_01_a"
+  },
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_fabric_02.uasset",
+   "name": "MI_fabric_02",
+   "compiled": "PhysMat_Fabric__2_compiled.png",
+   "texture": "PhysMat_Fabric__2_texture.png",
+   "textureName": "white_high_01_a"
+  }
+ ],
+ "PhysMat_Flesh": [
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_Cherry_Red.uasset",
+   "name": "MI_Cherry_Red",
+   "compiled": "PhysMat_Flesh__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Afghan/Props/Food/Materials/MI_Watermelon.uasset",
+   "name": "MI_Watermelon",
+   "compiled": "PhysMat_Flesh__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Gas_Can": [
+  {
+   "material": "Environments/Afghan/materials/MI_afg_props02_metal.uasset",
+   "name": "MI_afg_props02_metal",
+   "compiled": "PhysMat_Gas_Can__1_compiled.png",
+   "texture": "PhysMat_Gas_Can__1_texture.png",
+   "textureName": "Afg_Props2_albedo"
+  },
+  {
+   "material": "Environments/Afghan/materials/MI_afg_sheetmetal_thin.uasset",
+   "name": "MI_afg_sheetmetal_thin",
+   "compiled": "PhysMat_Gas_Can__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Glass": [
+  {
+   "material": "Environments/Vehicles/Materials/MI_Mercedes_Glass.uasset",
+   "name": "MI_Mercedes_Glass",
+   "compiled": "PhysMat_Glass__1_compiled.png",
+   "texture": "PhysMat_Glass__1_texture.png",
+   "textureName": "SM_Truck_Glass_a"
+  },
+  {
+   "material": "Environments/Vehicles/Materials/LODGlass.uasset",
+   "name": "LODGlass",
+   "compiled": "PhysMat_Glass__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_GlassWindow": [
+  {
+   "material": "Environments/EastAsia/Buildings/Materials/MI_Glass_01a.uasset",
+   "name": "MI_Glass_01a",
+   "compiled": "PhysMat_GlassWindow__1_compiled.png",
+   "texture": "PhysMat_GlassWindow__1_texture.png",
+   "textureName": "T_Glass_01_BC"
+  },
+  {
+   "material": "Environments/EastAsia/Buildings/Materials/MI_Glass_01b.uasset",
+   "name": "MI_Glass_01b",
+   "compiled": "PhysMat_GlassWindow__2_compiled.png",
+   "texture": "PhysMat_GlassWindow__2_texture.png",
+   "textureName": "T_Glass_01_BC"
+  }
+ ],
+ "PhysMat_GlassWindshield": [
+  {
+   "material": "Vehicles/CPV/Materials/MI_SUV_Glass.uasset",
+   "name": "MI_SUV_Glass",
+   "compiled": "PhysMat_GlassWindshield__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Vehicles/M1117/Materials/MI_M1117_Glass.uasset",
+   "name": "MI_M1117_Glass",
+   "compiled": "PhysMat_GlassWindshield__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Grass": [
+  {
+   "material": "Environments/Vegitation/Unified/M_GrassMaster.uasset",
+   "name": "M_GrassMaster",
+   "compiled": "PhysMat_Grass__1_compiled.png",
+   "texture": "PhysMat_Grass__1_texture.png",
+   "textureName": "T_GrassTint_A"
+  },
+  {
+   "material": "Environments/Roads/Pavements/Materials/M_GrassVerge_Narva.uasset",
+   "name": "M_GrassVerge_Narva",
+   "compiled": "PhysMat_Grass__2_compiled.png",
+   "texture": "PhysMat_Grass__2_texture.png",
+   "textureName": "T_Grass01_A"
+  }
+ ],
+ "PhysMat_GrassTall": [
+  {
+   "material": "Environments/Vegitation/meshes/crops/Grapevines/materials/grapevine_main.uasset",
+   "name": "grapevine_main",
+   "compiled": "PhysMat_GrassTall__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Gravel": [
+  {
+   "material": "Environments/Materials/Landscape/M_Landscape_01.uasset",
+   "name": "M_Landscape_01",
+   "compiled": "PhysMat_Gravel__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Materials/Landscape/newlandscape_sumari.uasset",
+   "name": "newlandscape_sumari",
+   "compiled": "PhysMat_Gravel__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_HeavyMetal_Hollow": [
+  {
+   "material": "Environments/MaterialInstances/Talil/MI_dark_rust.uasset",
+   "name": "MI_dark_rust",
+   "compiled": "PhysMat_HeavyMetal_Hollow__1_compiled.png",
+   "texture": "PhysMat_HeavyMetal_Hollow__1_texture.png",
+   "textureName": "T_dark_pitted_rust_A"
+  },
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_Black_01.uasset",
+   "name": "MI_Black_01",
+   "compiled": "PhysMat_HeavyMetal_Hollow__2_compiled.png",
+   "texture": "PhysMat_HeavyMetal_Hollow__2_texture.png",
+   "textureName": "T_dirt_02_D"
+  }
+ ],
+ "PhysMat_Helo_Engine": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_Helo_engine.uasset",
+   "name": "MI_Veh_Helo_engine",
+   "compiled": "PhysMat_Helo_Engine__1_compiled.png",
+   "texture": "PhysMat_Helo_Engine__1_texture.png",
+   "textureName": "Null_D"
+  },
+  {
+   "material": "Vehicles/MI8/Materials/MI_MI8.uasset",
+   "name": "MI_MI8",
+   "compiled": "PhysMat_Helo_Engine__2_compiled.png",
+   "texture": "PhysMat_Helo_Engine__2_texture.png",
+   "textureName": "mi8_exterior_A"
+  }
+ ],
+ "PhysMat_Helo_Loach": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_Helo_engine_Loach.uasset",
+   "name": "MI_Veh_Helo_engine_Loach",
+   "compiled": "PhysMat_Helo_Loach__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Leafs": [
+  {
+   "material": "Environments/EastAsia/Foliage/DatePalm/MI_Datepalm_frond.uasset",
+   "name": "MI_Datepalm_frond",
+   "compiled": "PhysMat_Leafs__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/EastAsia/Foliage/DatePalm/MI_Datepalm_frond1.uasset",
+   "name": "MI_Datepalm_frond1",
+   "compiled": "PhysMat_Leafs__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Loose_Rocks": [
+  {
+   "material": "Environments/MiddleEast/Landscape/Rocks/Scatter_Desert_Rocks_01/MI_Scatter_Desert_Rocks_01.uasset",
+   "name": "MI_Scatter_Desert_Rocks_01",
+   "compiled": "PhysMat_Loose_Rocks__1_compiled.png",
+   "texture": "PhysMat_Loose_Rocks__1_texture.png",
+   "textureName": "Scatter_Desert_Rocks_A"
+  },
+  {
+   "material": "Environments/Rocks/materails/MI_RockHuge_01.uasset",
+   "name": "MI_RockHuge_01",
+   "compiled": "PhysMat_Loose_Rocks__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_hull_front": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_hull_front_500mm.uasset",
+   "name": "M1a2_armour_hull_front_500mm",
+   "compiled": "PhysMat_M1a2_hull_front__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_hull_front_500mm.uasset",
+   "name": "FV4034_armour_hull_front_500mm",
+   "compiled": "PhysMat_M1a2_hull_front__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_hull_side": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_hull_side_100mm.uasset",
+   "name": "M1a2_armour_hull_side_100mm",
+   "compiled": "PhysMat_M1a2_hull_side__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_hull_side_100mm.uasset",
+   "name": "FV4034_armour_hull_side_100mm",
+   "compiled": "PhysMat_M1a2_hull_side__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_rear": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_hull_rear_50mm.uasset",
+   "name": "M1a2_armour_hull_rear_50mm",
+   "compiled": "PhysMat_M1a2_rear__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_hull_rear_50mm.uasset",
+   "name": "FV4034_armour_hull_rear_50mm",
+   "compiled": "PhysMat_M1a2_rear__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_sideskirt_front": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_sideskirt_100mm.uasset",
+   "name": "FV4034_armour_sideskirt_100mm",
+   "compiled": "PhysMat_M1a2_sideskirt_front__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_sideskirt_front_100mm.uasset",
+   "name": "M1a2_armour_sideskirt_front_100mm",
+   "compiled": "PhysMat_M1a2_sideskirt_front__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_sideskirt_rear": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_sideskirt_rear_10mm.uasset",
+   "name": "M1a2_armour_sideskirt_rear_10mm",
+   "compiled": "PhysMat_M1a2_sideskirt_rear__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_top": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_top_90mm.uasset",
+   "name": "M1a2_armour_top_90mm",
+   "compiled": "PhysMat_M1a2_top__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_turret_ammocompartment": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_turret_ammocompartment_100mm.uasset",
+   "name": "M1a2_armour_turret_ammocompartment_100mm",
+   "compiled": "PhysMat_M1a2_turret_ammocompartment__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_turret_breech": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_turret_breech_300mm.uasset",
+   "name": "M1a2_armour_turret_breech_300mm",
+   "compiled": "PhysMat_M1a2_turret_breech__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_turret_breech_300mm.uasset",
+   "name": "FV4034_armour_turret_breech_300mm",
+   "compiled": "PhysMat_M1a2_turret_breech__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_turret_front": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_turret_front_600mm.uasset",
+   "name": "M1a2_armour_turret_front_600mm",
+   "compiled": "PhysMat_M1a2_turret_front__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_turret_front_600mm.uasset",
+   "name": "FV4034_armour_turret_front_600mm",
+   "compiled": "PhysMat_M1a2_turret_front__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_turret_side": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_turret_side_300mm.uasset",
+   "name": "M1a2_armour_turret_side_300mm",
+   "compiled": "PhysMat_M1a2_turret_side__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_turret_side_300mm.uasset",
+   "name": "FV4034_armour_turret_side_300mm",
+   "compiled": "PhysMat_M1a2_turret_side__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_M1a2_turretring": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/M1a2/M1a2_armour_turretring_80mm.uasset",
+   "name": "M1a2_armour_turretring_80mm",
+   "compiled": "PhysMat_M1a2_turretring__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_MetalThin": [
+  {
+   "material": "Vehicles/MI8/Materials/MI_MI8_Wreck.uasset",
+   "name": "MI_MI8_Wreck",
+   "compiled": "PhysMat_MetalThin__1_compiled.png",
+   "texture": "PhysMat_MetalThin__1_texture.png",
+   "textureName": "mi8_exterior_A"
+  },
+  {
+   "material": "Vehicles/Tigr/Materials/MI_Tigr_RWS.uasset",
+   "name": "MI_Tigr_RWS",
+   "compiled": "PhysMat_MetalThin__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Metal_Barrel": [
+  {
+   "material": "Environments/Afghan/materials/MI_Afg_Metal_Barrel.uasset",
+   "name": "MI_Afg_Metal_Barrel",
+   "compiled": "PhysMat_Metal_Barrel__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/EastAsia/Props/Materials/MI_EastAsia_Prop_Dumpster_02.uasset",
+   "name": "MI_EastAsia_Prop_Dumpster_02",
+   "compiled": "PhysMat_Metal_Barrel__2_compiled.png",
+   "texture": "PhysMat_Metal_Barrel__2_texture.png",
+   "textureName": "T_EastAsia_Prop_Dumpster_02_A"
+  }
+ ],
+ "PhysMat_Metal_SQ": [
+  {
+   "material": "Environments/Generic/Props/MI_Metal_Container_00.uasset",
+   "name": "MI_Metal_Container_00",
+   "compiled": "PhysMat_Metal_SQ__1_compiled.png",
+   "texture": "PhysMat_Metal_SQ__1_texture.png",
+   "textureName": "SM_Metal_Container_a"
+  },
+  {
+   "material": "Environments/Generic/Materials/Metal/MI_RustedMetal.uasset",
+   "name": "MI_RustedMetal",
+   "compiled": "PhysMat_Metal_SQ__2_compiled.png",
+   "texture": "PhysMat_Metal_SQ__2_texture.png",
+   "textureName": "RandomRust_albedo"
+  }
+ ],
+ "PhysMat_Metal_Stairs": [
+  {
+   "material": "Environments/MaterialInstances/Talil/MI_Metal_Grid_01.uasset",
+   "name": "MI_Metal_Grid_01",
+   "compiled": "PhysMat_Metal_Stairs__1_compiled.png",
+   "texture": "PhysMat_Metal_Stairs__1_texture.png",
+   "textureName": "T_Metal_Grid_01_a"
+  },
+  {
+   "material": "Environments/NorthAmerica/Materials/M_DrillWallMetal.uasset",
+   "name": "M_DrillWallMetal",
+   "compiled": "PhysMat_Metal_Stairs__2_compiled.png",
+   "texture": "PhysMat_Metal_Stairs__2_texture.png",
+   "textureName": "Rust_albedo"
+  }
+ ],
+ "PhysMat_Metal_target": [
+  {
+   "material": "Environments/MaterialInstances/Metal/MI_Metal_Corrugated_02.uasset",
+   "name": "MI_Metal_Corrugated_02",
+   "compiled": "PhysMat_Metal_target__1_compiled.png",
+   "texture": "PhysMat_Metal_target__1_texture.png",
+   "textureName": "T_Metal_Corrugated_02_a"
+  },
+  {
+   "material": "Environments/Military/Training/M_target.uasset",
+   "name": "M_target",
+   "compiled": "PhysMat_Metal_target__2_compiled.png",
+   "texture": "PhysMat_Metal_target__2_texture.png",
+   "textureName": "target_a"
+  }
+ ],
+ "PhysMat_Pinebranch": [
+  {
+   "material": "Environments/Vegitation/meshes/trees/Poplar/Materials/MI_leaves01.uasset",
+   "name": "MI_leaves01",
+   "compiled": "PhysMat_Pinebranch__1_compiled.png",
+   "texture": "PhysMat_Pinebranch__1_texture.png",
+   "textureName": "poplar01_a"
+  },
+  {
+   "material": "Environments/Vegitation/meshes/trees/Poplar/Materials/MI_leaves02.uasset",
+   "name": "MI_leaves02",
+   "compiled": "PhysMat_Pinebranch__2_compiled.png",
+   "texture": "PhysMat_Pinebranch__2_texture.png",
+   "textureName": "poplar02_a"
+  }
+ ],
+ "PhysMat_Plaster": [
+  {
+   "material": "Environments/MaterialInstances/Fallujah/MI_ME_UrbCnt_Plaster.uasset",
+   "name": "MI_ME_UrbCnt_Plaster",
+   "compiled": "PhysMat_Plaster__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/MaterialInstances/Fallujah/MI_ME_UrbCnt_Plaster_Trim.uasset",
+   "name": "MI_ME_UrbCnt_Plaster_Trim",
+   "compiled": "PhysMat_Plaster__2_compiled.png",
+   "texture": "PhysMat_Plaster__2_texture.png",
+   "textureName": "T_dirt_02_D"
+  }
+ ],
+ "PhysMat_Plastic": [
+  {
+   "material": "Environments/MaterialInstances/Fallujah/MI_Plastic_01a.uasset",
+   "name": "MI_Plastic_01a",
+   "compiled": "PhysMat_Plastic__1_compiled.png",
+   "texture": "PhysMat_Plastic__1_texture.png",
+   "textureName": "Aluminium_albedo"
+  },
+  {
+   "material": "Environments/MaterialInstances/Talil/MI_plastic_corrugated_01.uasset",
+   "name": "MI_plastic_corrugated_01",
+   "compiled": "PhysMat_Plastic__2_compiled.png",
+   "texture": "PhysMat_Plastic__2_texture.png",
+   "textureName": "T_Plastic_Corrugated_01_a"
+  }
+ ],
+ "PhysMat_PlasticBag": [
+  {
+   "material": "Environments/Afghan/Props/ground_clutter/materials/MI_trashbag_blue.uasset",
+   "name": "MI_trashbag_blue",
+   "compiled": "PhysMat_PlasticBag__1_compiled.png",
+   "texture": "PhysMat_PlasticBag__1_texture.png",
+   "textureName": "Null_D"
+  },
+  {
+   "material": "Environments/Afghan/Props/ground_clutter/materials/MI_trashbag_black.uasset",
+   "name": "MI_trashbag_black",
+   "compiled": "PhysMat_PlasticBag__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Pumpkin": [
+  {
+   "material": "Environments/Generic/Props/textures/MI_Market_Box_a.uasset",
+   "name": "MI_Market_Box_a",
+   "compiled": "PhysMat_Pumpkin__1_compiled.png",
+   "texture": "PhysMat_Pumpkin__1_texture.png",
+   "textureName": "T_Market_Box_a"
+  },
+  {
+   "material": "Environments/Generic/Props/textures/MI_Market_Box_Brightened.uasset",
+   "name": "MI_Market_Box_Brightened",
+   "compiled": "PhysMat_Pumpkin__2_compiled.png",
+   "texture": "PhysMat_Pumpkin__2_texture.png",
+   "textureName": "T_Market_Box_a"
+  }
+ ],
+ "PhysMat_Razorwire": [
+  {
+   "material": "Environments/Afghan/materials/M_Afg_metal_alpha_razorwire.uasset",
+   "name": "M_Afg_metal_alpha_razorwire",
+   "compiled": "PhysMat_Razorwire__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Eastern_European/Buildings/Village/village_house_1/Materials/MI_ColourBlack.uasset",
+   "name": "MI_ColourBlack",
+   "compiled": "PhysMat_Razorwire__2_compiled.png",
+   "texture": "PhysMat_Razorwire__2_texture.png",
+   "textureName": "Null_D"
+  }
+ ],
+ "PhysMat_Rock": [
+  {
+   "material": "Environments/Rocks/materails/MI_RockMed_01.uasset",
+   "name": "MI_RockMed_01",
+   "compiled": "PhysMat_Rock__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Rocks/materails/MI_RockMed_02.uasset",
+   "name": "MI_RockMed_02",
+   "compiled": "PhysMat_Rock__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Rock_Deployable": [
+  {
+   "material": "Environments/Military/Hesco/Materials/MI_Hesco_V3.uasset",
+   "name": "MI_Hesco_V3",
+   "compiled": "PhysMat_Rock_Deployable__1_compiled.png",
+   "texture": "PhysMat_Rock_Deployable__1_texture.png",
+   "textureName": "T_Hesco_V3_A"
+  },
+  {
+   "material": "Environments/Military/Hesco/Materials/MI_Hesco_Desert_Cam.uasset",
+   "name": "MI_Hesco_Desert_Cam",
+   "compiled": "PhysMat_Rock_Deployable__2_compiled.png",
+   "texture": "PhysMat_Rock_Deployable__2_texture.png",
+   "textureName": "T_Hesco_Desert_V3_A"
+  }
+ ],
+ "PhysMat_Rubber": [
+  {
+   "material": "Environments/Military/Materials/rubber_floor.uasset",
+   "name": "rubber_floor",
+   "compiled": "PhysMat_Rubber__1_compiled.png",
+   "texture": "PhysMat_Rubber__1_texture.png",
+   "textureName": "T_Rubber_Worn_A"
+  },
+  {
+   "material": "Vehicles/FV510/meshes/Materials/MI_FV510_grill.uasset",
+   "name": "MI_FV510_grill",
+   "compiled": "PhysMat_Rubber__2_compiled.png",
+   "texture": "PhysMat_Rubber__2_texture.png",
+   "textureName": "Warrior_bake_FV510_Grate_BaseColor"
+  }
+ ],
+ "PhysMat_Sand": [
+  {
+   "material": "Environments/Materials/Landscape/Chora/MI_highdesert_chora.uasset",
+   "name": "MI_highdesert_chora",
+   "compiled": "PhysMat_Sand__1_compiled.png",
+   "texture": "PhysMat_Sand__1_texture.png",
+   "textureName": "T_Feildsoil02_A"
+  },
+  {
+   "material": "Environments/MiddleEast/Street/Trash/Materials/MI_Dirtpile.uasset",
+   "name": "MI_Dirtpile",
+   "compiled": "PhysMat_Sand__2_compiled.png",
+   "texture": "PhysMat_Sand__2_texture.png",
+   "textureName": "Tallil_Sand_01_Albedo"
+  }
+ ],
+ "PhysMat_Sandbag": [
+  {
+   "material": "Environments/Afghan/materials/MI_Afg_sandbag01.uasset",
+   "name": "MI_Afg_sandbag01",
+   "compiled": "PhysMat_Sandbag__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Afghan/materials/MI_SAndBag_Custom.uasset",
+   "name": "MI_SAndBag_Custom",
+   "compiled": "PhysMat_Sandbag__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Sandbag_Deployable": [
+  {
+   "material": "Environments/Afghan/materials/MI_Afg_sandbag01_deployable.uasset",
+   "name": "MI_Afg_sandbag01_deployable",
+   "compiled": "PhysMat_Sandbag_Deployable__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Afghan/materials/M_Afg_cloth01_sandbagsbrown_deployable.uasset",
+   "name": "M_Afg_cloth01_sandbagsbrown_deployable",
+   "compiled": "PhysMat_Sandbag_Deployable__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Snow": [
+  {
+   "material": "Environments/Generic/Props/Xmas/Mi_Snowboi.uasset",
+   "name": "Mi_Snowboi",
+   "compiled": "PhysMat_Snow__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Generic/Props/Xmas/2020_FunBox/Snowman/M_SnowMan.uasset",
+   "name": "M_SnowMan",
+   "compiled": "PhysMat_Snow__2_compiled.png",
+   "texture": "PhysMat_Snow__2_texture.png",
+   "textureName": "T_SnowmanNew_BC"
+  }
+ ],
+ "PhysMat_SnowWet": [
+  {
+   "material": "Environments/NorthAmerica/Materials/MI_Snow.uasset",
+   "name": "MI_Snow",
+   "compiled": "PhysMat_SnowWet__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_hull_UpperSide_Addon": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_hull_UpperSide_Addon.uasset",
+   "name": "T72B3_armour_hull_UpperSide_Addon",
+   "compiled": "PhysMat_T72B3_hull_UpperSide_Addon__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_hull_front_lower": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_hull_front_lower.uasset",
+   "name": "T72B3_armour_hull_front_lower",
+   "compiled": "PhysMat_T72B3_hull_front_lower__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_hull_front_upper": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_hull_front_upper.uasset",
+   "name": "T72B3_armour_hull_front_upper",
+   "compiled": "PhysMat_T72B3_hull_front_upper__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/FV4034/FV4034_armour_hull_front_lower_200mm.uasset",
+   "name": "FV4034_armour_hull_front_lower_200mm",
+   "compiled": "PhysMat_T72B3_hull_front_upper__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_hull_rear": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_hull_side.uasset",
+   "name": "T62_armour_hull_side",
+   "compiled": "PhysMat_T72B3_hull_rear__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_hull_rear.uasset",
+   "name": "T72B3_armour_hull_rear",
+   "compiled": "PhysMat_T72B3_hull_rear__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_hull_side": [
+  {
+   "material": "Vehicles/T72A/Materials/MI_T72A_Hull.uasset",
+   "name": "MI_T72A_Hull",
+   "compiled": "PhysMat_T72B3_hull_side__1_compiled.png",
+   "texture": "PhysMat_T72B3_hull_side__1_texture.png",
+   "textureName": "T_T72A_IMF_Hull_A"
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_hull_rear.uasset",
+   "name": "T62_armour_hull_rear",
+   "compiled": "PhysMat_T72B3_hull_side__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_turret_front": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_turret_front.uasset",
+   "name": "T72B3_armour_turret_front",
+   "compiled": "PhysMat_T72B3_turret_front__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_turret_rear": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_turret_rear.uasset",
+   "name": "T72B3_armour_turret_rear",
+   "compiled": "PhysMat_T72B3_turret_rear__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_turret_roof_front.uasset",
+   "name": "T62_armour_turret_roof_front",
+   "compiled": "PhysMat_T72B3_turret_rear__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_turret_roof_front": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_turret_side.uasset",
+   "name": "T62_armour_turret_side",
+   "compiled": "PhysMat_T72B3_turret_roof_front__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_turret_GunBreach.uasset",
+   "name": "T62_armour_turret_GunBreach",
+   "compiled": "PhysMat_T72B3_turret_roof_front__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_turret_roof_rear": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T72B3/T72B3_armour_turret_roof_rear.uasset",
+   "name": "T72B3_armour_turret_roof_rear",
+   "compiled": "PhysMat_T72B3_turret_roof_rear__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_T72B3_turret_side": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_turret_cheek.uasset",
+   "name": "T62_armour_turret_cheek",
+   "compiled": "PhysMat_T72B3_turret_side__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/T62/T62_armour_turret_front.uasset",
+   "name": "T62_armour_turret_front",
+   "compiled": "PhysMat_T72B3_turret_side__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Tile": [
+  {
+   "material": "Environments/MaterialInstances/Fallujah/MI_ME_blue_tiles_01.uasset",
+   "name": "MI_ME_blue_tiles_01",
+   "compiled": "PhysMat_Tile__1_compiled.png",
+   "texture": "PhysMat_Tile__1_texture.png",
+   "textureName": "T_blue_tiles_01_a"
+  },
+  {
+   "material": "Environments/MaterialInstances/Fallujah/MI_ME_blue_tiles_02.uasset",
+   "name": "MI_ME_blue_tiles_02",
+   "compiled": "PhysMat_Tile__2_compiled.png",
+   "texture": "PhysMat_Tile__2_texture.png",
+   "textureName": "T_blue_tiles_02_a"
+  }
+ ],
+ "PhysMat_Tire_Open": [
+  {
+   "material": "Environments/Afghan/Props/Tires/Materials/MI_Tires.uasset",
+   "name": "MI_Tires",
+   "compiled": "PhysMat_Tire_Open__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Afghan/Props/Tires/Materials/MI_Tractor_Tire.uasset",
+   "name": "MI_Tractor_Tire",
+   "compiled": "PhysMat_Tire_Open__2_compiled.png",
+   "texture": "PhysMat_Tire_Open__2_texture.png",
+   "textureName": "T_tractor_tire_A"
+  }
+ ],
+ "PhysMat_Trucks": [
+  {
+   "material": "Vehicles/M1151/Materials/MI_M1151_CRF.uasset",
+   "name": "MI_M1151_CRF",
+   "compiled": "PhysMat_Trucks__1_compiled.png",
+   "texture": "PhysMat_Trucks__1_texture.png",
+   "textureName": "T_M1151_Body_CRF_Camo_A"
+  },
+  {
+   "material": "Vehicles/M1151_CRF/Material/MI_M1151_CRF.uasset",
+   "name": "MI_M1151_CRF",
+   "compiled": "PhysMat_Trucks__2_compiled.png",
+   "texture": "PhysMat_Trucks__2_texture.png",
+   "textureName": "T_M1151_Body_CRF_A"
+  }
+ ],
+ "PhysMat_Vehicle_AmmoRack": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_ammo.uasset",
+   "name": "MI_Veh_ammo",
+   "compiled": "PhysMat_Vehicle_AmmoRack__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Vehicle_Engine": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_engine.uasset",
+   "name": "MI_Veh_engine",
+   "compiled": "PhysMat_Vehicle_Engine__1_compiled.png",
+   "texture": "PhysMat_Vehicle_Engine__1_texture.png",
+   "textureName": "Null_D"
+  }
+ ],
+ "PhysMat_Vehicle_EngineLarge": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_engine_Large.uasset",
+   "name": "MI_Veh_engine_Large",
+   "compiled": "PhysMat_Vehicle_EngineLarge__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Vehicle_NoPenetration": [
+  {
+   "material": "Vehicles/Internal_Components/materials/MI_Veh_NoPenetration.uasset",
+   "name": "MI_Veh_NoPenetration",
+   "compiled": "PhysMat_Vehicle_NoPenetration__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Water": [
+  {
+   "material": "Environments/water/Materails/MI_Water_River_yeho.uasset",
+   "name": "MI_Water_River_yeho",
+   "compiled": "PhysMat_Water__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/water/Materails/MI_Water_River_Kokan.uasset",
+   "name": "MI_Water_River_Kokan",
+   "compiled": "PhysMat_Water__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Water_Container": [
+  {
+   "material": "Environments/Afghan/materials/MI_plastic_water_can.uasset",
+   "name": "MI_plastic_water_can",
+   "compiled": "PhysMat_Water_Container__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Afghan/Props/Materials/MI_plastic_barrel_red.uasset",
+   "name": "MI_plastic_barrel_red",
+   "compiled": "PhysMat_Water_Container__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Wood": [
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_Wood_01.uasset",
+   "name": "MI_Wood_01",
+   "compiled": "PhysMat_Wood__1_compiled.png",
+   "texture": "PhysMat_Wood__1_texture.png",
+   "textureName": "Blockout_Lines_05_a"
+  },
+  {
+   "material": "Environments/MaterialInstances/Blockout/MI_Wood_02.uasset",
+   "name": "MI_Wood_02",
+   "compiled": "PhysMat_Wood__2_compiled.png",
+   "texture": "PhysMat_Wood__2_texture.png",
+   "textureName": "white_high_01_a"
+  }
+ ],
+ "PhysMat_WoodSolid": [
+  {
+   "material": "Environments/Afghan/materials/MI_Afg_poles01.uasset",
+   "name": "MI_Afg_poles01",
+   "compiled": "PhysMat_WoodSolid__1_compiled.png",
+   "texture": "PhysMat_WoodSolid__1_texture.png",
+   "textureName": "Afg_poles_A"
+  },
+  {
+   "material": "Environments/Afghan/materials/MI_Woodplanks01.uasset",
+   "name": "MI_Woodplanks01",
+   "compiled": "PhysMat_WoodSolid__2_compiled.png",
+   "texture": "PhysMat_WoodSolid__2_texture.png",
+   "textureName": "T_Wood_planks_A"
+  }
+ ],
+ "PhysMat_Wood_Creaky_floor": [
+  {
+   "material": "Environments/Afghan/Props/Materials/MI_BoxWood_Radio.uasset",
+   "name": "MI_BoxWood_Radio",
+   "compiled": "PhysMat_Wood_Creaky_floor__1_compiled.png",
+   "texture": "PhysMat_Wood_Creaky_floor__1_texture.png",
+   "textureName": "DirtyPlywood_albedo"
+  },
+  {
+   "material": "Environments/Military/Hesco/Materials/MI_Bastion_Wood.uasset",
+   "name": "MI_Bastion_Wood",
+   "compiled": "PhysMat_Wood_Creaky_floor__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_Wood_treelog": [
+  {
+   "material": "Environments/Eastern_European/Materials/mat_wall_bunker_woodlogs.uasset",
+   "name": "mat_wall_bunker_woodlogs",
+   "compiled": "PhysMat_Wood_treelog__1_compiled.png",
+   "texture": "PhysMat_Wood_treelog__1_texture.png",
+   "textureName": "T_OldMossyWood_A"
+  },
+  {
+   "material": "Environments/Eastern_European/Buildings/Bunkers/Materials/mat_wall_bunker_woodlogs.uasset",
+   "name": "mat_wall_bunker_woodlogs",
+   "compiled": "PhysMat_Wood_treelog__2_compiled.png",
+   "texture": "PhysMat_Wood_treelog__2_texture.png",
+   "textureName": "T_OldMossyWood_A"
+  }
+ ],
+ "PhysMat_armor_30mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_30mm.uasset",
+   "name": "Armor_30mm",
+   "compiled": "PhysMat_armor_30mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/Military/Large_Array_Telescope/Materials/M_Array_A.uasset",
+   "name": "M_Array_A",
+   "compiled": "PhysMat_armor_30mm__2_compiled.png",
+   "texture": "PhysMat_armor_30mm__2_texture.png",
+   "textureName": "M_Array_A"
+  }
+ ],
+ "PhysMat_armor_40mm": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_40mm.uasset",
+   "name": "Armor_40mm",
+   "compiled": "PhysMat_armor_40mm__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  },
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Tutorial_Demonstration_Colours/Demonstration_Armor_4.uasset",
+   "name": "Demonstration_Armor_4",
+   "compiled": "PhysMat_armor_40mm__2_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_armor_AAVP7A1_AddOn": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_35mm_AAVP7A1_AddOn.uasset",
+   "name": "Armor_35mm_AAVP7A1_AddOn",
+   "compiled": "PhysMat_armor_AAVP7A1_AddOn__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_armor_FV510_AddOn": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_FV510_AddOn.uasset",
+   "name": "Armor_FV510_AddOn",
+   "compiled": "PhysMat_armor_FV510_AddOn__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ],
+ "PhysMat_vehicletracks": [
+  {
+   "material": "Environments/PhysicalMaterials/Vehicles/Armor_materials/Armor_tracks.uasset",
+   "name": "Armor_tracks",
+   "compiled": "PhysMat_vehicletracks__1_compiled.png",
+   "texture": null,
+   "textureName": null
+  }
+ ]
+}

@@ -17,3 +17,4 @@ __pycache__/
 
 # extracted game art, rebuilt by material_images.py
 material_images/
+material_examples/
