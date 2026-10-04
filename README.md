@@ -273,6 +273,37 @@ single base colour texture; those want a hand-picked source in its `CURATED` tab
 
 ---
 
+## Game versions
+
+Both pages carry a version toggle at the top. Squad changes these values between patches, so
+each extracted version is frozen and kept, and the pages switch between them.
+
+The art is carried once and the numbers once per version. About 960 KB of the guide is icons,
+so a frozen version costs only its values: 100 KB for the infantry tab, 107 KB for the vehicle
+tab, 317 KB for the data page.
+
+Picking a version redraws every figure, table, chart and card from that version's data. Figures
+that moved since the version before it carry a gold underline, and a weapon whose rate or power
+changed carries a gold dot in the armoury. The comparison is keyed on the asset path rather than
+the display name, because several weapons share a name.
+
+**After a Squad update:**
+
+```bash
+./build.sh                                              # extract the new version
+python3 snapshot_version.py --notes "what changed"      # freeze it
+./build.sh                                              # rebuild the pages with both versions
+```
+
+`snapshot_version.py` writes `versions/<version>/`, `build_versions.py` bundles every frozen
+version into the payloads the pages inject, and the newest version becomes the default.
+
+Older versions keep their weapons' icon keys and draw art from the current icon set, so a weapon
+whose art was removed by a later update shows no picture. That is the one cost of carrying the
+art only once.
+
+---
+
 ## Reproducing it
 
 `./build.sh` runs the chain below. It is byte-reproducible: run it twice and the output
@@ -290,9 +321,10 @@ files hash identically.
 | 8 | `build_csv.py` | `squad_all_weapons_suppression.csv`, one row per weapon, with fire mode and bolt cycle |
 | 9 | `build_page.py` | `suppression.html`, data page: template + payload |
 | 10 | `build_guide_payload.py` | `guide_payload.json`, per-kit figures, soldier curves, effect thresholds, logo |
-| 11 | `build_vehicle_payload.py` | `vehicle_payload.json`, per-class figures, vehicle weapon art |
-| 12 | `build_guide.py` | `guide.html`, field guide: template + both payloads |
-| 13 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
+| 11 | `build_versions.py` | `versions_{guide,page}.json`, every frozen game version |
+| 12 | `build_vehicle_payload.py` | `vehicle_payload.json`, per-class figures, vehicle weapon art |
+| 13 | `build_guide.py` | `guide.html`, field guide: template + payloads |
+| 14 | `make_site.py` | `docs/index.html` (guide) and `docs/modders.html` (data page) |
 
 The vehicle sweep itself is not in `build.sh`, because it reads 546 assets across 99 vehicle
 folders and only changes when the game does. Run it by hand after an update:
@@ -302,7 +334,7 @@ python3 extract_vehicles.py && python3 report_vehicles.py
 ```
 
 Edit the pages in **`guide.template.html`** and **`suppression.template.html`**, never in the
-generated `.html` files, steps 9 and 12 overwrite them.
+generated `.html` files, steps 10 and 13 overwrite them.
 
 **Rate of fire** is not one number. Automatics report their cyclic rate from `TimeBetweenShots`.
 Bolt-actions inherit a meaningless 0.072 s there from the generic rifle base; their real cycle is
@@ -377,6 +409,8 @@ to know those numbers is guessing.
 | `squad.py` | blueprint chains, property merging, redirector following |
 | `graph.py` / `decompile.py` | Blueprint node-graph parser and pseudo-code decompiler |
 | `vehicle_classes.py` | how vehicle weapon assets fold into systems and classes, shared by the report and the payload |
+| `snapshot_version.py` | freeze the current build as a named game version |
+| `build_versions.py` | bundle the frozen versions into the pages' version payloads |
 | `extract_materials.py` | every physical material, its armour value and the penetration curves |
 | `material_images.py` | a surface image per material, recovered from editor thumbnails |
 | `guide.template.html` | the field guide, both tabs, edit this one, not the output |

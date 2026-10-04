@@ -2,6 +2,13 @@
 """One payload for the page: profiles, curves, every weapon, every icon."""
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+def game_version(default='v10.5.3'):
+    """the one place the game version is set: the VERSION file beside this script"""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VERSION')
+    try: return open(p, encoding='utf-8').read().strip() or default
+    except OSError: return default
+
 base = json.load(open(os.path.join(HERE, 'payload.json')))       # profiles / flat / blast / soldier
 allw = json.load(open(os.path.join(HERE, 'all_weapons.json')))   # weapons / icons / catIcons
 
@@ -45,6 +52,7 @@ base['logo'] = _uri(200) if _logo else None
 base['weapons'] = allw['weapons']
 base['icons'] = allw['icons']
 base['cats'] = cats
+base['version'] = game_version()
 json.dump(base, open(os.path.join(HERE, 'page_payload.json'), 'w'), separators=(',', ':'))
 n = os.path.getsize(os.path.join(HERE, 'page_payload.json'))
 print(f"payload {n/1024:.0f} KB | weapons {len(base['weapons'])} | icons {len(base['icons'])} | cats {len(cats)}")

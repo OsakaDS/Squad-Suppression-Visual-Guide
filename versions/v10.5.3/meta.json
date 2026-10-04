@@ -1,0 +1,10 @@
+{
+ "version": "v10.5.3",
+ "notes": "first version captured by the toolkit",
+ "frozen": "2026-10-04",
+ "parts": {
+  "guide": 100,
+  "vehicle": 107,
+  "page": 318
+ }
+}

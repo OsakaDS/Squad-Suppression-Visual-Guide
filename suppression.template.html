@@ -88,6 +88,19 @@ h1{font-family:var(--fs); font-weight:400; font-size:clamp(34px,5.4vw,58px); lin
 .stage{border-bottom:1px solid var(--rule); padding:34px 0 40px}
 .stage:last-of-type{border-bottom:none}
 .stage-head{display:flex; align-items:baseline; gap:14px; margin-bottom:6px}
+/* ---------- game version bar ---------- */
+.verbar{display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; justify-content:space-between;
+  border:1px solid var(--rule); background:var(--panel); padding:10px 14px; margin:0 0 18px}
+.verpick{display:flex; align-items:center; flex-wrap:wrap; gap:8px}
+.verlabel{font-family:var(--fm); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3)}
+.vernote{font-family:var(--fm); font-size:11px; color:var(--ink3); margin:0; letter-spacing:.03em}
+.vernote b{color:var(--gold); font-weight:500}
+.verchip{font-family:var(--fm); font-size:12px; padding:5px 11px; border:1px solid var(--rule-strong);
+  background:transparent; color:var(--ink3); cursor:pointer; line-height:1.2}
+.verchip[aria-pressed="true"]{color:var(--ink); background:var(--inset); border-color:var(--gold); box-shadow:inset 0 -2px 0 var(--gold)}
+.verchip small{display:block; font-size:9.5px; color:var(--ink3); letter-spacing:.04em}
+td.chg{box-shadow:inset 0 -2px 0 var(--gold)}
+.chgdot{display:inline-block; width:5px; height:5px; background:var(--gold); margin-left:5px; vertical-align:2px}
 .stage-num{font-family:var(--fs); font-size:14px; letter-spacing:.08em; color:var(--gold); text-transform:uppercase; flex:none}
 h2{font-family:var(--fd); font-weight:500; text-transform:uppercase; letter-spacing:.04em;
    font-size:clamp(21px,2.6vw,27px); margin:0; line-height:1.15; color:var(--navy)}
@@ -228,7 +241,7 @@ footer li{margin-bottom:6px; max-width:78ch}
 <header class="mast">
   <img id="mastLogo" alt="29th Infantry Division">
   <div>
-  <p class="kicker">29th Infantry Division · Squad v10.5.3 · reverse-engineered from the mod SDK</p>
+  <p class="kicker">29th Infantry Division · Squad <span id="ver">v10.5.3</span> · reverse-engineered from the mod SDK</p>
   <h1>The Suppression<br>Data</h1>
   <p class="byline">by <b>Osaka [29th ID]</b> · the asset-level companion to the <a href="index.html">field guide</a></p>
   <p class="dek">Squad does not store a suppression stat on a weapon. It stores a <b>profile</b> that a bullet carries, a <b>curve</b> keyed on how close that bullet passed your head, and a <b>ceiling</b> on how much pressure can stack up. Every weapon, icon and number below was read out of the packaged <code>.uasset</code> files, no wiki figures. This is the data page; the <a href="index.html" style="color:var(--signal)">field guide</a> explains what it means in a firefight.</p>
@@ -242,6 +255,14 @@ footer li{margin-bottom:6px; max-width:78ch}
   </div>
   </div>
 </header>
+
+<div class="verbar">
+  <div class="verpick">
+    <span class="verlabel">Game version</span>
+    <div id="verChips" role="group" aria-label="Game version"></div>
+  </div>
+  <p class="vernote" id="verNote"></p>
+</div>
 
 <!-- ============ ARMOURY ============ -->
 <section class="stage">
@@ -386,10 +407,11 @@ footer li{margin-bottom:6px; max-width:78ch}
 </div>
 
 <script id="payload" type="application/json">__PAYLOAD__</script>
+<script id="versions" type="application/json">__VERSIONS__</script>
 <script>
 (function(){
 "use strict";
-const D = JSON.parse(document.getElementById('payload').textContent);
+let D = JSON.parse(document.getElementById('payload').textContent);
 const SERIES = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const NS = 'http://www.w3.org/2000/svg';
@@ -437,7 +459,7 @@ function ceilingOf(w){
 }
 
 /* ---------- state ---------- */
-const OVERRIDES = D.weapons.filter(w => w.override).length;
+let OVERRIDES = D.weapons.filter(w => w.override).length;
 const byName = n => D.weapons.find(w => w.name===n);
 const state = {
   dist: 150,
@@ -450,7 +472,9 @@ const state = {
 
 /* ================= armoury ================= */
 const catBox = document.getElementById('cattiles');
-D.cats.forEach(c => {
+function buildCatTiles(){
+ catBox.textContent='';
+ D.cats.forEach(c => {
   const b = document.createElement('button');
   b.className='cattile'; b.type='button'; b.dataset.cat=c.id;
   b.setAttribute('aria-pressed', c.id===state.cat);
@@ -458,7 +482,9 @@ D.cats.forEach(c => {
     `<span class="cl">${esc(c.label)}</span><span class="cc">${c.count}</span>`;
   b.addEventListener('click', ()=>{ state.cat=c.id; state.q=''; searchBox.value=''; renderArmoury(); allTable(); });
   catBox.appendChild(b);
-});
+ });
+}
+buildCatTiles();
 
 const wgrid = document.getElementById('wgrid');
 const searchBox = document.getElementById('search');
@@ -555,7 +581,9 @@ function drawPassby(){
 /* ================= curve chart ================= */
 const curveSvg = document.getElementById('curveChart');
 const chipBox = document.getElementById('chips');
-D.profiles.forEach((p,i)=>{
+function buildProfileChips(){
+ chipBox.textContent='';
+ D.profiles.forEach((p,i)=>{
   const b=document.createElement('button');
   b.className='chip'; b.type='button';
   b.setAttribute('aria-pressed', state.visible.has(p.id));
@@ -568,10 +596,96 @@ D.profiles.forEach((p,i)=>{
   });
   chipBox.appendChild(b);
   p._chip=b;
-});
+ });
+}
+buildProfileChips();
 function syncChips(){
   D.profiles.forEach(p => p._chip.setAttribute('aria-pressed', state.visible.has(p.id)));
 }
+
+/* ================= GAME VERSIONS ================= */
+/* The art is carried once and the numbers once per version, so switching swaps the
+   values under the same icons. Frozen by snapshot_version.py. */
+const VERSIONS = JSON.parse(document.getElementById('versions').textContent || '{}');
+const VORDER = VERSIONS.order || [];
+const ART = {icons: D.icons, logo: D.logo};
+let activeVer = VERSIONS.current || D.version;
+let CHG = {cats:{}, profiles:{}, blast:{}, weapons:{}};
+
+const vdata = (ver, part) => ((VERSIONS.data || {})[ver] || {})[part] || null;
+const prevOf = ver => { const i = VORDER.indexOf(ver); return i > 0 ? VORDER[i-1] : null; };
+const round5 = x => typeof x === 'number' ? Math.round(x * 1e5) / 1e5 : x;
+const differs = (a, b) => !(a == null && b == null) && round5(a) !== round5(b);
+const chgc = on => on ? ' chg' : '';
+const wkey = w => w.asset || w.name;     // display names are not unique
+
+function computeChanges(ver){
+  const out = {cats:{}, profiles:{}, blast:{}, weapons:{}};
+  const p = prevOf(ver); if(!p) return out;
+  const now = vdata(ver, 'page'), was = vdata(p, 'page');
+  if(!now || !was) return out;
+  const byId = (arr, key) => Object.fromEntries((arr || []).map(x => [typeof key === 'function' ? key(x) : x[key], x]));
+  const op = byId(was.profiles, 'id'), np = byId(now.profiles, 'id');
+  (now.profiles || []).forEach(pr => { const q = op[pr.id];
+    out.profiles[pr.id] = q ? {power: differs(pr.power, q.power) || JSON.stringify(pr.keys) !== JSON.stringify(q.keys),
+      thr: differs(pr.thr, q.thr), sway: differs(pr.sway, q.sway), prev: q} : {added: true}; });
+  const oc = byId(was.cats, 'id');
+  (now.cats || []).forEach(c => { const q = oc[c.id];
+    const pf = out.profiles[c.profileId] || {};
+    out.cats[c.id] = q ? {count: differs(c.count, q.count), power: !!pf.power, thr: !!pf.thr, sway: !!pf.sway, prev: q}
+                       : {added: true}; });
+  const ob = byId(was.blast, 'label');
+  (now.blast || []).forEach(b => { const q = ob[b.label];
+    out.blast[b.label] = q ? {power: differs(b.power, q.power), inner: differs(b.inner, q.inner),
+      outer: differs(b.outer, q.outer), thr: differs(b.thr, q.thr), prev: q} : {added: true}; });
+  const ow = byId(was.weapons, wkey);
+  (now.weapons || []).forEach(w => { const q = ow[wkey(w)];
+    if(!q) out.weapons[wkey(w)] = {added: true};
+    else if(differs(w.rpm, q.rpm) || differs(w.power, q.power) || differs(w.thr, q.thr)
+            || w.profile !== q.profile || !!w.override !== !!q.override)
+      out.weapons[wkey(w)] = {rpm: differs(w.rpm, q.rpm), power: differs(w.power, q.power),
+        profile: w.profile !== q.profile, prev: q}; });
+  return out;
+}
+const chgCount = c => ['cats','profiles','blast','weapons']
+  .reduce((n, k) => n + Object.values(c[k]).filter(o => Object.values(o).some(x => x === true)).length, 0);
+
+function applyVersion(ver){
+  const pg = vdata(ver, 'page');
+  if(pg) D = Object.assign({}, pg, ART);
+  activeVer = ver;
+  OVERRIDES = D.weapons.filter(w => w.override).length;
+  if(!D.cats.some(c => c.id === state.cat)) state.cat = (D.cats[0] || {}).id;
+  state.weapon = byName(state.weapon && state.weapon.name) || byName('M4A1') || D.weapons[0];
+  CHG = computeChanges(ver);
+  document.querySelectorAll('[id^="ver"]').forEach(e => {
+    if(/^ver\d*$/.test(e.id)) e.textContent = D.version || ver; });
+  buildCatTiles(); buildProfileChips();
+  renderArmoury(); allTable(); catTable(); blastTable(); drawBlast(); update();
+  renderVersionBar();
+}
+
+function renderVersionBar(){
+  const box = document.getElementById('verChips'), note = document.getElementById('verNote');
+  box.textContent = '';
+  if(!VORDER.length){ note.textContent = 'No frozen versions on this build.'; return; }
+  VORDER.slice().reverse().forEach(ver => {
+    const b = document.createElement('button'); b.className = 'verchip'; b.type = 'button';
+    b.setAttribute('aria-pressed', String(ver === activeVer));
+    const meta = (VERSIONS.meta || {})[ver] || {};
+    const tag = ver === VERSIONS.current ? 'current' : (meta.frozen || '');
+    b.innerHTML = esc(ver) + (tag ? '<small>' + esc(tag) + '</small>' : '');
+    if(meta.notes) b.title = meta.notes;
+    b.addEventListener('click', () => applyVersion(ver));
+    box.appendChild(b);
+  });
+  const p = prevOf(activeVer), n = chgCount(CHG);
+  note.innerHTML = p
+    ? '<b>' + n + '</b> figure' + (n === 1 ? '' : 's') + ' moved since ' + esc(p) + '. Changed cells carry a gold underline.'
+    : (VORDER.length > 1 ? 'Earliest version held, so nothing to compare against.'
+                         : 'One version so far. The next Squad update adds the second and the comparison turns on.');
+}
+
 function niceMax(v){
   if(v<=0) return 1;
   const pow=Math.pow(10,Math.floor(Math.log10(v)));
@@ -747,6 +861,7 @@ function catTable(){
   const tb=document.querySelector('#catTable tbody');
   tb.textContent='';
   D.cats.forEach(c=>{
+    const ch = CHG.cats[c.id] || {};
     const p = c.profileId ? profileById(c.profileId) : null;
     const sample = D.weapons.find(w=>w.cat===c.id);
     const p1 = p ? evalCurve(p.keys,100) : (sample && sample.power) || 0;
@@ -754,14 +869,14 @@ function catTable(){
     const tr=document.createElement('tr');
     tr.innerHTML =
       `<td><span class="catcell">${c.icon?`<img class="ico" src="${c.icon}" alt="">`:''}${esc(c.label)}</span></td>`+
-      `<td class="num">${c.count}</td>`+
+      `<td class="num${chgc(ch.count)}">${c.count}</td>`+
       `<td class="num">${p ? (envelope(p)/100).toFixed(1)+' m' : (c.id==='hmg'?'flat':'-')}</td>`+
-      `<td class="num">${p ? fmt(p1) : (p1?fmt(p1,2):'-')}</td>`+
+      `<td class="num${chgc(ch.power)}">${p ? fmt(p1) : (p1?fmt(p1,2):'-')}</td>`+
       `<td class="num">${p ? fmt(evalCurve(p.keys,200)) : (p1?fmt(p1,2):'-')}</td>`+
       `<td class="num">${p ? fmt(evalCurve(p.keys,300)) : (p1?fmt(p1,2):'-')}</td>`+
-      `<td class="num">${thr!=null?fmt(thr,2):'-'}</td>`+
-      `<td class="num">${p ? (p.sway!=null?fmt(p.sway,3):'inherited') : '-'}</td>`+
-      `<td class="num">${p1>0 && thr ? Math.ceil(thr/p1) : '-'}</td>`;
+      `<td class="num${chgc(ch.thr)}">${thr!=null?fmt(thr,2):'-'}</td>`+
+      `<td class="num${chgc(ch.sway)}">${p ? (p.sway!=null?fmt(p.sway,3):'inherited') : '-'}</td>`+
+      `<td class="num${chgc(ch.power||ch.thr)}">${p1>0 && thr ? Math.max(1, Math.ceil(thr/p1 - 1e-6)) : '-'}</td>`;
     tb.appendChild(tr);
   });
 }
@@ -846,7 +961,10 @@ function tick(){
 }
 
 if(D.logo) document.getElementById('mastLogo').src=D.logo; else document.getElementById('mastLogo').hidden=true;
+{ const e = document.getElementById('ver'); if(e && D.version) e.textContent = D.version; }
+CHG = computeChanges(activeVer);          // the tables read it while they render
 renderArmoury(); allTable(); catTable(); blastTable(); drawBlast(); update();
+renderVersionBar();
 window.addEventListener('resize',()=>{ drawBlast(); });
 const redrawAll=()=>{ update(); drawBlast(); catTable(); allTable(); };
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redrawAll);

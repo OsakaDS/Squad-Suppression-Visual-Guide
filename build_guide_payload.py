@@ -6,6 +6,13 @@ from PIL import Image
 from curve import read_curves
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+def game_version(default='v10.5.3'):
+    """the one place the game version is set: the VERSION file beside this script"""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VERSION')
+    try: return open(p, encoding='utf-8').read().strip() or default
+    except OSError: return default
+
 SOLD = '/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/Soldiers'
 base = json.load(open(os.path.join(HERE, 'payload.json')))          # profiles / flat / blast / soldier
 ALL = json.load(open(os.path.join(HERE, 'all_weapons.json')))
@@ -116,8 +123,10 @@ def uri(size):
     return 'data:image/png;base64,' + base64.b64encode(b.getvalue()).decode()
 # the armoury: every weapon in the eight kits, with its icon
 kit_cats = {k['cat']: k for k in kits}
+# the asset path is the only unique key: several weapons share a display name
 weapons = [{'name': w['name'], 'kit': kit_cats[w['cat']]['id'], 'rpm': w['rpm'], 'fire': w.get('fire'), 'mv': w['mv'],
-            'icon': w.get('iconKey'), 'variants': w['variants'], 'override': w['override']}
+            'icon': w.get('iconKey'), 'variants': w['variants'], 'override': w['override'],
+            'asset': w.get('asset')}
            for w in allw if w['cat'] in kit_cats]
 weapons.sort(key=lambda w: (w['kit'], w['name'].lower()))
 used = {w['icon'] for w in weapons if w['icon']}
@@ -125,7 +134,7 @@ icons = {k: v for k, v in ALL['icons'].items() if k in used}
 out = {'kits': kits, 'weapons': weapons, 'icons': icons,
        'soldier': soldier, 'effects': effects, 'ads': ads, 'blast': base['blast'],
        'logo': uri(260), 'logoSmall': uri(64),
-       'version': 'v10.5.3', 'author': 'Osaka [29th ID]'}
+       'version': game_version(), 'author': 'Osaka [29th ID]'}
 json.dump(out, open(os.path.join(HERE, 'guide_payload.json'), 'w'), separators=(',', ':'))
 print(f"guide_payload.json {os.path.getsize(os.path.join(HERE,'guide_payload.json'))/1024:.0f} KB")
 print(f"  weapons in the armoury: {len(weapons)} | icons: {len(icons)}")

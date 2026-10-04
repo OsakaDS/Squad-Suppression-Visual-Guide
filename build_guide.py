@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Inject the payloads into the guide templates.
 
+__VERSIONS__ carries every frozen game version, values only; see snapshot_version.py.
+
 guide.template.html carries two: __PAYLOAD__ (infantry) and __VPAYLOAD__ (vehicles).
 The v2 draft only ever had the first, so the vehicle one is optional."""
 import os, sys
@@ -8,6 +10,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 payload = open(os.path.join(HERE, 'guide_payload.json'), encoding='utf-8').read()
 vpath = os.path.join(HERE, 'vehicle_payload.json')
 vpayload = open(vpath, encoding='utf-8').read() if os.path.exists(vpath) else None
+verpath = os.path.join(HERE, 'versions_guide.json')
+versions = open(verpath, encoding='utf-8').read() if os.path.exists(verpath) else '{"order":[],"data":{},"meta":{}}'
 
 for src, dst in [('guide.template.html', 'guide.html'), ('guide_v2.template.html', 'guide_v2.html')]:
     if not os.path.exists(os.path.join(HERE, src)): continue
@@ -17,6 +21,8 @@ for src, dst in [('guide.template.html', 'guide.html'), ('guide_v2.template.html
     if '__VPAYLOAD__' in out_html:
         if vpayload is None: sys.exit(f'{src}: wants __VPAYLOAD__ but vehicle_payload.json is missing')
         out_html = out_html.replace('__VPAYLOAD__', vpayload)
+    if '__VERSIONS__' in out_html:
+        out_html = out_html.replace('__VERSIONS__', versions)
     out = os.path.join(HERE, dst)
     open(out, 'w', encoding='utf-8').write(out_html)
     print(f"wrote {out}  ({os.path.getsize(out)/1024:.0f} KB)")

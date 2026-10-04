@@ -81,7 +81,7 @@ costs about 150 KB.
 ./build.sh
 ```
 
-Runs the thirteen-step chain end to end in about a second and is byte-reproducible. The steps
+Runs the fourteen-step chain end to end in about a second and is byte-reproducible. The steps
 and what each produces are tabulated in [README.md](README.md#reproducing-it). To run one
 stage on its own, invoke that script directly; each writes its own JSON and the next
 step picks it up.
@@ -91,6 +91,12 @@ files**, because `build_guide.py` and `build_page.py` overwrite them.
 
 After a Squad update, rerun `./build.sh` and check the counts it prints; a jump or drop
 in resolved weapons is the fastest signal that an asset format or a property name moved.
+
+Then freeze the new version so the page can switch back to the old one:
+
+```bash
+python3 snapshot_version.py --notes "what the patch changed" && ./build.sh
+```
 
 The vehicle sweep sits outside `build.sh` because it is the slow part and only moves when
 the game does. Rerun it separately after an update:
@@ -120,6 +126,8 @@ Four files hold an absolute SDK path: `squad.py` (`CONTENT`, the one that matter
 | `squad_all_weapons_suppression.csv` | all 521 weapons, power sampled at 1/2/3/4 m |
 | `squad_vehicle_weapons.csv` | all 254 vehicle weapon systems, with class, profile and both models |
 | `squad_materials.csv` | all 129 physical materials, armour value and damage absorbed |
+| `versions/<version>/` | a frozen game version: values only, no art |
+| `versions_guide.json`, `versions_page.json` | those versions bundled for each page |
 | `all_materials.json` | the same, plus the ten heavy-calibre penetration curves |
 | `vehicle_payload.json` | per-class figures and vehicle weapon art for the guide's second tab |
 | `squad_rifle_suppression.csv` | the original ten-rifle sample |

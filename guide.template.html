@@ -215,6 +215,21 @@ td.name{font-weight:600}
 .kitrow .kl .sw{width:10px; height:10px}
 .kitrow small{font-family:var(--fm); font-size:10.5px; color:var(--ink3); letter-spacing:.03em}
 
+/* ---------- game version bar ---------- */
+.verbar{display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; justify-content:space-between;
+  border:1px solid var(--rule); border-top:none; background:var(--panel); padding:10px 14px}
+.verpick{display:flex; align-items:center; flex-wrap:wrap; gap:8px}
+.verlabel{font-family:var(--fm); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink3)}
+.vernote{font-family:var(--fm); font-size:11px; color:var(--ink3); margin:0; letter-spacing:.03em}
+.vernote b{color:var(--gold); font-weight:500}
+.verchip{font-family:var(--fm); font-size:12px; padding:5px 11px; border:1px solid var(--rule-strong);
+  background:transparent; color:var(--ink3); cursor:pointer; line-height:1.2}
+.verchip[aria-pressed="true"]{color:var(--ink); background:var(--inset); border-color:var(--gold); box-shadow:inset 0 -2px 0 var(--gold)}
+.verchip small{display:block; font-size:9.5px; color:var(--ink3); letter-spacing:.04em}
+/* a figure that moved since the version before this one */
+td.chg, th.chg{box-shadow:inset 0 -2px 0 var(--gold)}
+.chgdot{display:inline-block; width:5px; height:5px; background:var(--gold); margin-left:5px; vertical-align:2px}
+
 /* ---------- tabs ---------- */
 .tabs{display:flex; gap:1px; background:var(--rule); border:1px solid var(--rule); border-top:none; margin:0 0 2px}
 .tab{flex:1 1 0; min-width:0; background:var(--panel); border:none; cursor:pointer; padding:15px 18px; text-align:left;
@@ -262,6 +277,14 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
     </div>
   </div>
 </header>
+
+<div class="verbar">
+  <div class="verpick">
+    <span class="verlabel">Game version</span>
+    <div id="verChips" role="group" aria-label="Game version"></div>
+  </div>
+  <p class="vernote" id="verNote"></p>
+</div>
 
 <nav class="tabs" role="tablist" aria-label="Which weapons">
   <button class="tab" type="button" role="tab" id="tb-inf" aria-controls="pane-inf" aria-selected="true">Infantry Weapons<span class="sub" id="tabCountInf"></span></button>
@@ -654,10 +677,11 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
 
 <script id="payload" type="application/json">__PAYLOAD__</script>
 <script id="vpayload" type="application/json">__VPAYLOAD__</script>
+<script id="versions" type="application/json">__VERSIONS__</script>
 <script>
 (function(){
 "use strict";
-const D = JSON.parse(document.getElementById('payload').textContent);
+let D = JSON.parse(document.getElementById('payload').textContent);
 const SERIES = ['--s1','--s2','--s3','--s4','--s5','--s6','--s7','--s8'];
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const NS = 'http://www.w3.org/2000/svg';
@@ -665,7 +689,7 @@ const el = (tag, attrs, parent) => { const n=document.createElementNS(NS, tag); 
 const clear = s => { while(s.firstChild) s.removeChild(s.firstChild); };
 const fmt = (v,d=3) => Number(v).toFixed(d);
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const C = D.soldier.const;
+let C = D.soldier.const;
 
 /* ---------- curves ---------- */
 function evalCurve(keys, x){
@@ -686,9 +710,9 @@ const envelope = k => k.keys.length ? k.keys[k.keys.length-1].x : null;
 const closeness = d => Math.max(0, Math.min(1, (C.radius - d) / (C.radius - C.fullRadius)));
 const firstShot = c => evalCurve(D.soldier.firstShot, c);
 const kitColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
-const curveKits = D.kits.filter(k => k.keys.length);
+let curveKits = D.kits.filter(k => k.keys.length);
 const MODE={bolt:'bolt-action',semi:'semi-auto',auto:'automatic'};
-const shotgun = D.kits.find(k => k.id==='shotgun');
+let shotgun = D.kits.find(k => k.id==='shotgun');
 /* rounds needed to reach a ceiling. The stored powers are float32, so 1.75/0.35 comes out
    a hair over 5 and a plain Math.ceil would report 6. */
 const pins = (cap, per) => per > 0 ? Math.max(1, Math.ceil(cap/per - 1e-6)) : null;
@@ -750,13 +774,17 @@ function niceMax(v){ if(v<=0) return 1; const p=Math.pow(10,Math.floor(Math.log1
 
 /* ================= RULE 1 ================= */
 const chipBox=document.getElementById('kitChips');
-D.kits.forEach((k,i)=>{
+function buildKitChips(){
+ chipBox.textContent='';
+ D.kits.forEach((k,i)=>{
   const b=document.createElement('button'); b.className='chip'+(k.keys.length?'':' flat'); b.type='button';
   b.setAttribute('aria-pressed', state.visible.has(k.id)); b.style.setProperty('--c', i<8?'var('+SERIES[i]+')':'var(--grey)');
   b.innerHTML='<span class="sw"></span>'+esc(k.label);
   b.addEventListener('click',()=>{ if(state.visible.has(k.id)) state.visible.delete(k.id); else state.visible.add(k.id); b.setAttribute('aria-pressed',state.visible.has(k.id)); drawRule1(); });
   chipBox.appendChild(b);
-});
+ });
+}
+buildKitChips();
 const passSvg=document.getElementById('passby');
 function drawPassby(svg, dist, any){
   const passSvg=svg;
@@ -797,11 +825,11 @@ document.getElementById('curveChart').addEventListener('pointermove',ev=>{ const
 /* ================= RULE 2 ================= */
 function kitTable(){
   const tb=document.querySelector('#kitTable tbody'); tb.textContent='';
-  D.kits.forEach((k,i)=>{ const p1=kitPower(k,100), p2=kitPower(k,200), env=envelope(k); const tr=document.createElement('tr');
+  D.kits.forEach((k,i)=>{ const p1=kitPower(k,100), p2=kitPower(k,200), env=envelope(k); const ch=CHG.kits[k.id]||{}; const tr=document.createElement('tr');
     tr.innerHTML=`<td class="name">${k.emblem?`<img class="emblem" src="${k.emblem}" alt="">`:''}<span class="swatch" style="display:inline-block;width:9px;height:9px;margin-right:8px;background:${kitColor(i)}"></span>${esc(k.label)}</td>
-      <td class="num">${k.count}</td><td class="num">${fmt(p1)}</td><td class="num">${fmt(p2)}</td>
-      <td class="num">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num">${fmt(k.ceiling,2)}</td>
-      <td class="num">${pins(k.ceiling, p1) ?? '-'}</td><td class="num">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
+      <td class="num${chgc(ch.count)}">${k.count}</td><td class="num${chgc(ch.power)}">${fmt(p1)}</td><td class="num${chgc(ch.power)}">${fmt(p2)}</td>
+      <td class="num${chgc(ch.power)}">${env!=null?(env/100).toFixed(1)+' m':'flat'}</td><td class="num${chgc(ch.ceiling)}">${fmt(k.ceiling,2)}</td>
+      <td class="num${chgc(ch.ceiling||ch.power)}">${pins(k.ceiling, p1) ?? '-'}</td><td class="num${chgc(ch.rpm)}">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
 }
 
 /* ================= RULE 3 ================= */
@@ -964,7 +992,7 @@ function drawBlast(){
     el('text',{x:X(b.outer)+7,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=(b.outer/100)+' m'; });
   el('text',{x:mL,y:H-6,class:'axlab'},svg).textContent='Distance from the blast';
   const tb=document.querySelector('#blastTable tbody'); tb.textContent='';
-  D.blast.forEach(b=>{ const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num">${b.power!=null?fmt(b.power,2):'-'}</td><td class="num">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'-'}</td><td class="num">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'-'}</td><td class="num">${b.thr!=null?fmt(b.thr,2):'-'}</td>`; tb.appendChild(tr); });
+  D.blast.forEach(b=>{ const ch=CHG.blast[b.label]||{}; const tr=document.createElement('tr'); tr.innerHTML=`<td class="name">${esc(b.label)}</td><td class="num${chgc(ch.power)}">${b.power!=null?fmt(b.power,2):'-'}</td><td class="num${chgc(ch.inner)}">${b.inner!=null?(b.inner/100).toFixed(1)+' m':'-'}</td><td class="num${chgc(ch.outer)}">${b.outer!=null?(b.outer/100).toFixed(1)+' m':'-'}</td><td class="num${chgc(ch.thr)}">${b.thr!=null?fmt(b.thr,2):'-'}</td>`; tb.appendChild(tr); });
 }
 
 /* ================= the two-clocks contrast ================= */
@@ -1028,21 +1056,21 @@ function armoury(){
   const frag=document.createDocumentFragment(); const kitLabel=Object.fromEntries(D.kits.map(k=>[k.id,k.label]));
   list.forEach(w=>{ const d=document.createElement('div'); d.className='wcard'; d.setAttribute('role','listitem');
     d.innerHTML=(w.icon&&D.icons[w.icon]?`<img src="${D.icons[w.icon]}" alt="">`:'<span></span>')+
-      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'-'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
+      `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}${CHG.weapons[wkey(w)]?'<span class="chgdot" title="changed since the previous version"></span>':''}</span><br><span class="wm">${w.rpm?w.rpm+' rpm':'-'}${w.fire?' '+MODE[w.fire]:''} · ${esc(kitLabel[w.kit])}</span></span>`; frag.appendChild(d); });
   grid.appendChild(frag);
 }
 document.getElementById('search').addEventListener('input',e=>{ arm.q=e.target.value.trim().toLowerCase(); armoury(); });
 
 /* ================= VEHICLE WEAPONS ================= */
-const V = JSON.parse(document.getElementById('vpayload').textContent);
-const vPassby = V.classes.filter(c => c.model === 'passby' && (c.power || c.keys.length));
-const vBlastCls = V.classes.filter(c => c.model === 'blast');
+let V = JSON.parse(document.getElementById('vpayload').textContent);
+let vPassby = V.classes.filter(c => c.model === 'passby' && (c.power || c.keys.length));
+let vBlastCls = V.classes.filter(c => c.model === 'blast');
 const vPower = (c, d) => c.keys.length ? evalCurve(c.keys, d) : (c.power || 0);
 const vCeiling = c => c.model === 'blast' ? (c.radialCeiling || 0) : (c.ceiling || 0);
 const vColor = i => i < 8 ? css(SERIES[i]) : css('--grey');
-const vIdx = Object.fromEntries(vPassby.map((c, i) => [c.id, i]));
+let vIdx = Object.fromEntries(vPassby.map((c, i) => [c.id, i]));
 const m1 = v => (v / 100).toFixed(1) + ' m';
-const rifleKit = D.kits.find(k => k.id === 'rifle');
+let rifleKit = D.kits.find(k => k.id === 'rifle');
 
 /* fit a row label into the gutter a chart has for it, tightening before trimming */
 function vFitLabel(node, text, gutter, fs){
@@ -1090,14 +1118,18 @@ function vImmSamples(rpm, T, c, dt){
 
 /* ================= V RULE 1 ================= */
 const vChipBox = document.getElementById('vChips');
-vPassby.forEach((c, i) => {
+function buildVClassChips(){
+ vChipBox.textContent='';
+ vPassby.forEach((c, i) => {
   const b = document.createElement('button'); b.className = 'chip' + (c.keys.length ? '' : ' flat'); b.type = 'button';
   b.setAttribute('aria-pressed', vstate.visible.has(c.id)); b.style.setProperty('--c', i < 8 ? 'var(' + SERIES[i] + ')' : 'var(--grey)');
   b.innerHTML = '<span class="sw"></span>' + esc(c.label);
   b.addEventListener('click', () => { vstate.visible.has(c.id) ? vstate.visible.delete(c.id) : vstate.visible.add(c.id);
     b.setAttribute('aria-pressed', vstate.visible.has(c.id)); vDrawRule1(); });
   vChipBox.appendChild(b);
-});
+ });
+}
+buildVClassChips();
 function vDrawRule1(){
   const vis = vPassby.filter(c => vstate.visible.has(c.id));
   drawPassby(document.getElementById('vpassby'), vstate.dist, vis.some(c => vPower(c, vstate.dist) > 0));
@@ -1136,12 +1168,14 @@ function vClassTable(){
                         : (c.keys.length ? 'to ' + m1(c.keys[c.keys.length - 1].x) : 'flat');
     const ceil = vCeiling(c);
     const toPin = pins(ceil, per);
+    const ch = CHG.classes[c.id] || {};
+    const chPer = blast ? ch.blastPower : ch.power, chCap = blast ? ch.radialCeiling : ch.ceiling;
     const tr = document.createElement('tr');
     tr.innerHTML = `<td class="name">${c.emblem ? `<img class="emblem" src="${V.icons[c.emblem]}" alt="">` : ''}${esc(c.label)}</td>`
-      + `<td class="num">${c.count}</td><td class="num" style="color:var(--ink3)">${blast ? 'blast' : (c.keys.length ? 'passby curve' : 'passby flat')}</td>`
-      + `<td class="num">${per != null ? fmt(per, per >= 1 ? 2 : 3) : '?'}</td><td class="num">${reach}</td>`
-      + `<td class="num">${ceil ? fmt(ceil, 2) : '-'}</td><td class="num">${toPin || (blast ? '1' : '-')}</td>`
-      + `<td class="num">${c.rpm || '-'}<span style="color:var(--ink3)"> rpm</span></td>`;
+      + `<td class="num${chgc(ch.count)}">${c.count}</td><td class="num" style="color:var(--ink3)">${blast ? 'blast' : (c.keys.length ? 'passby curve' : 'passby flat')}</td>`
+      + `<td class="num${chgc(chPer)}">${per != null ? fmt(per, per >= 1 ? 2 : 3) : '?'}</td><td class="num${chgc(ch.reach)}">${reach}</td>`
+      + `<td class="num${chgc(chCap)}">${ceil ? fmt(ceil, 2) : '-'}</td><td class="num${chgc(chCap||chPer)}">${toPin || (blast ? '1' : '-')}</td>`
+      + `<td class="num${chgc(ch.rpm)}">${c.rpm || '-'}<span style="color:var(--ink3)"> rpm</span></td>`;
     tb.appendChild(tr);
   });
 }
@@ -1205,10 +1239,10 @@ function vDrawBlast(){
   });
   el('text', { x: mL, y: H - 6, class: 'axlab', 'font-size': FS - 1 }, svg).textContent = 'Distance from the blast';
   const tb = document.querySelector('#vBlastTable tbody'); tb.textContent = '';
-  rows.forEach(b => { const tr = document.createElement('tr');
+  rows.forEach(b => { const ch = CHG.blast[b.label] || {}; const tr = document.createElement('tr');
     tr.innerHTML = `<td class="name"${b.ref ? ' style="color:var(--ink3)"' : ''}>${esc(b.label)}${b.ref ? ' <span style="color:var(--ink3)">(infantry)</span>' : ''}</td>`
-      + `<td class="num">${b.power != null ? fmt(b.power, 2) : '?'}</td><td class="num">${b.inner != null ? m1(b.inner) : '-'}</td>`
-      + `<td class="num">${b.outer != null ? m1(b.outer) : '?'}</td><td class="num">${b.thr != null ? fmt(b.thr, 2) : '?'}</td>`;
+      + `<td class="num${chgc(ch.power)}">${b.power != null ? fmt(b.power, 2) : '?'}</td><td class="num${chgc(ch.inner)}">${b.inner != null ? m1(b.inner) : '-'}</td>`
+      + `<td class="num${chgc(ch.outer)}">${b.outer != null ? m1(b.outer) : '?'}</td><td class="num${chgc(ch.thr)}">${b.thr != null ? fmt(b.thr, 2) : '?'}</td>`;
     tb.appendChild(tr); });
 }
 
@@ -1279,6 +1313,7 @@ function vToolKits(){
   box.querySelectorAll('input[type=number]').forEach(nb => nb.addEventListener('input', e => {
     vstate.rpm[e.target.dataset.vrpm] = Math.max(0, +e.target.value || 0); vDrawTool(); }));
   const sel = document.getElementById('vshell');
+  sel.textContent = ''; { const o = document.createElement('option'); o.value = ''; o.textContent = 'nothing'; sel.appendChild(o); }
   vBlastRows().filter(b => !b.ref).forEach(b => { const o = document.createElement('option'); o.value = b.label; o.textContent = b.label; sel.appendChild(o); });
 }
 function vSimulate(){
@@ -1411,7 +1446,7 @@ function vArmoury(){
       : (w.power ? 'passby ' + fmt(w.power, w.power >= 1 ? 2 : 3) : 'no suppression');
     const veh = (w.veh || []).join(', ') + (w.nveh > (w.veh || []).length ? ' +' + (w.nveh - w.veh.length) : '');
     d.innerHTML = (w.icon && V.icons[w.icon] ? `<img src="${V.icons[w.icon]}" alt="">` : '<span></span>')
-      + `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}</span>`
+      + `<span><span class="wn" title="${esc(w.name)}">${esc(w.name)}${CHG.vweapons[wkey(w)]?'<span class="chgdot" title="changed since the previous version"></span>':''}</span>`
       + `<span class="wm">${w.rpm ? w.rpm + ' rpm · ' : ''}${supp}${w.ceiling || w.radialCeiling ? ' · cap ' + fmt(w.model === 'blast' ? w.radialCeiling : w.ceiling, 2) : ''}</span>`
       + `<span class="wv" title="${esc((w.veh || []).join(', '))}">${esc(veh)}</span></span>`;
     frag.appendChild(d);
@@ -1445,12 +1480,114 @@ document.getElementById('vBlastCount').textContent = WORDS[vBlastCls.length] + '
 document.getElementById('vCounts').textContent =
   `${V.counts.assets} weapon assets on ${V.counts.vehicles} vehicles fold into ${V.counts.systems} distinct systems across ${V.classes.length} classes, and this tab is built from all of them.`;
 
+/* ================= GAME VERSIONS ================= */
+/* The art is carried once and the numbers once per version, so switching swaps the values
+   under the same icons. A frozen version is values only; see snapshot_version.py. */
+const VERSIONS = JSON.parse(document.getElementById('versions').textContent || '{}');
+const VORDER = VERSIONS.order || [];
+const ART_I = {icons: D.icons, logo: D.logo, logoSmall: D.logoSmall};
+const ART_V = {icons: V.icons};
+let activeVer = VERSIONS.current || D.version;
+let CHG = {kits:{}, classes:{}, weapons:{}, blast:{}, vweapons:{}};
+
+const vdata = (ver, part) => ((VERSIONS.data || {})[ver] || {})[part] || null;
+const prevOf = ver => { const i = VORDER.indexOf(ver); return i > 0 ? VORDER[i-1] : null; };
+const round5 = x => typeof x === 'number' ? Math.round(x * 1e5) / 1e5 : x;
+const differs = (a, b) => !(a == null && b == null) && round5(a) !== round5(b);
+const chgc = on => on ? ' chg' : '';
+const wkey = w => w.asset || w.name;     // display names are not unique
+
+/* every figure that moved between a version and the one before it */
+function computeChanges(ver){
+  const out = {kits:{}, classes:{}, weapons:{}, blast:{}, vweapons:{}};
+  const p = prevOf(ver);
+  if(!p) return out;
+  const byId = (arr, key) => Object.fromEntries((arr || []).map(x => [typeof key === 'function' ? key(x) : x[key], x]));
+  const g = vdata(ver,'guide'), gp = vdata(p,'guide');
+  if(g && gp){
+    const o = byId(gp.kits, 'id');
+    (g.kits || []).forEach(k => { const q = o[k.id];
+      out.kits[k.id] = q ? {ceiling: differs(k.ceiling, q.ceiling), rpm: differs(k.rpm, q.rpm),
+        power: JSON.stringify(k.keys) !== JSON.stringify(q.keys) || differs(k.flatPower, q.flatPower),
+        count: differs(k.count, q.count), prev: q} : {added: true}; });
+    const ow = byId(gp.weapons, wkey);
+    (g.weapons || []).forEach(w => { const q = ow[wkey(w)];
+      if(!q) out.weapons[wkey(w)] = {added: true};
+      else if(differs(w.rpm, q.rpm) || w.kit !== q.kit) out.weapons[wkey(w)] = {rpm: differs(w.rpm, q.rpm), kit: w.kit !== q.kit, prev: q}; });
+    const ob = byId(gp.blast, 'label');
+    (g.blast || []).forEach(b => { const q = ob[b.label];
+      out.blast[b.label] = q ? {power: differs(b.power, q.power), inner: differs(b.inner, q.inner),
+        outer: differs(b.outer, q.outer), thr: differs(b.thr, q.thr), prev: q} : {added: true}; });
+  }
+  const v = vdata(ver,'vehicle'), vp = vdata(p,'vehicle');
+  if(v && vp){
+    const oc = byId(vp.classes, 'id');
+    (v.classes || []).forEach(c => { const q = oc[c.id];
+      out.classes[c.id] = q ? {power: differs(c.power, q.power), blastPower: differs(c.blastPower, q.blastPower),
+        ceiling: differs(c.ceiling, q.ceiling), radialCeiling: differs(c.radialCeiling, q.radialCeiling),
+        rpm: differs(c.rpm, q.rpm), count: differs(c.count, q.count),
+        reach: differs(c.inner, q.inner) || differs(c.outer, q.outer), prev: q} : {added: true}; });
+    const ow = byId(vp.weapons, wkey);
+    (v.weapons || []).forEach(w => { const q = ow[wkey(w)];
+      if(!q) out.vweapons[wkey(w)] = {added: true};
+      else if(differs(w.rpm, q.rpm) || differs(w.power, q.power) || differs(w.blastPower, q.blastPower))
+        out.vweapons[wkey(w)] = {rpm: differs(w.rpm, q.rpm), prev: q}; });
+  }
+  return out;
+}
+const chgCount = c => ['kits','classes','weapons','blast','vweapons']
+  .reduce((n, k) => n + Object.values(c[k]).filter(o => Object.values(o).some(x => x === true)).length, 0);
+
+function applyVersion(ver){
+  const g = vdata(ver, 'guide'), v = vdata(ver, 'vehicle');
+  if(g) D = Object.assign({}, g, ART_I);
+  if(v) V = Object.assign({}, v, ART_V);
+  activeVer = ver;
+  C = D.soldier.const;
+  curveKits = D.kits.filter(k => k.keys.length);
+  shotgun = D.kits.find(k => k.id === 'shotgun');
+  rifleKit = D.kits.find(k => k.id === 'rifle');
+  vPassby = V.classes.filter(c => c.model === 'passby' && (c.power || c.keys.length));
+  vBlastCls = V.classes.filter(c => c.model === 'blast');
+  vIdx = Object.fromEntries(vPassby.map((c, i) => [c.id, i]));
+  D.kits.forEach(k => state.rpm[k.id] = k.rpmPractical || k.rpm || 0);
+  V.classes.forEach(c => vstate.rpm[c.id] = c.rpm || 0);
+  CHG = computeChanges(ver);
+  ['ver','ver2','ver3'].forEach(i => { const e = document.getElementById(i); if(e) e.textContent = D.version || ver; });
+  buildKitChips(); toolKits(); drawAll(); armoury();
+  if(vReady){ buildVClassChips(); vToolKits(); vDrawAll(); vArmoury(); }
+  renderVersionBar();
+}
+
+function renderVersionBar(){
+  const box = document.getElementById('verChips'), note = document.getElementById('verNote');
+  box.textContent = '';
+  if(!VORDER.length){ note.textContent = 'No frozen versions on this build.'; return; }
+  VORDER.slice().reverse().forEach(ver => {
+    const b = document.createElement('button'); b.className = 'verchip'; b.type = 'button';
+    b.setAttribute('aria-pressed', String(ver === activeVer));
+    const meta = (VERSIONS.meta || {})[ver] || {};
+    const tag = ver === VERSIONS.current ? 'current' : (meta.frozen || '');
+    b.innerHTML = esc(ver) + (tag ? '<small>' + esc(tag) + '</small>' : '');
+    if(meta.notes) b.title = meta.notes;
+    b.addEventListener('click', () => applyVersion(ver));
+    box.appendChild(b);
+  });
+  const p = prevOf(activeVer), n = chgCount(CHG);
+  note.innerHTML = p
+    ? '<b>' + n + '</b> figure' + (n === 1 ? '' : 's') + ' moved since ' + esc(p) + '. Changed cells carry a gold underline.'
+    : (VORDER.length > 1 ? 'Earliest version held, so nothing to compare against.'
+                         : 'One version so far. The next Squad update adds the second and the comparison turns on.');
+}
+
 /* ================= boot ================= */
 document.getElementById('logo').src=D.logo; document.getElementById('logoFoot').src=D.logoSmall;
 ['ver','ver2','ver3'].forEach(i=>document.getElementById(i).textContent=D.version); document.getElementById('author').textContent=D.author;
 function drawAll(){ drawRule1(); kitTable(); drawRule3(); drawTimeline(); drawContrast(); qa(); drawTool(); drawBlast();
   if(vReady && !PANES.veh.hidden) vDrawAll(); }
+CHG = computeChanges(activeVer);          // the tables read it while they render
 toolKits(); drawAll(); armoury();
+renderVersionBar();
 showTab(location.hash === '#vehicles' ? 'veh' : 'inf', false);
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawAll);
 new MutationObserver(drawAll).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme','class']});

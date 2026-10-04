@@ -7,9 +7,16 @@ served by your own web server gets none of that, so we add it here.
 import os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PAGES = [('guide.html', 'index.html',   "How suppression works in Squad v10.5.3 and how to use it, for infantry weapons and vehicle weapons alike. A field guide by Osaka [29th ID], built from the game's own asset data."),
+
+def game_version(default='v10.5.3'):
+    """the one place the game version is set: the VERSION file beside this script"""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VERSION')
+    try: return open(p, encoding='utf-8').read().strip() or default
+    except OSError: return default
+
+PAGES = [('guide.html', 'index.html',   "How suppression works in Squad {VER} and how to use it, for infantry weapons and vehicle weapons alike. A field guide by Osaka [29th ID], built from the game's own asset data."),
          ('guide_v2.html', 'v2.html', "Field guide, version 2 draft, the two-clocks framing."),
-         ('suppression.html', 'modders.html', "Every weapon, profile and curve in Squad v10.5.3, read straight out of the .uasset files, the data behind the field guide.")]
+         ('suppression.html', 'modders.html', "Every weapon, profile and curve in Squad {VER}, read straight out of the .uasset files, the data behind the field guide.")]
 
 def wrap(src_name, out_name, DESC):
   body = open(os.path.join(HERE, src_name), encoding='utf-8').read()
@@ -44,5 +51,6 @@ def wrap(src_name, out_name, DESC):
   open(OUT, 'w', encoding='utf-8').write(doc)
   print(f"wrote {OUT}  ({os.path.getsize(OUT)/1024:.0f} KB)")
 
+VER = game_version()
 for src, out, desc in PAGES:
-  if os.path.exists(os.path.join(HERE, src)): wrap(src, out, desc)
+  if os.path.exists(os.path.join(HERE, src)): wrap(src, out, desc.replace('{VER}', VER))

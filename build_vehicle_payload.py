@@ -128,6 +128,7 @@ for s in systems:
     v = prof(s['profile'])
     weapons.append({
         'name': s['name'] or s['asset'].split('/')[-1], 'cls': s['cls'], 'icon': s['icon'],
+        'asset': s['asset'],          # unique key for comparing versions
         'veh': s['vehicles'][:6], 'nveh': len(s['vehicles']),
         'vt': s['vehicleTypes'][0] if s['vehicleTypes'] else None,
         'rpm': s['rpmPractical'], 'cyclic': s['rpm'], 'mag': s['mag'], 'reload': s['reload'],
