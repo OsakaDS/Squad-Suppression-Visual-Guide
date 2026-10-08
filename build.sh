@@ -10,6 +10,8 @@ python3 build_gui_data.py   # profiles + soldier data -> gui_data.json
 python3 build_payload.py    # page base payload       -> payload.json
 python3 merge_payload.py    # + weapons and icons     -> page_payload.json
 python3 build_csv.py        # every weapon as a row   -> squad_all_weapons_suppression.csv
+python3 extract_vehicles.py # every vehicle weapon    -> vehicle_weapons_raw.json
+python3 report_vehicles.py  # group into systems      -> squad_vehicle_weapons.csv
 python3 build_versions.py   # frozen game versions    -> versions_{guide,page}.json
 python3 build_page.py       # template + payloads     -> suppression.html (modders page)
 python3 build_guide_payload.py  # per-kit + soldier data -> guide_payload.json

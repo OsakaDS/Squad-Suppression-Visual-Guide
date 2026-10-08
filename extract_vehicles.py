@@ -7,10 +7,11 @@ SuppressionInfoClassOverride taking precedence. Explosive rounds additionally ca
 radial blast model (ImpactSuppressionPower / Inner+OuterRadius / MaxRadialSuppressionThreshold).
 """
 import sys, os, re, json, glob, collections
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import squad
 
-VEH = '/home/osaka/Downloads/SquadEditor/Squad/Content/Vehicles/'
+VEH = os.path.join(SDK_CONTENT, 'Vehicles/')
 SKIP = re.compile(r'turret|reticle|wreck|destroy|seat|anim|camera|widget|hud|scope|sight|mesh|skin', re.I)
 
 def txt(v):

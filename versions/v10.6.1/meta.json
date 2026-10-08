@@ -1,0 +1,10 @@
+{
+ "version": "v10.6.1",
+ "notes": "the 10.6 suppression pass; values unchanged from v10.6.0",
+ "frozen": "2026-10-08",
+ "parts": {
+  "guide": 107,
+  "vehicle": 107,
+  "page": 371
+ }
+}

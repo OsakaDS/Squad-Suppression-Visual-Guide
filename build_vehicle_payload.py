@@ -6,11 +6,12 @@ The soldier-side curves, effect thresholds and infantry kits are already in
 guide_payload.json; this tab reuses them for its reference lines rather than
 shipping a second copy."""
 import os, re, json, base64, collections
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 import vehicle_classes as VC
 from textures import extract_image, to_web
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ICON_DIR = '/home/osaka/Downloads/SquadEditor/Squad/Content/UI/HUD/Inventory/Weapons/VehicleWeapons'
+ICON_DIR = os.path.join(SDK_CONTENT, 'UI/HUD/Inventory/Weapons/VehicleWeapons')
 PROFILES = json.load(open(os.path.join(HERE, 'all_profiles.json')))
 
 VT_LABEL = {

@@ -70,6 +70,7 @@ for (name, profile), rs in groups.items():
         'power': round(rep['power'], 4) if rep['power'] is not None else None,
         'thr': round(rep['thr'], 3) if rep['thr'] is not None else None,
         'sway': rep['sway'], 'curve': rep['curve'],
+        'ads': rep.get('ads') or None,     # what this weapon damps while aimed
         'variants': len(rs),
     })
 weapons.sort(key=lambda w: (w['cat'], (w['name'] or '').lower()))

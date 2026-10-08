@@ -11,9 +11,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -29,8 +29,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -50,9 +50,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -68,8 +68,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -89,9 +89,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -107,8 +107,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -128,9 +128,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -146,8 +146,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -167,9 +167,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -185,8 +185,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -206,9 +206,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -224,8 +224,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,
@@ -245,9 +245,9 @@
   "max_suppression_threshold": 1.15,
   "suppression_range_m": 5.0,
   "power_at_1m": 0.125,
-  "power_at_2m": 0.0983,
-  "power_at_3m": 0.0675,
-  "power_at_4m": 0.0337,
+  "power_at_2m": 0.09,
+  "power_at_3m": 0.0568,
+  "power_at_4m": 0.0284,
   "add_suppress_sway": 1.125,
   "max_suppress_sway_factor": 30.0,
   "suppress_sway_release": 5.0,
@@ -263,8 +263,8 @@
     0.125
    ],
    [
-    240.6999969482422,
-    0.0875
+    273.3433532714844,
+    0.0644
    ],
    [
     500.0,

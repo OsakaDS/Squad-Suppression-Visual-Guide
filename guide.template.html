@@ -371,7 +371,7 @@ footer .logo{float:right; width:64px; height:64px; margin:0 0 12px 18px}
       <div class="callout"><b>Rifle fire alone will never blur, desaturate or dirty your screen.</b> Rifles, SMGs and battle rifles cap at 1.15, and every effect except the vignette starts above that. What they <em>will</em> do is kick your aim on every round and shrink your view, and they do most of that damage in the first second. The "can't see anything" state belongs to machine guns at the margin, marksmen, snipers, and above all to explosives.</div>
     </div>
 
-    <p class="figcap" style="margin-top:16px"><b>Aiming down an optic roughly halves the camera kick</b> on 65 weapons (camera location ×0.4, sideways kick disabled). Belt-fed machine guns are the steadiest platforms under fire by design: in ADS their camera rotation punch is ×0.2. <span class="conf read">READ</span> from each weapon's data; the default for weapons that don't set it is <span class="conf unk">UNKNOWN</span>.</p>
+    <p class="figcap" style="margin-top:16px" id="adsNote"></p>
   </div>
 
   <!-- RULE 4 -->
@@ -832,6 +832,36 @@ function kitTable(){
       <td class="num${chgc(ch.ceiling||ch.power)}">${pins(k.ceiling, p1) ?? '-'}</td><td class="num${chgc(ch.rpm)}">${k.rpm||'-'}<span style="color:var(--ink3)"> rpm · ${MODE[k.fire]||'-'}</span></td>`; tb.appendChild(tr); });
 }
 
+/* what aiming down sights damps, read per weapon and grouped. Hand-written figures here
+   went stale the moment the game changed them, so the sentence is built from the data. */
+function adsSummary(){
+  const g = (D.ads || []).filter(a => a.n);
+  const total = g.reduce((n, a) => n + a.n, 0);
+  const wv = [...new Set(g.map(a => a.weapon).filter(v => v != null))];
+  const everyWeapon = (wv.length === 1 && g.every(a => a.weapon === wv[0])) ? wv[0] : null;
+  const loc = g.filter(a => a.camLoc != null);
+  const locN = loc.reduce((n, a) => n + a.n, 0);
+  const locMain = loc.slice().sort((a, b) => b.n - a.n)[0] || null;
+  const locBest = loc.length ? Math.min(...loc.map(a => a.camLoc)) : null;
+  const rot = g.filter(a => a.camRot != null).sort((a, b) => a.camRot - b.camRot)[0] || null;
+  const rotN = g.filter(a => a.camRot != null).reduce((n, a) => n + a.n, 0);
+  return {g, total, everyWeapon, locN, locMain, locBest, rot, rotN, anyX: g.some(a => a.xAxis), none: g.filter(a => a.camLoc == null && a.camRot == null && a.weapon == null).reduce((n, a) => n + a.n, 0)};
+}
+function adsText(){
+  const s = adsSummary(); if(!s.total) return '';
+  const out = [];
+  if(s.everyWeapon != null)
+    out.push(`<b>Aiming damps the kick on every weapon in the game.</b> All ${s.total} of them take weapon alignment punch at ×${fmt(s.everyWeapon, 2)} while you are in the sight`);
+  else
+    out.push(`<b>Aiming damps the kick on ${s.total - s.none} of ${s.total} weapons</b>, and does nothing at all on the other ${s.none}`);
+  if(s.locN) out.push(`${s.everyWeapon != null ? ', and ' : '. '}${s.locN} also damp camera location punch, most of them to ×${fmt(s.locMain.camLoc, 2)}`
+    + (s.locBest < s.locMain.camLoc ? ` and the steadiest to ×${fmt(s.locBest, 2)}` : ''));
+  if(s.rot) out.push(`. Camera rotation is damped to ×${fmt(s.rot.camRot, 2)} on ${s.rotN} weapon${s.rotN === 1 ? '' : 's'}`);
+  if(s.anyX) out.push('. On the weapons that set it, the sideways half of the camera kick is switched off outright');
+  out.push(`. <span class="conf read">READ</span> through each weapon's static info, so inherited values count; what a weapon that sets nothing falls back to is <span class="conf unk">UNKNOWN</span>.`);
+  return out.join('');
+}
+
 /* ================= RULE 3 ================= */
 function drawRule3(){
   const S=D.soldier;
@@ -858,6 +888,7 @@ function drawRule3(){
     el('text',{x:X(k.ceiling)+5,y:y+3.5,class:'dlab',fill:css('--ink2')},svg).textContent=k.ceiling.toFixed(2); });
   el('text',{x:mL,y:H-4,class:'axlab'},svg).textContent='Suppression level';
   fxList(document.getElementById('fxList'), null);
+  const an = document.getElementById('adsNote'); if(an) an.innerHTML = adsText();
 }
 function fxList(ul, level){
   ul.textContent='';
@@ -917,8 +948,10 @@ function qa(){
      `Rifle ${fmt(kitPower(rifle,100))}/round · MMG ${fmt(kitPower(mmg,100))} · DMR ${fmt(kitPower(dmr,100),1)} · sniper ${fmt(kitPower(sn,100),1)} · ceilings 1.15 / 1.75 / 2.0 / 3.0`,
      `<b>Give the marksman the first shot.</b> One near miss puts the target at cap before the rifles have finished their burst; the rifles then keep them there.`],
     ['Does aiming down sights help me under fire?',
-     `<b>Yes, on most weapons. It roughly halves the camera kick.</b> 65 optic-equipped weapons take camera location punch at ×0.4 and lose the sideways component entirely. Belt-fed machine guns get camera rotation at ×0.2 in ADS.`,
-     `READ from each weapon's data · default for the rest is UNKNOWN`,
+     (() => { const s = adsSummary();
+       if(s.everyWeapon != null) return `<b>Yes, on everything, and that is new.</b> Every weapon in the game now damps weapon alignment punch to ×${fmt(s.everyWeapon, 2)} while aimed, and ${s.locN} of ${s.total} damp the camera itself as well, most to ×${fmt(s.locMain.camLoc, 2)}. Being in the sight is the one thing you control that makes the kick smaller.`;
+       return `<b>Yes, on most weapons. It roughly halves the camera kick.</b> ${s.locN} weapons damp camera location punch, most to ×${fmt(s.locMain ? s.locMain.camLoc : 0.4, 2)}${s.anyX ? ', and those weapons lose the sideways component entirely' : ''}${s.rot ? `. Belt-fed machine guns get camera rotation at ×${fmt(s.rot.camRot, 2)} in ADS` : ''}.`; })(),
+     `READ through each weapon's static info · what an unset weapon falls back to is UNKNOWN`,
      `<b>Stay in the sight when a burst comes in</b> rather than dropping out to look. On an MG, keep the bipod down and the optic up; it is the steadiest thing on the field.`],
     ['How long does it last?',
      `<b>The kick fades while you keep firing; the level fades after you stop.</b> Immunity builds 1.0 per second under fire to a maximum of 7.5, about 5.5 s of sustained fire after a close first round, and most of the numbing lands in the first two points. It holds 1 s after the last round, then drains at 1.0 per second.`,

@@ -1439,7 +1439,7 @@
    "bConsiderForPenetration": true,
    "bAllowPenetration": true,
    "bDamageParentActor": null,
-   "Friction": 1.0,
+   "Friction": 0.5,
    "StaticFriction": null,
    "Restitution": 0.2800000011920929
   },

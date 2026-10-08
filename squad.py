@@ -1,9 +1,10 @@
 import sys, os, re, json
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from uasset import Package
 from curve import read_curve
 
-CONTENT = '/home/osaka/Downloads/SquadEditor/Squad/Content'
+CONTENT = SDK_CONTENT
 _cache = {}
 
 _dircache = {}

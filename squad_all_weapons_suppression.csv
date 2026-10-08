@@ -37,7 +37,6 @@ M14,Battle rifle,auto,667,667,,Projectile_Suppression_BattleRifle,yes,BP_Project
 M14 + M68,Battle rifle,auto,667,667,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M14_M68,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.335,715,1.5,20,7,1,T_m14_m68
 M1A,Battle rifle,semi,667,667,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M14_M1A,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.335,715,1.5,20,7,1,T_m14
 M1A + M68,Battle rifle,semi,667,667,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M14_M68_M1A,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.335,715,1.5,20,7,1,T_m14_m68
-M21 + Meupold,Battle rifle,semi,667,667,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M21_Meupold,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.335,715,1.5,20,7,1,T_m21_scope
 MPT-76,Battle rifle,auto,706,706,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_MPT76,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.53,800,4.0,20,7,4,T_mpt76
 MPT-76 +  Foregrip,Battle rifle,auto,706,706,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_MPT76_Foregrip,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.53,800,4.0,20,7,1,T_mpt76_foregrip
 MPT-76 + A940,Battle rifle,auto,706,706,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_MPT76_A940,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.53,800,4.0,20,7,1,T_mpt76_a940
@@ -51,7 +50,6 @@ MPT-76 AK-40GL,Battle rifle,auto,706,706,,Projectile_Suppression_BattleRifle,yes
 MPT-76 AK-40GL + A940,Battle rifle,auto,706,706,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,GrenadeLaunchers/MPT76AK40_UGL/BP_MPT76_AK40GL_A940_Rifle,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.53,800,4.0,20,7,1,T_mpt76_ak40gl_a940
 SKS,Battle rifle,semi,600,600,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_SKS,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.0,715,3.0,10,5,1,sks
 SKS  TAZCO + M150,Battle rifle,semi,600,600,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/SKS_Tazco/BP_SKSTazco_M150,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.0,715,3.0,20,5,1,T_SKSTazco_M150
-SKS + PU,Battle rifle,semi,600,600,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/BP_SKS_Optic,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.0,715,3.0,10,5,2,sks_pu
 SKS TAZCO,Battle rifle,semi,600,600,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/SKS_Tazco/BP_SKSTazco_Ironsight,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.0,715,3.0,20,5,1,T_SKSTazco_Ironsight
 SKS TAZCO + T800,Battle rifle,semi,600,600,,Projectile_Suppression_BattleRifle,yes,BP_Projectile_7_62mm,Rifles/SKS_Tazco/BP_SKSTazco_T800,5.0,0.3,0.095,0.0633,0.0317,1.15,3.5,4.0,3.0,715,3.0,20,5,1,T_SKSTazco_T800
 AR15 Wormpool + Meupold,DMR,semi,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Meupold_Semi,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,880,3.0,,5,1,T_M16_Wormpool_Meupold_Bipod
@@ -63,6 +61,7 @@ Lee-Enfield No.4 Mk I,DMR,bolt,56,833,1.08,Projectile_Suppression_PrecisionRifle
 M110 SASS,DMR,semi,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M110_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,783,1.0,20,7,1,m110
 M110 SASS + Suppressor,DMR,semi,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M110_Optic_Suppressed,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,783,1.0,20,7,1,m110_suppressor
 M16 Wormpool + Meupold,DMR,auto,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Meupold,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,880,3.0,,5,1,T_M16_Wormpool_Meupold_Bipod
+M21 + Meupold,DMR,semi,667,667,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M21_Meupold,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,22.233,715,1.5,20,7,1,T_m21_scope
 M38,DMR,semi,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile,Rifles/BP_M38_DMR_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,915,1.0,,5,1,M38_DMR
 M39 EMR,DMR,semi,667,667,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M39,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,22.233,715,1.5,20,7,1,T_M39
 M39 EMR + M8541,DMR,semi,667,667,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_M39_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,22.233,715,1.5,20,7,1,T_M39
@@ -74,6 +73,7 @@ QBU-191 + QMK-191,DMR,semi,451,451,,Projectile_Suppression_PrecisionRifle,yes,BP
 QBU-191 + QMK-191 + Suppressor,DMR,semi,451,451,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile,Rifles/QBU-191/BP_QBU-191_DMR_Optic_QMK-191_Suppressor,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,15.033,940,1.7999999523162842,,5,1,T_QBU191_QMK191_Suppressor
 QBU-88,DMR,semi,652,652,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_QBU-88_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,21.733,830,1.2000000476837158,10,7,1,qbu88
 QBU88,DMR,semi,652,652,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_QBU-88_Parent,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,21.733,830,1.2000000476837158,10,7,2,qbu88
+SKS + PU,DMR,semi,600,600,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/BP_SKS_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,20.0,715,3.0,10,5,2,sks_pu
 SVD,DMR,semi,652,652,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/SVD/BP_SVD_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,21.733,830,1.2000000476837158,10,7,2,svd
 SVDM,DMR,semi,652,652,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/SVD/BP_SVDM_Optic,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,21.733,830,1.2000000476837158,10,7,4,T_SVDM
 UAR-10,DMR,semi,833,833,,Projectile_Suppression_PrecisionRifle,yes,BP_Projectile_7_62mm,Rifles/UAR-10/BP_UAR-10_Irons,5.0,2.0,0.725,0.07,0.035,2.0,3.5,1.0,27.767,783,1.0,10,7,1,uar10_iron
@@ -114,6 +114,8 @@ M3 MAAWS Smoke,Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,
 M3 MDFSW  (FFV469B Smoke),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_M3MAAWS_Smoke_Proj2,RocketLaunchers/M3MAAWS/BP_M3MDFSW_Smoke_2mags,,,,,,2.0,,,,63,7.0,1,,1,m3maaws_smoke
 M3 MDFSW (FFV551 HEAT),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_M3MAAWS_Heat_Proj2,RocketLaunchers/M3MAAWS/BP_M3MDFSW_Heat,,,,,,2.0,,,,63,7.0,1,420,1,m3maaws_heat
 M3 MDFSW (FFV751 Tandem),Explosive,semi,900,900,,Explosion_Suppression_90mm_HEAT_NoPassby,no,BP_M3MAAWS_Tandem_Heat_Proj2,RocketLaunchers/M3MAAWS/BP_M3MDFSW_Tandem,,,,,,2.0,,,,63,7.0,1,900,1,m3maaws_tandem
+M32 MGL High Explosive,Explosive,semi,120,120,,Explosion_Suppression_GrenadeLauncher_NoPassby,no,BP_40MM_Proj2,GrenadeLaunchers/M32/BP_M32_HE,,,,,,,,,,75,30.0,6,5,1,T_mgl_he
+M32 MGL High Explosive Dual Purpose,Explosive,semi,120,120,,Explosion_Suppression_GrenadeLauncher_NoPassby,no,BP_40MM_Proj2,GrenadeLaunchers/M32/BP_M32_Parent,,,,,,,,,,75,30.0,6,5,1,T_mgl_he
 M320 GLM HEDP,Explosive,semi,750,750,,Explosion_Suppression_GrenadeLauncher_NoPassby,no,BP_40MM_Proj2,GrenadeLaunchers/M320/BP_M320_Parent,,,,,,,,,,76,30.0,1,20,2,T_m320_he
 M320 High Explosive,Explosive,semi,750,750,,Explosion_Suppression_GrenadeLauncher_NoPassby,no,BP_40MM_Proj2,GrenadeLaunchers/M320/BP_M320_HE,,,,,,,,,,76,30.0,1,20,1,T_m320_he
 M72 SRAAW,Explosive,semi,30,30,,Explosion_Suppression_50mm_HEAT_NoPassby,no,BP_M72A6_Rocket_Proj,RocketLaunchers/BP_M72A7_SRAAW,,,,,,2.0,,,,144,15.0,1,320,1,m72law
@@ -160,12 +162,11 @@ F89 + ET552,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,Machi
 F89 + Specter,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_F89_Specter,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,970,6.0,100,5,1,T_f89_specter
 L110A2,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_L110A2,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,l110a2
 L110A2 + SUSAT,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_L110A2_SUSAT,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,l110a2_susat
-M16 Wormpool + C-mag,LMG,auto,833,833,,Projectile_Suppression_LMG,yes,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Ironsights_Cmag,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.777,880,3.0,100,5,1,T_M16_Wormpool_Ironsights_CMag_Bipod
-M249,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Classic,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,200,5,1,m249
-M249 PIP,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,m249pip
-M249 PIP + M145,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_M145,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,m249pip_elcan
-M249 PIP + M68,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_M68,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,m249pip_aimpoint
-M249 PIP + SDO,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_SDO,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,1,m249_sdo
+M249,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Classic,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,200,5,2,m249
+M249 PIP,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,2,m249pip
+M249 PIP + M145,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_M145,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,2,m249pip_elcan
+M249 PIP + M68,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_M68,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,2,m249pip_aimpoint
+M249 PIP + SDO,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_M249_Pip_SDO,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,100,5,2,m249_sdo
 Minimi,LMG,auto,857,857,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/BP_Minimi_Classic,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.857,915,6.0,200,5,1,minimi
 QJB-201,LMG,auto,800,800,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/QJB-201/BP_QJB201_Parent,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.667,960,4.0,100,7,2,QJB201_Box
 QJB-201 + QMK-204,LMG,auto,800,800,,Projectile_Suppression_LMG,yes,BP_Projectile,MachineGuns/QJB-201/BP_QJB201_Optic,6.0,0.2,0.16,0.12,0.08,1.25,,7.0,2.667,960,4.0,100,7,1,QJB201_Box_Optic
@@ -173,6 +174,7 @@ RPD,LMG,auto,750,750,,Projectile_Suppression_LMG,yes,BP_Projectile_7_62mm,Machin
 HK416 + SDO,LSW,auto,833,833,,Projectile_Suppression_LSW,yes,BP_Projectile,MachineGuns/BP_HK416_SDO,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,4.165,915,3.0,,5,1,T_M27_Optic_Bipod
 L86A2 LSW,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/BP_L86A2LSW,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,3.26,940,1.2000000476837158,,5,1,l86a2
 L86A2 LSW + SUSAT,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/BP_L86A2LSW_SUSAT,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,3.26,940,1.2000000476837158,,5,1,l86a2_susat
+M16 Wormpool + C-mag,LSW,auto,833,833,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Ironsights_Cmag,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,4.165,880,3.0,100,5,1,T_M16_Wormpool_Ironsights_CMag_Bipod
 M27 IAR + Bipod,LSW,auto,833,833,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/BP_M27_Bipod,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,4.165,880,3.0,,5,1,T_M27_Bipod
 M27 IAR + SDO + Bipod,LSW,auto,833,833,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/BP_M27_Optic_Bipod,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,4.165,915,3.0,,5,1,T_M27_Optic_Bipod
 QBU-191 LSW,LSW,auto,451,451,,Projectile_Suppression_LSW,yes,BP_Projectile,Rifles/QBU-191/BP_QBU-191_Drum_LSW_Ironsights,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,2.255,940,1.7999999523162842,75,5,1,T_QBU191_Drum
@@ -192,13 +194,13 @@ RPK-74 + OKP-7,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,Ma
 RPK-74 + TA31,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,MachineGuns/BP_RPK74_M150_Pro,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,3.26,960,6.0,45,5,1,rpk74_m150
 RPK-74M,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,MachineGuns/BP_RPK74M,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,3.26,960,6.0,45,5,1,rpk74m
 RPK-74M + 1P78,LSW,auto,652,652,,Projectile_Suppression_LSW,yes,BP_Projectile,MachineGuns/BP_RPK74M_1P78,5.0,0.3,0.1472,0.0656,0.0328,1.25,1.5,5.0,3.26,960,6.0,45,5,1,rpk74m_1p78
-C6,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_C6,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
-C6A1 FLEX,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_C6A1,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,C6A1
-L7A2,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_L7A2,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
-M240B,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,m240b
-M240B + M145,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240_M145,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,m240b_m145
-M240G + MGO,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240_MGO,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,783,3.0,75,7,1,m240g_mgo
-MAG 58,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_Mag58,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
+C6,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_C6,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
+C6A1 FLEX,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_C6A1,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,C6A1
+L7A2,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_L7A2,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
+M240B,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,m240b
+M240B + M145,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240_M145,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,m240b_m145
+M240G + MGO,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_M240_MGO,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,783,3.0,75,7,1,m240g_mgo
+MAG 58,MMG,auto,706,706,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_Mag58,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.118,853,3.0,75,7,1,mag58
 Maximi + ET552,MMG,auto,698,698,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_Maximi_ET552,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.072,853,6.0,100,7,1,T_MaximiEotech
 Maximi + Foregrip,MMG,auto,698,698,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_Maximi,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.072,853,6.0,100,7,1,T_Maximi
 Maximi + Specter,MMG,auto,698,698,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_Maximi_Specter,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.072,970,6.0,100,7,1,T_MaximiSpecter
@@ -211,8 +213,8 @@ PKM + M150,MMG,auto,652,652,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm
 PKM + TA31 + Tracer,MMG,auto,652,652,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PKM_M150_Tracer,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,3.803,825,5.0,100,7,1,pkm_M150
 PKP Pecheneg,MMG,auto,652,652,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PKP,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,3.803,825,4.0,100,7,1,pkp
 PKP Pecheneg + 1P78,MMG,auto,652,652,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PKP_1P78,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,3.803,825,4.0,100,7,1,pkp_1p78
-PMT-76,MMG,auto,857,857,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PMT76,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.999,853,3.0,75,7,1,mag58
-PMT-76 + A940,MMG,auto,857,857,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PMT76_A940,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.999,853,3.0,75,7,1,T_pmt76_a940
+PMT-76,MMG,auto,857,857,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PMT76,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.999,853,3.0,75,7,1,mag58
+PMT-76 + A940,MMG,auto,857,857,,Projectile_Suppression_GPMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_PMT76_A940,flat,0.35,0.35,0.35,0.35,1.75,,6.0,4.999,853,3.0,75,7,1,T_pmt76_a940
 QJY-201,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/QJY-201/BP_QJY-201_Parent,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,930,2.5,100,7,2,QJY201
 QJY-201 + QMK-203,MMG,auto,706,706,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/QJY-201/BP_QJY-201_Optics,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,4.118,930,2.5,100,7,1,QJY201_Optic
 QJY-88,MMG,auto,652,652,,Projectile_Suppression_MMG,yes,BP_Projectile_7_62mm,MachineGuns/BP_QJY-88,7.0,0.35,0.2553,0.1607,0.1158,1.75,,6.0,3.803,853,3.0,100,7,1,qjy88
@@ -253,6 +255,7 @@ M203A1 Smoke (White),No suppression,semi,750,750,,Projectile_SuppressionNone,no,
 M203A1 Smoke Marker Blue,No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Blue_Proj2,GrenadeLaunchers/C7A2_M203A1_UGL/BP_C7A2_M203A1_ET_UGL_Smoke_Blue,,,,,,,,,,76,35.0,1,20,1,m203_gl_bluesmoke
 M203A1 Smoke Marker Red,No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Red_Proj2,GrenadeLaunchers/C7A2_M203A1_UGL/BP_C7A2_M203A1_ET_UGL_Smoke_Red,,,,,,,,,,76,35.0,1,20,1,m203_gl_redsmoke
 M203A1 Smoke Marker White,No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Proj2,GrenadeLaunchers/C7A2_M203A1_UGL/BP_C7A2_M203A1_ET_UGL_Smoke,,,,,,,,,,76,35.0,1,20,1,m203_gl_whitesmoke
+M32 MGL Smoke,No suppression,semi,120,120,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Proj2,GrenadeLaunchers/M32/BP_M32_Smoke,,,,,,,,,,75,30.0,6,5,1,T_mgl_he
 M320 Smoke (White),No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Proj2,GrenadeLaunchers/M320/BP_M320_Smoke_White,,,,,,,,,,76,30.0,1,,1,T_m320_whitesmoke
 MKE MGL White (Smoke),No suppression,semi,120,120,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Proj2,GrenadeLaunchers/MGL_GL/BP_MGL_Smoke,,,,,,,,,,75,30.0,6,,1,T_mgl_whitesmoke
 QLG-10 Smoke (Blue),No suppression,semi,652,652,,Projectile_SuppressionNone,no,BP_40MM_VOG_Smoke_Blue_Proj2,GrenadeLaunchers/QBZ-95-1_QLG-10_UGL/BP_QBZ95-1_QLG-10_UGL_Smoke_Blue,,,,,,,,,,78,40.0,1,,2,qlg10_bluesmoke
@@ -261,220 +264,220 @@ QLG-10 Smoke (White),No suppression,semi,652,652,,Projectile_SuppressionNone,no,
 SL40 Smoke (Blue),No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Blue_Proj2,GrenadeLaunchers/EF88SL40_UGL/BP_EF88_SL40_UGL_Smoke_Blue,,,,,,,,,,76,30.0,1,,1,T_sl40_gl_bluesmoke
 SL40 Smoke (Red),No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Red_Proj2,GrenadeLaunchers/EF88SL40_UGL/BP_EF88_SL40_UGL_Smoke_Red,,,,,,,,,,76,30.0,1,,1,T_sl40_gl_redsmoke
 SL40 Smoke (White),No suppression,semi,750,750,,Projectile_SuppressionNone,no,BP_40MM_Smoke_Proj2,GrenadeLaunchers/EF88SL40_UGL/BP_EF88_SL40_UGL_Smoke,,,,,,,,,,76,30.0,1,,1,T_sl40_gl_whitesmoke
-AK-101 PushCo + EXPS,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_EXPS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,2,T_AK101_HNA
-AK-101 PushCo + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_Ironsights
-AK-101 PushCo + T800 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_T800_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_T800_Foregrip
-AK-101 PushCo + TA31,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_M150
-AK-101 PushCo + TA31 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_M150_Foregrip
-AK-12,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,4,T_ak12
-AK-12 + 1P78,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_1P78Picatinny,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_1p78
-AK-12 + 1P78 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip_1P78Picatinny,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip_1p78
-AK-12 + 1P87,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Reddot,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,ak12_reddot
-AK-12 + 1P87 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip_Reddot,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip_reddot
-AK-12 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip
-AK-12 GP-25,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25
-AK-12 GP-25 + 1P78,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle_1P78Picatinny,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25_1p78
-AK-12 GP-25 + 1P87,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle_Reddot,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25_reddot
-AK-74,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,4,ak74
-AK-74 + EXPS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_EXPS_Pro,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_exps
-AK-74 + Extended Mag,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_45rnd,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,45,5,1,ak74_45rnd
-AK-74 + Foregrip + Extended Mag,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_45rnd_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,45,5,1,ak74_45rnd_foregrip
-AK-74 + Irons + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74
-AK-74 + M68 CCO,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_M68_Pro,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_m68
-AK-74 + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_OKP7,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74_okp7
-AK-74 + Yoloson,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_Yoloson_Pro,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_Yoloson
-AK-74 GP-25,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74gp25
-AK-74 GP-25 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_1P63,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74mgp25_1p63
-AK-74 GP-25 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_1P78,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74mgp25_1p78
-AK-74 GP-25 + EXPS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_EXPS_Pro,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74gp25_exps
-AK-74M,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,7,ak74m
-AK-74M + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P63,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m_1p63
-AK-74M + 1P63 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P63_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m_1p63
-AK-74M + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P78,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,4,ak74m_1p78
-AK-74M + 1P78 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P78_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,3,ak74m_1p78
-AK-74M + Irons + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m
-AK-74M + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_OKP7,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74m_okp7
-AK-74M GP-25,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74gp25
-AK-74M GP-25 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle_1P63,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74mgp25_1p63
-AK-74M GP-25 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle_1P78,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74mgp25_1p78
-AK101 PushCo,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_Ironsights
-AKM,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKM,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,3,akm
-AKM + Drum Mag,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKM_Drummag,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,75,5,1,akm_drummag
-AKM GP-25,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKMGP25_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,1,akmgp25
-AKMS,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKMS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,3,akms
-AKS-74,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,5,aks74
-AKS-74 + 1P29,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P29,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
-AKS-74 + 1P29 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P29_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
-AKS-74 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P63,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,aks74_1p63
-AKS-74 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P78,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74m_1p78
-AKS-74 + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_OKP7,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,2,aks74_okp7
-AKS-74 + PGO7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_PGO7,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
-AKS-74 + PSO-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_PSO-1_Pro,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_PSO1
-AKS-74M,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74M,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74m
-AKS-74U,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,735,5.0,,5,4,aks74u
-AKS-74U + Extended Mag,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_45Rnd,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,735,5.0,45,5,2,aks74u_45rnd
-AKS-74U + OKP-7,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_OKP7,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,735,5.0,,5,1,aks74u_okp7
-AKS-74U + Yoloson,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_Yoloson,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,735,5.0,,5,1,aks74u_Yoloson
-AMD-65,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AMD65,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,1,amd65
-AR15,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Semi,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,3,T_M16A2
-AR15 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Optic_Semi,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_3x20
-AR15 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_M68_Semi,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic_M68
-AR15 Wormpool + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_M150_Semi,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,8.0,,5,2,T_M4_Wormpool_M150_Foregrip
-AR15 Wormpool + T800,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_T800_Semi,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_T800
-AUG,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AUG,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,3,F88
-C7A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_1mag,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,c7a2_irons
-C7A2 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,c7a2_standard
-C7A2 + C79A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_c79a2_foregrip
-C7A2 + C79A2 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_c79a2_foregrip
-C7A2 + C79A2 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_standard
-C7A2 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_eotech
-C7A2 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_eotech_foregrip
-C7A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_Ironsights_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_irons_foregrip
-C7A2 M203A1 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_M203A1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C7A2_c79a2_m203a1
-C7A2 M203A1 + ET,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552_M203A1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C7A2_eotech_m203a1
-C8A3,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,C8A3_Ironsight
-C8A3 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,C8A3C79A2
-C8A3 + C79A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2_Foregrip
-C8A3 + C79A2 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2_Foregrip
-C8A3 + C79A2 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2
-C8A3 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,3,C8A3EoTech
-C8A3 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Eotech_Foregrip
-C8A3 + ET552 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Eotech_Foregrip
-C8A3 + ET552 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3EoTech
-C8A3 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight_Foregrip
-C8A3 + Irons + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight_Foregrip
-C8A3 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Tracer_2mags,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight
-C8A3 M203A1 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_M203,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3M203C79A2
-C8A3 M203A1 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_M203,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3M203EoTech
-EF88,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,4,T_EF88_IronSight
-EF88 + ET552,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech
-EF88 + ET552 + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech_Grippod
-EF88 + ET552 + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Grippod_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech_Grippod
-EF88 + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_IronSight_Grippod
-EF88 + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Grippod_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_IronSight_Grippod
-EF88 + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_F88_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,4,EF88
-EF88 + Specter + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_Grippod
-EF88 + Specter + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_Grippod_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_Grippod
-EF88 SL40 + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_SL40,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_SL40
-EF88C,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,2,T_EF88C_IronSight
-EF88C + ET552,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_ET552_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,2,T_EF88C_Eotech
-EF88C + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Specter_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88C_Specter
-EF88C + Specter + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Specter_Foregrip_2mags_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88C_Specter
-F88 + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_F88_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,970,3.0,,5,2,F88
-Fajr 224,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Fajr,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic
-Generic Rifle,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_GenericRifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,
-KLF,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_KLF,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,1,akms
-KLS,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_KLS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,1,akm
-L119A1 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L119A1_ET552_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,L119A1_Eotech_Foregrip
-L22A2 + Foregrip,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L22A2_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l22a2
-L22A2 + SUSAT + Foregrip ,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L22A2_SUSAT_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l22a2_susat
-L85A2,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,7,l85a2
-L85A2 + ACOG + Foregrip Bipod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog_grippod
-L85A2 + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_grippod
-L85A2 + Irons + Foregrip Bipod + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_grippod
-L85A2 + LDS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_LDS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,3,l85a2_elcanlds
-L85A2 + LDS + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_LDS_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_elcanlds_grippod
-L85A2 + M150,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog
-L85A2 + M150 + Foregrip Bipod + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog_grippod
-L85A2 + SUSAT,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_SUSAT,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,5,l85a2_susat
-L85A2 + SUSAT + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_SUSAT_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,3,l85a2_susat_grippod
-L85A2 Classic + SUSAT,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Classic_SUSAT,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_susat_classic
-L85A2 L123A2,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2ag36
-L85A2 L123A2 + ACOG,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_M150_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2ag36_acog
-L85A2 L123A2 + LDS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_LDS_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2ag36_elcanlds
-M1 Carbine,Rifle,semi,900,900,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M1Carbine/BP_M1Carbine_Ironsights,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.875,607,,15,,1,T_M1Carbine
-M16 Wormpool,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4
-M16 Wormpool + EXPS + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_EXPS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_EXPS_Foregrip
-M16 Wormpool + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Ironsights,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_Ironsights_Foregrip
-M16 Wormpool + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_M150_Foregrip
-M16 Wormpool + T800 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_T800,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_T800_Foregrip
-M16A1,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A1
-M16A1 + 3x20 Optic,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A1_Optic,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A1_3x20
-M16A2,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,T_M16A2
-M16A2 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Optic,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_3x20
-M16A2 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2M203_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_M203
-M16A2 M203 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2M203_Optic_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_M203_3x20
-M16A4 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_foregrip
-M16A4 + Irons,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,3,M16A4
-M16A4 + Irons + Vertical Grip + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_foregrip
-M16A4 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog
-M16A4 + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog_foregrip
-M16A4 + M150 + Vertical Grip + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog_foregrip
-M16A4 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4M203_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,m16a4_m203
-M16A4 M203 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4M203_Rifle_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,m16a4_m203_acog
-M27 IAR,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/BP_M27,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M27
-M27 IAR + SDO,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/BP_M27_Optic,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,915,3.0,,5,2,T_M27_Optic
-M4,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,15,M4_ironsights
-M4 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,3,m4_ironsights_foregrip
-M4 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,5,M4_acog
-M4 + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,4,M4_acog_foregrip
-M4 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M68,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,5,M4_aimpoint
-M4 + M68 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M68_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_aimpoint_foregrip
-M4 + Yoloson,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Yoloson,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic_Yoloson
-M4 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_m203
-M4 M203 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_m203_acog
-M4 M203 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle_M68,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_m203_aimpoint
-M4 Simon Offense,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,8.0,,5,3,T_M4_Wormpool_Ironsights_Foregrip
-M4 Simon Offense + EXPS,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_EXPS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_EXPS_Foregrip
-M4 Simon Offense + M150 + Vertical Grip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_M150_Foregrip
-M4 Simon Offense + T800 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_T800,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_T800_Foregrip
-M4 Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic
-M4 Tracer + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,4,M4_acog
-M4 Tracer + Vertical Grip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Carryhandle_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_Carryhandle_foregrip
-M4 Wormpool + EXPS + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_EXPS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_EXPS_Foregrip
-M4 Wormpool + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_Ironsights,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_Ironsights_Foregrip
-M4 Wormpool + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_M150_Foregrip
-M4 Wormpool + T800,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_T800,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_T800
-M4A1,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_ironsights
-M4A1 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_ironsights_foregrip
-M4A1 + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_acog_foregrip
-M4A1 + M68,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M68,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_aimpoint
-M4A1 + M68 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M68_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_aimpoint_foregrip
-M4A1 Tracer + Vertical Grip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_Foregrip_Tracer,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_ironsights_foregrip
-Malyuk (5.45),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_irons
-Malyuk (5.45) + EXPS,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_EXPS,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_exps
-Malyuk (5.45) + EXPS + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_EXPS_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_exps
-Malyuk (5.45) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_irons
-Malyuk (5.45) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_m150
-Malyuk (5.45) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_m150
-Malyuk (5.56),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_irons
-Malyuk (5.56) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_irons
-Malyuk (5.56) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_m150
-Malyuk (5.56) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_m150
-Malyuk (5.56) + Yoloson,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Yoloson,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_556_Yoloson
-Malyuk (5.56) + Yoloson + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Yoloson_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_556_foregrip_Yoloson
-Malyuk (7.62),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_irons
-Malyuk (7.62) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_irons_foregrip
-Malyuk (7.62) + M68,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M68,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m68
-Malyuk (7.62) + M68 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M68_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m68_foregrip
-Malyuk (7.62) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M150,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m150
-Malyuk (7.62) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M150_Foregrip,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_foregrip_m150
-Mk 153 SMAW (Spotting Rifle),Rifle,semi,900,900,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile_SMAW_SpottingRifle,RocketLaunchers/SMAW/BP_SMAW_SpottingRifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.875,220,7.0,6,1,1,smaw_spottingrifle
-PM md. 63,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_PMMD63,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.25,715,4.0,,5,1,pmmd63
-QBZ-191,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,2,T_QBZ191
-QBZ-191 + Grip Pod,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_IronSights_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod
-QBZ-191 + Grip Pod + Holo + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Holo_Suppressor
-QBZ-191 + Grip Pod + Holo Sight,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Holo
-QBZ-191 + Grip Pod + QMK-171A,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_QMK171A
-QBZ-191 + Grip Pod + QMK-171A + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_QMK171A_Suppressor
-QBZ-191 + Grip Pod + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_IronSights_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Suppressor
-QBZ-191 + Holo Sight,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Holo
-QBZ-191 + QMK-171A,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_QMK171A
-QBZ-192,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Parent,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,3,T_QBZ192
-QBZ-192 + Grip Pod,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_IronSights_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,2,T_QBZ192_Grippod
-QBZ-192 + Grip Pod + Holo Sight,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Holo
-QBZ-192 + Grip Pod + Holo Sight + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Holo_Suppressor
-QBZ-192 + Grip Pod + QMK-171A,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A_Grippod,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_QMK171A
-QBZ-192 + Grip Pod + QMK-171A + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_QMK171A_Suppressor
-QBZ-192 + Grip Pod + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_IronSights_Grippod_Suppressor,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Suppressor
-QBZ-192 + Holo Sight,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Holo
-QBZ-192 + QMK-171A,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_QMK171A
-QBZ95-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,3,T_qbz95-1
-QBZ95-1 + Holo Sight,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1_Holo,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,3,T_qbz95-1_holo
-QBZ95-1 + YMA600,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1_Optic,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,2,qbz95-1_yma600
-QBZ95-1 QLG-10,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,GrenadeLaunchers/QBZ-95-1_QLG-10_UGL/BP_QBZ95-1_QLG-10_Rifle,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,T_qbz95-1_qlg10
-QBZ95-1 QLG-10 + YMA600,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,GrenadeLaunchers/QBZ-95-1_QLG-10_UGL/BP_QBZ95-1_QLG-10_Rifle_Optic,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,940,2.0,,5,1,T_qbz95-1_qlg10_yma600
-QBZ95B-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95B-1,5.0,0.125,0.0983,0.0675,0.0337,1.15,1.125,10.0,1.358,790,2.0,,5,3,T_qbz95b-1
+AK-101 PushCo + EXPS,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_EXPS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,2,T_AK101_HNA
+AK-101 PushCo + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_Ironsights
+AK-101 PushCo + T800 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_T800_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_T800_Foregrip
+AK-101 PushCo + TA31,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_M150
+AK-101 PushCo + TA31 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_M150_Foregrip
+AK-12,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,4,T_ak12
+AK-12 + 1P78,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_1P78Picatinny,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_1p78
+AK-12 + 1P78 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip_1P78Picatinny,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip_1p78
+AK-12 + 1P87,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Reddot,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,ak12_reddot
+AK-12 + 1P87 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip_Reddot,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip_reddot
+AK-12 + Foregrip,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12_foregrip
+AK-12 GP-25,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25
+AK-12 GP-25 + 1P78,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle_1P78Picatinny,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25_1p78
+AK-12 GP-25 + 1P87,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK12GP25_Rifle_Reddot,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,880,4.0,,5,1,T_ak12gp25_reddot
+AK-74,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,4,ak74
+AK-74 + EXPS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_EXPS_Pro,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_exps
+AK-74 + Extended Mag,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_45rnd,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,45,5,1,ak74_45rnd
+AK-74 + Foregrip + Extended Mag,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_45rnd_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,45,5,1,ak74_45rnd_foregrip
+AK-74 + Irons + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74
+AK-74 + M68 CCO,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_M68_Pro,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_m68
+AK-74 + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_OKP7,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74_okp7
+AK-74 + Yoloson,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74_Yoloson_Pro,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74_Yoloson
+AK-74 GP-25,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74gp25
+AK-74 GP-25 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_1P63,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,T_ak74gp25_1p63
+AK-74 GP-25 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_1P78,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74mgp25_1p78
+AK-74 GP-25 + EXPS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74GP25_Rifle_EXPS_Pro,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74gp25_exps
+AK-74M,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,7,ak74m
+AK-74M + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P63,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m_1p63
+AK-74M + 1P63 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P63_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m_1p63
+AK-74M + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P78,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,4,ak74m_1p78
+AK-74M + 1P78 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_1P78_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,3,ak74m_1p78
+AK-74M + Irons + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74m
+AK-74M + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74M_OKP7,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,ak74m_okp7
+AK-74M GP-25,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74gp25
+AK-74M GP-25 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle_1P63,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74mgp25_1p63
+AK-74M GP-25 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AK74MGP25_Rifle_1P78,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,ak74mgp25_1p78
+AK101 PushCo,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/AK101_PushCo/BP_AK101_PushCO_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,910,4.0,,5,1,T_AK101_Ironsights
+AKM,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKM,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,3,akm
+AKM + Drum Mag,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKM_Drummag,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,75,5,1,akm_drummag
+AKM GP-25,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKMGP25_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,1,akmgp25
+AKMS,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AKMS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,3,akms
+AKS-74,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,5,aks74
+AKS-74 + 1P29,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P29,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
+AKS-74 + 1P29 + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P29_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
+AKS-74 + 1P63,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P63,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,aks74_1p63
+AKS-74 + 1P78,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_1P78,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74m_1p78
+AKS-74 + OKP-7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_OKP7,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,2,aks74_okp7
+AKS-74 + PGO7,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_PGO7,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_1p29
+AKS-74 + PSO-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74_PSO-1_Pro,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74_PSO1
+AKS-74M,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74M,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,880,4.0,,5,1,aks74m
+AKS-74U,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,735,5.0,,5,4,aks74u
+AKS-74U + Extended Mag,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_45Rnd,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,735,5.0,45,5,2,aks74u_45rnd
+AKS-74U + OKP-7,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_OKP7,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,735,5.0,,5,1,aks74u_okp7
+AKS-74U + Yoloson,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AKS74U_Yoloson,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,735,5.0,,5,1,aks74u_Yoloson
+AMD-65,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_AMD65,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,1,amd65
+AR15,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Semi,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,3,T_M16A2
+AR15 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Optic_Semi,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_3x20
+AR15 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_M68_Semi,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic_M68
+AR15 Wormpool + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_M150_Semi,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,8.0,,5,2,T_M4_Wormpool_M150_Foregrip
+AR15 Wormpool + T800,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_T800_Semi,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_T800
+AUG,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_AUG,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,3,F88
+C7A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_1mag,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,c7a2_irons
+C7A2 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,c7a2_standard
+C7A2 + C79A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_c79a2_foregrip
+C7A2 + C79A2 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_c79a2_foregrip
+C7A2 + C79A2 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_standard
+C7A2 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_eotech
+C7A2 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_eotech_foregrip
+C7A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_Ironsights_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,c7a2_irons_foregrip
+C7A2 M203A1 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_C79A2_M203A1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C7A2_c79a2_m203a1
+C7A2 M203A1 + ET,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C7A2_ET552_M203A1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C7A2_eotech_m203a1
+C8A3,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,C8A3_Ironsight
+C8A3 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,C8A3C79A2
+C8A3 + C79A2 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2_Foregrip
+C8A3 + C79A2 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2_Foregrip
+C8A3 + C79A2 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3C79A2
+C8A3 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,3,C8A3EoTech
+C8A3 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Eotech_Foregrip
+C8A3 + ET552 + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Eotech_Foregrip
+C8A3 + ET552 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3EoTech
+C8A3 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight_Foregrip
+C8A3 + Irons + Foregrip + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight_Foregrip
+C8A3 + Tracer,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_Ironsights_Tracer_2mags,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3_Ironsight
+C8A3 M203A1 + C79A2,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_C79A2_M203,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3M203C79A2
+C8A3 M203A1 + ET552,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_C8A3_ET552_M203,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,C8A3M203EoTech
+EF88,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,4,T_EF88_IronSight
+EF88 + ET552,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech
+EF88 + ET552 + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech_Grippod
+EF88 + ET552 + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_ET552_Grippod_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_Eotech_Grippod
+EF88 + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_IronSight_Grippod
+EF88 + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Ironsight_Grippod_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88_IronSight_Grippod
+EF88 + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_F88_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,4,EF88
+EF88 + Specter + Grippod,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_Grippod
+EF88 + Specter + Grippod + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_Grippod_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_Grippod
+EF88 SL40 + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88_Specter_SL40,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,EF88_SL40
+EF88C,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,2,T_EF88C_IronSight
+EF88C + ET552,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_ET552_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,2,T_EF88C_Eotech
+EF88C + Specter,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Specter_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88C_Specter
+EF88C + Specter + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_EF88C_Specter_Foregrip_2mags_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,1,T_EF88C_Specter
+F88 + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_F88_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,970,3.0,,5,2,F88
+Fajr 224,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Fajr,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic
+Generic Rifle,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_GenericRifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,
+KLF,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_KLF,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,1,akms
+KLS,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_KLS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,1,akm
+L119A1 + ET552 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L119A1_ET552_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,L119A1_Eotech_Foregrip
+L22A2 + Foregrip,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L22A2_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l22a2
+L22A2 + SUSAT + Foregrip ,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L22A2_SUSAT_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l22a2_susat
+L85A2,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,7,l85a2
+L85A2 + ACOG + Foregrip Bipod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog_grippod
+L85A2 + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_grippod
+L85A2 + Irons + Foregrip Bipod + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_grippod
+L85A2 + LDS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_LDS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,3,l85a2_elcanlds
+L85A2 + LDS + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_LDS_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_elcanlds_grippod
+L85A2 + M150,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog
+L85A2 + M150 + Foregrip Bipod + Tracer,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_M150_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2_acog_grippod
+L85A2 + SUSAT,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_SUSAT,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,5,l85a2_susat
+L85A2 + SUSAT + Grippod,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_SUSAT_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,3,l85a2_susat_grippod
+L85A2 Classic + SUSAT,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2_Classic_SUSAT,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2_susat_classic
+L85A2 L123A2,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2ag36
+L85A2 L123A2 + ACOG,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_M150_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,l85a2ag36_acog
+L85A2 L123A2 + LDS,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_L85A2AG36_LDS_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,l85a2ag36_elcanlds
+M1 Carbine,Rifle,semi,900,900,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M1Carbine/BP_M1Carbine_Ironsights,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.875,607,,15,,1,T_M1Carbine
+M16 Wormpool,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4
+M16 Wormpool + EXPS + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_EXPS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_EXPS_Foregrip
+M16 Wormpool + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_Ironsights,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_Ironsights_Foregrip
+M16 Wormpool + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_M150_Foregrip
+M16 Wormpool + T800 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M16_Wormpool/BP_M16_Wormpool_T800,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16_Wormpool_T800_Foregrip
+M16A1,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A1
+M16A1 + 3x20 Optic,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A1_Optic,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A1_3x20
+M16A2,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,T_M16A2
+M16A2 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2_Optic,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_3x20
+M16A2 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2M203_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_M203
+M16A2 M203 + 3x20 Optic,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A2M203_Optic_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M16A2_M203_3x20
+M16A4 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_foregrip
+M16A4 + Irons,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,3,M16A4
+M16A4 + Irons + Vertical Grip + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_foregrip
+M16A4 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog
+M16A4 + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog_foregrip
+M16A4 + M150 + Vertical Grip + Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4_M150_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M16A4_acog_foregrip
+M16A4 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4M203_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,m16a4_m203
+M16A4 M203 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M16A4M203_Rifle_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,m16a4_m203_acog
+M27 IAR,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/BP_M27,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M27
+M27 IAR + SDO,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile,Rifles/BP_M27_Optic,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,915,3.0,,5,2,T_M27_Optic
+M4,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,15,M4_ironsights
+M4 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,3,m4_ironsights_foregrip
+M4 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,5,M4_acog
+M4 + M150 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,4,M4_acog_foregrip
+M4 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M68,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,5,M4_aimpoint
+M4 + M68 + Foregrip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M68_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_aimpoint_foregrip
+M4 + Yoloson,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Yoloson,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic_Yoloson
+M4 M203,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_m203
+M4 M203 + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_m203_acog
+M4 M203 + M68,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4M203_Rifle_M68,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_m203_aimpoint
+M4 Simon Offense,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,8.0,,5,3,T_M4_Wormpool_Ironsights_Foregrip
+M4 Simon Offense + EXPS,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_EXPS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_EXPS_Foregrip
+M4 Simon Offense + M150 + Vertical Grip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_M150_Foregrip
+M4 Simon Offense + T800 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_SimonsOffense/BP_M4_SimonOffense_T800,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,8.0,,5,1,T_M4_SimonOffense_T800_Foregrip
+M4 Tracer,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Classic_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,M4_Classic
+M4 Tracer + M150,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_M150_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,4,M4_acog
+M4 Tracer + Vertical Grip,Rifle,semi,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4_Carryhandle_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_Carryhandle_foregrip
+M4 Wormpool + EXPS + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_EXPS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_EXPS_Foregrip
+M4 Wormpool + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_Ironsights,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_Ironsights_Foregrip
+M4 Wormpool + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_M150_Foregrip
+M4 Wormpool + T800,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/M4_Wormpool/BP_M4_Wormpool_T800,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,1,T_M4_Wormpool_T800
+M4A1,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_ironsights
+M4A1 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_ironsights_foregrip
+M4A1 + M150 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_acog_foregrip
+M4A1 + M68,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M68,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,M4_aimpoint
+M4A1 + M68 + Foregrip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_M68_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_aimpoint_foregrip
+M4A1 Tracer + Vertical Grip,Rifle,auto,833,833,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_M4A1_Foregrip_Tracer,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.735,880,3.0,,5,2,m4_ironsights_foregrip
+Malyuk (5.45),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_irons
+Malyuk (5.45) + EXPS,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_EXPS,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_exps
+Malyuk (5.45) + EXPS + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_EXPS_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_exps
+Malyuk (5.45) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_irons
+Malyuk (5.45) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_m150
+Malyuk (5.45) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_545_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_m150
+Malyuk (5.56),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_irons
+Malyuk (5.56) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_irons
+Malyuk (5.56) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_m150
+Malyuk (5.56) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_545_foregrip_m150
+Malyuk (5.56) + Yoloson,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Yoloson,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_556_Yoloson
+Malyuk (5.56) + Yoloson + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/Malyuk/BP_Malyuk_556_Yoloson_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_556_foregrip_Yoloson
+Malyuk (7.62),Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_irons
+Malyuk (7.62) + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_irons_foregrip
+Malyuk (7.62) + M68,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M68,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m68
+Malyuk (7.62) + M68 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M68_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m68_foregrip
+Malyuk (7.62) + TA31,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M150,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_m150
+Malyuk (7.62) + TA31 + Foregrip,Rifle,auto,667,667,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/Malyuk/BP_Malyuk_762_M150_Foregrip,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.39,900,4.0,,5,1,malyuk_762_foregrip_m150
+Mk 153 SMAW (Spotting Rifle),Rifle,semi,900,900,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile_SMAW_SpottingRifle,RocketLaunchers/SMAW/BP_SMAW_SpottingRifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.875,220,7.0,6,1,1,smaw_spottingrifle
+PM md. 63,Rifle,auto,600,600,,Projectile_SuppressionInfo_Rifle,yes,BP_Projectile_7_62mm,Rifles/BP_PMMD63,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.25,715,4.0,,5,1,pmmd63
+QBZ-191,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,2,T_QBZ191
+QBZ-191 + Grip Pod,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_IronSights_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod
+QBZ-191 + Grip Pod + Holo + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Holo_Suppressor
+QBZ-191 + Grip Pod + Holo Sight,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Holo
+QBZ-191 + Grip Pod + QMK-171A,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_QMK171A
+QBZ-191 + Grip Pod + QMK-171A + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_QMK171A_Suppressor
+QBZ-191 + Grip Pod + Suppressor,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_IronSights_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Grippod_Suppressor
+QBZ-191 + Holo Sight,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Holo,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_Holo
+QBZ-191 + QMK-171A,Rifle,auto,706,706,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-191/BP_QBZ191_Optic_QMK171A,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.471,940,1.7999999523162842,,5,1,T_QBZ191_QMK171A
+QBZ-192,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Parent,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,3,T_QBZ192
+QBZ-192 + Grip Pod,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_IronSights_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,2,T_QBZ192_Grippod
+QBZ-192 + Grip Pod + Holo Sight,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Holo
+QBZ-192 + Grip Pod + Holo Sight + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Holo_Suppressor
+QBZ-192 + Grip Pod + QMK-171A,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A_Grippod,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_QMK171A
+QBZ-192 + Grip Pod + QMK-171A + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_QMK171A_Suppressor
+QBZ-192 + Grip Pod + Suppressor,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_IronSights_Grippod_Suppressor,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Grippod_Suppressor
+QBZ-192 + Holo Sight,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Holo,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_Holo
+QBZ-192 + QMK-171A,Rifle,auto,750,750,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/QBZ-192/BP_QBZ192_Optic_QMK171A,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.562,940,3.0,,5,1,T_QBZ192_QMK171A
+QBZ95-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,3,T_qbz95-1
+QBZ95-1 + Holo Sight,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1_Holo,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,3,T_qbz95-1_holo
+QBZ95-1 + YMA600,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95-1_Optic,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,2,qbz95-1_yma600
+QBZ95-1 QLG-10,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,GrenadeLaunchers/QBZ-95-1_QLG-10_UGL/BP_QBZ95-1_QLG-10_Rifle,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,T_qbz95-1_qlg10
+QBZ95-1 QLG-10 + YMA600,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,GrenadeLaunchers/QBZ-95-1_QLG-10_UGL/BP_QBZ95-1_QLG-10_Rifle_Optic,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,940,2.0,,5,1,T_qbz95-1_qlg10_yma600
+QBZ95B-1,Rifle,auto,652,652,,Projectile_SuppressionInfo_Rifle,no,BP_Projectile,Rifles/BP_QBZ95B-1,5.0,0.125,0.0901,0.0568,0.0284,1.15,1.125,10.0,1.358,790,2.0,,5,3,T_qbz95b-1
 AS-VAL,SMG / pistol,auto,652,652,,Projectile_Suppression_Pistol,no,BP_Projectile_Subsonic,Rifles/BP_ASVAL,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.087,495,4.0,20,5,1,T_asval
 AS-VAL + OKP-7,SMG / pistol,auto,652,652,,Projectile_Suppression_Pistol,no,BP_Projectile_Subsonic,Rifles/BP_ASVAL_OKP-7,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.087,495,4.0,20,5,1,T_asval_okp7
 AS-VAL + PSO-1-1,SMG / pistol,auto,652,652,,Projectile_Suppression_Pistol,no,BP_Projectile_Subsonic,Rifles/BP_ASVAL_Optic,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.087,495,4.0,20,5,1,T_asval_optic
@@ -492,7 +495,7 @@ MP-443 Grach,SMG / pistol,semi,652,652,,Projectile_Suppression_Pistol,no,BP_Proj
 MP5A3,SMG / pistol,auto,800,800,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/MP5/BP_MP5A3,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.333,320,6.0,,1,3,T_mp5a3
 MP5A3 + T800,SMG / pistol,auto,800,800,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/MP5/BP_MP5A3_T800,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.333,320,6.0,,1,4,T_MP5A3_T800
 MP5A3 + ZPoint,SMG / pistol,auto,800,800,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/MP5/BP_MP5A3_ZPoint,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.333,320,6.0,,1,3,T_MP5A3_Zpoint
-MPT9,SMG / pistol,auto,800,800,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/MP5/BP_MPT9,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.333,320,6.0,,1,1,T_mp5a3
+MPT9,SMG / pistol,auto,800,800,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/MP5/BP_MPT9,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.333,320,6.0,,1,2,T_mp5a3
 PPSh-41,SMG / pistol,auto,1000,1000,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/PPSH41/BP_Ppsh41_Stick,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.667,488,,35,,1,ppsh-41_stick
 PPSh-41 + Drum Mag,SMG / pistol,auto,1000,1000,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/PPSH41/BP_Ppsh41_Drum,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.667,488,,71,,1,ppsh-41_drum
 QCW-05,SMG / pistol,auto,896,896,,Projectile_Suppression_SMG,yes,BP_Projectile_9mm,SubmachineGuns/OCW-05/BP_QCW05_Parent,5.0,0.1,0.0637,0.0324,0.0099,1.15,1.125,12.0,1.493,321,8.0,50,5,3,QCW05

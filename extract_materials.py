@@ -12,14 +12,15 @@ How DamageAbsorbed combines with the round's damage is compiled C++ and stays UN
 Writes all_materials.json and squad_materials.csv.
 """
 import os, sys, csv, json, glob, subprocess, collections
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from uasset import Package
 from curve import read_curves
 import squad
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CONTENT = '/home/osaka/Downloads/SquadEditor/Squad/Content'
-ENGINE_INI = '/home/osaka/Downloads/SquadEditor/Squad/Config/DefaultEngine.ini'
+CONTENT = SDK_CONTENT
+ENGINE_INI = os.path.join(SDK_CONFIG, 'DefaultEngine.ini')
 PEN_CURVES = os.path.join(CONTENT, 'Gameplay', 'PenetrationCurves')
 
 # the 29 named surface types are for effects and sound; penetration does not use them

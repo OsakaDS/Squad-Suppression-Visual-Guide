@@ -21,12 +21,13 @@ Images are written to material_images/, which is not committed: it is extracted 
 and it rebuilds from the assets in about a minute.
 """
 import os, re, io, sys, json, subprocess
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from uasset import Package
 import squad, textures
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CONTENT = '/home/osaka/Downloads/SquadEditor/Squad/Content/'
+CONTENT = SDK_CONTENT + os.sep
 OUT = os.path.join(HERE, 'material_images')
 
 # hand-picked sources for the materials the heuristic cannot resolve:

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Dump every suppression profile + curve in the game to JSON."""
 import sys, os, json, glob
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import squad
 from curve import read_curve
 
-SI_DIR = '/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/Items/Projectiles/SuppressionInfo'
+SI_DIR = os.path.join(SDK_CONTENT, 'Blueprints/Items/Projectiles/SuppressionInfo')
 GAME = '/Game/Blueprints/Items/Projectiles/SuppressionInfo/'
 
 profiles = {}

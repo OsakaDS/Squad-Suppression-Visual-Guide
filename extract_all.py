@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Sweep every infantry firearm in the game and resolve its suppression profile."""
 import sys, os, json, glob, traceback
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import squad
 from curve import read_curve
 
-ITEMS = '/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/Items'
+ITEMS = os.path.join(SDK_CONTENT, 'Blueprints/Items')
 CATS = ['Rifles', 'MachineGuns', 'Pistols', 'SubmachineGuns', 'Shotguns',
         'GrenadeLaunchers', 'RocketLaunchers']
 
@@ -39,10 +40,18 @@ for cat in CATS:
             # bolt-actions keep their real cycle time on the StaticInfo, not in WeaponConfig
             bolt, bolt_t = None, None
             sinfo = res.get('ItemStaticInfoClass')
+            ads = {}
             if sinfo and sinfo[0]:
                 sres, _ = squad.merged(sinfo[0])
                 bolt = sres.get('bRequiresManualBolt', (None,))[0]
                 bolt_t = sres.get('ManualBoltingCompletionTime', (None,))[0]
+                # how much this weapon damps the suppression punch while aimed. Read through
+                # the static info chain, so it is the value the weapon actually gets.
+                ads = {k: sres.get(v, (None,))[0] for k, v in (
+                    ('camLoc', 'ADSSuppressionPunchCameraLocationMultiplier'),
+                    ('camRot', 'ADSSuppressionPunchCameraRotationMultiplier'),
+                    ('weapon', 'ADSSuppressionPunchWeaponAlignmentMultiplier'),
+                    ('noXaxis', 'DisableSuppressionXAxisCameraLocationPunch'))}
             fm = wc.get('Firemodes', (None,))[0]     # burst lengths: 1 = semi, -1 = full auto
             rows.append({
                 'cat': c,
@@ -55,6 +64,7 @@ for cat in CATS:
                 'override_src': (ovr[1].split('/')[-1] if (ovr and ovr[0]) else None),
                 'tbs': round(rate[0], 5) if rate else None,
                 'bolt': bool(bolt), 'bolt_time': round(bolt_t, 3) if bolt_t else None,
+                'ads': ads or None,
                 'firemodes': fm if isinstance(fm, list) else None,
                 'mv': wc.get('MuzzleVelocity', (None,))[0],
                 'moa': wc.get('MOA', (None,))[0],

@@ -2,6 +2,7 @@
 """Everything the player guide needs, in one JSON: per-kit figures, soldier-side curves,
 screen-effect thresholds, sway, blasts, ADS multipliers, immunity constants, and the logo."""
 import os, json, io, base64, glob, collections
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 from PIL import Image
 from curve import read_curves
 
@@ -13,7 +14,7 @@ def game_version(default='v10.5.3'):
     try: return open(p, encoding='utf-8').read().strip() or default
     except OSError: return default
 
-SOLD = '/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/Soldiers'
+SOLD = os.path.join(SDK_CONTENT, 'Blueprints/Soldiers')
 base = json.load(open(os.path.join(HERE, 'payload.json')))          # profiles / flat / blast / soldier
 ALL = json.load(open(os.path.join(HERE, 'all_weapons.json')))
 allw = ALL['weapons']
@@ -94,7 +95,7 @@ soldier = {
                    [('camRot', 'VC_Suppression_CameraRotation'), ('camLoc', 'VC_Suppression_CameraLocation'),
                     ('weapon', 'VC_Suppression_WeaponAlignment')]},
     'sway': keys_of(f'{SOLD}/SuppressionConfig/VC_SuppressionSwayBySuppressionPercent.uasset'),
-    'vignette': keys_of('/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/CameraManager/CameraEffects/FC_SuppressionVignetteIntensity.uasset')[''],
+    'vignette': keys_of(os.path.join(SDK_CONTENT, 'Blueprints/CameraManager/CameraEffects/FC_SuppressionVignetteIntensity.uasset'))[''],
     'const': {'tick': 0.1, 'increment': 1.0, 'max': 7.5, 'window': 1.0, 'variability': 0.25,
               'decayRate': 0.5, 'radius': 800, 'fullRadius': 100, 'angleOff': 17.5, 'wallIgnore': 250},
 }
@@ -109,11 +110,29 @@ effects = [
     {'id': 'dirt',     'label': 'Screen dirt',          'from': 2.95, 'to': 4.0,  'note': ''},
     {'id': 'fisheye',  'label': 'Fisheye',              'from': 5.0,  'to': 7.0,  'note': 'to 0.5 intensity'},
 ]
-ads = [
-    {'who': 'MAG / Maximi / Minimi / MG3 machine guns', 'n': 12, 'camLoc': 0.5, 'camRot': 0.2, 'weapon': 0.5, 'xAxis': True},
-    {'who': 'Optic-equipped rifles, LSWs, LMGs',        'n': 65, 'camLoc': 0.4, 'camRot': None, 'weapon': None, 'xAxis': False},
-    {'who': 'C9A2, L110A1, M240 M145 / MGO and others',  'n': 14, 'camLoc': None, 'camRot': None, 'weapon': None, 'xAxis': False},
-]
+# ---------- what each weapon damps while aimed, grouped by the values it gets ----------
+# READ through each weapon's static-info chain, so inherited multipliers count. This used to
+# be typed by hand and went stale the moment the game changed it.
+def _r(v, nd=2):
+    return None if v is None else (round(v, nd) if isinstance(v, float) else v)
+
+groups = {}
+for w in allw:
+    a = w.get('ads') or {}
+    key = (_r(a.get('camLoc')), _r(a.get('camRot')), _r(a.get('weapon')), bool(a.get('noXaxis')))
+    groups.setdefault(key, []).append(w)
+ads = []
+for (camLoc, camRot, weapon, xaxis), ws in sorted(groups.items(), key=lambda kv: -len(kv[1])):
+    bykit = collections.Counter(w['catLabel'] for w in ws if w.get('catLabel'))
+    named = sorted({w['name'].split(' + ')[0] for w in ws if w.get('name') and not w['name'].startswith('BP_')})
+    if len(bykit) > 3:
+        who = 'Across every kit: ' + ', '.join(k for k, _ in bykit.most_common(3)) + ' and more'
+    elif bykit:
+        who = ', '.join('%s (%d)' % (k, n) for k, n in bykit.most_common())
+    else:
+        who = ', '.join(named[:3])
+    ads.append({'who': who, 'n': len(ws), 'examples': named[:4],
+                'camLoc': camLoc, 'camRot': camRot, 'weapon': weapon, 'xAxis': xaxis})
 # logo → two data URIs
 logo_path = [f for f in glob.glob(os.path.join(HERE, 'branding', '*.png'))][0]
 def uri(size):

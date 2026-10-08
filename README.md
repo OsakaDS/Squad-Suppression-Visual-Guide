@@ -1,6 +1,6 @@
 # Squad suppression toolkit
 
-Extracts the suppression system out of **Squad v10.5.3** and turns it into a browsable
+Extracts the suppression system out of **Squad** and turns it into a browsable
 web page. Nothing here is scraped from a wiki or measured in-game. Every number is read
 directly out of the shipped `.uasset` binaries in the Squad Mod SDK.
 
@@ -276,7 +276,8 @@ single base colour texture; those want a hand-picked source in its `CURATED` tab
 ## Game versions
 
 Both pages carry a version toggle at the top. Squad changes these values between patches, so
-each extracted version is frozen and kept, and the pages switch between them.
+each extracted version is frozen and kept, and the pages switch between them. Two are held:
+**v10.5.3**, the last build before the 10.6 suppression pass, and **v10.6.1**, the current one.
 
 The art is carried once and the numbers once per version. About 960 KB of the guide is icons,
 so a frozen version costs only its values: 100 KB for the infantry tab, 107 KB for the vehicle
@@ -301,6 +302,31 @@ version into the payloads the pages inject, and the newest version becomes the d
 Older versions keep their weapons' icon keys and draw art from the current icon set, so a weapon
 whose art was removed by a later update shows no picture. That is the one cost of carrying the
 art only once.
+
+### What the 10.6 pass changed
+
+The first comparison the toggle shows. Two things moved and nothing else did.
+
+**The rifle falloff curve was reshaped.** Its middle control point moved out from 2.41 m to
+2.73 m and dropped from 0.0875 to 0.0644, which costs a rifle nothing at a metre and a lot
+further out.
+
+| rifle, per round | v10.5.3 | v10.6.1 |
+|---|---|---|
+| at 1 m | 0.1250 | 0.1250 |
+| at 2 m | 0.0983 | 0.0900 |
+| at 3 m | 0.0675 | 0.0568 |
+| rounds to pin at 3 m | 18 | 21 |
+
+**Aiming now damps the kick on every weapon.** Before, 344 of 521 weapons gave you nothing for
+being in the sight. Now all 524 damp weapon alignment punch to 0.42, and 239 damp camera
+location as well. Machine guns lost their camera rotation damping of 0.2, and the flag that
+switched off the sideways half of the camera kick is gone from every weapon.
+
+Everything else held: ceilings, every punch and immunity curve, the sway curve, the screen
+effect thresholds, every blast profile, every vehicle weapon, all 129 physical materials and
+all ten penetration curves. v10.6.1 changed nothing again; it rewrote 62 assets, none of them
+suppression related.
 
 ---
 

@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Consolidate everything the suppression GUI needs into one JSON payload."""
 import sys, os, json, glob
+from sdk import CONTENT as SDK_CONTENT, CONFIG as SDK_CONFIG, ROOT as SDK_ROOT
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import squad
 from curve import read_curve
 import report as rifle_report
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SOLDIER = '/home/osaka/Downloads/SquadEditor/Squad/Content/Blueprints/Soldiers/PunchCurves/Suppression'
+SOLDIER = os.path.join(SDK_CONTENT, 'Blueprints/Soldiers/PunchCurves/Suppression')
 
 def keys_of(path):
     _, k = read_curve(path)
